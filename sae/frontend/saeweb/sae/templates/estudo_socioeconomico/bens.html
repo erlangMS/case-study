@@ -1,0 +1,658 @@
+<div id="f_bens" class="form-inline" align="center" style="display:none">
+   <table class="table" border="1" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;width: 100%">
+      <tr align="left">
+         <td colspan="7" style="font-family:Arial;font-weight:bold; width: 100%; background-color: #cccccc;" align="center">
+            <ol id="passo_atual" class="breadcrumb">
+               <li><span class="badge">1</span>Estudo Preliminar</li>
+               <li><span class="badge">2</span>Dados Pessoais</li>
+               <li><span class="badge">3</span>Dados Familiares</li>
+               <li class="active"><span class="badge">4</span>Bens</li>
+            </ol>
+         </td>
+      </tr>
+      <tr>
+         <td style="font-family: Arial; font-size: 11px; padding: 10px" align="center" colspan = "7">
+            Os campos com asterisco são obrigatórios.
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            Casa(s) ou Apartamento(s) além do que reside:
+         </td>
+         <td style="width: 12%; height: 27px; background-color:#fcfcfc;">
+            Qtd. Aluno:
+         </td>
+         <td style="width: 7%;">
+            <input name="f_Apartamento1" data-field="Apartamento1" type="text" value="00" maxlength="2" id="ctl00_Apartamento1" style="width:30px;" />
+         </td>
+         <td style="width: 12%; background-color: #fcfcfc;">
+            Qtd. Família:
+         </td>
+         <td colspan="3">
+            &nbsp;<input name="f_Apartamento2" data-field="Apartamento2" type="text" value="00" maxlength="2" id="ctl00_Apartamento2" style="width:30px;" />
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc;">
+            Chácara(s), sítio(s), fazenda(s):
+         </td>
+         <td style=" height: 27px; background-color:#fcfcfc;">
+            Qtd. Aluno:
+         </td>
+         <td>
+            <input name="f_Chacara1" data-field="Chacara1" type="text" value="0" maxlength="1" id="ctl00_Chacara1" style="width:30px;" />
+         </td>
+         <td style="background-color: #fcfcfc;">
+            Qtd. Família:
+         </td>
+         <td>
+            &nbsp;<input name="f_Chacara2" data-field="Chacara2" type="text" value="0" maxlength="1" id="ctl00_Chacara2" style="width:30px;" />
+         </td>
+         <td style="background-color: #fcfcfc;">
+            Área total:
+         </td>
+         <td>
+            &nbsp;<input name="f_Chacara3" data-field="Chacara3" type="text" value="000,00" maxlength="6" id="ctl00_Chacara3" style="width:40px;" />ha.
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            Terreno(s):
+         </td>
+         <td style="width: 12%; height: 27px; background-color:#fcfcfc;">
+            Qtd. Aluno:
+         </td>
+         <td style="width: 7%;">
+            <input name="f_Terreno1" data-field="Terreno1" type="text" value="00" maxlength="2" id="ctl00_Terreno1" style="width:30px;" />
+         </td>
+         <td style="width: 12%; background-color: #fcfcfc;">
+            Qtd. Família:
+         </td>
+         <td colspan="3">
+            &nbsp;<input name="f_Terreno2" data-field="Terreno2" type="text" value="00" maxlength="2" id="ctl00_Terreno2" style="width:30px;" />
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            Imóvel(is) e/ou firma(s) comercial(is):
+         </td>
+         <td style="width: 12%; height: 27px; background-color:#fcfcfc;">
+            Qtd. Aluno:
+         </td>
+         <td style="width: 7%;">
+            <input name="f_ComercialIndustrial1" data-field="ComercialIndustrial1" type="text" value="00" maxlength="2" id="ctl00_ComercialIndustrial1" style="width:30px;" />
+         </td>
+         <td style="width: 12%; background-color: #fcfcfc;">
+            Qtd. Família:
+         </td>
+         <td colspan="3">
+            &nbsp;<input name="f_ComercialIndustrial2" data-field="ComercialIndustrial2" type="text" value="00" maxlength="2" id="ctl00_ComercialIndustrial2" style="width:30px;" />
+         </td>
+      </tr>
+   </table>
+   <table class="table" border="1" width="720" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse; display: none;">
+      <tr align="center">
+         <td colspan="8" style="background-color: #EAEAEA;">
+            <strong>Bens de consumo durável</strong>
+         </td>
+      </tr>
+      <tr align="center">
+         <td style="background-color: #fcfcfc;">
+            Aspirador de Pó<span style="color: #ff0000">*</span>:
+         </td>
+         <td>
+            <select data-field="AspiradorPo"  name="f_AspiradorPo" id="ctl00_AspiradorPo">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td  style="background-color: #fcfcfc;">
+            Computador<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="Computador" name="f_Computador" id="ctl00_Computador">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td style="background-color: #fcfcfc;">
+            Freezer<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="Freezer" name="f_Freezer" id="ctl00_Freezer">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+      </tr>
+      <tr align="center">
+         <td  style="background-color: #fcfcfc;">
+            Geladeira<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="Geladeira" name="f_Geladeira" id="ctl00_Geladeira">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td  style="background-color: #fcfcfc;">
+            Máq. Lavar Roupa<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="MaqLavarRoupa" name="f_MaqLavarRoupa" id="ctl00_MaqLavarRoupa">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td  style="background-color: #fcfcfc;">
+            Rádio(exceto do carro)<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="Radio" name="f_Radio" id="ctl00_Radio">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+      </tr>
+      <tr align="center">
+         <td  style="background-color: #fcfcfc;">
+            TV em Cores<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="TvCores" name="f_TVCores" id="ctl00_TVCores">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td  style="background-color: #fcfcfc;">
+            TV à Cabo<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="TvCabo" name="f_TVCabo" id="ctl00_TVCabo">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td  style="background-color: #fcfcfc;">
+            DVD<span style="color: #ff0000">*</span>:
+         </td>
+         <td >
+            <select data-field="DVD" name="f_VideoCassete" id="ctl00_VideoCassete">
+               <option value=""></option>
+               <option selected="selected" value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+      </tr>
+   </table>
+   <table class="table" border="1" width="720" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;">
+      <tr align="center">
+         <td width="40%" colspan = "4" style="background-color: #EAEAEA;">
+            <strong>Veículos</strong>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc; width: 20%;">
+            Quantidade de Veículos:
+         </td>
+         <td align="center" width="7%">
+            <select data-field="QtdVeiculos" name="f_QtdVeiculos" id="ctl00_QtdVeiculos" onchange="calcularQtdVeiculos();">
+               <option selected="selected" value=""></option>
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td style="background-color: #fcfcfc; width: 65%;">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="8">
+            <div id="ctl00_painelDinamico">
+               <table class="table" border="1" width="720" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" border="0" style="border-collapse:collapse;">
+                  <tr id="ctl00_trColuna0">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>Nr.</b></td>
+                     <td bgcolor="#fcfcfc"><b>Proprietário</b><span style="color: #ff0000">*</span></td>
+                     <td bgcolor="#fcfcfc"><b>Marca/Modelo</b><span style="color: #ff0000">*</span></td>
+                     <td bgcolor="#fcfcfc"><b>Ano</b><span style="color: #ff0000">*</span></td>
+                     <td bgcolor="#fcfcfc"><b>Finalidade</b><span style="color: #ff0000">*</span></td>
+                  </tr>
+                  <tr id="ctl00_trColuna1">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>1 </b></td>
+                     <td><input name="f_Proprietario1" data-field="Proprietario1" type="text" maxlength="30" id="ctl00_Proprietario1" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca1" type="text" maxlength="15" id="ctl00_Marca1" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano1" type="text" maxlength="4" id="ctl00_Ano1" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade1" id="ctl00_Finalidade1" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr id="ctl00_trColuna2">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>2 </b></td>
+                     <td><input name="f_Proprietario2" data-field="Proprietario2" type="text" maxlength="30" id="ctl00_Proprietario2" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca2" type="text" maxlength="15" id="ctl00_Marca2" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano2" type="text" maxlength="4" id="ctl00_Ano2" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade2" id="ctl00_Finalidade2" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr id="ctl00_trColuna3">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>3 </b></td>
+                     <td><input name="f_Proprietario3" data-field="Proprietario3" type="text" maxlength="30" id="ctl00_Proprietario3" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca3" type="text" maxlength="15" id="ctl00_Marca3" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano3" type="text" maxlength="4" id="ctl00_Ano3" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade3" id="ctl00_Finalidade3" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr id="ctl00_trColuna4">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>4 </b></td>
+                     <td><input name="f_Proprietario4" data-field="Proprietario4" type="text" maxlength="30" id="ctl00_Proprietario4" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca4" type="text" maxlength="15" id="ctl00_Marca4" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano4" type="text" maxlength="4" id="ctl00_Ano4" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade4" id="ctl00_Finalidade4" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr id="ctl00_trColuna5">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>5 </b></td>
+                     <td><input name="f_Proprietario5" data-field="Proprietario5" type="text" maxlength="30" id="ctl00_Proprietario5" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca5" type="text" maxlength="15" id="ctl00_Marca5" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano5" type="text" maxlength="4" id="ctl00_Ano5" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade5" id="ctl00_Finalidade5" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+                  <tr id="ctl00_trColuna6">
+                     <td bgcolor="#fcfcfc" style="Width:10px;"><b>6 </b></td>
+                     <td><input name="f_Proprietario6" data-field="Proprietario6" type="text" maxlength="30" id="ctl00_Proprietario6" onblur="atualizaVeiculo();" style="width:250px;" /></td>
+                     <td><input name="f_Marca6" type="text" maxlength="15" id="ctl00_Marca6" onblur="atualizaVeiculo();" /></td>
+                     <td><input name="f_Ano6" type="text" maxlength="4" id="ctl00_Ano6" onblur="atualizaVeiculo();" style="width:40px;" /></td>
+                     <td style="Align:left;">
+                        <select name="f_Finalidade6" id="ctl00_Finalidade6" onChange="atualizaVeiculo();">
+                           <option value=""></option>
+                           <option value="Passeio">Passeio</option>
+                           <option value="Taxi">Taxi</option>
+                           <option value="Carreto">Carreto</option>
+                           <option value="Escolar/Alternativo">Escolar/Alternativo</option>
+                        </select>
+                     </td>
+                  </tr>
+               </table>
+               <br>
+            </div>
+         </td>
+      </tr>
+   </table>
+   <table class="table" border="1" width="720" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse; display: none;">
+      <tr align="center">
+         <td width="40%" colspan = "4" style="background-color: #EAEAEA;">
+            <strong>Telefones</strong>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc; width: 20%;">
+            Quantidade de Telefones:
+         </td>
+         <td align="center" width="7%">
+            <select data-field="QtdTelefones" name="f_QtdTelefones" id="ctl00_QtdTelefones" onchange="calcularQtdTelefones();">
+               <option selected="selected" value=""></option>
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+               <option value="6">6</option>
+            </select>
+         </td>
+         <td style="background-color: #fcfcfc; width: 65%;">
+         </td>
+      </tr>
+      <tr>
+         <td colspan="8">
+            <div id="ctl00_painelDinamicoTelefone">
+               <table class="table" border="1" width="720" align="center" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" border="0" style="border-collapse:collapse;">
+                  <tr id="ctl00_trColunaTel0">
+                     <td bgcolor="#fcfcfc" style="Align:Center;Width:10px;"><b>Nr.</b></td>
+                     <td bgcolor="#fcfcfc"><b>Linha</b><span style="color: #ff0000">*</span></td>
+                     <td bgcolor="#fcfcfc"><b>Finalidade</b><span style="color: #ff0000">*</span></td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel1">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>1 </b></td>
+                     <td>
+                        <select data-field="Linha1" name="f_Linha1" id="ctl00_Linha1" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone1" name="f_FinalidadeTelefone1" id="ctl00_FinalidadeTelefone1" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel2">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>2 </b></td>
+                     <td>
+                        <select data-field="Linha2" name="f_Linha2" id="ctl00_Linha2" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone2" name="f_FinalidadeTelefone2" id="ctl00_FinalidadeTelefone2" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel3">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>3 </b></td>
+                     <td>
+                        <select data-field="Linha3" name="f_Linha3" id="ctl00_Linha3" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone3" name="f_FinalidadeTelefone3" id="ctl00_FinalidadeTelefone3" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel4">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>4 </b></td>
+                     <td>
+                        <select data-field="Linha4" name="f_Linha4" id="ctl00_Linha4" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone4" name="f_FinalidadeTelefone4" id="ctl00_FinalidadeTelefone4" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel5">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>5 </b></td>
+                     <td>
+                        <select data-field="Linha5" name="f_Linha5" id="ctl00_Linha5" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone5" name="f_FinalidadeTelefone5" id="ctl00_FinalidadeTelefone5" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+                  <tr id="ctl00_trColunaTel6">
+                     <td bgcolor="#fcfcfc" style="Align:Right;"><b>6 </b></td>
+                     <td>
+                        <select data-field="Linha6" name="f_Linha6" id="ctl00_Linha6" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Fixa">Fixa</option>
+                           <option value="Celular">Celular</option>
+                        </select>
+                     </td>
+                     <td>
+                        <select data-field="FinalidadeTelefone6" name="f_FinalidadeTelefone6" id="ctl00_FinalidadeTelefone6" onChange="atualizaTelefones();">
+                           <option selected="selected" value=""></option>
+                           <option value="Residencial/Pessoal">Residencial/Pessoal</option>
+                           <option value="Comercial">Comercial</option>
+                        </select>
+                     </td>
+                     <td bgcolor="#fcfcfc" style="Width:55%;"></td>
+                  </tr>
+               </table>
+               <br>
+            </div>
+         </td>
+      </tr>
+   </table>
+   <input type="hidden" name="f_Aluno" id="ctl00_Aluno" />      
+   <input type="hidden" name="f_SemestreAno" id="ctl00_SemestreAno" />
+   <input type="hidden" name="f_VeiculoBens" id="ctl00_VeiculoBens" />
+   <input type="hidden" name="f_TelefoneBens" id="ctl00_TelefoneBens" />
+   <input type="hidden" name="f_PeriodoAtual" id="ctl00_PeriodoAtual" value="20152" />
+   <input type="hidden" name="f_Matricula" id="ctl00_Matricula" value="140180249" />   
+</div>
+
+<script>
+     function atualizaVeiculo()
+     {
+        var contadorVeiculo = document.getElementById('ctl00_QtdVeiculos').value;
+       
+        var temp = "";
+        var  i = 1;
+
+        while(i <= contadorVeiculo)
+        {
+            proprietarioTemp = document.getElementById('ctl00_Proprietario' + i).value;
+            modeloTemp = document.getElementById('ctl00_Marca' + i).value;
+            anoTemp = document.getElementById('ctl00_Ano' + i).value;
+            finalidadeTemp = document.getElementById('ctl00_Finalidade' + i).value;
+            
+            //Se o i tiver o mesmo tamanho do contador então é o último registro e logo não precisamos colocar o espaço gigantesco.
+             if(i == contadorVeiculo ){
+                temp += "Proprietário: " + Trim(proprietarioTemp) + " Marca/Modelo: " + Trim(modeloTemp) + " Ano: " + anoTemp + " Finalidade: " + finalidadeTemp;
+             }
+             else
+             {
+                valorTemp = "Proprietário: " + Trim(proprietarioTemp) + " Marca/Modelo: " + Trim(modeloTemp) + " Ano: " + anoTemp + " Finalidade: " + finalidadeTemp;
+                //O tamanho da string do ValorTemp tem que dá 121, então completamos com " "
+                for (j = valorTemp.length; j < 121; j++)
+                {
+                    valorTemp += " ";
+                }
+                
+                temp += valorTemp;
+             }
+             i++;
+        }
+        document.getElementById('ctl00_VeiculoBens').value = temp;
+    }  
+    
+    function calcularQtdVeiculos()
+    {
+      contadorVeiculoSelecionado = document.getElementById('ctl00_QtdVeiculos').value;
+      //Percorrendo por todas as colunas. No caso o nosso limitador é 6 por causa do valor máximo da combo. 
+      for (i = 0; i <= 6; i++)
+      {
+          if(i<=contadorVeiculoSelecionado)
+          {
+              document.getElementById('ctl00_trColuna' + i).style.display = '';
+          }
+          else
+          {
+              document.getElementById('ctl00_trColuna' + i).style.display = 'none';
+              document.getElementById('ctl00_Proprietario' + i).value = '';
+              document.getElementById('ctl00_Marca' + i).value = '';
+              document.getElementById('ctl00_Ano' + i).value = '';
+              document.getElementById('ctl00_Finalidade' + i).value = '';
+              
+          }
+          if (contadorVeiculoSelecionado == 0 || contadorVeiculoSelecionado == "")
+          {
+            document.getElementById('ctl00_trColuna0').style.display = 'none';
+          }
+      }
+      atualizaVeiculo();
+     }
+    
+    
+     function atualizaTelefones()
+     {
+        var contadorTelefones = document.getElementById('ctl00_QtdTelefones').value;
+       
+        var temp = "";
+        var  i = 1;
+
+        while(i <= contadorTelefones)
+        {
+            linhaTemp = document.getElementById('ctl00_Linha' + i).value;
+            finalidadeTemp = document.getElementById('ctl00_FinalidadeTelefone' + i).value;
+            
+            //Se o i tiver o mesmo tamanho do contador então é o último registro e logo não precisamos colocar o espaço gigantesco.
+             if(i == contadorTelefones )
+             {
+                temp += "Linha: " + Trim(linhaTemp) + " Finalidade: " + Trim(finalidadeTemp);
+             }
+             else
+             {
+                valorTemp = "Linha: " + Trim(linhaTemp) + " Finalidade: " + Trim(finalidadeTemp);
+                //O tamanho da string do ValorTemp tem que dá 46, então completamos com " "
+                for (j = valorTemp.length; j < 46; j++)
+                {
+                    valorTemp += " ";
+                }
+                
+                temp += valorTemp;
+             }
+            i++;
+        }
+        document.getElementById('ctl00_TelefoneBens').value = temp;
+    }  
+    
+    function calcularQtdTelefones()
+    {
+      contadorTelefoneSelecionado = document.getElementById('ctl00_QtdTelefones').value;
+      //Percorrendo por todas as colunas. No caso o nosso limitador é 6 por causa do valor máximo da combo. 
+      for (i = 0; i <= 6; i++)
+      {
+          if(i<=contadorTelefoneSelecionado)
+          {
+              document.getElementById('ctl00_trColunaTel' + i).style.display = '';
+          }
+          else
+          {
+              document.getElementById('ctl00_trColunaTel' + i).style.display = 'none';
+              document.getElementById('ctl00_Linha' + i).value = '';
+              document.getElementById('ctl00_FinalidadeTelefone' + i).value = '';
+          }
+          if (contadorTelefoneSelecionado == 0 || contadorTelefoneSelecionado == "")
+          {
+            document.getElementById('ctl00_trColunaTel0').style.display = 'none';
+          }
+      }
+      atualizaTelefones();
+    }
+    
+    function Trim(str)
+    {
+        return str.replace(/^\s+|\s+$/g,"");
+    }
+    
+    calcularQtdVeiculos();
+    calcularQtdTelefones();
+
+</script>

@@ -1,0 +1,1307 @@
+<form id="f_dados_pessoais" class="form-inline" align="center" style="display:none">
+   <table  class="table" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;width: 100%">
+      <tr align="left">
+         <td id="f_Td1" colspan="4" style="font-family:Arial;font-weight:bold; width: 100%; background-color: #cccccc; height: 20px;" align="center">
+				<ol id="passo_atual" class="breadcrumb">
+				    <li><span class="badge">1</span>Estudo Preliminar</li>
+				    <li class="active"><span class="badge">2</span>Dados Pessoais</li>
+				    <li><span class="badge">3</span>Dados Familiares</li>
+				    <li><span class="badge">4</span>Bens</li>
+				</ol>
+         </td>
+      </tr>
+      <tr>
+         <td style="font-family: Arial; font-size: 11px; padding: 10px" align="center" colspan = "5">
+            Os campos com asterisco são obrigatórios.
+         </td>
+      </tr>
+      <tr align="left">
+         <td id="f_Td2" colspan="4" style="font-family:Arial;font-weight:bold; width: 100%; background-color: #EAEAEA; height: 20px;" align="center">
+            Identificação&nbsp;<br />
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="width: 100%; background-color: #fcfcfc;">
+            <div class="form-group">
+            	<label class="col-sm-2 control-label" for="f_Matricula">Matrícula</label>
+            	<input class="form-control" name="f_matricula" data-field="matricula" type="text" value="14/0180249" readonly="readonly" id="f_Matricula" disabled="disabled" style="width:100px;"/>
+            </div>
+            <span class="fpc_nl"></span>
+            <div class="form-group">
+            	<label class="col-sm-2 control-label" for="f_Nome">Nome</label>
+	            <input class="form-control" name="f_Nome" data-field="nome" type="text" value="Everton de Vargas Agilar" readonly="readonly" id="f_Nome" disabled="disabled" style="width:371px;" />
+            </div>
+            <span class="fpc_nl"></span>
+    		<div class="form-group">
+    			<label class="col-sm-2 control-label" for="f_Nivel">Nível</label>
+				<input class="form-control" name="f_Nivel" data-field="nivel" type="text" value="Mestrado" readonly="readonly" id="f_Nivel" disabled="disabled" style="width:100px;" />    		
+    		</div>        
+    		<div class="form-group">
+			    <label class="col-sm-2 control-label" for="f_Data">Data</label>
+    			<input class="form-control" name="f_Data" data-field="data" data-type="data" data-format="dd/MM/yyyy" type="text" value="9/9/2015" readonly="readonly" id="f_Data" disabled="disabled" style="width:100px;" />
+			</div>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 20%; background-color: #fcfcfc;">
+            Motivo<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3" style="width: 80%;">
+            <input id="f_Motivo1" data-field="motivo" type="checkbox" name="f_Motivo1" /><label for="f_Motivo1">Bolsa Alimentação</label>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 20%; background-color: #fcfcfc;">
+            Solicitou isenção da taxa de vestibular e/ou PAS? <span style="color: #ff0000">*<span
+               style="color: #000000; background-color: #fcfcfc">:</span></span>
+         </td>
+         <td colspan="3" style="width: 80%;">
+            <table id="f_IsencaoTxVestibular" border="0">
+               <tr>
+			  	 <td>
+				  	 <div class="form-group">
+				  	    <input id="f_IsencaoTxVestibular_0" data-field="IsencaoTxVestibular" type="radio" name="f_IsencaoTxVestibular" value="Sim" onclick="controletrTeveAbatimento();" />
+				  	    <label for="f_IsencaoTxVestibular_0">Sim</label>
+			  	     </div>
+		  	     </td>
+                 <td>
+	                 <div class="form-group">
+	                    <input id="f_IsencaoTxVestibular_1" data-field="IsencaoTxVestibular" type="radio" name="f_IsencaoTxVestibular" value="Não" onclick="controletrTeveAbatimento();" />
+	                    <label for="f_IsencaoTxVestibular_1">Não</label>
+	                 </div>
+                 </td>
+               </tr>
+            </table>
+            &nbsp;
+         </td>
+      </tr>
+      <tr id = "trTeveAbatimento" style="display:none;">
+         <td style="width: 30%; background-color: #fcfcfc;" align="left">
+            Teve abatimento?<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3" style="width: 70%;" align="left">
+            <table id="f_TeveAbatimento" border="0">
+               <tr>
+                  <td><input id="f_TeveAbatimento_0" data-field="TeveAbatimento" type="radio" name="f_TeveAbatimento" value="Sim" /><label for="f_TeveAbatimento_0">Sim</label></td>
+                  <td><input id="f_TeveAbatimento_1" data-field="TeveAbatimento" type="radio" name="f_TeveAbatimento" value="Não" /><label for="f_TeveAbatimento_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 20%; background-color: #fcfcfc;">
+            Cor ou Raça<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3" style="width: 80%;">
+            <table id="f_Raca" MaxLength="10" border="0">
+               <tr>
+                  <td><input id="f_Raca_0" data-field="raca" type="radio" name="f_Raca" value="08Branca" /><label for="f_Raca_0">Branca</label></td>
+                  <td><input id="f_Raca_1" data-field="raca" type="radio" name="f_Raca" value="09Preta" /><label for="f_Raca_1">Preta</label></td>
+                  <td><input id="f_Raca_2" data-field="raca" type="radio" name="f_Raca" value="10Parda" /><label for="f_Raca_2">Parda</label></td>
+                  <td><input id="f_Raca_3" data-field="raca" type="radio" name="f_Raca" value="11Indígena" /><label for="f_Raca_3">Indígena</label></td>
+                  <td><input id="f_Raca_4" data-field="raca" type="radio" name="f_Raca" value="12Amarela" /><label for="f_Raca_4">Amarela</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td align="center" colspan="4" style="font-weight: bold; width: 100%; font-family: Arial;
+            height: 20px; background-color: #ffffff">
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="font-weight: bold; background-color: #EAEAEA; text-align: center">
+            &nbsp;<strong>Histórico Escolar</strong>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="background-color: #fcfcfc; font-weight: bold; height: 22px;">
+            Ensino Médio<span style="color: #ff0000">*</span>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="width: 100%;">
+            <table id="f_EnsinoMedio" border="0">
+               <tr>
+                  <td><input id="f_EnsinoMedio_0" data-field="EnsinoMedio" type="radio" name="f_EnsinoMedio" value="0Escola Pública" /><label for="f_EnsinoMedio_0">Escola Pública</label></td>
+                  <td><input id="f_EnsinoMedio_1" type="radio" name="f_EnsinoMedio" value="1Escola Particular com Bolsa" /><label for="f_EnsinoMedio_1">Escola Particular com Bolsa*</label></td>
+                  <td><input id="f_EnsinoMedio_2" type="radio" name="f_EnsinoMedio" value="2Escola Particular sem Bolsa" /><label for="f_EnsinoMedio_2">Escola Particular sem Bolsa</label></td>
+               </tr>
+            </table>
+            <font size="1"> *A bolsa de estudo deverá ser comprovada</font>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 30%; background-color: #fcfcfc;">
+            Nome da Escola<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3" style="width: 70%;">
+            <input name="f_EscolaNome" data-field="EscolaNome" type="text" maxlength="50" id="f_EscolaNome" style="width:90%;" />
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 30%; background-color: #fcfcfc;">
+            Cidade<span style="color: #ff0000">*</span>:
+         </td>
+         <td style="width: 40%; height: 27px">
+            <input name="f_EscolaCidade" data-field="EscolaCidade" type="text" maxlength="30" id="f_EscolaCidade" style="width:80%;" />
+         </td>
+         <td style="width: 5%; background-color: #fcfcfc;">
+            UF<span style="color: #ff0000">*</span>:
+         </td>
+         <td style="width: 20%; height: 27px;">
+            <select name="f_EscolaUF" data-field="EscolaUF" id="f_EscolaUF">
+               <option selected="selected" value=""></option>
+               <option value="1">AC</option>
+               <option value="2">AL</option>
+               <option value="3">AP</option>
+               <option value="4">AM</option>
+               <option value="5">BA</option>
+               <option value="6">CE</option>
+               <option value="7">DF</option>
+               <option value="8">ES</option>
+               <option value="9">GO</option>
+               <option value="10">MA</option>
+               <option value="11">MT</option>
+               <option value="12">MS</option>
+               <option value="13">MG</option>
+               <option value="14">PA</option>
+               <option value="15">PB</option>
+               <option value="16">PR</option>
+               <option value="17">PE</option>
+               <option value="18">PI</option>
+               <option value="19">RJ</option>
+               <option value="20">RN</option>
+               <option value="21">RS</option>
+               <option value="22">RO</option>
+               <option value="23">RR</option>
+               <option value="24">SC</option>
+               <option value="25">SP</option>
+               <option value="26">SE</option>
+               <option value="27">TO</option>
+            </select>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="font-weight: bold; width: 100%; background-color: #fcfcfc">
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="width: 100%; background-color: #fcfcfc; font-weight: bold;">
+            Frequentou curso pré-vestibular?<span style="color: #ff0000">*</span>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="width: 100%;">
+            <table id="f_PreVestibular" border="0">
+               <tr>
+                  <td><input id="f_PreVestibular_0" data-field="PreVestibular" type="radio" name="f_PreVestibular" value="3Não" /><label for="f_PreVestibular_0">Não</label></td>
+                  <td><input id="f_PreVestibular_1" type="radio" name="f_PreVestibular" value="4Escola Particular com Bolsa" /><label for="f_PreVestibular_1">Escola Particular com Bolsa*</label></td>
+                  <td><input id="f_PreVestibular_2" type="radio" name="f_PreVestibular" value="5Escola Particular sem Bolsa" /><label for="f_PreVestibular_2">Escola Particular sem Bolsa</label></td>
+               </tr>
+            </table>
+            <font size="1"> *A bolsa de estudo deverá ser comprovada</font>
+         </td>
+      </tr>
+      <div id="f_painelEnsinoSuperior">
+         <tr align="left">
+            <td colspan="4" style="font-weight: bold; height: 22px; background-color: #fcfcfc">
+               Ensino Superior<span style="color: #ff0000">*</span>
+            </td>
+         </tr>
+         <tr align="left">
+            <td colspan="4">
+               <table id="f_EnsinoSuperior" border="0">
+                  <tr>
+                     <td><input id="f_EnsinoSuperior_0" data-field="EnsinoSuperior" type="radio" name="f_EnsinoSuperior" value="6Instituição Pública" /><label for="f_EnsinoSuperior_0">Instituição Pública</label></td>
+                     <td><input id="f_EnsinoSuperior_1" type="radio" name="f_EnsinoSuperior" value="7Instituição Particular com Bolsa" /><label for="f_EnsinoSuperior_1">Instituição Particular com Bolsa*</label></td>
+                     <td><input id="f_EnsinoSuperior_2" type="radio" name="f_EnsinoSuperior" value="8Instituição Particular sem Bolsa" /><label for="f_EnsinoSuperior_2">Instituição Particular sem Bolsa</label></td>
+                  </tr>
+               </table>
+               <font size="1"> *A bolsa de estudo deverá ser comprovada</font>
+            </td>
+         </tr>
+      </div>
+      <tr align="left">
+         <td style="width: 30%; font-weight: bold; background-color: #fcfcfc;">
+            Faz outro curso superior fora da UnB?
+         </td>
+         <td style="width: 70%;" colspan="3">
+            <table id="f_CaixaGrupoCursoFora" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoCursoFora_0" data-field="CaixaGrupoCursoFora" type="radio" name="f_CaixaGrupoCursoFora" value="Sim" onclick="controleCursoFora();" /><label for="f_CaixaGrupoCursoFora_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoCursoFora_1" data-field="CaixaGrupoCursoFora" type="radio" name="f_CaixaGrupoCursoFora" value="Não" onclick="controleCursoFora();" /><label for="f_CaixaGrupoCursoFora_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left" >
+         <td colspan="4">
+            <table id = "trCursoFora" style ="display:none; width: 100%">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Qual?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%">
+                     <input name="f_FazCursoFora" data-field="FazCursoFora" type="text" maxlength="50" id="f_FazCursoFora" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Onde?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%">
+                     <input name="f_IESCursoFora" data-field="IESCursoFora" type="text" maxlength="50" id="f_IESCursoFora" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Qual a mensalidade(R$)?:
+                  </td>
+                  <td style="width: 70%">
+                     <input name="f_MensIESCursoFora" data-field="MensIESCursoFora" type="text" maxlength="11" id="f_MensIESCursoFora" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 30%; background-color: #fcfcfc; font-weight: bold; height: 22px;">
+            Fez outro curso superior?
+         </td>
+         <td style="width: 70%;" colspan="3">
+            <table id="f_CaixaGrupoFezOutroCurso" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoFezOutroCurso_0" data-field="CaixaGrupoFezOutroCurso" type="radio" name="f_CaixaGrupoFezOutroCurso" value="Sim" onclick="controleFezOutroCurso();" /><label for="f_CaixaGrupoFezOutroCurso_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoFezOutroCurso_1" data-field="CaixaGrupoFezOutroCurso" type="radio" name="f_CaixaGrupoFezOutroCurso" value="Não" onclick="controleFezOutroCurso();" /><label for="f_CaixaGrupoFezOutroCurso_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="font-weight: bold; width: 100%; background-color: #fcfcfc">
+            <table id="trFezOutroCurso" style="display:none; width: 100%">
+               <tr>
+                  <td style="width: 40%; height: 26px; font-weight: normal;">
+                     Qual?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;">
+                     <input name="f_FezOutroCurso" data-field="FezOutroCurso" type="text" maxlength="50" id="f_FezOutroCurso" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; font-weight: normal;">
+                     Onde?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;">
+                     <input name="f_IESOutroCurso" data-field="IESOutroCurso" type="text" maxlength="50" id="f_IESOutroCurso" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; font-weight: normal;">
+                     Concluiu?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;">
+                     <table id="f_ConcluiuOutroCurso" border="0">
+                        <tr>
+                           <td><input id="f_ConcluiuOutroCurso_0" data-field="ConcluiuOutroCurso" type="radio" name="f_ConcluiuOutroCurso" value="Sim" onclick="controleFezOutroCurso_ConcluiuOutroCurso();" /><label for="f_ConcluiuOutroCurso_0">Sim</label></td>
+                           <td><input id="f_ConcluiuOutroCurso_1" data-field="ConcluiuOutroCurso" type="radio" name="f_ConcluiuOutroCurso" value="Não" onclick="controleFezOutroCurso_ConcluiuOutroCurso();" /><label for="f_ConcluiuOutroCurso_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; font-weight: normal;">
+                     Se não concluiu, por quê?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;">
+                     <textarea name="f_OutroCursoNaoConcluido" data-field="OutroCursoNaoConcluido" rows="2" cols="20" id="f_OutroCursoNaoConcluido" style="height:73px;width:90%;"></textarea>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="font-weight: bold; width: 40%; background-color: #fcfcfc">
+            Possui um ou mais TGM?<br/><font size="1"> (Trancamento Geral de Matrícula)</font>
+         </td>
+         <td colspan="3" style="width: 100%; height:auto">
+            <table id="f_GrupoTGM" border="0">
+               <tr>
+                  <td><input id="f_GrupoTGM_0" data-field="GrupoTGM" type="radio" name="f_GrupoTGM" value="Sim" onclick="controleTGM();" /><label for="f_GrupoTGM_0">Sim</label></td>
+                  <td><input id="f_GrupoTGM_1" data-field="GrupoTGM" type="radio" name="f_GrupoTGM" value="Não" checked="checked" onclick="controleTGM();" /><label for="f_GrupoTGM_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+      </tr>
+      <tr >
+         <td align="left" colspan="4" style="width: 100%; height: 100%;">
+            <table  id = "trTGM" style="width: 100%;display:none;">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     <input name="f_AluQtdTGM" data-field="AluQtdTGM" type="text" value="0" id="f_AluQtdTGM" disabled="disabled" style="border-color:White;width:45px;" />
+                  </td>
+                  <td style="width: 60%;" colspan="4">
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Explique quando e por quê:<span style="color: #ff0000">*</span>
+                  </td>
+                  <td style="width: 60%;" colspan="4">
+                     <textarea name="f_TGM" data-field="TGM" rows="2" cols="20" id="f_TGM" style="width:90%;"></textarea>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="width: 80%; background-color: #EAEAEA;" align="center">
+            &nbsp;<strong>Situação Profissional/Renda</strong>
+         </td>
+      </tr>
+      <tr align ="left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>Trabalha?<span style="color: #ff0000">*</span></strong><br/><font size="1"> Não considere ESTÁGIO como trabalho.</font> 
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table  id="f_CaixaGrupoTrabalha" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoTrabalha_0" data-field="CaixaGrupoTrabalha" type="radio" name="f_CaixaGrupoTrabalha" value="SIM" onclick="controleTrabalha();" /><label for="f_CaixaGrupoTrabalha_0">Sim, com vínculo</label></td>
+                  <td><input id="f_CaixaGrupoTrabalha_1" data-field="CaixaGrupoTrabalha" type="radio" name="f_CaixaGrupoTrabalha" value="SIM2" onclick="controleTrabalha();" /><label for="f_CaixaGrupoTrabalha_1">Sim, sem vínculo</label></td>
+                  <td><input id="f_CaixaGrupoTrabalha_2" data-field="CaixaGrupoTrabalha" type="radio" name="f_CaixaGrupoTrabalha" value="NAO" onclick="controleTrabalha();" /><label for="f_CaixaGrupoTrabalha_2">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4" style="width: 100%;">
+            <table  id = "trGrupoTrabalhaSimVinculo" style="width: 100%;display:none;">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Instituição<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_Instituicao" data-field="Instituicao" type="text" maxlength="50" id="f_Instituicao" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc; height: 26px;">
+                     Função<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff; height: 26px;" colspan="4">
+                     <input name="f_Funcao" data-field="funcao" type="text" maxlength="30" id="f_Funcao" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Remuneração(R$)<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <input name="f_Remuneracao" data-field="Remuneracao" type="text" maxlength="11" id="f_Remuneracao" style="width:20%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="" style="width: 40%; background-color: #fcfcfc">
+                     Está licenciado?<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <table id="f_EstaLicenciado" border="0">
+                        <tr>
+                           <td><input id="f_EstaLicenciado_0" data-field="EstaLicenciado" type="radio" name="f_EstaLicenciado" value="3Não" /><label for="f_EstaLicenciado_0">Não</label></td>
+                           <td><input id="f_EstaLicenciado_1" data-field="EstaLicenciado" type="radio" name="f_EstaLicenciado" value="4Sim, com remuneração" /><label for="f_EstaLicenciado_1">Sim, com remuneração</label></td>
+                           <td><input id="f_EstaLicenciado_2" data-field="EstaLicenciado" type="radio" name="f_EstaLicenciado" value="5Sim, sem remuneração" /><label for="f_EstaLicenciado_2">Sim, sem remuneração</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+            <table  id = "trGrupoTrabalhaNaoVinculo" style="width: 100%;display:none;">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Qual Atividade?<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_Atividade" data-field="Atividade" type="text" maxlength="30" id="f_Atividade" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Renda Mensal(R$)<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <input name="f_RendaMensal" data-field="RendaMensal" type="text" maxlength="11" id="f_RendaMensal" style="width:20%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Depende dessa renda p/ permanecer na UnB?<span style="color: #ff0000">*<span
+                        style="color: #000000">:</span></span>
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <table id="f_DependeRenda" border="0">
+                        <tr>
+                           <td><input id="f_DependeRenda_0" data-field="DependeRenda" type="radio" name="f_DependeRenda" value="Não" /><label for="f_DependeRenda_0">Não</label></td>
+                           <td><input id="f_DependeRenda_1" data-field="DependeRenda" type="radio" name="f_DependeRenda" value="Sim" /><label for="f_DependeRenda_1">Sim</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align= "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>É aposentado(a)?<span style="color: #ff0000">*</span></strong>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_CaixaGrupoAposentado" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoAposentado_0" data-field="CaixaGrupoAposentado" type="radio" name="f_CaixaGrupoAposentado" value="SIM" onclick="controleAposentado();" /><label for="f_CaixaGrupoAposentado_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoAposentado_1" data-field="CaixaGrupoAposentado" type="radio" name="f_CaixaGrupoAposentado" value="NAO" onclick="controleAposentado();" /><label for="f_CaixaGrupoAposentado_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td  align = "left" colspan="4">
+            <table  id = "trAposentado" style="width: 100%;display:none;">
+               <tr >
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Ano Aposentadoria<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_AnoAposent" data-field="AnoAposent" type="text" maxlength="4" id="f_AnoAposent" style="width:20%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Profissão que exercia<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_ProfissaoExercida" data-field="ProfissaoExercida" type="text" maxlength="30" id="f_ProfissaoExercida" style="width:90%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc; height: 47px;">
+                     Motivo<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff; height: 47px;">
+                     <table id="f_MotivoAposent" border="0">
+                        <tr>
+                           <td><input id="f_MotivoAposent_0" data-field="MotivoAposent" type="radio" name="f_MotivoAposent" value="10Idade" /><label for="f_MotivoAposent_0">Idade</label></td>
+                           <td><input id="f_MotivoAposent_1" data-field="MotivoAposent" type="radio" name="f_MotivoAposent" value="11Tempo de Serviço" /><label for="f_MotivoAposent_1">Tempo de serviço</label></td>
+                           <td><input id="f_MotivoAposent_2" data-field="MotivoAposent" type="radio" name="f_MotivoAposent" value="12Invalidez" /><label for="f_MotivoAposent_2">Invalidez</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td rowspan="" style="width: 40%; background-color: #fcfcfc">
+                     Valor(R$)<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     &nbsp;<input name="f_ValorAposent" data-field="ValorAposent" type="text" maxlength="11" id="f_ValorAposent" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+      </tr>
+      <tr align = "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>Já trabalhou?<span style="color: #ff0000">*</span></strong>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_CaixaGrupoJaTrabalhou" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoJaTrabalhou_0" data-field="CaixaGrupoJaTrabalhou" type="radio" name="f_CaixaGrupoJaTrabalhou" value="SIM" onclick="controleJaTrabalhou();" /><label for="f_CaixaGrupoJaTrabalhou_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoJaTrabalhou_1" data-field="CaixaGrupoJaTrabalhou" type="radio" name="f_CaixaGrupoJaTrabalhou" value="NAO" onclick="controleJaTrabalhou();" /><label for="f_CaixaGrupoJaTrabalhou_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td  align = "left" colspan="4">
+            <table  id = "trAtividadeExercida" style="width: 100%;display:none;">
+               <tr >
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Atividade exercida<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_AtividadeExercida" data-field="AtividadeExercida" type="text" maxlength="30" id="f_AtividadeExercida" style="width:90%;" />
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>É pensionista?<span style="color: #ff0000">*</span></strong>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_CaixaGrupoPensionista" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoPensionista_0" data-field="CaixaGrupoPensionista" type="radio" name="f_CaixaGrupoPensionista" value="SIM" onclick="controlePensionista();" /><label for="f_CaixaGrupoPensionista_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoPensionista_1" data-field="CaixaGrupoPensionista" type="radio" name="f_CaixaGrupoPensionista" value="NAO" onclick="controlePensionista();" /><label for="f_CaixaGrupoPensionista_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 100%;" colspan="4">
+            <table  id = "trPensionista" style="width: 100%;display:none;">
+               <tr >
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Valor(R$):<span style="color: #ff0000">*</span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_PensaoVitaliciaAluno" data-field="PensaoVitaliciaAluno" type="text" maxlength="11" id="f_PensaoVitaliciaAluno" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr id = "trBolsaGraduacao" align = "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>Recebe bolsa(Graduação)?</strong><span style="color: #ff0000">*</span>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_BolsaGraduacao" disabled="disabled" border="0">
+               <tr>
+                  <td><span disabled="disabled"><input id="f_BolsaGraduacao_0" data-field="BolsaGraduacao" type="radio" name="f_BolsaGraduacao" value="Sim" disabled="disabled" /><label for="f_BolsaGraduacao_0">Sim</label></span></td>
+                  <td><span disabled="disabled"><input id="f_BolsaGraduacao_1" data-field="BolsaGraduacao" type="radio" name="f_BolsaGraduacao" value="Não" disabled="disabled" /><label for="f_BolsaGraduacao_1">Não</label></span></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 100%;" colspan="4">                                             
+         </td>
+      </tr>
+      <div id="f_painelPos">
+         <tr align = "left">
+            <td style="width: 40%; background-color: #fcfcfc;">
+               <strong>Recebe bolsa(Pós-Graduação)?</strong>
+            </td>
+            <td style="width: 60%;" colspan="3">
+               <table id="f_CaixaGrupoRecebeBolsaPos" border="0">
+                  <tr>
+                     <td><input id="f_CaixaGrupoRecebeBolsaPos_0" data-field="CaixaGrupoRecebeBolsaPos" type="radio" name="f_CaixaGrupoRecebeBolsaPos" value="SIM" onclick="controleRecebeBolsaPos();" /><label for="f_CaixaGrupoRecebeBolsaPos_0">Sim</label></td>
+                     <td><input id="f_CaixaGrupoRecebeBolsaPos_1" data-field="CaixaGrupoRecebeBolsaPos" type="radio" name="f_CaixaGrupoRecebeBolsaPos" value="NAO" onclick="controleRecebeBolsaPos();" /><label for="f_CaixaGrupoRecebeBolsaPos_1">Não</label></td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+         <tr align = "left">
+            <td style="width: 100%;" colspan="4">
+               <table  id = "trRecebeBolsaPos" style="width: 100%;display:none;">
+                  <tr >
+                     <td style="width: 40%; background-color: #fcfcfc; height: 26px;">
+                        Valor(R$)<span style="color: #ff0000">*</span>:<span style="color: #ff0000"></span>
+                     </td>
+                     <td style="width: 60%; background-color: #ffffff; height: 26px;" colspan="4">
+                        <input name="f_ValorBolsaPos" data-field="ValorBolsaPos" type="text" maxlength="11" id="f_ValorBolsaPos" style="width:20%;" />
+                     </td>
+                  </tr>
+               </table>
+               <table  id = "trRecebeBolsaPosNao" style="width: 100%;display:none;">
+                  <tr>
+                     <td style="width: 40%; background-color: #fcfcfc">
+                        Poderá vir a receber?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                     </td>
+                     <td colspan="4" style="width: 60%; background-color: #ffffff">
+                        <table id="f_PoderaReceber" border="0">
+                           <tr>
+                              <td><input id="f_PoderaReceber_0" data-field="PoderaReceber" type="radio" name="f_PoderaReceber" value="19Sim, neste semestre" /><label for="f_PoderaReceber_0">Sim, neste semestre</label></td>
+                              <td><input id="f_PoderaReceber_1" data-field="PoderaReceber" type="radio" name="f_PoderaReceber" value="20Sim, no próximo semestre" /><label for="f_PoderaReceber_1">Sim, no próximo semestre</label></td>
+                              <td><input id="f_PoderaReceber_2" data-field="PoderaReceber" type="radio" name="f_PoderaReceber" value="21Não" /><label for="f_PoderaReceber_2">Não</label></td>
+                           </tr>
+                        </table>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td style="width: 40%; background-color: #fcfcfc">
+                        Por quê?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                     </td>
+                     <td colspan="4" style="width: 60%; background-color: #ffffff">
+                        <input name="f_PorQue" data-field="PorQue" type="text" maxlength="50" id="f_PorQue" style="width:90%;" />
+                     </td>
+                  </tr>
+               </table>
+            </td>
+         </tr>
+      </div>
+      <tr align = "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>Recebe ajuda financeira da família?</strong>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_CaixaGrupoAjudaFinanceira" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoAjudaFinanceira_0" data-field="CaixaGrupoAjudaFinanceira" type="radio" name="f_CaixaGrupoAjudaFinanceira" value="SIM" onclick="controleAjudaFinanceira();" /><label for="f_CaixaGrupoAjudaFinanceira_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoAjudaFinanceira_1" data-field="CaixaGrupoAjudaFinanceira" type="radio" name="f_CaixaGrupoAjudaFinanceira" value="NAO" onclick="controleAjudaFinanceira();" /><label for="f_CaixaGrupoAjudaFinanceira_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 100%;" colspan="4">
+            <table id = "trAjudaFinanceira" style="width: 100%;display:none;">
+               <tr >
+                  <td style="width: 40%; background-color: #fcfcfc;">
+                     Valor(R$)<span style="color: #ff0000">*</span>:<span style="color: #ff0000"></span>
+                  </td>
+                  <td style="width: 60%; background-color: #ffffff;" colspan="4">
+                     <input name="f_ValorMesada" data-field="ValorMesada" type="text" maxlength="11" id="f_ValorMesada" style="width:20%;" />
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Depende desta renda?<span style="color: #ff0000">*<span style="color: #000000">:</span></span>
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff">
+                     <table id="f_DepDestaRenda" border="0">
+                        <tr>
+                           <td><input id="f_DepDestaRenda_0" data-field="DepDestaRenda" type="radio" name="f_DepDestaRenda" value="Unicamente" /><label for="f_DepDestaRenda_0">Unicamente</label></td>
+                           <td><input id="f_DepDestaRenda_1" data-field="DepDestaRenda" type="radio" name="f_DepDestaRenda" value="Parcialmente" /><label for="f_DepDestaRenda_1">Parcialmente</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            <strong>Contribui para renda familiar?</strong><span style="color: #ff0000">*</span>
+         </td>
+         <td style="width: 60%;" colspan="3">
+            <table id="f_ContribuiRendaFamiliar" border="0">
+               <tr>
+                  <td><input id="f_ContribuiRendaFamiliar_0" data-field="ContribuiRendaFamiliar" type="radio" name="f_ContribuiRendaFamiliar" value="Sim" /><label for="f_ContribuiRendaFamiliar_0">Sim</label></td>
+                  <td><input id="f_ContribuiRendaFamiliar_1" data-field="ContribuiRendaFamiliar" type="radio" name="f_ContribuiRendaFamiliar" value="Não" /><label for="f_ContribuiRendaFamiliar_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align = "left">
+         <td style="width: 100%;" colspan="4">                                             
+         </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="width: 80%; background-color: #EAEAEA;" align="center">
+            &nbsp;<strong>Situação Atual de Moradia</strong>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="width: 40%; background-color: #fcfcfc">
+            <strong>Onde reside atualmente?</strong>
+         </td>
+         <td colspan="4" style="width: 60%; background-color: #ffffff">
+         </td>
+      </tr>
+      <tr align ="left">
+         <td style="width: 40%; background-color: #fcfcfc;">
+            Endereço<span style="color: #ff0000">*</span>:
+         </td>
+         <td style="width: 60%; background-color: #ffffff;" colspan="4">
+            <input name="f_Endereco" data-field="Endereco" type="text" maxlength="30" id="f_Endereco" style="width:90%;" />
+         </td>
+      </tr>
+      <tr align ="left">
+         <td style="width: 20%; background-color: #fcfcfc;">
+            Cidade<span style="color: #ff0000">*</span>:
+         </td>
+         <td style="width: 35%; background-color: #ffffff; ">
+            <input name="f_Cidade" data-field="Cidade" type="text" maxlength="30" id="f_Cidade" style="width:90%;" />
+         </td>
+         <td style="width: 5%; background-color: #fcfcfc;">
+            CEP:
+         </td>
+         <td style="width: 10%; background-color: #ffffff;">
+            &nbsp;<input name="f_CEP" data-field="CEP" type="text" maxlength="8" id="f_CEP" style="width:93%;" />
+         </td>
+      </tr>
+      <tr align ="left">
+         <td style="width: 40%; background-color: #fcfcfc; height: 25px;">
+            (DDD)Telefone/celular<span style="color: #ff0000">*</span>:<span style="color: #ff0000">
+         </td>
+         <td colspan="4" style="width: 60%; background-color: #ffffff; height: 25px;">
+            <input name="f_Telefone" data-field="Telefone" type="text" maxlength="30" id="f_Telefone" style="width:40%;" />
+         </td>
+      </tr>
+      <tr align ="left">
+         <td style="width: 40%; background-color: #fcfcfc; height: 20px;">
+            <strong>Como reside atualmente?</strong><span style="color: #ff0000">*</span>:<span style="color: #ff0000">
+         </td>
+         <td colspan="4" style="width: 60%; background-color: #ffffff; height: 20px;">
+            <select name="f_ComoVoceReside" id="f_ComoVoceReside" data-field="ComoVoceReside" onChange="controleComoVoceReside();">
+               <option selected="selected" value=""></option>
+               <option value="1">Com a fam&#237;lia (pai, m&#227;e e/ou irm&#227;os).</option>
+               <option value="2">Com a fam&#237;lia (c&#244;njuge/filhos).</option>
+               <option value="3">Individualmente, em resid&#234;ncia mantida pela fam&#237;lia.</option>
+               <option value="4">Individualmente, em resid&#234;ncia mantida pelo aluno.</option>
+               <option value="5">Resid&#234;ncia alugada com outras pessoas.</option>
+               <option value="6">Em vaga, pensionato, etc.</option>
+               <option value="7">Com parente(s).</option>
+               <option value="8">Mora de favor, provisoriamente.</option>
+               <option value="9">Moradia estudantil na UnB.</option>
+               <option value="10">Outra situa&#231;&#227;o de moradia.</option>
+            </select>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="5" style="background-color: #ffffff">
+            <table id = "trComQuem" style="width: 100%;display:none;">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc; height: 17px;">
+                     Com quem?<span style="color: #ff0000">*<span
+                        style="color: #000000">:</span></span>
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff; height: 17px;">
+                     <table id="f_ComQuemVoceMora" border="0">
+                        <tr>
+                           <td><input id="f_ComQuemVoceMora_0" data-field="ComQuemVoceMora" type="radio" name="f_ComQuemVoceMora" value="0Avô(ó)" /><label for="f_ComQuemVoceMora_0">Avô(ó)</label></td>
+                           <td><input id="f_ComQuemVoceMora_1" data-field="ComQuemVoceMora" type="radio" name="f_ComQuemVoceMora" value="1Irmão(ã)" /><label for="f_ComQuemVoceMora_1">Irmão(ã)</label></td>
+                           <td><input id="f_ComQuemVoceMora_2" data-field="ComQuemVoceMora" type="radio" name="f_ComQuemVoceMora" value="2Parente" /><label for="f_ComQuemVoceMora_2">Parente </label></td>
+                           <td><input id="f_ComQuemVoceMora_3" data-field="ComQuemVoceMora" type="radio" name="f_ComQuemVoceMora" value="3Amigo(a)" /><label for="f_ComQuemVoceMora_3">Amigo(a)</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc; height: 26px;">
+                     Quanto tempo?<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff; height: 26px;">
+                     <input name="f_Tempo" data-field="Tempo" type="text" maxlength="5" id="f_Tempo" style="width:10%;" />
+                     dias
+                  </td>
+               </tr>
+            </table>
+            <table id = "trCusto" style="width: 100%;display:none;">
+               <tr  align="left">
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Custo(R$)?<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <input name="f_CustoSuaMoradia" data-field="CustoSuaMoradia" type="text" maxlength="11" id="f_CustoSuaMoradia" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+            <table id = "trOutraSituacao" style="width: 100%;display:none;">
+               <tr  align="left">
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Outra Situação?<br />
+                     Especifique<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <textarea name="f_OutraSitSuaMoradia" data-field="OutraSitSuaMoradia" rows="2" cols="20" id="f_OutraSitSuaMoradia" style="height:73px;width:90%;"></textarea>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr  align="left">
+         <td style="width: 40%; background-color: #fcfcfc; height: 20px;">
+            <strong>Como reside sua família?</strong><span style="color: #ff0000">*</span>:<span style="color: #ff0000"></span>
+         </td>
+         <td colspan="4" style="width: 60%; background-color: #ffffff; height: 20px;">
+            <select name="f_ComoSuaFamiliaReside" data-field="ComoSuaFamiliaReside" id="f_ComoSuaFamiliaReside" onChange="controleComoSuaFamiliaReside();">
+               <option selected="selected" value=""></option>
+               <option value="1">Im&#243;vel pr&#243;prio quitado.</option>
+               <option value="2">Im&#243;vel em aquisi&#231;&#227;o.</option>
+               <option value="3">Im&#243;vel funcional.</option>
+               <option value="4">Im&#243;vel alugado.</option>
+               <option value="5">Im&#243;vel cedido por necessidade.</option>
+               <option value="6">Invas&#227;o.</option>
+               <option value="7">Outra situa&#231;&#227;o de moradia.</option>
+            </select>
+         </td>
+      </tr>
+      <tr  align="left">
+         <td colspan="5" style="background-color: #ffffff">
+            <table id = "trPrestacao" style="width: 100%;display:none;">
+               <tr>
+                  <td style="width: 40%; background-color: #fcfcfc; height: 17px;">
+                     Prestação do financiamento(R$)<span style="color: #ff0000">*<span
+                        style="color: #000000">:</span></span>
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff; height: 17px;">
+                     <input name="f_PrestacaoFinanc" data-field="PrestacaoFinanc" type="text" maxlength="11" id="f_PrestacaoFinanc" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+            <table id = "trAluguel" style="width: 100%;display:none;">
+               <tr  align="left">
+                  <td style="width: 40%; background-color: #fcfcfc; height: 26px;">
+                     Aluguel(R$)<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff; height: 26px;">
+                     <input name="f_ValorAluguel" data-field="ValorAluguel" type="text" maxlength="11" id="f_ValorAluguel" style="width:20%;" />
+                  </td>
+               </tr>
+            </table>
+            <table id = "trCedente" style="width: 100%;display:none;">
+               <tr  align="left">
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Cedente?<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <input name="f_Cedente" data-field="Cedente" type="text" maxlength="30" id="f_Cedente" style="width:90%;" />
+                  </td>
+               </tr>
+            </table>
+            <table id = "trOutraSitMoradiaSuaFamilia" style="width: 100%;display:none;">
+               <tr  align="left">
+                  <td style="width: 40%; background-color: #fcfcfc">
+                     Outra Situação?<br />
+                     Especifique<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; background-color: #ffffff;">
+                     <textarea name="f_OutraSitMoradiaSuaFamilia" data-field="OutraSitMoradiaSuaFamilia" rows="2" cols="20" id="f_OutraSitMoradiaSuaFamilia" style="height:73px;width:90%;"></textarea>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="width: 80%; background-color: #EAEAEA;" align="center">
+            &nbsp;<strong>Estado Civil</strong>
+         </td>
+      </tr>
+      <tr>
+      <tr align="left">
+         <td style="width: 40%; background-color: #fcfcfc; height: 17px;">
+            Indique sua situação civil<span style="color: #ff0000">*<span
+               style="color: #000000">:</span></span>
+         </td>
+         <td colspan="4" style="width: 60%; background-color: #ffffff; height: 17px;">
+            <table id="f_EstadoCivil" border="0">
+               <tr>
+                  <td><input id="f_EstadoCivil_0" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="0Solteiro(a) sem filho." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_0">Solteiro(a) sem filho(s).</label></td>
+               </tr>
+               <tr>
+                  <td><input id="f_EstadoCivil_1" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="1Casado(a), com companheiro(a) sem filho." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_1">Casado(a), com companheiro(a) sem filho(s).</label></td>
+               </tr>
+               <tr>
+                  <td><input id="f_EstadoCivil_2" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="2Viúvo(a), desquitado(a), divorciado(a), ou separado(a) sem filho." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_2">Viúvo(a), desquitado(a), divorciado(a), ou separado(a) sem filho(s).</label></td>
+               </tr>
+               <tr>
+                  <td><input id="f_EstadoCivil_3" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="3Viúvo(a), desquitado(a), divorciado(a), ou separado(a) com filho." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_3">Viúvo(a), desquitado(a), divorciado(a), ou separado(a) com filho(s).</label></td>
+               </tr>
+               <tr>
+                  <td><input id="f_EstadoCivil_4" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="4Casado(a), com companheiro(a) com filho(s)." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_4">Casado(a), com companheiro(a) com filho(s).</label></td>
+               </tr>
+               <tr>
+                  <td><input id="f_EstadoCivil_5" data-field="EstadoCivil" type="radio" name="f_EstadoCivil" value="5Solteiro(a), com filho(s)." onclick="controleTemFilhos();" /><label for="f_EstadoCivil_5">Solteiro(a), com filho(s).</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="5" style="background-color: #ffffff">
+            <table id = "trTemFilhos" style="width: 100%;display:none;">
+               <tr align="left">
+                  <td style="width: 40%; height: 17px; background-color: #fcfcfc">
+                     Os filhos vivem com quem?<span style="color: #ff0000">*</span><span style="color: #ff0000"><span
+                        style="color: #000000">:</span></span>
+                  </td>
+                  <td colspan="4" style="width: 60%; height: 17px; background-color: #ffffff">
+                     <table id="f_FilhosVivemCom" border="0">
+                        <tr>
+                           <td><input id="f_FilhosVivemCom_0" data-field="FilhosVivemCom" type="radio" name="f_FilhosVivemCom" value="Aluno(a)" /><label for="f_FilhosVivemCom_0">Aluno(a)</label></td>
+                           <td><input id="f_FilhosVivemCom_1" data-field="FilhosVivemCom" type="radio" name="f_FilhosVivemCom" value="Outra pessoa" /><label for="f_FilhosVivemCom_1">Outra pessoa</label></td>
+                           <td><input id="f_FilhosVivemCom_2" data-field="FilhosVivemCom" type="radio" name="f_FilhosVivemCom" value="Cônjuge ou companheiro(a)" /><label for="f_FilhosVivemCom_2">Cônjuge ou companheiro(a)</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 40%; height: 17px; background-color: #fcfcfc">
+                     Recebe pensão para o(s) filho(s)<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="4" style="width: 60%; height: 17px; background-color: #ffffff">
+                     <table id="f_RecebePensao" border="0">
+                        <tr>
+                           <td><input id="f_RecebePensao_0" data-field="RecebePensao" type="radio" name="f_RecebePensao" value="Sim" /><label for="f_RecebePensao_0">Sim</label></td>
+                           <td><input id="f_RecebePensao_1" data-field="RecebePensao" type="radio" name="f_RecebePensao" value="Não" /><label for="f_RecebePensao_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+   </table>
+   <input type="hidden" name="f_SemestreAno" id="f_SemestreAno" />
+   <input type="hidden" name="f_PeriodoAtual" id="f_PeriodoAtual" value="20152" />
+</form>
+
+<script type="text/javascript">
+
+  function controleTemFilhos()
+ {
+    if (document.getElementById('f_EstadoCivil_5').checked == true || document.getElementById('f_EstadoCivil_4').checked == true || document.getElementById('f_EstadoCivil_3').checked == true)
+    {
+        document.getElementById('trTemFilhos').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trTemFilhos').style.display = 'none';
+        document.getElementById('f_FilhosVivemCom_0').checked = false;  
+        document.getElementById('f_FilhosVivemCom_1').checked = false;  
+        
+        document.getElementById('f_RecebePensao_0').checked = false;  
+        document.getElementById('f_RecebePensao_1').checked = false;  
+    }
+ }
+
+ function controleComoSuaFamiliaReside()
+ {
+    var valor_selecionado = document.getElementById('f_ComoSuaFamiliaReside').value;
+    
+    //2 - Imóvel em aquisição
+    if(valor_selecionado == 2)
+    {
+        document.getElementById('trPrestacao').style.display = '';
+        document.getElementById('trAluguel').style.display = 'none';
+        document.getElementById('trCedente').style.display = 'none';
+        document.getElementById('trOutraSitMoradiaSuaFamilia').style.display = 'none';
+        
+        document.getElementById('f_ValorAluguel').value = '';
+        document.getElementById('f_Cedente').value = ''; 
+        document.getElementById('f_OutraSitMoradiaSuaFamilia').value = '';           
+    }
+    //4 - Imóvel alugado 
+    else if(valor_selecionado == 4)
+    {
+        document.getElementById('trPrestacao').style.display = 'none';
+        document.getElementById('trAluguel').style.display = '';
+        document.getElementById('trCedente').style.display = 'none';
+        document.getElementById('trOutraSitMoradiaSuaFamilia').style.display = 'none';
+        
+        document.getElementById('f_PrestacaoFinanc').value = '';
+        document.getElementById('f_Cedente').value = ''; 
+        document.getElementById('f_OutraSitMoradiaSuaFamilia').value = '';   
+    }
+    //5 - Imóvel cedido por necessidade 
+    else if(valor_selecionado == 5)
+    {
+        document.getElementById('trPrestacao').style.display = 'none';
+        document.getElementById('trAluguel').style.display = 'none';
+        document.getElementById('trCedente').style.display = '';
+        document.getElementById('trOutraSitMoradiaSuaFamilia').style.display = 'none';
+        
+        document.getElementById('f_PrestacaoFinanc').value = '';
+        document.getElementById('f_ValorAluguel').value = '';
+        document.getElementById('f_OutraSitMoradiaSuaFamilia').value = '';   
+    }
+    //7 - Outra situação de moradia 
+    else if(valor_selecionado == 7)
+    {
+        document.getElementById('trPrestacao').style.display = 'none';
+        document.getElementById('trAluguel').style.display = 'none';
+        document.getElementById('trCedente').style.display = 'none';
+        document.getElementById('trOutraSitMoradiaSuaFamilia').style.display = '';
+        
+        document.getElementById('f_PrestacaoFinanc').value = '';
+        document.getElementById('f_ValorAluguel').value = '';
+        document.getElementById('f_Cedente').value = ''; 
+    }
+    //Nenhuma das anteriores 
+    else
+    {
+        document.getElementById('trPrestacao').style.display = 'none';
+        document.getElementById('trAluguel').style.display = 'none';
+        document.getElementById('trCedente').style.display = 'none';
+        document.getElementById('trOutraSitMoradiaSuaFamilia').style.display = 'none';
+        
+        document.getElementById('f_PrestacaoFinanc').value = '';
+        document.getElementById('f_ValorAluguel').value = '';
+        document.getElementById('f_Cedente').value = ''; 
+        document.getElementById('f_OutraSitMoradiaSuaFamilia').value = '';   
+    }
+ }
+
+ function controleComoVoceReside()
+ {
+    var valor_selecionado = document.getElementById('f_ComoVoceReside').value;
+     
+    if(valor_selecionado == 1 ||  valor_selecionado == 2 || valor_selecionado == 7 || valor_selecionado == 9)
+    {
+        document.getElementById('trComQuem').style.display = 'none';
+        document.getElementById('trCusto').style.display = 'none';
+        document.getElementById('trOutraSituacao').style.display = 'none';
+        
+        document.getElementById('f_ComQuemVoceMora_0').checked = false;
+        document.getElementById('f_ComQuemVoceMora_1').checked = false;
+        document.getElementById('f_Tempo').value = '';
+        document.getElementById('f_CustoSuaMoradia').value = '';
+        document.getElementById('f_OutraSitSuaMoradia').value = '';      
+    }
+    else if(valor_selecionado == 3 ||  valor_selecionado == 4 || valor_selecionado == 5 || valor_selecionado == 6)
+    {
+        document.getElementById('trComQuem').style.display = 'none';
+        document.getElementById('trCusto').style.display = '';
+        document.getElementById('trOutraSituacao').style.display = 'none';
+        
+        document.getElementById('f_ComQuemVoceMora_0').checked = false;
+        document.getElementById('f_ComQuemVoceMora_1').checked = false;
+        document.getElementById('f_Tempo').value = '';
+        document.getElementById('f_OutraSitSuaMoradia').value = ''; 
+    }
+    else if(valor_selecionado == 8 )
+    {
+        document.getElementById('trComQuem').style.display = '';
+        document.getElementById('trCusto').style.display = 'none';
+        document.getElementById('trOutraSituacao').style.display = 'none';
+        
+        document.getElementById('f_CustoSuaMoradia').value = '';
+        document.getElementById('f_OutraSitSuaMoradia').value = ''; 
+    }
+    else if(valor_selecionado == 10 )
+    {
+        document.getElementById('trComQuem').style.display = 'none';
+        document.getElementById('trCusto').style.display = 'none';
+        document.getElementById('trOutraSituacao').style.display = '';
+        
+        document.getElementById('f_ComQuemVoceMora_0').checked = false;
+        document.getElementById('f_ComQuemVoceMora_1').checked = false;
+        document.getElementById('f_Tempo').value = '';
+        document.getElementById('f_CustoSuaMoradia').value = '';
+    }
+ }
+ 
+ function controleAjudaFinanceira()
+ {
+    if (document.getElementById('f_CaixaGrupoAjudaFinanceira_0').checked == true)
+    {
+        document.getElementById('trAjudaFinanceira').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trAjudaFinanceira').style.display = 'none';
+        document.getElementById('f_ValorMesada').value = '';
+        document.getElementById('f_DepDestaRenda_0').checked = false;  
+        document.getElementById('f_DepDestaRenda_1').checked = false;  
+    }
+ }
+
+ 
+ function controleRecebeBolsaPos()
+ {
+    if((document.getElementById('f_Nivel').value != "Graduação")){
+
+        if (document.getElementById('f_CaixaGrupoRecebeBolsaPos_0').checked == true)
+        {
+            document.getElementById('trRecebeBolsaPos').style.display = '';
+            document.getElementById('trRecebeBolsaPosNao').style.display = 'none';
+            
+            document.getElementById('f_PoderaReceber_0').checked = false;  
+            document.getElementById('f_PoderaReceber_1').checked = false;  
+            document.getElementById('f_Porque').value = '';
+        }
+        else if (document.getElementById('f_CaixaGrupoRecebeBolsaPos_1').checked == true)
+        {
+
+            document.getElementById('trRecebeBolsaPosNao').style.display = '';
+            document.getElementById('trRecebeBolsaPos').style.display = 'none';
+            document.getElementById('f_ValorBolsaPos').value = '';        
+        }
+        else
+        {
+            document.getElementById('trRecebeBolsaPosNao').style.display = 'none';
+            document.getElementById('trRecebeBolsaPos').style.display = 'none';
+            document.getElementById('f_ValorBolsaPos').value = '';   
+        }
+    }
+  }
+
+ function controlePensionista()
+ {
+    if (document.getElementById('f_CaixaGrupoPensionista_0').checked == true)
+    {
+        document.getElementById('trPensionista').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trPensionista').style.display = 'none';
+        document.getElementById('f_PensaoVitaliciaAluno').value = '';
+    }
+ }
+
+ 
+ function controleJaTrabalhou()
+ {
+    if (document.getElementById('f_CaixaGrupoJaTrabalhou_0').checked == true)
+    {
+        document.getElementById('trAtividadeExercida').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trAtividadeExercida').style.display = 'none';
+        document.getElementById('f_AtividadeExercida').value = '';
+    }
+ }
+ 
+
+
+ function controleAposentado()
+ {
+    if (document.getElementById('f_CaixaGrupoAposentado_0').checked == true)
+    {
+        document.getElementById('trAposentado').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trAposentado').style.display = 'none';
+        document.getElementById('f_AnoAposent').value = '';
+        document.getElementById('f_ProfissaoExercida').value = '';
+        document.getElementById('f_MotivoAposent_0').checked = false;  
+        document.getElementById('f_MotivoAposent_1').checked = false;   
+        document.getElementById('f_ValorAposent').value = '';
+    }
+ }
+ 
+ function controleTrabalha()
+ {
+    if( document.getElementById('f_CaixaGrupoTrabalha_0').checked == true)
+    {
+        document.getElementById('trGrupoTrabalhaSimVinculo').style.display = '';
+        document.getElementById('trGrupoTrabalhaNaoVinculo').style.display = 'none';
+        
+        document.getElementById('f_DependeRenda_0').checked = false;  
+        document.getElementById('f_DependeRenda_1').checked = false;   
+        document.getElementById('f_RendaMensal').value = '';
+        document.getElementById('f_Atividade').value = '';
+
+
+    }
+
+    if( document.getElementById('f_CaixaGrupoTrabalha_1').checked == true)
+    {
+        document.getElementById('trGrupoTrabalhaSimVinculo').style.display = 'none';
+        document.getElementById('trGrupoTrabalhaNaoVinculo').style.display = '';
+        document.getElementById('f_Remuneracao').value = '';
+        document.getElementById('f_Funcao').value = '';
+        document.getElementById('f_Instituicao').value = '';
+        
+        document.getElementById('f_EstaLicenciado_0').checked = false;  
+        document.getElementById('f_EstaLicenciado_1').checked = false;   
+
+    }
+    if( document.getElementById('f_CaixaGrupoTrabalha_2').checked == true)
+    {
+        document.getElementById('trGrupoTrabalhaSimVinculo').style.display = 'none';
+        document.getElementById('trGrupoTrabalhaNaoVinculo').style.display = 'none';
+        
+        document.getElementById('f_Remuneracao').value = '';
+        document.getElementById('f_Funcao').value = '';
+        document.getElementById('f_Instituicao').value = '';
+        document.getElementById('f_DependeRenda_0').checked = false;  
+        document.getElementById('f_DependeRenda_1').checked = false;   
+        document.getElementById('f_RendaMensal').value = '';
+        document.getElementById('f_Atividade').value = '';
+        document.getElementById('f_EstaLicenciado_0').checked = false;  
+        document.getElementById('f_EstaLicenciado_1').checked = false;   
+    }
+ }
+
+  function controleTGM()
+  { 
+    if(document.getElementById('f_AluQtdTGM').value != "0"){     
+        if (document.getElementById('f_GrupoTGM_0').checked == true)
+        {
+            document.getElementById('trTGM').style.display = '';
+           
+        }   
+        document.getElementById('f_GrupoTGM').disabled = true; 
+    }
+    else
+    {
+        document.getElementById('f_GrupoTGM').disabled = true; 
+    }
+ }
+ function controleFezOutroCurso()
+ {
+     if (document.getElementById('f_CaixaGrupoFezOutroCurso_0').checked == true)
+    {
+        document.getElementById('trFezOutroCurso').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trFezOutroCurso').style.display = 'none';   
+        document.getElementById('f_FezOutroCurso').value = '';  
+        document.getElementById('f_IESOutroCurso').value = '';  
+        document.getElementById('f_ConcluiuOutroCurso_0').checked = false;  
+        document.getElementById('f_ConcluiuOutroCurso_1').checked = false;    
+        document.getElementById('f_OutroCursoNaoConcluido').value = '';  
+    }
+ }
+  function controleFezOutroCurso_ConcluiuOutroCurso()
+ {
+     if (document.getElementById('f_ConcluiuOutroCurso_1').checked == true)
+    {
+        document.getElementById('f_OutroCursoNaoConcluido').disabled = false; 
+    }
+    else
+    {
+        document.getElementById('f_OutroCursoNaoConcluido').disabled = true;  
+        document.getElementById('f_OutroCursoNaoConcluido').value = '';  
+    }
+ }
+ 
+ function controleCursoFora()
+ {
+     if (document.getElementById('f_CaixaGrupoCursoFora_0').checked == true)
+    {
+        document.getElementById('trCursoFora').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trCursoFora').style.display = 'none';  
+        document.getElementById('f_FazCursoFora').value = '';  
+        document.getElementById('f_IESCursoFora').value = '';  
+        document.getElementById('f_MensIESCursoFora').value = '';  
+    }
+ }
+ 
+  function controletrTeveAbatimento()
+ {
+    if (document.getElementById('f_IsencaoTxVestibular_0').checked == true)
+    {
+        document.getElementById('trTeveAbatimento').style.display = '';
+       
+    }
+    else
+    {
+        document.getElementById('trTeveAbatimento').style.display = 'none';
+        document.getElementById('f_TeveAbatimento_0').checked = false;  
+        document.getElementById('f_TeveAbatimento_1').checked = false;  
+    }
+ }
+ 
+ controletrTeveAbatimento();
+ controleTGM();
+ controleCursoFora();
+ controleFezOutroCurso();
+ controleFezOutroCurso_ConcluiuOutroCurso();
+ controleTrabalha();
+ controleAposentado();
+ controleJaTrabalhou();
+ controlePensionista();
+ controleAjudaFinanceira();
+ controleRecebeBolsaPos();
+ controleComoVoceReside();
+ controleComoSuaFamiliaReside();
+ controleTemFilhos();
+</script>

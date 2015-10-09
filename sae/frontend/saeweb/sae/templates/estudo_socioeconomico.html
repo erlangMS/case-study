@@ -1,0 +1,30 @@
+{% extends "fpc_form.html" %} 
+{% load fpc_tags %} 
+
+{% block f_botoes %}
+
+<div id="f_botoes" style="height:32px">
+	<div id="barra_botao" data-ts="{{ ts.id }}" data-perm="{{ form.perm }}">
+ 		<button id="btn_prox_etapa" type="button" class="btn btn-default btn-xs" onclick='estudoSocioEconomicoForm.salva_e_avanca()'>
+ 			<i class="glyphicon glyphicon-chevron-right" ></i>Próxima Etapa
+ 		</button>
+	</div>
+	<div id="f_botoes_esq"  style="float: right;">
+		<button id="btn_volta_lista" type="button" class="btn btn-default btn-xs" onclick='estudoSocioEconomicoForm.volta_etapa()'>
+			<i class="glyphicon glyphicon-chevron-left"></i>Voltar
+		</button>
+	</div>
+</div>
+
+{% endblock %}
+
+{% block f_content_form %}
+
+	<div id="f_estudo" data-passo-atual="ler_edital">
+	{% include "estudo_socioeconomico/ler_edital.html" %}
+	{% include "estudo_socioeconomico/estudo_preliminar.html" %}
+	{% include "estudo_socioeconomico/dados_pessoais.html" %}
+	{% include "estudo_socioeconomico/dados_familiares.html" %}
+	{% include "estudo_socioeconomico/bens.html" %}
+	</div>
+{% endblock %}

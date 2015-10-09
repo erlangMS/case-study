@@ -1,0 +1,47 @@
+{% extends "fpc_form.html" %} 
+{% load fpc_tags %} 
+
+{% block f_botoes %}
+{% endblock %}
+
+{% block f_content_form %}
+
+<center>
+     <div style="font-family:Arial;font-weight:bold" align="center">
+         <font style="font-size:14px">ESTUDO PRELIMINAR</font></div>   
+  <table border="0">  
+      <tr>
+             
+      </tr>
+      <tr>
+          <td align="center" colspan="2"">
+              <div id="ctl00_painelAluno" style="width: 90px">
+			
+                  <tr>
+                      <td style="height: 40px">
+                     Caro estudante antes de preencher o formulário preliminar você deverá ler o edital no link:<a target ="_blank" href="https://www.saeweb.unb.br/saeweb/fronteira/editais/EditalAtual.pdf"> Edital</a>
+                     </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        <input id="ctl00_aceite" type="checkbox" name="ctl00$aceite" /><label for="ctl00_aceite">Declaro que li o Edital e concordo com os termos nele contidos.</label>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td>
+                        </br>
+                      <td>
+                  </tr>
+                      <tr>
+                      <td align="center">
+                        <input type="submit" name="ctl00$bntContinuar" value="Continuar" id="ctl00_bntContinuar" style="width:84px;" />
+                       </td>
+             </tr>
+             
+		</div>
+          </td>
+      </tr>
+  </table>
+</center>
+
+{% endblock %}

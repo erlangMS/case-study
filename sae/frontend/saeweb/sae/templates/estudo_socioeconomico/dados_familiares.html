@@ -1,0 +1,1799 @@
+<form  class="table" id="f_dados_familiares" class="form-inline" align="center" style="display:none">
+   <table class="table" border="1" cellpadding="0" cellspacing="0" bordercolor="#CCCCCC" style="border-collapse:collapse;width: 100%">
+      <tr align="left">
+         <td colspan="4" style="font-family:Arial;font-weight:bold; width: 100%; background-color: #cccccc; height: 20px;" align="center">
+            <ol id="passo_atual" class="breadcrumb">
+               <li><span class="badge">1</span>Estudo Preliminar</li>
+               <li><span class="badge">2</span>Dados Pessoais</li>
+               <li class="active"><span class="badge">3</span>Dados Familiares</li>
+               <li><span class="badge">4</span>Bens</li>
+            </ol>
+         </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="font-family: Arial; font-size: 11px; padding: 10px" align="center">
+            Os campos com asterisco são obrigatórios.
+         </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="width: 80%; background-color: #EAEAEA;" align="center">
+            <b>Dados do Pai</b>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="2">
+      <tr align="left">
+         <td style="width: 37%; background-color: #fcfcfc;">
+            Nome<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <input name="f_NomePai" data-field="NomePai" type="text" maxlength="50" id="f_NomePai" onblur="controleCaixaGrupoFalecidoPai()" style="width:371px;" />
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc;">
+            Falecido?<span style="color: #ff0000">*</span>
+         </td>
+         <td colspan="3">
+            <table id="f_CaixaGrupoFalecidoPai" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoFalecidoPai_0" data-field="CaixaGrupoFalecidoPai" type="radio" name="f_CaixaGrupoFalecidoPai" value="SIM" onclick="controleCaixaGrupoFalecidoPai(this.name);" /><label for="f_CaixaGrupoFalecidoPai_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoFalecidoPai_1" data-field="CaixaGrupoFalecidoPai" type="radio" name="f_CaixaGrupoFalecidoPai" value="NAO" onclick="controleCaixaGrupoFalecidoPai(this.name);" /><label for="f_CaixaGrupoFalecidoPai_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc;">
+            Grau de Instrução<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <table width="100%">
+               <tr>
+                  <td colspan="3">
+                     <table id="f_GrauInstrucaoPai" border="0">
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_0" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="0Analfabeto" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_0">Analfabeto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_1" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="11o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_1">1º Grau Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_2" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="21o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_2">1º Grau Completo</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_3" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="32o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_3">2º Grau Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_4" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="42o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_4">2º Grau Completo</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_5" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="5Superior Incompleto" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_5">Superior Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoPai_6" data-field="GrauInstrucaoPai" type="radio" name="f_GrauInstrucaoPai" value="6Superior Completo" onclick="controleCaixaGrupoGrauInstrucaoPai();" /><label for="f_GrauInstrucaoPai_6">Superior Completo</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     Curso:
+                  </td>
+                  <td colspan="2">
+                     <input name="f_CursoSuperiorPai" data-field="CursoSuperiorPai" type="text" maxlength="30" id="f_CursoSuperiorPai" style="width:230px;" />
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td style="background-color: #fcfcfc;">
+            Profissão<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <input name="f_ProfissaoPai" data-field="ProfissaoPai" type="text" maxlength="30" id="f_ProfissaoPai" style="width:100px;" />
+         </td>
+      </tr>
+      <tr>
+         <td colspan="5">
+            <table id="tableControleFalecido" border="1" width="100%" align="center" cellpadding="0"
+               cellspacing="0" bordercolor="#CCCCCC" style="border-collapse: collapse;">
+               <tr id="trFalecidoPai" align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Idade<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_IdadePai" data-field="IdadePai" type="text" id="f_IdadePai" style="width:100px;" />
+                  </td>
+                  <td style="width: 20%; background-color: #fcfcfc;">
+                     CPF<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_CPFPai" data-field="CPFPai" type="text" maxlength="11" id="f_CPFPai" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Endereço<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="3">
+                     <input name="f_EnderecoPai" data-field="EnderecoPai" type="text" maxlength="50" id="f_EnderecoPai" style="width:371px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Cidade<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_CidadePai" data-field="CidadePai" type="text" maxlength="30" id="f_CidadePai" style="width:100px;" />
+                  </td>
+                  <td style="width: 20%; background-color: #fcfcfc;">
+                     UF:
+                  </td>
+                  <td>
+                     <input name="f_UFPai" data-field="UFPai" type="text" maxlength="2" id="f_UFPai" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     CEP:
+                  </td>
+                  <td>
+                     <input name="f_CEPPai" data-field="CEPPai" type="text" maxlength="8" id="f_CEPPai" style="width:100px;" />
+                  </td>
+                  <td style="width: 20%; background-color: #fcfcfc;">
+                     Telefone:
+                  </td>
+                  <td>
+                     <input name="f_TelefonePai" data-field="TelefonePai" type="text" maxlength="30" id="f_TelefonePai" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Aposentado?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoAposentadoPai" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoAposentadoPai_0" data-field="CaixaGrupoAposentadoPai" type="radio" name="f_CaixaGrupoAposentadoPai" value="SIM" onclick="controleCaixaGrupoPaiAposentado();" /><label for="f_CaixaGrupoAposentadoPai_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoAposentadoPai_1" data-field="CaixaGrupoAposentadoPai" type="radio" name="f_CaixaGrupoAposentadoPai" value="NAO" onclick="controleCaixaGrupoPaiAposentado();" /><label for="f_CaixaGrupoAposentadoPai_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableAposentadoPai" style="display: none; width: 100%">
+                        <tr id="trPaiAposentado1" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Ano<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_AnoAposentPai" data-field="AnoAposenPai" type="text" id="f_AnoAposentPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr id="trPaiAposentado2" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Motivo<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <table id="f_MotivoAposentPai" border="0">
+                                 <tr>
+                                    <td><input id="f_MotivoAposentPai_0" data-field="MotivoAposentPai" type="radio" name="f_MotivoAposentPai" value="09Idade" /><label for="f_MotivoAposentPai_0">Idade</label></td>
+                                    <td><input id="f_MotivoAposentPai_1" data-field="MotivoAposentPai" type="radio" name="f_MotivoAposentPai" value="10Tempo de Serviço" /><label for="f_MotivoAposentPai_1">Tempo de Serviço</label></td>
+                                    <td><input id="f_MotivoAposentPai_2" data-field="MotivoAposentPai" type="radio" name="f_MotivoAposentPai" value="11Invalidez" /><label for="f_MotivoAposentPai_2">Invalidez</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr id="trPaiAposentado3" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Valor da Aposentadoria(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_ValorAposentPai" data-field="ValorAposentPai" type="text" id="f_ValorAposentPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                     <table id="tableAposentadoPai2" style="display: none; width: 100%">
+                        <tr id="trLocalTrabalhoPai" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Local de Trabalho<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_LocalTrabPai" data-field="LocalTrabPai" type="text" maxlength="50" id="f_LocalTrabPai" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_RemuneracaoPai" data-field="RemuneracaoPai" type="text" id="f_RemuneracaoPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 30%; background-color: #fcfcfc;">
+                     Separado da mãe do aluno?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoSeparacaoPai" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoSeparacaoPai_0" data-field="CaixaGrupoSeparacaoPai" type="radio" name="f_CaixaGrupoSeparacaoPai" value="SIM" onclick="controleCaixaGrupoSeparadoPai();" /><label for="f_CaixaGrupoSeparacaoPai_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoSeparacaoPai_1" data-field="CaixaGrupoSeparacaoPai" type="radio" name="f_CaixaGrupoSeparacaoPai" value="NAO" onclick="controleCaixaGrupoSeparadoPai();" /><label for="f_CaixaGrupoSeparacaoPai_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableSeparacaoPai" style="display: none; width: 100%">
+                        <tr id="trAnoSeparacaoPai" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Ano<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_AnoSeparacao" data-field="AnoSeparacao" type="text" id="f_AnoSeparacao" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr id="trLegalizacaoPai" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Legalizada?<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_Legalizada" border="0">
+                                 <tr>
+                                    <td><input id="f_Legalizada_0" data-field="Legalizada" type="radio" name="f_Legalizada" value="SIM" /><label for="f_Legalizada_0">Sim</label></td>
+                                    <td><input id="f_Legalizada_1" data-field="Legalizada" type="radio" name="f_Legalizada" value="NAO" /><label for="f_Legalizada_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr id="trPensaoAlimenticia" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Pensão Alimentícia(R$):
+                           </td>
+                           <td colspan="3">
+                              <input name="f_ValorPensaoMae" data-field="ValorPensaoMae" type="text" id="f_ValorPensaoMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 30%; background-color: #fcfcfc;">
+                     Recebe pensão por morte?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoPensaoPorMortePai" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoPensaoPorMortePai_0" data-field="CaixaGrupoPensaoMortePai" type="radio" name="f_CaixaGrupoPensaoPorMortePai" value="SIM" onclick="controleCaixaGrupoPensaoPorMortePai();" /><label for="f_CaixaGrupoPensaoPorMortePai_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoPensaoPorMortePai_1" data-field="CaixaGrupoPensaoMortePai" type="radio" name="f_CaixaGrupoPensaoPorMortePai" value="NAO" onclick="controleCaixaGrupoPensaoPorMortePai();" /><label for="f_CaixaGrupoPensaoPorMortePai_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tablePensaoPorMorte" style="display: none; width: 100%">
+                        <tr id="trPensaoMortePai" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Valor da Pensão por morte(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td align="left" colspan="3">
+                              <input name="f_PensaoVitaliciaPai" data-field="PensaoVitaliciaPai" type="text" id="f_PensaoVitaliciaPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td>
+                     Tem companheira?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoCompanheiraPai" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoCompanheiraPai_0" data-field="CaixaGrupoCompanheiraPai" type="radio" name="f_CaixaGrupoCompanheiraPai" value="SIM" onclick="controleCaixaGrupoCompanheiraPai();" /><label for="f_CaixaGrupoCompanheiraPai_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoCompanheiraPai_1" data-field="CaixaGrupoCompanheiraPai" type="radio" name="f_CaixaGrupoCompanheiraPai" value="NAO" onclick="controleCaixaGrupoCompanheiraPai();" /><label for="f_CaixaGrupoCompanheiraPai_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableCompanheiroPai" style="display: none; width: 100%">
+                        <tr id="trCompanheiroPai" align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Profissão da Companheira<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_ProfisCompanheiraPai" data-field="ProfisCompanheiraPai" type="text" maxlength="30" id="f_ProfisCompanheiraPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração da Companheira(R$):<span style="color: #ff0000">*</span>
+                           </td>
+                           <td>
+                              <input name="f_RemCompanheiraPai" data-field="RemCompanheiraPai" type="text" id="f_RemCompanheiraPai" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td>
+                     Outras ativ. p/ Complementar Renda:<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoOutraAtividadePai" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoOutraAtividadePai_0" data-field="CaixaGrupoOutraAtividadePai" type="radio" name="f_CaixaGrupoOutraAtividadePai" value="SIM" onclick="controleCaixaGrupoOutraAtividadePai();" /><label for="f_CaixaGrupoOutraAtividadePai_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoOutraAtividadePai_1" data-field="CaixaGrupoOutraAtividadePai" type="radio" name="f_CaixaGrupoOutraAtividadePai" value="NAO" onclick="controleCaixaGrupoOutraAtividadePai();" /><label for="f_CaixaGrupoOutraAtividadePai_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableControleOutraAtividadePai" style="display: none; width: 100%">
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Descrição da atividade<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_OutAtivCompRendaPai" data-field="OutAtivCompRendaPai" type="text" id="f_OutAtivCompRendaPai" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração média mensal(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_RemMediaMensalPai" data-field="RemMediaMensalPai" type="text" id="f_RemMediaMensalPai" onblur="controleDadosMantenedor();" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      </td>
+      </tr>
+      <tr>
+         <td colspan="4" style="width: 100%; background-color: #EAEAEA;" align="center">
+            <b>Dados da Mãe</b>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="3">
+      <tr align="left">
+         <td style="width: 37%;">
+            Nome<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <input name="f_NomeMae" data-field="NomeMae" type="text" maxlength="50" id="f_NomeMae" onblur="controleCaixaGrupoFalecidaMae()" style="width:371px;" />
+         </td>
+      </tr>
+      <tr align="left">
+         <td>
+            Falecida?<span style="color: #ff0000">*</span>
+         </td>
+         <td colspan="3">
+            <table id="f_CaixaGrupoFalecidaMae" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoFalecidaMae_0" data-field="CaixaGrupoFalecidadeMae" type="radio" name="f_CaixaGrupoFalecidaMae" value="SIM" onclick="controleCaixaGrupoFalecidaMae(this.name);" /><label for="f_CaixaGrupoFalecidaMae_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoFalecidaMae_1" data-field="CaixaGrupoFalecidadeMae" type="radio" name="f_CaixaGrupoFalecidaMae" value="NAO" onclick="controleCaixaGrupoFalecidaMae(this.name);" /><label for="f_CaixaGrupoFalecidaMae_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td>
+            Grau de Instrução<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <table width="100%">
+               <tr>
+                  <td colspan="3">
+                     <table id="f_GrauInstrucaoMae" border="0">
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_0" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="0Analfabeta" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_0">Analfabeta</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_1" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="11o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_1">1º Grau Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_2" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="21o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_2">1º Grau Completo</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_3" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="32o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_3">2º Grau Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_4" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="42o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_4">2º Grau Completo</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_5" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="5Superior Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_5">Superior Incompleto</label></td>
+                        </tr>
+                        <tr>
+                           <td><input id="f_GrauInstrucaoMae_6" data-field="GrauInstrucaoMae" type="radio" name="f_GrauInstrucaoMae" value="6Superior Completo" onclick="controleCaixaGrupoGrauInstrucaoMae();" /><label for="f_GrauInstrucaoMae_6">Superior Completo</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr>
+                  <td>
+                     Curso:
+                  </td>
+                  <td colspan="2">
+                     <input name="f_CursoSuperiorMae" data-field="CursoSuperiorMae" type="text" maxlength="30" id="f_CursoSuperiorMae" style="width:230px;" />
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td>
+            Profissão<span style="color: #ff0000">*</span>:
+         </td>
+         <td colspan="3">
+            <input name="f_ProfissaoMae" data-field="ProfissaoMae" type="text" maxlength="30" id="f_ProfissaoMae" style="width:100px;" />
+         </td>
+      </tr>
+      <tr>
+         <td colspan="3">
+            <table id="tableControleFalecida" border="1" width="100%" align="center" cellpadding="0"
+               cellspacing="0" bordercolor="#CCCCCC" style="border-collapse: collapse;">
+               <tr align="left" id="trFalecidaMae">
+                  <td>
+                     Idade<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_IdadeMae" data-field="IdadeMae" type="text" id="f_IdadeMae" style="width:100px;" />
+                  </td>
+                  <td>
+                     CPF<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_CPFMae" data-field="CPFMae" type="text" maxlength="11" id="f_CPFMae" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td>
+                     Endereço<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="3">
+                     <input name="f_EnderecoMae" data-field="EnderecoMae" type="text" maxlength="50" id="f_EnderecoMae" style="width:371px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td>
+                     Cidade<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_CidadeMae" data-field="CidadeMae" type="text" maxlength="30" id="f_CidadeMae" style="width:100px;" />
+                  </td>
+                  <td>
+                     UF:
+                  </td>
+                  <td>
+                     <input name="f_UFMae" data-field="UFMae" type="text" maxlength="2" id="f_UFMae" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td>
+                     CEP:
+                  </td>
+                  <td>
+                     <input name="f_CEPMae" data-field="CEPMae" type="text" maxlength="8" id="f_CEPMae" style="width:100px;" />
+                  </td>
+                  <td style="background-color: #fcfcfc;">
+                     Telefone<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_TelefoneMae" data-field="TelefoneMae" type="text" maxlength="30" id="f_TelefoneMae" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Aposentada?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoMaeAposentado" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoMaeAposentado_0" data-field="CaixaGrupoMaeAposentado" type="radio" name="f_CaixaGrupoMaeAposentado" value="SIM" onclick="controleCaixaGrupoMaeAposentada();" /><label for="f_CaixaGrupoMaeAposentado_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoMaeAposentado_1" data-field="CaixaGrupoMaeAposentado" type="radio" name="f_CaixaGrupoMaeAposentado" value="NAO" onclick="controleCaixaGrupoMaeAposentada();" /><label for="f_CaixaGrupoMaeAposentado_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableAposentadaMae" style="display: none; width: 100%">
+                        <tr align="left" id="trMaeAposentada1">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Ano<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_AnoAposentMae" data-field="AnoAposentMae" type="text" id="f_AnoAposentMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr align="left" id="trMaeAposentada2">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Motivo<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <table id="f_MotivoAposentMae" MaxLength="18" border="0">
+                                 <tr>
+                                    <td><input id="f_MotivoAposentMae_0" data-field="MotivoAposentMae" type="radio" name="f_MotivoAposentMae" value="09Idade" /><label for="f_MotivoAposentMae_0">Idade</label></td>
+                                    <td><input id="f_MotivoAposentMae_1" data-field="MotivoAposentMae" type="radio" name="f_MotivoAposentMae" value="10Tempo de Serviço" /><label for="f_MotivoAposentMae_1">Tempo de Serviço</label></td>
+                                    <td><input id="f_MotivoAposentMae_2" data-field="MotivoAposentMae" type="radio" name="f_MotivoAposentMae" value="11Invalidez" /><label for="f_MotivoAposentMae_2">Invalidez</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left" id="trMaeAposentada3">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Valor da Aposentadoria(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_ValorAposentMae" data-field="ValorAposentMae" type="text" id="f_ValorAposentMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableAposentadaMae2" style="display: none; width: 100%">
+                        <tr align="left" id="trLocalTrabalhoMae">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Local de Trabalho<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_LocalTrabMae" data-field="LocalTrabMae" type="text" maxlength="50" id="f_LocalTrabMae" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração(R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_RemuneracaoMae" data-field="RemuneracaoMae" type="text" id="f_RemuneracaoMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Pensão Alimentícia(R$):
+                  </td>
+                  <td colspan="3">
+                     <input name="f_ValorPensaoPai" data-field="ValorPensaoPai" type="text" id="f_ValorPensaoPai" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Recebe pensão por morte?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoPensaoPorMorteMae" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoPensaoPorMorteMae_0" data-field="CaixaGrupoPensaoPorMorteMae" type="radio" name="f_CaixaGrupoPensaoPorMorteMae" value="SIM" onclick="controleCaixaGrupoPensaoPorMorteMae();" /><label for="f_CaixaGrupoPensaoPorMorteMae_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoPensaoPorMorteMae_1" data-field="CaixaGrupoPensaoPorMorteMae" type="radio" name="f_CaixaGrupoPensaoPorMorteMae" value="NAO" onclick="controleCaixaGrupoPensaoPorMorteMae();" /><label for="f_CaixaGrupoPensaoPorMorteMae_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="trPensaoMorte" style="display: none; width: 100%">
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Valor da Pensão por Morte(R$):<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="4">
+                              <input name="f_PensaoVitaliciaMae" data-field="PensaoVitaliciaMae" type="text" id="f_PensaoVitaliciaMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Tem companheiro?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoCompanheiroMae" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoCompanheiroMae_0" data-field="CaixaGrupoCompanheiroMae" type="radio" name="f_CaixaGrupoCompanheiroMae" value="SIM" onclick="controleCaixaGrupoCompanheiroMae();" /><label for="f_CaixaGrupoCompanheiroMae_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoCompanheiroMae_1" data-field="CaixaGrupoCompanheiroMae" type="radio" name="f_CaixaGrupoCompanheiroMae" value="NAO" onclick="controleCaixaGrupoCompanheiroMae();" /><label for="f_CaixaGrupoCompanheiroMae_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableCompanheiroMae" style="display: none; width: 100%">
+                        <tr align="left" id="trCompanheiroMae">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Profissão do Companheiro<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_ProfisCompanheiroMae" data-field="ProfisCompanheiroMae" type="text" maxlength="50" id="f_ProfisCompanheiroMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração do Companheiro (R$)<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_RemCompanheiroMae" data-field="RemCompanheiroMae" type="text" id="f_RemCompanheiroMae" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Outras ativ. p/ Complementar Renda:<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoOutraAtividadeMae" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoOutraAtividadeMae_0" data-field="CaixaGrupoOutraAtividadeMae" type="radio" name="f_CaixaGrupoOutraAtividadeMae" value="SIM" onclick="controleCaixaGrupoOutraAtividadeMae();" /><label for="f_CaixaGrupoOutraAtividadeMae_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoOutraAtividadeMae_1" data-field="CaixaGrupoOutraAtividadeMae" type="radio" name="f_CaixaGrupoOutraAtividadeMae" value="NAO" onclick="controleCaixaGrupoOutraAtividadeMae();" /><label for="f_CaixaGrupoOutraAtividadeMae_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="4">
+                     <table id="tableControleOutraAtividadeMae" style="display: none; width: 100%">
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Descrição da atividade<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_OutAtivCompRendaMae" data-field="OutAtivCompRendaMae" type="text" id="f_OutAtivCompRendaMae" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Remuneração média mensal(R$):
+                           </td>
+                           <td colspan="3">
+                              <input name="f_RemMediaMensalMae" data-field="RemMediaMensalMae" type="text" id="f_RemMediaMensalMae" onblur="controleDadosMantenedor();" style="width:100px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      </td>
+      </tr>
+      <tr align="left">
+         <td colspan="3" style="width: 100%; background-color: #EAEAEA;" align="center">
+            <b>Outros</b>
+         </td>
+      </tr>
+      <tr align="left">
+         <td width="30%">
+            Possui alguém além de seu pai e sua mãe que sustente/contribua nas despesas?(Ex:
+            cônjuge, avós, padastro, madastra, etc.)<span style="color: #ff0000">*</span>
+         </td>
+         <td>
+            <table id="f_CaixaGrupoMantenedor" border="0">
+               <tr>
+                  <td><input id="f_CaixaGrupoMantenedor_0" data-field="CaixaGrupoMantenedor" type="radio" name="f_CaixaGrupoMantenedor" value="SIM" onclick="controleDadosMantenedor();" /><label for="f_CaixaGrupoMantenedor_0">Sim</label></td>
+                  <td><input id="f_CaixaGrupoMantenedor_1" data-field="CaixaGrupoMantenedor" type="radio" name="f_CaixaGrupoMantenedor" value="NAO" onclick="controleDadosMantenedor();" /><label for="f_CaixaGrupoMantenedor_1">Não</label></td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+      <tr align="left">
+         <td colspan="4">
+            <table class="table" id="dadosMantenedor" border="1" cellspacing="0%" bordercolor="CCCCCC" style="display: none; width: 100%; border-collapse: collapse;">
+               <tr align="left">
+                  <td colspan="4" style="width: 100%; background-color: #EAEAEA;" align="center">
+                     <b>Dados do(a) Mantenedor(a)/Cônjuge</b>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="width: 37%; background-color: #fcfcfc;">
+                     Nome<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="3">
+                     <input name="f_NomeMantCon" data-field="NomeMantCon" type="text" maxlength="50" id="f_NomeMantCon" style="width:371px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="background-color: #fcfcfc;">
+                     Falecido(a)?<span style="color: #ff0000">*</span>
+                  </td>
+                  <td colspan="3">
+                     <table id="f_CaixaGrupoFalecidoMantCon" border="0">
+                        <tr>
+                           <td><input id="f_CaixaGrupoFalecidoMantCon_0" data-field="CaixaGrupoFalecidoManCon" type="radio" name="f_CaixaGrupoFalecidoMantCon" value="SIM" onclick="controleCaixaGrupoFalecidoMantCon(this.name);" /><label for="f_CaixaGrupoFalecidoMantCon_0">Sim</label></td>
+                           <td><input id="f_CaixaGrupoFalecidoMantCon_1" data-field="CaixaGrupoFalecidoManCon" type="radio" name="f_CaixaGrupoFalecidoMantCon" value="NAO" onclick="controleCaixaGrupoFalecidoMantCon(this.name);" /><label for="f_CaixaGrupoFalecidoMantCon_1">Não</label></td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="background-color: #fcfcfc;">
+                     Grau de Instrução<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td colspan="3">
+                     <table width="100%">
+                        <tr>
+                           <td colspan="3">
+                              <table id="f_GrauInstrucaoMantCon" border="0">
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_0" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="0Analfabeto" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_0">Analfabeto(a)</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_1" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="11o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_1">1º Grau Incompleto</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_2" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="21o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_2">1º Grau Completo</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_3" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="32o. Grau Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_3">2º Grau Incompleto</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_4" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="42o. Grau Completo" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_4">2º Grau Completo</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_5" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="5Superior Incompleto" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_5">Superior Incompleto</label></td>
+                                 </tr>
+                                 <tr>
+                                    <td><input id="f_GrauInstrucaoMantCon_6" data-field="GrauInstrucaoMantCon" type="radio" name="f_GrauInstrucaoMantCon" value="6Superior Completo" onclick="controleCaixaGrupoGrauInstrucaoMantCon();" /><label for="f_GrauInstrucaoMantCon_6">Superior Completo</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="background-color: #fcfcfc;">
+                              Curso:
+                           </td>
+                           <td colspan="2">
+                              <input name="f_CursoSuperiorMantCon" data-field="CursoSuperiorMantCon" type="text" maxlength="30" id="f_CursoSuperiorMantCon" style="width:230px;" />
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td style="background-color: #fcfcfc;">
+                     Profissão<span style="color: #ff0000">*</span>:
+                  </td>
+                  <td>
+                     <input name="f_ProfissaoMantCon" data-field="ProfissaoMantCon" type="text" maxlength="30" id="f_ProfissaoMantCon" style="width:100px;" />
+                  </td>
+               </tr>
+               <tr align="left">
+                  <td colspan="3">
+                     <table id="tableControleFalecidaMant" border="1" width="100%" align="center" cellpadding="0"
+                        cellspacing="0" bordercolor="#CCCCCC" style="border-collapse: collapse;">
+                        <tr align="left" id="trFalecidoMantCon">
+                           <td style="background-color: #fcfcfc;">
+                              Idade<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_IdadeMantCon" data-field="IdadeMantCon" type="text" id="f_IdadeMantCon" style="width:100px;" />
+                           </td>
+                           <td style="background-color: #fcfcfc;">
+                              CPF<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_CPFMantCon" data-field="CPFMantCon" type="text" maxlength="8" id="f_CPFMantCon" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="background-color: #fcfcfc;">
+                              Endereço<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_EnderecoMantCon" data-field="EnderecoMantCon" type="text" maxlength="50" id="f_EnderecoMantCon" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="background-color: #fcfcfc;">
+                              Cidade<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td>
+                              <input name="f_CidadeMantCon" data-field="CidadeMantCon" type="text" maxlength="30" id="f_CidadeMantCon" style="width:100px;" />
+                           </td>
+                           <td style="background-color: #fcfcfc;">
+                              UF:
+                           </td>
+                           <td>
+                              <input name="f_UFMantCon" data-field="UFMantCon" type="text" maxlength="2" id="f_UFMantCon" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="background-color: #fcfcfc;">
+                              CEP:
+                           </td>
+                           <td>
+                              <input name="f_CEPMantCon" data-field="CEPMantCon" type="text" maxlength="8" id="f_CEPMantCon" style="width:100px;" />
+                           </td>
+                           <td style="background-color: #fcfcfc;">
+                              Telefone:
+                           </td>
+                           <td>
+                              <input name="f_TelefoneMantCon" data-field="TelefoneMantCon" type="text" maxlength="30" id="f_TelefoneMantCon" style="width:100px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Aposentado(a)?<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_CaixaGrupoAposentadoMantCon" border="0">
+                                 <tr>
+                                    <td><input id="f_CaixaGrupoAposentadoMantCon_0" data-field="CaixaGrupoAposentadoMantCon" type="radio" name="f_CaixaGrupoAposentadoMantCon" value="SIM" onclick="controleCaixaGrupoMantConAposentado();" /><label for="f_CaixaGrupoAposentadoMantCon_0">Sim</label></td>
+                                    <td><input id="f_CaixaGrupoAposentadoMantCon_1" data-field="CaixaGrupoAposentadoMantCon" type="radio" name="f_CaixaGrupoAposentadoMantCon" value="NAO" onclick="controleCaixaGrupoMantConAposentado();" /><label for="f_CaixaGrupoAposentadoMantCon_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tableAposentadaMant" style="display: none; width: 100%">
+                                 <tr id="trMantConAposentado1" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Ano<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_AnoAposentMantCon" data-field="AnoAposentMantCon" type="text" id="f_AnoAposentMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                                 <tr id="trMantConAposentado2" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Motivo<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <table id="f_MotivoAposentMantCon" border="0">
+                                          <tr>
+                                             <td><input id="f_MotivoAposentMantCon_0" data-field="MotivoAposentManCon" type="radio" name="f_MotivoAposentMantCon" value="09Idade" /><label for="f_MotivoAposentMantCon_0">Idade</label></td>
+                                             <td><input id="f_MotivoAposentMantCon_1" data-field="MotivoAposentManCon" type="radio" name="f_MotivoAposentMantCon" value="10Tempo de Serviço" /><label for="f_MotivoAposentMantCon_1">Tempo de Serviço</label></td>
+                                             <td><input id="f_MotivoAposentMantCon_2" data-field="MotivoAposentManCon" type="radio" name="f_MotivoAposentMantCon" value="11Invalidez" /><label for="f_MotivoAposentMantCon_2">Invalidez</label></td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr id="trMantConAposentado3" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Valor da Aposentadoria(R$)<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_ValorAposentMantCon" data-field="ValorAposentMantCon" type="text" id="f_ValorAposentMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tableAposentadaMant2" style="display: none; width: 100%">
+                                 <tr id="trLocalTrabalhoMantCon" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Local de Trabalho<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_LocalTrabMantCon" data-field="LocalTrabMantCon" type="text" maxlength="50" id="f_LocalTrabMantCon" style="width:371px;" />
+                                    </td>
+                                 </tr>
+                                 <tr>
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Remuneração(R$):
+                                    </td>
+                                    <td>
+                                       <input name="f_RemuneracaoMantCon" data-field="RemuneracaoMantCon" type="text" maxlength="30" id="f_RemuneracaoMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr>
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Separado(a)?<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_CaixaGrupoSeparacaoMantCon" border="0">
+                                 <tr>
+                                    <td><input id="f_CaixaGrupoSeparacaoMantCon_0" data-field="CaixaGrupoSeparacaoMantCon" type="radio" name="f_CaixaGrupoSeparacaoMantCon" value="SIM" onclick="controleCaixaGrupoSeparadoMantCon();" /><label for="f_CaixaGrupoSeparacaoMantCon_0">Sim</label></td>
+                                    <td><input id="f_CaixaGrupoSeparacaoMantCon_1" data-field="CaixaGrupoSeparacaoMantCon" type="radio" name="f_CaixaGrupoSeparacaoMantCon" value="NAO" onclick="controleCaixaGrupoSeparadoMantCon();" /><label for="f_CaixaGrupoSeparacaoMantCon_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tableSeparacaoMantCon" style="display: none; width: 100%">
+                                 <tr id="trAnoSeparacaoMantCon" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Ano<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_AnoSeparacaoMantCon" data-field="AnoSeparacaoMantCon" type="text" id="f_AnoSeparacaoMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                                 <tr id="trLegalizacaoMantCon" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Legalizada?<span style="color: #ff0000">*</span>
+                                    </td>
+                                    <td colspan="3">
+                                       <table id="f_LegalizadaMantCon" border="0">
+                                          <tr>
+                                             <td><input id="f_LegalizadaMantCon_0" data-field="LegalizadaMantCon" type="radio" name="f_LegalizadaMantCon" value="SIM" /><label for="f_LegalizadaMantCon_0">Sim</label></td>
+                                             <td><input id="f_LegalizadaMantCon_1" data-field="LegalizadaMantCon" type="radio" name="f_LegalizadaMantCon" value="NAO" /><label for="f_LegalizadaMantCon_1">Não</label></td>
+                                          </tr>
+                                       </table>
+                                    </td>
+                                 </tr>
+                                 <tr align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Pensão Alimentícia(R$):
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_ValorPensaoMantCon" data-field="ValorPensaoMantCon" type="text" id="f_ValorPensaoMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Recebe pensão por morte?<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_CaixaGrupoPensaoPorMorteMantCon" border="0">
+                                 <tr>
+                                    <td><input id="f_CaixaGrupoPensaoPorMorteMantCon_0" data-field="CaixaGrupoPensaoPorMorteMantCon" type="radio" name="f_CaixaGrupoPensaoPorMorteMantCon" value="SIM" onclick="controleCaixaGrupoPensaoPorMorteMantCon();" /><label for="f_CaixaGrupoPensaoPorMorteMantCon_0">Sim</label></td>
+                                    <td><input id="f_CaixaGrupoPensaoPorMorteMantCon_1" data-field="CaixaGrupoPensaoPorMorteMantCon" type="radio" name="f_CaixaGrupoPensaoPorMorteMantCon" value="NAO" onclick="controleCaixaGrupoPensaoPorMorteMantCon();" /><label for="f_CaixaGrupoPensaoPorMorteMantCon_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tablePensaoMorteMantCon" style="display: none; width: 100%">
+                                 <tr id="trPensaoMorteMantCon" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Valor da Pensão por Morte(R$)<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_PensaoVitaliciaMantCon" data-field="PensaoVitaliciaMantCon" type="text" id="f_PensaoVitaliciaMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Tem companheiro(a)?<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_CaixaGrupoCompanheiroMantCon" border="0">
+                                 <tr>
+                                    <td><input id="f_CaixaGrupoCompanheiroMantCon_0" data-field="CaixaGrupoCompanheiroMantCon" type="radio" name="f_CaixaGrupoCompanheiroMantCon" value="SIM" onclick="controleCaixaGrupoCompanheiroMantCon();" /><label for="f_CaixaGrupoCompanheiroMantCon_0">Sim</label></td>
+                                    <td><input id="f_CaixaGrupoCompanheiroMantCon_1" data-field="CaixaGrupoCompanheiroMantCon" type="radio" name="f_CaixaGrupoCompanheiroMantCon" value="NAO" onclick="controleCaixaGrupoCompanheiroMantCon();" /><label for="f_CaixaGrupoCompanheiroMantCon_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tableCompanheiroMantCon" style="display: none; width: 100%">
+                                 <tr id="trCompanheiroMantCon" align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Profissão do Companheiro(a)<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td>
+                                       <input name="f_ProfisCompanheiroMantCon" data-field="ProfissaoCompanheiroMantCon" type="text" maxlength="30" id="f_ProfisCompanheiroMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                                 <tr align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Remuneração do Companheiro(a)(R$)<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td>
+                                       <input name="f_RemCompanheiroMantCon" data-field="RemCompanheiroMantCon" type="text" id="f_RemCompanheiroMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Grau de Parentesco ou Afinidade<span style="color: #ff0000">*</span>:
+                           </td>
+                           <td colspan="3">
+                              <input name="f_GrauParentesco" data-field="GrauParentesco" type="text" maxlength="30" id="f_GrauParentesco" style="width:371px;" />
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td style="width: 37%; background-color: #fcfcfc;">
+                              Outras ativ. p/ Complementar Renda:<span style="color: #ff0000">*</span>
+                           </td>
+                           <td colspan="3">
+                              <table id="f_CaixaGrupoOutraAtividadeMant" border="0">
+                                 <tr>
+                                    <td><input id="f_CaixaGrupoOutraAtividadeMant_0" data-field="CaixaGrupoOutraAtividadeMant" type="radio" name="f_CaixaGrupoOutraAtividadeMant" value="SIM" onclick="controleCaixaGrupoOutraAtividadeMant();" /><label for="f_CaixaGrupoOutraAtividadeMant_0">Sim</label></td>
+                                    <td><input id="f_CaixaGrupoOutraAtividadeMant_1" data-field="CaixaGrupoOutraAtividadeMant" type="radio" name="f_CaixaGrupoOutraAtividadeMant" value="NAO" onclick="controleCaixaGrupoOutraAtividadeMant();" /><label for="f_CaixaGrupoOutraAtividadeMant_1">Não</label></td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                        <tr align="left">
+                           <td colspan="4">
+                              <table id="tableControleOutraAtividadeMant" style="display: none; width: 100%">
+                                 <tr align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Descrição da atividade<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_OutAtivCompRendaMantCon" data-field="OutAtivCompRendaMantCon" type="text" id="f_OutAtivCompRendaMantCon" style="width:371px;" />
+                                    </td>
+                                 </tr>
+                                 <tr align="left">
+                                    <td style="width: 37%; background-color: #fcfcfc;">
+                                       Remuneração média mensal(R$)<span style="color: #ff0000">*</span>:
+                                    </td>
+                                    <td colspan="3">
+                                       <input name="f_RemMediaMensalMantCon" data-field="RemMediaMensalMantCon" type="text" id="f_RemMediaMensalMantCon" style="width:100px;" />
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                  </td>
+               </tr>
+            </table>
+         </td>
+      </tr>
+   </table>
+   <input type="hidden" name="f_Aluno" id="f_Aluno" />
+   <input type="hidden" name="f_SemestreAno" id="f_SemestreAno" />
+   <input type="hidden" name="f_EstadoCivil" id="f_EstadoCivil" />
+</form>
+
+<script type="text/javascript">
+
+ 
+  /***Dados da Mãe***/
+  
+ function controleCaixaGrupoFalecidaMae()
+ {
+    if (document.getElementById('f_CaixaGrupoFalecidaMae_0').checked == true || document.getElementById('f_NomeMae').value.toUpperCase().trim() == 'DESCONHECIDA')
+    {         
+        document.getElementById('tableControleFalecida').style.display = 'none';
+        document.getElementById('f_IdadeMae').value = '';
+        document.getElementById('f_CPFMae').value = '';
+        document.getElementById('f_EnderecoMae').value = '';
+        document.getElementById('f_CidadeMae').value = '';
+        document.getElementById('f_UFMae').value = '';
+        document.getElementById('f_CEPMae').value = '';
+        document.getElementById('f_TelefoneMae').value = '';
+        document.getElementById('f_AnoAposentMae').value = '';
+        document.getElementById('f_MotivoAposentMae').value = '';
+        document.getElementById('f_ValorAposentMae').value = '';
+        document.getElementById('f_LocalTrabMae').value = '';
+        document.getElementById('f_RemuneracaoMae').value = '';
+        document.getElementById('f_ValorPensaoPai').value = '';
+        document.getElementById('f_PensaoVitaliciaMae').value = '';
+        document.getElementById('f_ProfisCompanheiroMae').value = '';
+        document.getElementById('f_RemCompanheiroMae').value = '';
+        document.getElementById('f_OutAtivCompRendaMae').value = '';
+        document.getElementById('f_RemMediaMensalMae').value = '';
+        
+        document.getElementById('f_CaixaGrupoMaeAposentado_0').checked = false;
+        document.getElementById('f_CaixaGrupoMaeAposentado_1').checked = false;      
+
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMae_0').checked = false;
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMae_1').checked = false;             
+
+        document.getElementById('f_CaixaGrupoCompanheiroMae_0').checked = false;
+        document.getElementById('f_CaixaGrupoCompanheiroMae_1').checked = false;  
+        
+        document.getElementById('f_CaixaGrupoOutraAtividadeMae_0').checked = false;
+        document.getElementById('f_CaixaGrupoOutraAtividadeMae_1').checked = false;  
+        
+        document.getElementById('f_MotivoAposentMae_0').checked = false;
+        document.getElementById('f_MotivoAposentMae_1').checked = false; 
+        document.getElementById('f_MotivoAposentMae_2').checked = false; 
+        
+        document.getElementById('tableAposentadaMae').style.display = 'none';
+        document.getElementById('tableAposentadaMae2').style.display = 'none';
+        
+        document.getElementById('trPensaoMorte').style.display = 'none';
+        document.getElementById('tableCompanheiroMae').style.display = 'none';
+        document.getElementById('tableControleOutraAtividadeMae').style.display = 'none';
+      
+    }
+    else if (document.getElementById('f_CaixaGrupoFalecidaMae_1').checked == true)
+    {
+        document.getElementById('tableControleFalecida').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tableControleFalecida').style.display = 'none';
+    }
+ }
+ 
+  
+ function controleCaixaGrupoGrauInstrucaoMae()
+ {
+    if (document.getElementById('f_GrauInstrucaoMae_0').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = true;
+	    document.getElementById('f_CursoSuperiorMae').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_1').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = true;
+	    document.getElementById('f_CursoSuperiorMae').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_2').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = true;
+	    document.getElementById('f_CursoSuperiorMae').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_3').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = true;
+	    document.getElementById('f_CursoSuperiorMae').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_4').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = true;
+	    document.getElementById('f_CursoSuperiorMae').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_5').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = false;
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoMae_6').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorMae').disabled = false;
+	}
+ }
+ 
+ function controleCaixaGrupoMaeAposentada()
+ {
+    if (document.getElementById('f_CaixaGrupoMaeAposentado_0').checked == true)
+    {
+         document.getElementById('tableAposentadaMae').style.display = '';
+         document.getElementById('tableAposentadaMae2').style.display = 'none';
+    
+         document.getElementById('f_RemuneracaoMae').value = '';
+         document.getElementById('f_LocalTrabMae').value = '';
+
+    }
+    else if (document.getElementById('f_CaixaGrupoMaeAposentado_1').checked == true)
+    {
+        document.getElementById('tableAposentadaMae').style.display = 'none';
+        document.getElementById('tableAposentadaMae2').style.display = '';
+        document.getElementById('f_AnoAposentMae').value = '';
+        document.getElementById('f_ValorAposentMae').value = '';
+        document.getElementById('f_MotivoAposentMae_0').checked = false; 
+        document.getElementById('f_MotivoAposentMae_1').checked = false; 
+        document.getElementById('f_MotivoAposentMae_2').checked = false;  
+    }
+    else
+    {
+        document.getElementById('tableAposentadaMae').style.display = 'none';
+        document.getElementById('tableAposentadaMae2').style.display = 'none';
+    }
+ }
+ 
+ function controleCaixaGrupoPensaoPorMorteMae()
+ {
+    if (document.getElementById('f_CaixaGrupoPensaoPorMorteMae_0').checked == true)
+    {
+        document.getElementById('trPensaoMorte').style.display = '';
+    }
+    else
+    {
+        document.getElementById('trPensaoMorte').style.display = 'none';
+        document.getElementById('f_PensaoVitaliciaMae').value = '';
+    }
+ }
+ 
+ function controleCaixaGrupoCompanheiroMae()
+ {
+    if (document.getElementById('f_CaixaGrupoCompanheiroMae_0').checked == true)
+    {
+        document.getElementById('tableCompanheiroMae').style.display = '';
+        document.getElementById('trCompanheiroMae').style.display = ''; 
+    }
+    else
+    {
+        document.getElementById('tableCompanheiroMae').style.display = 'none';
+        document.getElementById('trCompanheiroMae').style.display = 'none';
+        document.getElementById('f_ProfisCompanheiroMae').value = '';
+        document.getElementById('f_RemCompanheiroMae').value = '';
+    }
+ }
+ 
+ function controleCaixaGrupoOutraAtividadeMae()
+ {
+    if (document.getElementById('f_CaixaGrupoOutraAtividadeMae_0').checked == true)
+    {
+        document.getElementById('tableControleOutraAtividadeMae').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tableControleOutraAtividadeMae').style.display = 'none';
+    
+        document.getElementById('f_OutAtivCompRendaMae').value = '';
+        document.getElementById('f_RemMediaMensalMae').value = '';
+    }
+ }
+ 
+  /***Dados do Pai***/
+ function controleCaixaGrupoFalecidoPai()
+ {
+    if (document.getElementById('f_CaixaGrupoFalecidoPai_0').checked == true || document.getElementById('f_NomePai').value.toUpperCase().trim() == 'DESCONHECIDO')
+    {     
+        document.getElementById('tableControleFalecido').style.display = 'none';
+       
+        document.getElementById('f_IdadePai').value = '';
+        document.getElementById('f_CPFPai').value = '';
+        document.getElementById('f_EnderecoPai').value = '';
+        document.getElementById('f_CidadePai').value = '';
+        document.getElementById('f_UFPai').value = '';
+        document.getElementById('f_CEPPai').value = '';
+        document.getElementById('f_TelefonePai').value = '';
+        document.getElementById('f_AnoAposentPai').value = '';
+      
+        document.getElementById('f_ValorAposentPai').value = '';
+        document.getElementById('f_LocalTrabPai').value = '';
+        document.getElementById('f_RemuneracaoPai').value = '';
+        document.getElementById('f_AnoSeparacao').value = '';
+        document.getElementById('f_Legalizada').value = '';
+        document.getElementById('f_ValorPensaoMae').value = '';
+        document.getElementById('f_PensaoVitaliciaPai').value = '';
+        document.getElementById('f_ProfisCompanheiraPai').value = '';
+        document.getElementById('f_RemCompanheiraPai').value = '';
+        document.getElementById('f_OutAtivCompRendaPai').value = '';
+        document.getElementById('f_RemMediaMensalPai').value = '';
+        
+        document.getElementById('f_CaixaGrupoAposentadoPai_0').checked = false;
+        document.getElementById('f_CaixaGrupoAposentadoPai_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoSeparacaoPai_0').checked = false;
+        document.getElementById('f_CaixaGrupoSeparacaoPai_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoPensaoPorMortePai_0').checked = false;
+        document.getElementById('f_CaixaGrupoPensaoPorMortePai_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoCompanheiraPai_0').checked = false;
+        document.getElementById('f_CaixaGrupoCompanheiraPai_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoOutraAtividadePai_0').checked = false;
+        document.getElementById('f_CaixaGrupoOutraAtividadePai_1').checked = false;
+        
+        document.getElementById('f_MotivoAposentPai_0').checked = false;
+        document.getElementById('f_MotivoAposentPai_1').checked = false;  
+        document.getElementById('f_MotivoAposentPai_2').checked = false;
+        
+        document.getElementById('tableAposentadoPai').style.display = 'none';
+        document.getElementById('tableAposentadoPai2').style.display = 'none';
+        document.getElementById('tablePensaoPorMorte').style.display = 'none';
+        document.getElementById('tableCompanheiroPai').style.display = 'none';
+        document.getElementById('tableControleOutraAtividadePai').style.display = 'none';
+        document.getElementById('tableSeparacaoPai').style.display = 'none';      
+    }
+    else if (document.getElementById('f_CaixaGrupoFalecidoPai_1').checked == true)
+    {
+        document.getElementById('tableControleFalecido').style.display = '';
+    }
+    else{
+        document.getElementById('tableControleFalecido').style.display = 'none';
+    }
+ }
+ 
+
+ function controleCaixaGrupoGrauInstrucaoPai()
+ {
+    
+    if (document.getElementById('f_GrauInstrucaoPai_0').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = true;
+	    document.getElementById('f_CursoSuperiorPai').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_1').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = true;
+	    document.getElementById('f_CursoSuperiorPai').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_2').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = true;
+	    document.getElementById('f_CursoSuperiorPai').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_3').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = true;
+	    document.getElementById('f_CursoSuperiorPai').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_4').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = true;
+	    document.getElementById('f_CursoSuperiorPai').value = '';
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_5').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = false;
+	    
+	}
+	
+	if (document.getElementById('f_GrauInstrucaoPai_6').checked == true)
+    {
+	    document.getElementById('f_CursoSuperiorPai').disabled = false;
+	    
+	}
+ }
+ 
+
+ function controleCaixaGrupoPaiAposentado()
+ {
+    if (document.getElementById('f_CaixaGrupoAposentadoPai_0').checked == true)
+    {
+        document.getElementById('tableAposentadoPai').style.display = '';
+        document.getElementById('tableAposentadoPai2').style.display = 'none';
+        
+        document.getElementById('f_RemuneracaoPai').value = '';
+        document.getElementById('f_LocalTrabPai').value = '';
+        
+        document.getElementById('trPaiAposentado1').style.display = '';
+        document.getElementById('trPaiAposentado2').style.display = '';
+        document.getElementById('trPaiAposentado3').style.display = '';
+    }
+    else if (document.getElementById('f_CaixaGrupoAposentadoPai_1').checked == true)
+    {
+        document.getElementById('tableAposentadoPai').style.display = 'none';
+        document.getElementById('tableAposentadoPai2').style.display = '';
+        document.getElementById('trPaiAposentado1').style.display = 'none';
+        document.getElementById('trPaiAposentado2').style.display = 'none';
+        document.getElementById('trPaiAposentado3').style.display = 'none';
+        document.getElementById('f_AnoAposentPai').value = '';
+        document.getElementById('f_ValorAposentPai').value = '';
+        document.getElementById('f_MotivoAposentPai_0').checked = false; 
+        document.getElementById('f_MotivoAposentPai_1').checked = false; 
+        document.getElementById('f_MotivoAposentPai_2').checked = false;  
+    }
+    else{
+        document.getElementById('tableAposentadoPai').style.display = 'none';
+        document.getElementById('tableAposentadoPai2').style.display = 'none';
+    }
+ }
+
+
+
+ function controleCaixaGrupoPensaoPorMortePai()
+ {
+    if (document.getElementById('f_CaixaGrupoPensaoPorMortePai_0').checked == true)
+    {
+        document.getElementById('tablePensaoPorMorte').style.display = '';
+        document.getElementById('trPensaoMortePai').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tablePensaoPorMorte').style.display = 'none';
+        document.getElementById('trPensaoMortePai').style.display = 'none';
+        document.getElementById('f_PensaoVitaliciaPai').value = '';
+    }
+ }
+ 
+ function controleCaixaGrupoCompanheiraPai()
+ {
+    if (document.getElementById('f_CaixaGrupoCompanheiraPai_0').checked == true)
+    {
+        document.getElementById('tableCompanheiroPai').style.display = '';     
+        document.getElementById('trCompanheiroPai').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tableCompanheiroPai').style.display = 'none';
+        document.getElementById('trCompanheiroPai').style.display = 'none';
+        document.getElementById('f_ProfisCompanheiraPai').value = '';
+        document.getElementById('f_RemCompanheiraPai').value = '';
+    }
+ }
+  function controleCaixaGrupoSeparadoPai()
+ {
+    if (document.getElementById('f_CaixaGrupoSeparacaoPai_0').checked == true)
+    {
+        document.getElementById('tableSeparacaoPai').style.display = '';
+        
+        document.getElementById('trAnoSeparacaoPai').style.display = '';
+        document.getElementById('trLegalizacaoPai').style.display = '';
+        document.getElementById('trPensaoAlimenticia').style.display = '';
+        
+        
+        //agora agente também desabilita a opção lá em baixo, para ele não se confundir e marcar que a mãe dele é a companheira dele. 
+        document.getElementById('f_CaixaGrupoCompanheiraPai').disabled = false;
+        document.getElementById('f_CaixaGrupoCompanheiroMae').disabled = false;
+    }
+    else
+    {
+        document.getElementById('tableSeparacaoPai').style.display = 'none';
+    
+        document.getElementById('trAnoSeparacaoPai').style.display = 'none';
+        document.getElementById('trLegalizacaoPai').style.display = 'none';
+        document.getElementById('trPensaoAlimenticia').style.display = 'none';
+        document.getElementById('f_AnoSeparacao').value = '';
+        document.getElementById('f_ValorPensaoMae').value = '';
+        document.getElementById('f_Legalizada_0').checked = false; 
+        document.getElementById('f_Legalizada_1').checked = false; 
+        
+        document.getElementById('f_CaixaGrupoCompanheiraPai_1').checked = true;
+        document.getElementById('f_CaixaGrupoCompanheiraPai_0').checked = false;
+        document.getElementById('f_CaixaGrupoCompanheiraPai').value = 'NAO';
+        controleCaixaGrupoCompanheiraPai();
+        document.getElementById('f_CaixaGrupoCompanheiraPai').disabled = true;               
+        
+        if(!(document.getElementById('f_CaixaGrupoFalecidoPai_0').checked == true || document.getElementById('f_NomePai').value.toUpperCase().trim() == 'DESCONHECIDO')){
+            document.getElementById('f_CaixaGrupoCompanheiroMae_1').checked = true;
+            controleCaixaGrupoCompanheiroMae();
+            document.getElementById('f_CaixaGrupoCompanheiroMae_1').checked = false;
+            document.getElementById('f_CaixaGrupoCompanheiroMae_0').checked = false;
+            document.getElementById('f_CaixaGrupoCompanheiroMae').disabled = true;
+        }
+    }
+ }
+
+function controleCaixaGrupoOutraAtividadePai()
+ {
+    if (document.getElementById('f_CaixaGrupoOutraAtividadePai_0').checked == true)
+    {
+        document.getElementById('tableControleOutraAtividadePai').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tableControleOutraAtividadePai').style.display = 'none';
+    
+        document.getElementById('f_OutAtivCompRendaPai').value = '';
+        document.getElementById('f_RemMediaMensalPai').value = '';
+    }
+ }
+ 
+ /*Dados do Mantenedor(a)/Cônjuge*/
+ 
+  function controleCaixaGrupoFalecidoMantCon()
+ {
+   if (document.getElementById('f_CaixaGrupoFalecidoMantCon_0').checked == true)
+   {     
+        document.getElementById('tableControleFalecidaMant').style.display = 'none';
+        document.getElementById('f_IdadeMantCon').value = '';
+        document.getElementById('f_CPFMantCon').value = '';
+        document.getElementById('f_EnderecoMantCon').value = '';
+        document.getElementById('f_CidadeMantCon').value = '';
+        document.getElementById('f_UFMantCon').value = '';
+        document.getElementById('f_CEPMantCon').value = '';
+        document.getElementById('f_TelefoneMantCon').value = '';
+        document.getElementById('f_AnoAposentMantCon').value = '';
+      
+      
+        document.getElementById('f_ValorAposentMantCon').value = '';
+        document.getElementById('f_LocalTrabMantCon').value = '';
+        document.getElementById('f_RemuneracaoMantCon').value = '';
+        document.getElementById('f_AnoSeparacaoMantCon').value = '';
+        document.getElementById('f_LegalizadaMantCon').value = '';
+        document.getElementById('f_ValorPensaoMantCon').value = '';
+        document.getElementById('f_PensaoVitaliciaMantCon').value = '';
+      
+        document.getElementById('f_ProfisCompanheiroMantCon').value = '';
+        document.getElementById('f_RemCompanheiroMantCon').value = '';
+        document.getElementById('f_OutAtivCompRendaMantCon').value = '';
+        document.getElementById('f_RemMediaMensalMantCon').value = '';
+        document.getElementById('f_GrauParentesco').value = '';
+        
+        document.getElementById('f_CaixaGrupoAposentadoMantCon_0').checked = false;
+        document.getElementById('f_CaixaGrupoAposentadoMantCon_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoSeparacaoMantCon_0').checked = false;
+        document.getElementById('f_CaixaGrupoSeparacaoMantCon_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMantCon_0').checked = false;
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMantCon_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon_0').checked = false;
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon_1').checked = false;
+        
+        document.getElementById('f_CaixaGrupoOutraAtividadeMant_0').checked = false;
+        document.getElementById('f_CaixaGrupoOutraAtividadeMant_1').checked = false;
+       
+        document.getElementById('f_MotivoAposentMantCon_0').checked = false;
+        document.getElementById('f_MotivoAposentMantCon_1').checked = false;  
+        document.getElementById('f_MotivoAposentMantCon_2').checked = false;
+         
+        document.getElementById('tableAposentadaMant').style.display = 'none';
+        document.getElementById('tableAposentadaMant2').style.display = 'none';
+        document.getElementById('tablePensaoMorteMantCon').style.display = 'none';
+        document.getElementById('tableCompanheiroMantCon').style.display = 'none';
+        document.getElementById('tableControleOutraAtividadeMant').style.display = 'none';
+        document.getElementById('tableSeparacaoMantCon').style.display = 'none';   
+    }
+    else if (document.getElementById('f_CaixaGrupoFalecidoMantCon_1').checked == true)
+    {
+        document.getElementById('tableControleFalecidaMant').style.display = '';
+    }
+    else{
+        document.getElementById('tableControleFalecidaMant').style.display = 'none';
+    }
+ }
+
+function controleCaixaGrupoGrauInstrucaoMantCon()
+{   
+        if (document.getElementById('f_GrauInstrucaoMantCon_0').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = true;
+	        document.getElementById('f_CursoSuperiorMantCon').value = '';
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_1').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = true;
+	        document.getElementById('f_CursoSuperiorMantCon').value = '';
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_2').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = true;
+	        document.getElementById('f_CursoSuperiorMantCon').value = '';
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_3').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = true;
+	        document.getElementById('f_CursoSuperiorMantCon').value = '';
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_4').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = true;
+	        document.getElementById('f_CursoSuperiorMantCon').value = '';
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_5').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = false;
+	    }
+	    if (document.getElementById('f_GrauInstrucaoMantCon_6').checked == true)
+        {
+	        document.getElementById('f_CursoSuperiorMantCon').disabled = false;
+	    }
+ }
+ 
+ function controleCaixaGrupoMantConAposentado()
+ {
+    if (document.getElementById('f_CaixaGrupoAposentadoMantCon_0').checked == true)
+    {      
+        document.getElementById('tableAposentadaMant').style.display = '';
+        document.getElementById('tableAposentadaMant2').style.display = 'none';
+        
+        document.getElementById('f_RemuneracaoMantCon').value = '';
+        document.getElementById('f_LocalTrabMantCon').value = '';
+    
+        document.getElementById('trMantConAposentado1').style.display = '';
+        document.getElementById('trMantConAposentado2').style.display = '';
+        document.getElementById('trMantConAposentado3').style.display = '';
+    }
+    else if (document.getElementById('f_CaixaGrupoAposentadoMantCon_1').checked == true)
+    {
+        document.getElementById('tableAposentadaMant').style.display = 'none';
+        document.getElementById('tableAposentadaMant2').style.display = '';
+               
+        document.getElementById('trMantConAposentado1').style.display = 'none';
+        document.getElementById('trMantConAposentado2').style.display = 'none';
+        document.getElementById('trMantConAposentado3').style.display = 'none';
+        document.getElementById('f_AnoAposentMantCon').value = '';
+        document.getElementById('f_ValorAposentMantCon').value = '';
+        document.getElementById('f_MotivoAposentMantCon_0').checked = false; 
+        document.getElementById('f_MotivoAposentMantCon_1').checked = false; 
+        document.getElementById('f_MotivoAposentMantCon_2').checked = false;  
+    }
+    else{
+        document.getElementById('tableAposentadaMant').style.display = 'none';
+        document.getElementById('tableAposentadaMant2').style.display = 'none';
+    }
+ }
+ 
+ function controleCaixaGrupoPensaoPorMorteMantCon()
+ {
+    if (document.getElementById('f_CaixaGrupoPensaoPorMorteMantCon_0').checked == true)
+    { 
+        document.getElementById('tablePensaoMorteMantCon').style.display = '';
+        document.getElementById('trPensaoMorteMantCon').style.display = '';
+    }
+    else
+    {
+        document.getElementById('tablePensaoMorteMantCon').style.display = 'none';
+        document.getElementById('f_PensaoVitaliciaMantCon').value = '';
+    }
+ }
+ 
+ function controleCaixaGrupoCompanheiroMantCon()
+ {
+    if (document.getElementById('f_CaixaGrupoCompanheiroMantCon_0').checked == true)
+    {
+        document.getElementById('tableCompanheiroMantCon').style.display = '';
+        document.getElementById('trCompanheiroMantCon').style.display = '';
+
+    }
+    else
+    {
+        document.getElementById('tableCompanheiroMantCon').style.display = 'none';
+        document.getElementById('trCompanheiroMantCon').style.display = 'none';
+        document.getElementById('f_ProfisCompanheiroMantCon').value = '';
+        document.getElementById('f_RemCompanheiroMantCon').value = '';
+
+    }
+ }
+ 
+ function controleCaixaGrupoSeparadoMantCon()
+ {
+    if (document.getElementById('f_CaixaGrupoSeparacaoMantCon_0').checked == true)
+    {  
+        document.getElementById('tableSeparacaoMantCon').style.display = '';
+    
+        document.getElementById('trAnoSeparacaoMantCon').style.display = '';
+        document.getElementById('trLegalizacaoMantCon').style.display = '';
+
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon').disabled = false;
+    }
+    else
+    {
+        document.getElementById('tableSeparacaoMantCon').style.display = 'none';
+    
+        document.getElementById('trAnoSeparacaoMantCon').style.display = 'none';
+        document.getElementById('trLegalizacaoMantCon').style.display = 'none';
+        document.getElementById('f_AnoSeparacaoMantCon').value = '';
+        document.getElementById('f_ValorPensaoMantCon').value = '';
+        document.getElementById('f_LegalizadaMantCon_0').checked = false; 
+        document.getElementById('f_LegalizadaMantCon_1').checked = false; 
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon').disabled = true;
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon_1').checked = true;
+    }
+    controleCaixaGrupoCompanheiroMantCon();
+
+ }
+ 
+ function controleCaixaGrupoOutraAtividadeMant()
+ {
+    if (document.getElementById('f_CaixaGrupoOutraAtividadeMant_0').checked == true)
+    {
+        document.getElementById('tableControleOutraAtividadeMant').style.display = '';    
+    }
+    else
+    {
+        document.getElementById('tableControleOutraAtividadeMant').style.display = 'none';
+    
+        document.getElementById('f_OutAtivCompRendaMantCon').value = '';
+        document.getElementById('f_RemMediaMensalMantCon').value = '';
+    }
+ }
+ 
+ function controleDadosMantenedor()
+ {      
+    if(document.getElementById('f_CaixaGrupoMantenedor_0').checked == true)
+    {
+        document.getElementById('dadosMantenedor').style.display = '';
+    }
+    else
+    {
+        document.getElementById('f_RemMediaMensalMantCon').value = '';
+        document.getElementById('f_GrauParentesco').value = '';
+        document.getElementById('f_OutAtivCompRendaMantCon').value = '';
+        document.getElementById('f_RemCompanheiroMantCon').value = '';
+        document.getElementById('f_ProfisCompanheiroMantCon').value = '';
+          
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon_0').checked = false; 
+        document.getElementById('f_CaixaGrupoCompanheiroMantCon_1').checked = false; 
+        
+        document.getElementById('f_CaixaGrupoFalecidoMantCon_0').checked = false; 
+        document.getElementById('f_CaixaGrupoFalecidoMantCon_1').checked = false; 
+        
+        document.getElementById('f_PensaoVitaliciaMantCon').value = '';
+        
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMantCon_0').checked = false; 
+        document.getElementById('f_CaixaGrupoPensaoPorMorteMantCon_1').checked = false; 
+
+        document.getElementById('f_ValorPensaoMantCon').value = '';
+        document.getElementById('f_AnoSeparacaoMantCon').value = '';
+
+        document.getElementById('f_CaixaGrupoSeparacaoMantCon_0').checked = false; 
+        document.getElementById('f_CaixaGrupoSeparacaoMantCon_1').checked = false; 
+       
+        document.getElementById('f_ValorAposentMantCon').value = '';
+        
+        document.getElementById('f_MotivoAposentMantCon_0').checked = false; 
+        document.getElementById('f_MotivoAposentMantCon_1').checked = false; 
+      
+        document.getElementById('f_AnoAposentMantCon').value = '';
+        
+        document.getElementById('f_CaixaGrupoAposentadoMantCon_0').checked = false; 
+        document.getElementById('f_CaixaGrupoAposentadoMantCon_1').checked = false;
+        
+        document.getElementById('f_LocalTrabMantCon').value = '';
+        document.getElementById('f_RemuneracaoMantCon').value = '';
+        document.getElementById('f_ProfissaoMantCon').value = '';
+        document.getElementById('f_CursoSuperiorMantCon').value = '';
+        
+        document.getElementById('f_GrauInstrucaoMantCon_0').checked = false; 
+        document.getElementById('f_GrauInstrucaoMantCon_1').checked = false;
+        document.getElementById('f_GrauInstrucaoMantCon_2').checked = false; 
+        document.getElementById('f_GrauInstrucaoMantCon_3').checked = false;        
+        document.getElementById('f_GrauInstrucaoMantCon_4').checked = false; 
+        document.getElementById('f_GrauInstrucaoMantCon_5').checked = false;        
+        document.getElementById('f_GrauInstrucaoMantCon_6').checked = false;  
+
+        document.getElementById('f_CEPMantCon').value = '';
+        document.getElementById('f_TelefoneMantCon').value = '';
+        document.getElementById('f_UFMantCon').value = '';
+        document.getElementById('f_CidadeMantCon').value = '';
+        document.getElementById('f_EnderecoMantCon').value = '';
+        document.getElementById('f_CPFMantCon').value = '';
+        document.getElementById('f_IdadeMantCon').value = '';
+        document.getElementById('f_NomeMantCon').value = '';
+        document.getElementById('dadosMantenedor').style.display = 'none';
+        
+        document.getElementById('tableAposentadaMant').style.display = 'none';
+        document.getElementById('tableAposentadaMant2').style.display = 'none';
+        document.getElementById('tablePensaoMorteMantCon').style.display = 'none';
+        document.getElementById('tableCompanheiroMantCon').style.display = 'none';
+        document.getElementById('tableControleOutraAtividadeMant').style.display = 'none';
+        document.getElementById('tableSeparacaoMantCon').style.display = 'none';   
+  }
+}
+String.prototype.trim = function () {
+    return this.replace(/^\s+|\s+$/g,"");
+}
+ 
+/*Dados da Mãe*/
+controleCaixaGrupoMaeAposentada();
+controleCaixaGrupoPensaoPorMorteMae();
+controleCaixaGrupoCompanheiroMae();
+controleCaixaGrupoOutraAtividadeMae();
+controleCaixaGrupoFalecidaMae();
+
+/*Dados do Pai*/
+
+controleCaixaGrupoPaiAposentado();
+controleCaixaGrupoPensaoPorMortePai();
+controleCaixaGrupoCompanheiraPai();
+controleCaixaGrupoSeparadoPai();
+controleCaixaGrupoOutraAtividadePai();
+controleCaixaGrupoFalecidoPai();
+
+/*Dados do Mantenedor(a)/Cônjuge*/
+controleCaixaGrupoFalecidoMantCon();
+controleCaixaGrupoMantConAposentado();
+controleCaixaGrupoPensaoPorMorteMantCon();
+controleCaixaGrupoCompanheiroMantCon();
+controleCaixaGrupoSeparadoMantCon();
+controleDadosMantenedor();
+controleCaixaGrupoOutraAtividadeMant();
+</script>
