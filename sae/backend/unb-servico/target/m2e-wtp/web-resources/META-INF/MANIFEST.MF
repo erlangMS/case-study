@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: everton
+Build-Jdk: 1.8.0_45
+Implementation-Title: unb-servico
+Implementation-Version: 2.0.0-RELEASE
+Implementation-Vendor-Id: br.unb.sistemas
+Created-By: Maven Integration for Eclipse
+Dependencies: br.unb.autenticacao,org.picketlink
+Implementation-Build: 
+

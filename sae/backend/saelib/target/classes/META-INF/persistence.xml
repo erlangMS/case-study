@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
+	<persistence-unit name="SaePU" transaction-type="JTA">			
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>		  
+		<jta-data-source>java:jboss/datasources/SaeDS</jta-data-source>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect" />
+			<property name="jboss.entity.manager.factory.jndi.name" value="java:/SaePU" />
+			<!-- hibernate.show_sql = true -> somente para Desenvolvimento -->
+			<property name="hibernate.show_sql" value="true" />	
+    		<property name="hibernate.format_sql" value="true"/>
+    		<property name="hibernate.jdbc.use_scrollable_resultset" value="false"/>	
+		</properties>						
+	</persistence-unit>		
+</persistence>
+
