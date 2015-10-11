@@ -49,46 +49,18 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.primefaces</groupId>
-			<artifactId>primefaces</artifactId>
-			<version>4.0</version>
-			<scope>compile</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>br.unb.sistemas</groupId>
 			<artifactId>saelib</artifactId>
 			<version>2.0.0-RELEASE</version>
 		</dependency>
 
-		<dependency>
-			<groupId>com.google.code</groupId>
-			<artifactId>kaptcha</artifactId>
-			<version>2.3.2</version>
-		</dependency>
-
-		<dependency>
-		    <groupId>org.omnifaces</groupId>
-		    <artifactId>omnifaces</artifactId>
-		    <version>1.5</version>
-		</dependency>
-
-		<dependency>
-      		<groupId>bouncycastle</groupId>
-      		<artifactId>bcprov-jdk16</artifactId>
-      		<version>140</version>
-    	</dependency>		
 	</dependencies>
 
 	<distributionManagement>
 		<repository>
 			<id>releases</id>
-			<url>http://svn.cpd.unb.br:8081/nexus/content/repositories/releases</url>
+			<url>localhost:8081/nexus/content/repositories/releases</url>
 		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<url>http://svn.cpd.unb.br:8081/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
 	</distributionManagement>
 
 
@@ -122,10 +94,6 @@
 						<manifest>
 							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
 						</manifest>
-						<manifestEntries>
-							<Dependencies>br.unb.autenticacao,org.picketlink</Dependencies>
-							<Implementation-Build>${maven.build.timestamp}</Implementation-Build>
-						</manifestEntries>
 					</archive>
 				</configuration>
 			</plugin>
@@ -138,34 +106,7 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-<!-- 
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>sonar-maven-plugin</artifactId>
-				<version>2.0-beta-2</version>
-				<configuration>
-					<sonarHostURL>http://svn.cpd.unb.br:9000/</sonarHostURL>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>sonar</goal>
-						</goals>
-						<phase>${sonar.goal.phase}</phase>
-					</execution>
-				</executions>
-				<dependencies>
-					<dependency>
-						<groupId>org.apache.derby</groupId>
-						<artifactId>derbyclient</artifactId>
-						<version>10.7.1.1</version>
-						<scope>compile</scope>
-					</dependency>
-				</dependencies>
-			</plugin>
- -->
 		</plugins>
-
 
 	</build>
 
