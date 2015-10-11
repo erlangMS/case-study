@@ -1,6 +1,5 @@
 package br.unb.web.sae.negocio;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -22,14 +21,18 @@ public class ValorAlimentacaoNegocio {
 		return dao.findById(id);
 	}
 
-	public List<ValorAlimentacao> pesquisar(String filtro, String fields,
-			int limit_ini, int limit_fim, String sort) {
+	public List<ValorAlimentacao> pesquisar(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
 		return dao.pesquisar(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public ValorAlimentacao update(ValorAlimentacao obj) throws EmsValidation{
+	public void update(ValorAlimentacao obj) throws EmsValidation{
 		validar(obj);
-		return dao.update(obj);
+		dao.update(obj);
+	}
+
+	public void insert(ValorAlimentacao obj) {
+		validar(obj);
+		dao.insert(obj);
 	}
 	
 	private void validar(ValorAlimentacao obj) throws EmsValidation {
@@ -46,6 +49,7 @@ public class ValorAlimentacaoNegocio {
 			throw validation;
 		}
 	}
+
 	
 
 	
