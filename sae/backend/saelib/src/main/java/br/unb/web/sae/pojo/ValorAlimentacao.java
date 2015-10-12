@@ -7,6 +7,8 @@ import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,6 +21,7 @@ public class ValorAlimentacao implements Serializable {
 
 	@Id
     @Column(name = "IdValorAlimetacao", nullable = false, insertable = true, updatable = true)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
     @Basic
@@ -36,10 +39,6 @@ public class ValorAlimentacao implements Serializable {
     @Basic
     @Column(name = "PagaBeneficio", nullable = false, insertable = true, updatable = true)
     private Boolean pagaBeneficio;
-
-    @Basic
-    @Column(name = "GeraArquivoRU", nullable = false, insertable = true, updatable = true)
-    private Boolean geraArquivoRu;
 
     @Basic
     @Column(name = "ValorBeneficio", nullable = false, insertable = true, updatable = true, precision = 2)
@@ -60,8 +59,6 @@ public class ValorAlimentacao implements Serializable {
         if (fimVigencia != null ? !fimVigencia.equals(that.fimVigencia) : that.fimVigencia != null) return false;
         if (pagaBeneficio != null ? !pagaBeneficio.equals(that.pagaBeneficio) : that.pagaBeneficio != null)
             return false;
-        if (geraArquivoRu != null ? !geraArquivoRu.equals(that.geraArquivoRu) : that.geraArquivoRu != null)
-            return false;
         if (valorBeneficio != null ? !valorBeneficio.equals(that.valorBeneficio) : that.valorBeneficio != null)
             return false;
 
@@ -75,7 +72,6 @@ public class ValorAlimentacao implements Serializable {
         result = 31 * result + (inicioVigencia != null ? inicioVigencia.hashCode() : 0);
         result = 31 * result + (fimVigencia != null ? fimVigencia.hashCode() : 0);
         result = 31 * result + (pagaBeneficio != null ? pagaBeneficio.hashCode() : 0);
-        result = 31 * result + (geraArquivoRu != null ? geraArquivoRu.hashCode() : 0);
         result = 31 * result + (valorBeneficio != null ? valorBeneficio.hashCode() : 0);
         return result;
     }
@@ -118,14 +114,6 @@ public class ValorAlimentacao implements Serializable {
 
 	public void setPagaBeneficio(Boolean pagaBeneficio) {
 		this.pagaBeneficio = pagaBeneficio;
-	}
-
-	public Boolean getGeraArquivoRu() {
-		return geraArquivoRu;
-	}
-
-	public void setGeraArquivoRu(Boolean geraArquivoRu) {
-		this.geraArquivoRu = geraArquivoRu;
 	}
 
 	public BigDecimal getValorBeneficio() {

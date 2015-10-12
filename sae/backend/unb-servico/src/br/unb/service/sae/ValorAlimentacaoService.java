@@ -35,17 +35,19 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 		return negocio.pesquisar(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public void insert(IEmsRequest request){
-		final ValorAlimentacao obj = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
-		negocio.insert(obj);
+	public ValorAlimentacao insert(IEmsRequest request){
+		final Map<String, Object> update_values = (Map<String, Object>) request.getObject(HashMap.class);
+		final ValorAlimentacao obj = new ValorAlimentacao();
+		EmsUtil.setValuesFromMap(obj, update_values);
+		return negocio.insert(obj);
 	}
 	
-	public void update(IEmsRequest request){
+	public ValorAlimentacao update(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
 		final Map<String, Object> update_values = (Map<String, Object>) request.getObject(HashMap.class);
 		ValorAlimentacao obj = negocio.findById(id);
 		EmsUtil.setValuesFromMap(obj, update_values);
-		negocio.update(obj);
+		return negocio.update(obj);
 	}
 	
 	

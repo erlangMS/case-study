@@ -25,14 +25,14 @@ public class ValorAlimentacaoNegocio {
 		return dao.pesquisar(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public void update(ValorAlimentacao obj) throws EmsValidation{
+	public ValorAlimentacao update(ValorAlimentacao obj) throws EmsValidation{
 		validar(obj);
-		dao.update(obj);
+		return dao.update(obj);
 	}
 
-	public void insert(ValorAlimentacao obj) {
+	public ValorAlimentacao insert(ValorAlimentacao obj) {
 		validar(obj);
-		dao.insert(obj);
+		return dao.insert(obj);
 	}
 	
 	private void validar(ValorAlimentacao obj) throws EmsValidation {
