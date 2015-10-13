@@ -38,14 +38,29 @@ public class ValorAlimentacaoNegocio {
 	private void validar(ValorAlimentacao obj) throws EmsValidation {
 		EmsValidation validation = new EmsValidation();
 		
-		boolean error = false;
-		
-		if(obj.getValorBeneficio() != null && obj.getValorBeneficio().doubleValue() > LIMITE) {
-			validation.addError("Valor do beneficio > " + LIMITE);
-			error = true;
+		if (obj.getCampus() == null){
+			validation.addError("O campo campus é obrigatório.");
 		}
 		
-		if(error) {
+		if (obj.getInicioVigencia() == null){
+			validation.addError("O campo data de início de vigência é obrigatório.");
+		}
+
+		if(obj.getPagaBeneficio() == null) {
+			validation.addError("Informe se paga benefício.");
+		}
+		
+		if(obj.getValorBeneficio() == null) {
+			validation.addError("O campo valor do benefício é obrigatório.");
+		}
+
+		if(obj.getFimVigencia() != null && 
+		   obj.getInicioVigencia() != null && 
+		   obj.getFimVigencia().before(obj.getInicioVigencia())) {
+				validation.addError("A data do fim de vigência deve ser maior que a data de início de vigência.");
+		}
+		
+		if(validation.getErrors().size() > 0) {
 			throw validation;
 		}
 	}

@@ -48,7 +48,7 @@ var valorAlimentacaoController = {
 	 */ 
 	on_render_lazy_field : function(field){
 		if (field.dataset.field === "campus"){
-			fpc.callRestIfNull(this.lista_campus, '/sitab/campus', {fields: "codigo,denominacao"} )
+			fpc.callRestIfNull(this.lista_campus, '/sitab/campus')
 				.done(function(result) {
 					valorAlimentacaoController.lista_campus = result;
 					fpc.fillComboboxFromArray(field, valorAlimentacaoController.lista_campus);

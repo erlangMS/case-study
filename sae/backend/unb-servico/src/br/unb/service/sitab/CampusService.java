@@ -23,7 +23,7 @@ public class CampusService extends EmsServiceFacade {
 		return negocio.findById(id);
 	}
 	
-	public List<Campus> pesquisar(IEmsRequest request){
+	public List<Campus> all(IEmsRequest request){
 		return negocio.getAll();
 	}
 	

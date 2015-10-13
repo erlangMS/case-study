@@ -41,7 +41,7 @@ public class ValorAlimentacao implements Serializable {
     private Boolean pagaBeneficio;
 
     @Basic
-    @Column(name = "ValorBeneficio", nullable = false, insertable = true, updatable = true, precision = 2)
+    @Column(name = "ValorBeneficio", nullable = false, insertable = true, updatable = true, precision = 10)
     private BigDecimal valorBeneficio;
 
     @Override

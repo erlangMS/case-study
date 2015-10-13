@@ -26,7 +26,7 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 		return negocio.findById(id);
 	}
 	
-	public List<ValorAlimentacao> pesquisar(IEmsRequest request){
+	public List<ValorAlimentacao> find(IEmsRequest request){
 		String filtro = request.getQuery("filtro");
 		String fields = request.getQuery("fields");
 		int limit_ini = request.getQueryAsInt("limit_ini");
