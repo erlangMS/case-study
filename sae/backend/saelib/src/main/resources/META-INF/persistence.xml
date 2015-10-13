@@ -12,10 +12,9 @@
 
 	  <property name="jboss.entity.manager.factory.jndi.name" value="java:/SaePU" />
 	  <property name="hibernate.show_sql" value="true" />	
-  	  <property name="hibernate.format_sql" value="true"/>
+  	  <property name="hibernate.format_sql" value="false"/>
   	  <property name="hibernate.jdbc.use_scrollable_resultset" value="false"/>	
   	  <property name="hibernate.hbm2ddl.auto" value="create" /> 
     </properties>
-
   </persistence-unit>
 </persistence>

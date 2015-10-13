@@ -5,15 +5,13 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import br.erlangms.EmsValidation;
+import br.erlangms.EmsValidationException;
 import br.unb.web.sae.persistencia.ValorAlimentacaoDAO;
 import br.unb.web.sae.pojo.ValorAlimentacao;
 
 @Stateless
 public class ValorAlimentacaoNegocio {
 
-	private static final double LIMITE = 100;
-	
 	@EJB
 	private ValorAlimentacaoDAO dao;
 
@@ -22,10 +20,10 @@ public class ValorAlimentacaoNegocio {
 	}
 
 	public List<ValorAlimentacao> pesquisar(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
-		return dao.pesquisar(filtro, fields, limit_ini, limit_fim, sort);
+		return dao.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public ValorAlimentacao update(ValorAlimentacao obj) throws EmsValidation{
+	public ValorAlimentacao update(ValorAlimentacao obj) throws EmsValidationException{
 		validar(obj);
 		return dao.update(obj);
 	}
@@ -35,8 +33,8 @@ public class ValorAlimentacaoNegocio {
 		return dao.insert(obj);
 	}
 	
-	private void validar(ValorAlimentacao obj) throws EmsValidation {
-		EmsValidation validation = new EmsValidation();
+	private void validar(ValorAlimentacao obj) throws EmsValidationException {
+		EmsValidationException validation = new EmsValidationException();
 		
 		if (obj.getCampus() == null){
 			validation.addError("O campo campus é obrigatório.");
