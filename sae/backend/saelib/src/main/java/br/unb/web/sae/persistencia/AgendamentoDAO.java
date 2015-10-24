@@ -26,8 +26,8 @@ public class AgendamentoDAO extends EmsDao<Agenda> {
 	}
 	
 	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
-		String sql = "SELECT COUNT(a) FROM Agenda a WHERE a.dataHora = :pDataHora";
-		return (int) emSae.createQuery(sql).setParameter("pDataHora", dataHora).getSingleResult();
+		final String sql = "SELECT COUNT(a) FROM Agenda a WHERE a.dataHora = :pDataHora";
+		return emSae.createQuery(sql).setParameter("pDataHora", dataHora).getFirstResult();
 	}
 
 }

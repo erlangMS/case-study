@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Built-By: agilar
-Build-Jdk: 1.8.0_60
+Build-Jdk: 1.8.0_66
 Implementation-Title: unb-servico
 Implementation-Version: 2.0.0-RELEASE
 Implementation-Vendor-Id: br.unb.sistemas

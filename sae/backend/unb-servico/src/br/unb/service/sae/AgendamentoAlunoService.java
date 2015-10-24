@@ -1,8 +1,5 @@
 package br.unb.service.sae;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
