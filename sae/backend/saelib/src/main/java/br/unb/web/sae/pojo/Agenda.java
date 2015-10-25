@@ -29,7 +29,7 @@ public class Agenda implements Serializable {
     private String periodo;
 
     @Basic
-    @Column(name = "DataHora", nullable = false, insertable = true, updatable = true, length = 27)
+    @Column(name = "DataHora", nullable = false, insertable = true, updatable = true)
     @Temporal (TemporalType.TIMESTAMP)
     private Date dataHora;
 
