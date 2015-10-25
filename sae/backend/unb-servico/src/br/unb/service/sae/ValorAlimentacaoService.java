@@ -1,15 +1,12 @@
 package br.unb.service.sae;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 import br.erlangms.EmsServiceFacade;
-import br.erlangms.EmsUtil;
 import br.erlangms.IEmsRequest;
 import br.unb.web.sae.negocio.ValorAlimentacaoNegocio;
 import br.unb.web.sae.pojo.ValorAlimentacao;
@@ -36,17 +33,14 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 	}
 
 	public ValorAlimentacao insert(IEmsRequest request){
-		final Map<String, Object> update_values = (Map<String, Object>) request.getObject(HashMap.class);
-		final ValorAlimentacao obj = new ValorAlimentacao();
-		EmsUtil.setValuesFromMap(obj, update_values);
+		final ValorAlimentacao obj = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
 		return negocio.insert(obj);
 	}
 	
 	public ValorAlimentacao update(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
-		final Map<String, Object> update_values = (Map<String, Object>) request.getObject(HashMap.class);
 		ValorAlimentacao obj = negocio.findById(id);
-		EmsUtil.setValuesFromMap(obj, update_values);
+		request.mergeObjectFromPayload(obj);
 		return negocio.update(obj);
 	}
 	
