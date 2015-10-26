@@ -14,9 +14,9 @@ class ValorAlimentacaoForm(FpcCrud):
         campos_grid_pesquisa = ('campus', 'inicioVigencia', 'fimVigencia','pagaBeneficio', 'valorBeneficio')
         layout = ('campus', 
                   ('inicioVigencia', 'fimVigencia'),
-                  'valorBeneficio', 
-                  'pagaBeneficio')
-        layout_pesquisa = ('campus','inicioVigencia','fimVigencia','pagaBeneficio', 'valorBeneficio')
+                  ('pagaBeneficio','valorBeneficio')
+                  )
+        layout_pesquisa = ('campus','inicioVigencia','fimVigencia','pagaBeneficio')
         titulo = "Valor Alimentação"
 
 

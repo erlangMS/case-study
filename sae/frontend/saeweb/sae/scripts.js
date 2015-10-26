@@ -16,13 +16,7 @@ var valorAlimentacaoController = {
 	 * 
 	 */ 
 	on_open_form : function(response){
-		var doc = document;
-		var param = response.params[0]; 
-		var update_fields = param.update_fields;
-		var f_form = doc.getElementById("f_form");
-		//fpc.updateFields(f_form, update_fields);
-		//fpc.resetFields(f_form);
-		// todo...
+
 	},
 	
 	on_format_object : function(obj){
@@ -36,7 +30,7 @@ var valorAlimentacaoController = {
 	 */ 
 	on_format_cell_datable : function(field, type, value, row, col, html_row){
 		switch (field) {
-			case "pagaBeneficio":  return value === "true" ? "Sim" : "Não";
+			case "pagaBeneficio":  return (value || value === "true" || value === "1") ? "Sim" : "Não";
 			default: return value;
 		}
 	},
@@ -55,7 +49,18 @@ var valorAlimentacaoController = {
 				});
 			
 		}
-	}
+	},
+	
+    onchange : function(field, operacao) {
+    	// Informar valor do benefício se paga benefício está habilitado
+    	if (field.dataset.field === "pagaBeneficio"){
+    		var f_valorBeneficio = f_cadastro.querySelector('[data-field=valorBeneficio]');
+    		var b_pagaBeneficio = fpc.getValueFromRadioAsBoolean(field);
+    		f_valorBeneficio.disabled = !b_pagaBeneficio;
+    		f_valorBeneficio.value = "0.00";
+    	}
+    }
+	
 
 };
 

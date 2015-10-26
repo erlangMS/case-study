@@ -6,7 +6,7 @@ from fpc.models import FpcModel, FpcIntegerField, FpcDecimalField, EmsModel, \
     FpcTextField, FpcForeignKey
 
 
-BOOLEAN = ((0, "Não"), (1, 'Sim'))
+BOOLEAN = ((1, "Sim"), (0, 'Não'))
 CAMPUS = ()
 
 # CRUDS
@@ -22,7 +22,7 @@ class ValorAlimentacao(EmsModel):
     campus = FpcIntegerField('Campus', null=False, blank=False, choices=CAMPUS, render="combobox", lazy=True)
     inicioVigencia = models.DateField("Início Vigência", null=False, blank=False)
     fimVigencia = models.DateField('Fim Vigência?', null=True, blank=True)
-    pagaBeneficio = FpcIntegerField('Paga Benefício?', null=False, blank=False, choices=BOOLEAN, render="radio", default="0")
+    pagaBeneficio = FpcIntegerField('Paga Benefício?', null=False, blank=False, choices=BOOLEAN, render="radio", default=1)
     valorBeneficio = FpcDecimalField('Valor do Benefício', null=False, blank=False, default=0, max_digits=10, decimal_places=2)
 
 class Ocorrencias(EmsModel):
