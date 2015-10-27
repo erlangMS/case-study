@@ -10,8 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="Agenda")
@@ -20,52 +18,37 @@ public class Agenda implements Serializable {
 	private static final long serialVersionUID = 4514450478730109792L;
 
 	@Id
-    @Column(name = "Sequencial", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
     @Basic
-    @Column(name = "SemestreAno", nullable = false, insertable = true, updatable = true, length = 5)
+    @Column(name = "periodo", nullable = false, insertable = true, updatable = true, length = 5)
     private String periodo;
 
     @Basic
-    @Column(name = "DataHora", nullable = false, insertable = true, updatable = true)
-    @Temporal (TemporalType.TIMESTAMP)
-    private Date dataHora;
+    @Column(name = "dataInicio", nullable = false, insertable = true, updatable = true, length = 8)
+    private Date dataInicio;
+    
+    @Basic
+    @Column(name = "dataFim", nullable = false, insertable = true, updatable = true, length = 8)
+    private Date dataFim;
 
     @Basic
-    @Column(name = "Aluno", nullable = true, insertable = true, updatable = true)
-    private Integer matricula;
+    @Column(name = "HoraInicio", nullable = false, insertable = true, updatable = true, length = 5)
+    private String horaInicio;
+
+    @Basic
+    @Column(name = "HoraFim", nullable = false, insertable = true, updatable = true, length = 5)
+    private String horaFim;
 
     @Basic
     @Column(name = "Campus", nullable = false, insertable = true, updatable = true)
     private Integer campus;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Agenda agenda = (Agenda) o;
-
-        if (id != null ? !id.equals(agenda.id) : agenda.id != null) return false;
-        if (periodo != null ? !periodo.equals(agenda.periodo) : agenda.periodo != null) return false;
-        if (dataHora != null ? !dataHora.equals(agenda.dataHora) : agenda.dataHora != null) return false;
-        if (matricula != null ? !matricula.equals(agenda.matricula) : agenda.matricula != null) return false;
-        if (campus != null ? !campus.equals(agenda.campus) : agenda.campus != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (periodo != null ? periodo.hashCode() : 0);
-        result = 31 * result + (dataHora != null ? dataHora.hashCode() : 0);
-        result = 31 * result + (matricula != null ? matricula.hashCode() : 0);
-        result = 31 * result + (campus != null ? campus.hashCode() : 0);
-        return result;
-    }
+    @Basic
+    @Column(name = "quantidadeAtendente", nullable = false, insertable = true, updatable = true)
+    private Integer quantidadeAtendentes;
 
 	public Integer getId() {
 		return id;
@@ -83,20 +66,36 @@ public class Agenda implements Serializable {
 		this.periodo = periodo;
 	}
 
-	public Date getDataHora() {
-		return dataHora;
+	public Date getDataInicio() {
+		return dataInicio;
 	}
 
-	public void setDataHora(Date dataHora) {
-		this.dataHora = dataHora;
+	public void setDataInicio(Date dataInicio) {
+		this.dataInicio = dataInicio;
 	}
 
-	public Integer getMatricula() {
-		return matricula;
+	public Date getDataFim() {
+		return dataFim;
 	}
 
-	public void setMatricula(Integer matricula) {
-		this.matricula = matricula;
+	public void setDataFim(Date dataFim) {
+		this.dataFim = dataFim;
+	}
+
+	public String getHoraInicio() {
+		return horaInicio;
+	}
+
+	public void setHoraInicio(String horaInicio) {
+		this.horaInicio = horaInicio;
+	}
+
+	public String getHoraFim() {
+		return horaFim;
+	}
+
+	public void setHoraFim(String horaFim) {
+		this.horaFim = horaFim;
 	}
 
 	public Integer getCampus() {
@@ -107,5 +106,14 @@ public class Agenda implements Serializable {
 		this.campus = campus;
 	}
 
+	public Integer getQuantidadeAtendentes() {
+		return quantidadeAtendentes;
+	}
 
+	public void setQuantidadeAtendentes(Integer quantidadeAtendentes) {
+		this.quantidadeAtendentes = quantidadeAtendentes;
+	}
+
+   
+    
 }

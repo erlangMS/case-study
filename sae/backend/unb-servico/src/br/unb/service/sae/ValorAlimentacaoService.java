@@ -7,6 +7,7 @@ import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
 import br.erlangms.EmsServiceFacade;
+import br.erlangms.EmsUtil;
 import br.erlangms.IEmsRequest;
 import br.unb.web.sae.negocio.ValorAlimentacaoNegocio;
 import br.unb.web.sae.pojo.ValorAlimentacao;

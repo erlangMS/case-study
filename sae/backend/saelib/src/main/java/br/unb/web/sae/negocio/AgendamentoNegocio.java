@@ -14,7 +14,7 @@ public class AgendamentoNegocio {
 	private AgendamentoDAO dao;
 	
 	public void agendamento (Agenda a) {
-		int quantidade = dao.getQuantidadeAgendamentosMesmoHorario(a.getDataHora());
+		int quantidade = dao.getQuantidadeAgendamentosMesmoHorario(a.getDataInicio());
 		int quantidadeAtendimentosMaximo = 3; //hard code pra trocar pela classe do Vanderlei
 		
 		if (quantidade >= quantidadeAtendimentosMaximo) {

@@ -6,14 +6,8 @@ import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
-
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
-import br.unb.service.test.AllTests;
-import br.unb.service.test.AlunoServiceTest;
 import br.unb.web.sae.negocio.AlunoNegocio;
 import br.unb.web.sae.pojo.Aluno;
 
@@ -39,16 +33,6 @@ public class AlunoService extends EmsServiceFacade{
 	}
 
 	public Aluno insert(IEmsRequest request){
-		AllTests t = new AllTests();
-		AlunoServiceTest x = new AlunoServiceTest();
-		
-		Result result = JUnitCore.runClasses(AlunoServiceTest.class);
-	      for (Failure failure : result.getFailures()) {
-	         System.out.println(failure.toString());
-	      }
-	      System.out.println(result.wasSuccessful());
-	      
-	      
 		final Aluno obj = (Aluno) request.getObject(Aluno.class);
 		return negocio.insert(obj);
 	}
