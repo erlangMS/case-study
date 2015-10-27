@@ -19,7 +19,7 @@ public class ValorAlimentacaoNegocio {
 		return dao.findById(id);
 	}
 
-	public List<ValorAlimentacao> pesquisar(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
+	public List<ValorAlimentacao> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
 		return dao.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 

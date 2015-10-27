@@ -29,7 +29,7 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 		int limit_ini = request.getQueryAsInt("limit_ini");
 		int limit_fim = request.getQueryAsInt("limit_fim");
 		String sort = request.getQuery("sort");
-		return negocio.pesquisar(filtro, fields, limit_ini, limit_fim, sort);
+		return negocio.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
 	public ValorAlimentacao insert(IEmsRequest request){
