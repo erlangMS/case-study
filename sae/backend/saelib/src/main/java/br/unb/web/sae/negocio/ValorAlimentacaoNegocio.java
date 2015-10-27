@@ -63,6 +63,11 @@ public class ValorAlimentacaoNegocio {
 		}
 	}
 
+	public int delete(Integer id) {
+		// incluir validação se pode excluir aqui...
+		return dao.delete(id);
+	}
+
 	
 
 	

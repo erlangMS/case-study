@@ -44,5 +44,9 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 		return negocio.update(obj);
 	}
 	
+	public int delete(IEmsRequest request){
+		final int id = request.getParamAsInt("id");
+		return negocio.delete(id);
+	}
 	
 }

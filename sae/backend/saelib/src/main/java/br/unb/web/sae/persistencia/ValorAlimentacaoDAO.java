@@ -23,6 +23,7 @@ public class ValorAlimentacaoDAO extends EmsDao<ValorAlimentacao> {
 	public Class<ValorAlimentacao> getClassOfPojo() {
 		return ValorAlimentacao.class;
 	}
+
 	
 	
 }
