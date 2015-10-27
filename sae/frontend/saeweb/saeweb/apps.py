@@ -64,21 +64,6 @@ class SaeWebConfig(AppConfig):
             except:
                 pass;
     
-            # menu Vale Alimentação
-            ts = Transacao()
-            ts.nome = 'cad_campus'
-            ts.titulo = 'Campus'
-            ts.tipoTransacao = 'T'
-            ts.transacao_url = '/fpc.views.fpc_exibe_pesquisa'
-            ts.posicao = 1
-            ts.formModel = 'sae.forms.CampusForm'
-            ts.model = 'sae.models.Campus'
-            ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='cad_sae')
-            try:
-                ts.save()
-            except:
-                pass;
     
             # menu Ocorrências
             ts = Transacao()

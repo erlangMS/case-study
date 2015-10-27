@@ -20,11 +20,6 @@ class ValorAlimentacaoForm(FpcCrud):
         titulo = "Valor Alimentação"
 
 
-class CampusForm(FpcCrud):
-    class Meta:
-        model = Campus
-
-
 class OcorrenciasForm(FpcCrud):
     class Meta:
         model = Ocorrencias
