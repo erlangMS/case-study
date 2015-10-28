@@ -2,7 +2,7 @@ package br.unb.web.sae.pojo;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -30,11 +30,11 @@ public class ValorAlimentacao implements Serializable {
 
     @Basic
     @Column(name = "InicioVigencia", nullable = false, insertable = true, updatable = true)
-    private Timestamp inicioVigencia;
+    private Date inicioVigencia;
 
     @Basic
     @Column(name = "FimVigencia", nullable = true, insertable = true, updatable = true)
-    private Timestamp fimVigencia;
+    private Date fimVigencia;
 
     @Basic
     @Column(name = "PagaBeneficio", nullable = false, insertable = true, updatable = true)
@@ -92,19 +92,19 @@ public class ValorAlimentacao implements Serializable {
 		this.campus = campus;
 	}
 
-	public Timestamp getInicioVigencia() {
+	public Date getInicioVigencia() {
 		return inicioVigencia;
 	}
 
-	public void setInicioVigencia(Timestamp inicioVigencia) {
+	public void setInicioVigencia(Date inicioVigencia) {
 		this.inicioVigencia = inicioVigencia;
 	}
 
-	public Timestamp getFimVigencia() {
+	public Date getFimVigencia() {
 		return fimVigencia;
 	}
 
-	public void setFimVigencia(Timestamp fimVigencia) {
+	public void setFimVigencia(Date fimVigencia) {
 		this.fimVigencia = fimVigencia;
 	}
 

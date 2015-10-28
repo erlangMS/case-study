@@ -58,6 +58,16 @@ public class ValorAlimentacaoNegocio {
 				validation.addError("A data do fim de vigência deve ser maior que a data de início de vigência.");
 		}
 		
+		if (obj.getId() == null){
+			if (dao.existePeriodoVigenciaAberto(obj)){
+				validation.addError("Existe registro com período em aberto.");
+			}
+		}else{
+			if (dao.existePeriodoFimMaiorPeriodoInicio(obj)){
+				validation.addError("Existe registro com período vigência maior ou igual ao período vigência inicial.");
+			}
+		}
+		
 		if(validation.getErrors().size() > 0) {
 			throw validation;
 		}
