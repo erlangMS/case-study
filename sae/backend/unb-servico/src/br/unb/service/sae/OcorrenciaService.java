@@ -8,22 +8,22 @@ import javax.ejb.Startup;
 
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
-import br.unb.web.sae.negocio.ValorAlimentacaoNegocio;
-import br.unb.web.sae.pojo.ValorAlimentacao;
+import br.unb.web.sae.negocio.OcorrenciaNegocio;
+import br.unb.web.sae.pojo.Ocorrencia;
  
 @Singleton
 @Startup
-public class ValorAlimentacaoService extends EmsServiceFacade {
+public class OcorrenciaService extends EmsServiceFacade {
 
 	@EJB
-	private ValorAlimentacaoNegocio negocio;
+	private OcorrenciaNegocio negocio;
 	
-	public ValorAlimentacao findById(IEmsRequest request){
+	public Ocorrencia findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
 		return negocio.findById(id);
 	}
 	
-	public List<ValorAlimentacao> find(IEmsRequest request){
+	public List<Ocorrencia> find(IEmsRequest request){
 		String filtro = request.getQuery("filtro");
 		String fields = request.getQuery("fields");
 		int limit_ini = request.getQueryAsInt("limit_ini");
@@ -32,14 +32,14 @@ public class ValorAlimentacaoService extends EmsServiceFacade {
 		return negocio.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public ValorAlimentacao insert(IEmsRequest request){
-		final ValorAlimentacao obj = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
+	public Ocorrencia insert(IEmsRequest request){
+		final Ocorrencia obj = (Ocorrencia) request.getObject(Ocorrencia.class);
 		return negocio.insert(obj);
 	}
 	
-	public ValorAlimentacao update(IEmsRequest request){
+	public Ocorrencia update(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
-		ValorAlimentacao obj = negocio.findById(id);
+		Ocorrencia obj = negocio.findById(id);
 		request.mergeObjectFromPayload(obj);
 		return negocio.update(obj);
 	}
