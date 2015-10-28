@@ -1,4 +1,4 @@
-## Estudo de Caso ( Modernização do Sistema Sae )
+## Projeto de Modernização do Sistema de Estudo Socioeconômico (Sae) da UnB
 
 Para que seja possível avaliar a abordagem proposta por ErlangMS, surge
 a necessidade de aplicação em um ambiente real, de modo a
