@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsDao;
-import br.unb.web.sae.pojo.Aluno;
+import br.unb.sae.model.Aluno;
 
 @Stateless
 public class AlunoDAO extends EmsDao<Aluno> {

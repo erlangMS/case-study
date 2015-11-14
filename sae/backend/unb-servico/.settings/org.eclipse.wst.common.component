@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="unb-servico">
+    <wb-module deploy-name="unb-service">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
@@ -7,10 +7,7 @@
         <dependent-module archiveName="ems_java-1.0.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/ems_java/ems_java">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="saelib-2.0.0-RELEASE.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/saelib/saelib">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <property name="java-output-path" value="/unb-servico/target/classes"/>
-        <property name="context-root" value="unb-servico"/>
+        <property name="java-output-path" value="/unb-service/target/classes"/>
+        <property name="context-root" value="unb-service"/>
     </wb-module>
 </project-modules>

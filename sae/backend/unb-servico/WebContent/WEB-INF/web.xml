@@ -2,7 +2,7 @@
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
  <description>Aplicacao responsavel por centralizar a camada de negócio da UnB</description>
- <display-name>unb-servico</display-name>
+ <display-name>unb-service</display-name>
  <distributable/>
  <session-config>
   <session-timeout>60</session-timeout>

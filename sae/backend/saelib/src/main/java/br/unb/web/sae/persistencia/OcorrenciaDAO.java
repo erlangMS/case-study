@@ -5,7 +5,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsDao;
-import br.unb.web.sae.pojo.Ocorrencia;
+import br.unb.sae.model.Ocorrencia;
 
 @Stateless
 public class OcorrenciaDAO extends EmsDao<Ocorrencia> {

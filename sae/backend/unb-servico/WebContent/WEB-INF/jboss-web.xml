@@ -2,6 +2,6 @@
 <jboss-web>
 	
  	<use-jboss-authorization/> 
-	<context-root>/unb-negocio</context-root>
+	<context-root>/unb-service</context-root>
    
 </jboss-web>

@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>br.unb.sistemas</groupId>
-	<artifactId>unb-servico</artifactId>
+	<artifactId>unb-service</artifactId>
 	<version>2.0.0-RELEASE</version>
 	<packaging>war</packaging>
 
-	<name>unb-servico</name>
+	<name>unb-service</name>
 	<url>http://www.unb.br</url>
 
 
@@ -49,26 +49,12 @@
 		</dependency>
 
 		<dependency>
-			<groupId>br.unb.sistemas</groupId>
-			<artifactId>saelib</artifactId>
-			<version>2.0.0-RELEASE</version>
-		</dependency>
-
-		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.10</version>
 		</dependency>
 
 	</dependencies>
-
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<url>localhost:8081/nexus/content/repositories/releases</url>
-		</repository>
-	</distributionManagement>
-
 
 	<build>
 		<sourceDirectory>src</sourceDirectory>
