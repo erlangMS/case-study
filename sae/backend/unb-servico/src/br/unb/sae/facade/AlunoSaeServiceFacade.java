@@ -10,6 +10,7 @@ import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.AlunoSae;
 import br.unb.sae.model.Ocorrencia;
+import br.unb.sae.service.SaeApplication;
  
 @Singleton
 @Startup

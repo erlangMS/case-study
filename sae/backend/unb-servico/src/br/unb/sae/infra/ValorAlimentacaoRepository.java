@@ -24,10 +24,10 @@ public class ValorAlimentacaoRepository extends EmsRepository<ValorAlimentacao> 
 		return ValorAlimentacao.class;
 	}
 
-	public boolean existePeriodoVigenciaAberto(ValorAlimentacao obj) {
+	public boolean existePeriodoVigenciaAbertoEmCampus(Integer campus) {
 		try{
 			getEntityManager().createQuery("select 1 from ValorAlimentacao where campus = :pCampus and fimVigencia is null")
-				.setParameter("pCampus", obj.getCampus())
+				.setParameter("pCampus", campus)
 				.getSingleResult();
 			return true;
 		}catch (NoResultException e){
@@ -35,12 +35,12 @@ public class ValorAlimentacaoRepository extends EmsRepository<ValorAlimentacao> 
 		}
 	}
 
-	public boolean existePeriodoFimMaiorPeriodoInicio(ValorAlimentacao obj) {
+	public boolean existePeriodoFimMaiorPeriodoInicioQueEsteValorAlimentacao(ValorAlimentacao valorAlimentacao) {
 		try{
 			getEntityManager().createQuery("select 1 from ValorAlimentacao where campus = :pCampus and id <> :pId and fimVigencia >= :pInicioVigencia")
-				.setParameter("pCampus", obj.getCampus())
-				.setParameter("pId", obj.getId())
-				.setParameter("pInicioVigencia", obj.getInicioVigencia())
+				.setParameter("pCampus", valorAlimentacao.getCampus())
+				.setParameter("pId", valorAlimentacao.getId())
+				.setParameter("pInicioVigencia", valorAlimentacao.getInicioVigencia())
 				.getSingleResult();
 			return true;
 		}catch (NoResultException e){

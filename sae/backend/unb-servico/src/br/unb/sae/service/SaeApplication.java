@@ -1,19 +1,23 @@
-package br.unb.sae.facade;
+package br.unb.sae.service;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 
-import br.unb.sae.service.AgendaService;
-import br.unb.sae.service.AgendamentoService;
-import br.unb.sae.service.AlunosSaeService;
-import br.unb.sae.service.ValorAlimentacaoService;
-
-@Stateless
+@Singleton
+@Startup
 public class SaeApplication {
+	private static SaeApplication instance;
+	public static SaeApplication getInstance(){ return instance; }
+	
 	@EJB private ValorAlimentacaoService valorAlimentacaoService;
 	@EJB private AlunosSaeService alunoService;
 	@EJB private AgendaService agendaService;
 	@EJB private AgendamentoService agendamentoService;
+	
+	public SaeApplication(){
+		instance = this;
+	}
 	
 	public ValorAlimentacaoService getValorAlimentacaoService() {
 		return valorAlimentacaoService;

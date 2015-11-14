@@ -7,6 +7,7 @@ import javax.ejb.Startup;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.Agenda;
+import br.unb.sae.service.SaeApplication;
 
 @Singleton
 @Startup
