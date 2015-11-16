@@ -15,7 +15,7 @@ public class ValorAlimentacaoRepository extends EmsRepository<ValorAlimentacao> 
 	public EntityManager saeContext;
 
 	@Override
-	protected EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return saeContext;
 	}
 

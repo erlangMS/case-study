@@ -1,16 +1,20 @@
 package br.unb.sigra.infra;
 
 import javax.ejb.EJB;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-public class InfraFactory {
-	private static InfraFactory instance;
-	public static InfraFactory getInstance(){ return instance; }
+@Singleton
+@Startup
+public class SigraInfra {
+	private static SigraInfra instance;
+	public static SigraInfra getInstance(){ return instance; }
 
 	@EJB private AlunoRepository alunoRepository;
 
-	public InfraFactory(){
+	public SigraInfra(){
 		instance = this;
 	}
 

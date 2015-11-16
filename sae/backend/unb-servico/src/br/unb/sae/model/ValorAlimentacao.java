@@ -13,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
-import br.unb.sae.infra.InfraFactory;
+import br.unb.sae.infra.SaeInfra;
 
 
 @Entity
@@ -121,11 +121,11 @@ public class ValorAlimentacao implements Serializable {
 		}
 		
 		if (getId() == null){
-			if (InfraFactory.getInstance().getValorAlimentacaoRepository().existePeriodoVigenciaAbertoEmCampus(getCampus())){
+			if (SaeInfra.getInstance().getValorAlimentacaoRepository().existePeriodoVigenciaAbertoEmCampus(getCampus())){
 				validation.addError("Existe registro com período em aberto.");
 			}
 		}else{
-			if (InfraFactory.getInstance().getValorAlimentacaoRepository().existePeriodoFimMaiorPeriodoInicioQueEsteValorAlimentacao(this)){
+			if (SaeInfra.getInstance().getValorAlimentacaoRepository().existePeriodoFimMaiorPeriodoInicioQueEsteValorAlimentacao(this)){
 				validation.addError("Existe registro com período vigência maior ou igual ao período vigência inicial.");
 			}
 		}
@@ -134,5 +134,6 @@ public class ValorAlimentacao implements Serializable {
 			throw validation;
 		}
 	}
+
 	
 }

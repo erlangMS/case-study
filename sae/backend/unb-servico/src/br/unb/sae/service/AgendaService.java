@@ -6,22 +6,22 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import br.erlangms.EmsValidationException;
-import br.unb.sae.infra.InfraFactory;
+import br.unb.sae.infra.SaeInfra;
 import br.unb.sae.model.Agenda;
 
 @Stateless
 public class AgendaService {
 
-	@EJB private InfraFactory infra;
+	@EJB private SaeInfra infra;
 
 	public Agenda insert(Agenda agenda){
 		validar(agenda);
-		return infra.agendaRepository.insert(agenda);
+		return SaeInfra.getInstance().getAgendaRepository().insert(agenda);
 	}
 
 	public List<Agenda> pesquisar(String atendimento, String periodo, String dataInicio, String dataFim,
 			String horaInicio, String horaFim) {
-		return infra.agendaRepository.pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
+		return SaeInfra.getInstance().getAgendaRepository().pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
 	}
 	
 	private void validar(Agenda obj) throws EmsValidationException {

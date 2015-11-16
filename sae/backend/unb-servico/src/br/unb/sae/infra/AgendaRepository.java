@@ -21,7 +21,7 @@ public class AgendaRepository extends EmsRepository<Agenda>{
 	}
 
 	@Override
-	protected EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return saeContext;
 	}
 

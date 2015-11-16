@@ -11,7 +11,7 @@ public class SaeApplication {
 	public static SaeApplication getInstance(){ return instance; }
 	
 	@EJB private ValorAlimentacaoService valorAlimentacaoService;
-	@EJB private AlunosSaeService alunoService;
+	@EJB private AlunoSaeService alunoService;
 	@EJB private AgendaService agendaService;
 	@EJB private AgendamentoService agendamentoService;
 	
@@ -26,7 +26,7 @@ public class SaeApplication {
 			ValorAlimentacaoService valorAlimentacaoService) {
 		this.valorAlimentacaoService = valorAlimentacaoService;
 	}
-	public AlunosSaeService getAlunoService() {
+	public AlunoSaeService getAlunoService() {
 		return alunoService;
 	}
 	public AgendaService getAgendaService() {

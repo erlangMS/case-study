@@ -8,17 +8,17 @@ import javax.persistence.PersistenceContext;
 
 @Singleton
 @Startup
-public class InfraFactory {
-	private static InfraFactory instance;
-	public static InfraFactory getInstance(){ return instance; }
+public class SaeInfra {
+	private static SaeInfra instance;
+	public static SaeInfra getInstance(){ return instance; }
  
-	@EJB public ValorAlimentacaoRepository valorAlimentacaoRepository;
-	@EJB public AssinaturaTermoBaRepository assinaturaTermoBaRepository;
-	@EJB public AlunoSaeRepository alunoSaeRepository;
-	@EJB public AgendaRepository agendaRepository;
-	@EJB public AgendamentoRepository agendamentoRepository;
+	@EJB private ValorAlimentacaoRepository valorAlimentacaoRepository;
+	@EJB private AssinaturaTermoBaRepository assinaturaTermoBaRepository;
+	@EJB private AlunoSaeRepository alunoSaeRepository;
+	@EJB private AgendaRepository agendaRepository;
+	@EJB private AgendamentoRepository agendamentoRepository;
 
-	public InfraFactory(){
+	public SaeInfra(){
 		instance = this;
 	}
 	

@@ -25,7 +25,7 @@ public class AssinaturaTermoBaRepository extends EmsRepository<AssinaturaTermoBa
 	public EntityManager saeContext;
 	
 	@Override
-	protected EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return saeContext;
 	}
 

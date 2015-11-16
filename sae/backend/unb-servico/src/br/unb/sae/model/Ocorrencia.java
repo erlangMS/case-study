@@ -15,6 +15,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
+import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="Ocorrencias")
@@ -135,33 +136,34 @@ public class Ocorrencia implements Serializable {
 	}
 
 	public void validar(){
-		EmsValidationException validation = new EmsValidationException();
+		EmsValidationException erro = new EmsValidationException();
 		
-		if (getAluno() == null){
-			validation.addError("Informe o aluno.");
+		if (getTexto().isEmpty()){
+			erro.addError("Informe o motivo da ocorrência.");
 		}
-		
+
 		if (getSemestreAno() == null){
-			validation.addError("Informe o semestre ano.");
+			erro.addError("Informe o semestre e ano da ocorrência.");
 		}
 		
 		if (getDataInicio() == null){
-			validation.addError("Informe a data de início.");
-		}
-
-		if (getDataFim() == null){
-			validation.addError("Informe a data final.");
+			erro.addError("Informe a data de início da ocorrência.");
 		}
 
 		if(getDataFim() != null && 
 		   getDataInicio() != null && 
 		   getDataFim().before(getDataInicio())) {
-				validation.addError("Data fim deve ser maior que data início.");
+				erro.addError("Data fim deve ser maior que data início da ocorrência.");
 		}
-		if(validation.getErrors().size() > 0) {
-			throw validation;
+		if(erro.getErrors().size() > 0) {
+			throw erro;
 		}
 		
+	}
+
+	public void save() {
+		validar();
+		SaeInfra.getInstance().getAlunoSaeRepository().getEntityManager().persist(this);
 	}
 	
 }

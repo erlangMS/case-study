@@ -40,7 +40,7 @@ public class AlunoServiceFacade extends EmsServiceFacade{
 		return SigraApplication.getInstance().getAlunoService().update(obj);
 	}
 	
-	public int delete(IEmsRequest request){
+	public Boolean delete(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
 		return SigraApplication.getInstance().getAlunoService().delete(id);
 	}

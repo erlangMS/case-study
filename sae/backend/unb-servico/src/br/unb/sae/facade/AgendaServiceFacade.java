@@ -2,7 +2,6 @@ package br.unb.sae.facade;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
@@ -14,11 +13,10 @@ import br.unb.sae.service.SaeApplication;
 @Singleton
 @Startup
 public class AgendaServiceFacade extends EmsServiceFacade{
-	@EJB private SaeApplication saeApplication;
 	
 	public Agenda insert(IEmsRequest request){
 		final Agenda obj = (Agenda) request.getObject(Agenda.class);
-		return saeApplication.getAgendaService().insert(obj);
+		return SaeApplication.getInstance().getAgendaService().insert(obj);
 	}
 	
 	/*public Agenda update(IEmsRequest request){
@@ -35,7 +33,7 @@ public class AgendaServiceFacade extends EmsServiceFacade{
 		String dataFim = request.getQuery("data_fim");
 		String horaInicio = request.getQuery("hora_inicio");
 		String horaFim = request.getQuery("hora_fim");
-		return saeApplication.getAgendaService().pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
+		return SaeApplication.getInstance().getAgendaService().pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
 	}
 
 }

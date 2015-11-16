@@ -16,7 +16,7 @@ public class AgendamentoRepository extends EmsRepository<Agenda> {
 	public EntityManager saeContext;
 	
 	@Override
-	protected EntityManager getEntityManager() {
+	public EntityManager getEntityManager() {
 		return saeContext;
 	}
 

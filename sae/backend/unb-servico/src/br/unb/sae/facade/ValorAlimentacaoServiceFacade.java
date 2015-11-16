@@ -29,19 +29,19 @@ public class ValorAlimentacaoServiceFacade extends EmsServiceFacade {
 	}
 
 	public ValorAlimentacao insert(IEmsRequest request){
-		final ValorAlimentacao obj = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
-		return SaeApplication.getInstance().getValorAlimentacaoService().insert(obj);
+		final ValorAlimentacao valorAlimentacao = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
+		return SaeApplication.getInstance().getValorAlimentacaoService().insert(valorAlimentacao);
 	}
 	
 	public ValorAlimentacao update(IEmsRequest request){
 		SaeApplication saeApplication = SaeApplication.getInstance();
 		int id = request.getParamAsInt("id");
-		ValorAlimentacao obj = saeApplication.getValorAlimentacaoService().findById(id);
-		request.mergeObjectFromPayload(obj);
-		return saeApplication.getValorAlimentacaoService().update(obj);
+		ValorAlimentacao valorAlimentacao = saeApplication.getValorAlimentacaoService().findById(id);
+		request.mergeObjectFromPayload(valorAlimentacao);
+		return saeApplication.getValorAlimentacaoService().update(valorAlimentacao);
 	}
 	
-	public int delete(IEmsRequest request){
+	public boolean delete(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance().getValorAlimentacaoService().delete(id);
 	}
