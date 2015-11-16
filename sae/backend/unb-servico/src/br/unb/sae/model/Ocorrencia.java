@@ -49,7 +49,7 @@ public class Ocorrencia implements Serializable {
 
     @Basic
     @Column(name = "SuspendeBA", nullable = false, insertable = true, updatable = true, length = 1)
-    private Boolean suspendeBa;
+    private Boolean suspendeBa = false;
 
     @Override
     public boolean equals(Object o) {
