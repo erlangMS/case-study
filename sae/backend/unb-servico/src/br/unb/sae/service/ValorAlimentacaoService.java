@@ -20,12 +20,12 @@ public class ValorAlimentacaoService {
 
 	public ValorAlimentacao update(ValorAlimentacao valorAlimentacao){
 		valorAlimentacao.validar();
-		return SaeInfra.getInstance().getValorAlimentacaoRepository().update(valorAlimentacao);
+		return (ValorAlimentacao) SaeInfra.getInstance().getValorAlimentacaoRepository().update(valorAlimentacao);
 	}
 
 	public ValorAlimentacao insert(ValorAlimentacao valorAlimentacao) {
 		valorAlimentacao.validar();
-		return SaeInfra.getInstance().getValorAlimentacaoRepository().insert(valorAlimentacao);
+		return (ValorAlimentacao) SaeInfra.getInstance().getValorAlimentacaoRepository().insert(valorAlimentacao);
 	}
 	
 	public boolean delete(Integer id) {

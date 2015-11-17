@@ -16,7 +16,7 @@ public class AgendaService {
 
 	public Agenda insert(Agenda agenda){
 		validar(agenda);
-		return SaeInfra.getInstance().getAgendaRepository().insert(agenda);
+		return (Agenda) SaeInfra.getInstance().getAgendaRepository().insert(agenda);
 	}
 
 	public List<Agenda> pesquisar(String atendimento, String periodo, String dataInicio, String dataFim,

@@ -1,6 +1,5 @@
 package br.unb.sae.model;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.Basic;
@@ -19,9 +18,7 @@ import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="Ocorrencias")
-public class Ocorrencia implements Serializable {
-
-	private static final long serialVersionUID = 193556730815541653L;
+public class Ocorrencia {
 
 	@Id
     @Column(name = "Id", nullable = false, insertable = true, updatable = true)
@@ -155,6 +152,7 @@ public class Ocorrencia implements Serializable {
 		   getDataFim().before(getDataInicio())) {
 				erro.addError("Data fim deve ser maior que data início da ocorrência.");
 		}
+
 		if(erro.getErrors().size() > 0) {
 			throw erro;
 		}

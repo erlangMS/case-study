@@ -1,95 +1,66 @@
 package br.unb.sae.model;
 
-import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import br.erlangms.EmsValidationException;
 
 @Entity
 @Table(name="AssinaturaTermoBa")
-public class AssinaturaTermoBa implements Serializable {
-
-	private static final long serialVersionUID = -4298271607671019171L;
+public class AssinaturaTermoBa {
 
 	@Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "Aluno", nullable = false, insertable = true, updatable = true)
-	private Integer aluno;
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="Aluno_Id", nullable = false, insertable = true, updatable = false)
+    private AlunoSae aluno;
 
     @Column(name = "SemestreAno", nullable = false, insertable = true, updatable = true, length = 5)
     private String semestreAno;
 
-    @Basic
     @Column(name = "Data", nullable = false, insertable = true, updatable = true)
-    private Timestamp data;
+    private Date dataAssinatura;
 
-    @Basic
     @Column(name = "ValorAlimentacao", nullable = true, insertable = true, updatable = true)
-    private Boolean valorAlimentacao;
+    private Boolean valorAlimentacao = false;
 
-    @Basic
     @Column(name = "Banco", nullable = true, insertable = true, updatable = true, length = 3)
     private String banco;
 
-    @Basic
     @Column(name = "Agencia", nullable = true, insertable = true, updatable = true, length = 5)
     private String agencia;
 
-    @Basic
     @Column(name = "Conta", nullable = true, insertable = true, updatable = true, length = 10)
     private String conta;
 
-    @Basic
     @Column(name = "PeriodoExtra", nullable = true, insertable = true, updatable = true)
-    private Timestamp periodoExtra;
+    private Date periodoExtra;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+	public Integer getId() {
+		return id;
+	}
 
-        AssinaturaTermoBa that = (AssinaturaTermoBa) o;
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-        if (aluno != null ? !aluno.equals(that.aluno) : that.aluno != null) return false;
-        if (semestreAno != null ? !semestreAno.equals(that.semestreAno) : that.semestreAno != null) return false;
-        if (data != null ? !data.equals(that.data) : that.data != null) return false;
-        if (valorAlimentacao != null ? !valorAlimentacao.equals(that.valorAlimentacao) : that.valorAlimentacao != null)
-            return false;
-        if (banco != null ? !banco.equals(that.banco) : that.banco != null) return false;
-        if (agencia != null ? !agencia.equals(that.agencia) : that.agencia != null) return false;
-        if (conta != null ? !conta.equals(that.conta) : that.conta != null) return false;
-        if (periodoExtra != null ? !periodoExtra.equals(that.periodoExtra) : that.periodoExtra != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = aluno != null ? aluno.hashCode() : 0;
-        result = 31 * result + (semestreAno != null ? semestreAno.hashCode() : 0);
-        result = 31 * result + (data != null ? data.hashCode() : 0);
-        result = 31 * result + (valorAlimentacao != null ? valorAlimentacao.hashCode() : 0);
-        result = 31 * result + (banco != null ? banco.hashCode() : 0);
-        result = 31 * result + (agencia != null ? agencia.hashCode() : 0);
-        result = 31 * result + (conta != null ? conta.hashCode() : 0);
-        result = 31 * result + (periodoExtra != null ? periodoExtra.hashCode() : 0);
-        return result;
-    }
-
-	public Integer getAluno() {
+	public AlunoSae getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(Integer aluno) {
+	public void setAluno(AlunoSae aluno) {
 		this.aluno = aluno;
 	}
 
@@ -101,12 +72,12 @@ public class AssinaturaTermoBa implements Serializable {
 		this.semestreAno = semestreAno;
 	}
 
-	public Timestamp getData() {
-		return data;
+	public Date getDataAssinatura() {
+		return dataAssinatura;
 	}
 
-	public void setData(Timestamp data) {
-		this.data = data;
+	public void setDataAssinatura(Date dataAssinatura) {
+		this.dataAssinatura = dataAssinatura;
 	}
 
 	public Boolean getValorAlimentacao() {
@@ -141,12 +112,44 @@ public class AssinaturaTermoBa implements Serializable {
 		this.conta = conta;
 	}
 
-	public Timestamp getPeriodoExtra() {
+	public Date getPeriodoExtra() {
 		return periodoExtra;
 	}
 
-	public void setPeriodoExtra(Timestamp periodoExtra) {
+	public void setPeriodoExtra(Date periodoExtra) {
 		this.periodoExtra = periodoExtra;
+	}
+
+	public void validar(){
+		EmsValidationException erro = new EmsValidationException();
+
+		if (getSemestreAno() == null){
+			erro.addError("Informe o semestre e ano.");
+		}
+		
+		if (getDataAssinatura() == null){
+			erro.addError("Informe a data da assinatura.");
+		}
+
+		if (getBanco()== null){
+			erro.addError("Informe o banco.");
+		}
+
+		if (getAgencia() == null){
+			erro.addError("Informe a agência.");
+		}
+		
+		if (getConta() == null){
+			erro.addError("Informe a conta.");
+		}
+
+		if (getDataAssinatura() == null){
+			erro.addError("Informe a data da assinatura.");
+		}
+		
+		if (erro.getErrors().size() > 0){
+			throw erro;
+		}
 	}
     
 }

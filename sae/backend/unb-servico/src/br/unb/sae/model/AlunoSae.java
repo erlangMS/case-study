@@ -1,6 +1,5 @@
 package br.unb.sae.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -20,26 +19,31 @@ import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="Aluno")
-public class AlunoSae implements Serializable{
-
-	private static final long serialVersionUID = 3641943651239114783L;
+public class AlunoSae{
 
 	@Id
     @Column(name = "codigoPessoa", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
 	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
 	private Boolean bloqueado;
+	
 	@Column(name = "nome", nullable = false, insertable = true, updatable = true)
 	private String nome;
+
 	@Column(name = "cpf", nullable = false, insertable = true, updatable = true)
 	private String cpf;
+
 	@Column(name = "senha", nullable = false, insertable = true, updatable = true)
 	private String senha;
 	
 	@OneToMany(fetch=FetchType.EAGER, mappedBy="aluno", cascade=CascadeType.ALL)  
 	private List<Ocorrencia> listaOcorrencia;
 
+	@OneToMany(fetch=FetchType.EAGER, mappedBy="aluno", cascade=CascadeType.ALL)
+	private List<AssinaturaTermoBa> listaAssinaturaTermoConcessaoValeAlimentacao;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -91,7 +95,7 @@ public class AlunoSae implements Serializable{
 					 erro.addError("O aluno já possui uma ocorrência aberta.");
 			}
 			
-			if (assinouTermoOcorrencia(ocorrencia.getSemestreAno())){
+			if (assinouTermoConcessaoValeAlimentacao(ocorrencia.getSemestreAno())){
 				erro.addError("Aluno ainda não possui termo de concessão de BA assinado.");
 			}
 		}
@@ -116,33 +120,57 @@ public class AlunoSae implements Serializable{
 	}
 	
 	public boolean existeOcorrenciaAberto(final String semestreAno, final Date dataInicio){
-		return SaeInfra.getInstance().getAlunoSaeRepository().existeOcorrenciaAbertoParaAluno(this, semestreAno, dataInicio);
+		return SaeInfra.getInstance()
+				.getAlunoSaeRepository()
+				.existeOcorrenciaAbertoParaAluno(this, semestreAno, dataInicio);
 	}
 	
-	public boolean assinouTermoOcorrencia(final String semestreAno){
-		return SaeInfra.getInstance().getAlunoSaeRepository().alunoAssinouTermoOcorrencia(this, semestreAno);
-	}
-
-	public void validar(){
-		
+	public boolean assinouTermoConcessaoValeAlimentacao(final String semestreAno){
+		return SaeInfra.getInstance()
+				.getAlunoSaeRepository()
+				.assinouTermoConcessaoValeAlimentacao(this, semestreAno);
 	}
 
 	public Ocorrencia findOcorrenciaById(Integer idOcorrencia) {
-		if (idOcorrencia != null){
-			for (Ocorrencia o : getListaOcorrencia()){
-				if (o.getId() == idOcorrencia){
-					return o;
-				}
-			}
-			throw new EmsNotFoundException("Ocorrencia não encontrada: "+ idOcorrencia.toString());
-		}else{
-			throw new IllegalArgumentException("Argumento idOcorrencia is null.");
-		}
+		return (Ocorrencia) SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.findById(Ocorrencia.class, idOcorrencia);
 	}
 
-	public void save() {
-		validar();
-		SaeInfra.getInstance().getAlunoSaeRepository().update(this);
+	public void assinaTermoConcessaoValeAlimentacao(AssinaturaTermoBa assinatura){
+		assinatura.validar();
+		assinatura.setAluno(this);
+		SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.insertOrUpdate(assinatura);
 	}
+	
+	public AssinaturaTermoBa findAssinaturaTermoConcessaoValeAlimentacaoById(int idAssinatura) {
+		return (AssinaturaTermoBa) SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.findById(AssinaturaTermoBa.class, idAssinatura);
+	}	
+	
+	public void validar(){
+		
+	}
+	
+	public void salvar() {
+		validar();
+		SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.update(this);
+	}
+
+	public List<AssinaturaTermoBa> getListaAssinaturaTermoConcessaoValeAlimentacao() {
+		return listaAssinaturaTermoConcessaoValeAlimentacao;
+	}
+
+	public boolean removeAssinaturaTermoConcessaoValeAlimentacao(Integer idAssinatura) {
+		return SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.delete(AssinaturaTermoBa.class, idAssinatura);
+	}
+	
 
 }

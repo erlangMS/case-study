@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
 import br.unb.sae.model.AlunoSae;
+import br.unb.sae.model.AssinaturaTermoBa;
 import br.unb.sae.model.Ocorrencia;
 
 @Stateless
@@ -37,7 +38,7 @@ public class AlunoSaeRepository extends EmsRepository<AlunoSae> {
 		return false;
 	}
 
-	public boolean alunoAssinouTermoOcorrencia(AlunoSae alunoSae, String semestreAno) {
+	public boolean assinouTermoConcessaoValeAlimentacao(AlunoSae alunoSae, String semestreAno) {
 		return false;
 	}
 
@@ -52,5 +53,6 @@ public class AlunoSaeRepository extends EmsRepository<AlunoSae> {
 			.setParameter("pId", ocorrencia)
 			.executeUpdate() > 0;
 	}
+
 
 }
