@@ -13,8 +13,10 @@ import br.unb.sae.service.SaeApplication;
 public class AgendamentoAlunoServiceFacade extends EmsServiceFacade{
 	
 	public Agenda agendarEntrevista (IEmsRequest request) {
-		final Agenda agenda = (Agenda) request.getObject(Agenda.class);
-		SaeApplication.getInstance().getAgendamentoService().agendamento(agenda);
+		Agenda agenda = (Agenda) request.getObject(Agenda.class);
+		SaeApplication.getInstance()
+			.getAgendamentoService()
+			.agendarEntrevista(agenda);
 		return agenda;
 	}
 	

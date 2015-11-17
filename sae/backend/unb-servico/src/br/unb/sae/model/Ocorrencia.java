@@ -2,7 +2,6 @@ package br.unb.sae.model;
 
 import java.sql.Date;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -32,19 +31,15 @@ public class Ocorrencia {
     @Column(name = "SemestreAno", nullable = false, insertable = true, updatable = true, length = 6)
     private String semestreAno;
 
-    @Basic
     @Column(name = "DataInicio", nullable = true, insertable = true, updatable = true)
     private Date dataInicio;
 
-    @Basic
     @Column(name = "DataFim", nullable = true, insertable = true, updatable = true)
     private Date dataFim;
 
-    @Basic
     @Column(name = "Texto", nullable = false, insertable = true, updatable = true)
     private String texto;
 
-    @Basic
     @Column(name = "SuspendeBA", nullable = false, insertable = true, updatable = true, length = 1)
     private Boolean suspendeBa = false;
 
