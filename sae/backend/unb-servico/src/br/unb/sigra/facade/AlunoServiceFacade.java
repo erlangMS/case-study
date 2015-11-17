@@ -16,7 +16,9 @@ public class AlunoServiceFacade extends EmsServiceFacade{
 	
 	public Aluno findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
-		return SigraApplication.getInstance().getAlunoService().findById(id);
+		return SigraApplication.getInstance()
+			.getAlunoService()
+			.findById(id);
 	}
 	
 	public List<Aluno> find(IEmsRequest request){
@@ -25,24 +27,32 @@ public class AlunoServiceFacade extends EmsServiceFacade{
 		int limit_ini = request.getQueryAsInt("limit_ini");
 		int limit_fim = request.getQueryAsInt("limit_fim");
 		String sort = request.getQuery("sort");
-		return SigraApplication.getInstance().getAlunoService().find(filtro, fields, limit_ini, limit_fim, sort);
+		return SigraApplication.getInstance()
+			.getAlunoService()
+			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
 	public Aluno insert(IEmsRequest request){
-		final Aluno obj = (Aluno) request.getObject(Aluno.class);
-		return SigraApplication.getInstance().getAlunoService().insert(obj);
+		Aluno aluno = (Aluno) request.getObject(Aluno.class);
+		return SigraApplication.getInstance()
+			.getAlunoService()
+			.insert(aluno);
 	}
 	
 	public Aluno update(IEmsRequest request){
-		final int id = request.getParamAsInt("id");
-		Aluno obj = SigraApplication.getInstance().getAlunoService().findById(id);
-		request.mergeObjectFromPayload(obj);
-		return SigraApplication.getInstance().getAlunoService().update(obj);
+		int id = request.getParamAsInt("id");
+		Aluno aluno = SigraApplication.getInstance().getAlunoService().findById(id);
+		request.mergeObjectFromPayload(aluno);
+		return SigraApplication.getInstance()
+			.getAlunoService()
+			.update(aluno);
 	}
 	
 	public Boolean delete(IEmsRequest request){
-		final int id = request.getParamAsInt("id");
-		return SigraApplication.getInstance().getAlunoService().delete(id);
+		int id = request.getParamAsInt("id");
+		return SigraApplication.getInstance()
+			.getAlunoService()
+			.delete(id);
 	}
 	
 
