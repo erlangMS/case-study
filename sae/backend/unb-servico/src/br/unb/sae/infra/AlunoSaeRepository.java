@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
 import br.unb.sae.model.AlunoSae;
-import br.unb.sae.model.AssinaturaTermoBa;
 import br.unb.sae.model.Ocorrencia;
 
 @Stateless
@@ -42,17 +41,6 @@ public class AlunoSaeRepository extends EmsRepository<AlunoSae> {
 		return false;
 	}
 
-	public Ocorrencia adicionaOcorrenciaAluno(Ocorrencia ocorrencia) {
-		getEntityManager().persist(ocorrencia);
-		getEntityManager().flush();
-		return ocorrencia;
-	}
-
-	public boolean removeOcorrencia(Integer ocorrencia) {
-		return getEntityManager().createQuery("delete from Ocorrencia this where this.id = :pId")
-			.setParameter("pId", ocorrencia)
-			.executeUpdate() > 0;
-	}
 
 
 }

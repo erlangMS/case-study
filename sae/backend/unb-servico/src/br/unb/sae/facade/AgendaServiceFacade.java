@@ -14,26 +14,41 @@ import br.unb.sae.service.SaeApplication;
 @Startup
 public class AgendaServiceFacade extends EmsServiceFacade{
 	
-	public Agenda insert(IEmsRequest request){
-		final Agenda obj = (Agenda) request.getObject(Agenda.class);
-		return SaeApplication.getInstance().getAgendaService().insert(obj);
-	}
-	
-	/*public Agenda update(IEmsRequest request){
-		final int id = request.getParamAsInt("id");
-		Agenda obj = service.findById(id);
-		request.mergeObjectFromPayload(obj);
-		return SaeApplication.agendaService.update(obj);
-	}*/	
-	
-	public List<Agenda> find(IEmsRequest request){
-		String atendimento = request.getQuery("atendimento");
-		String periodo = request.getQuery("periodo");
-		String dataInicio = request.getQuery("data_inicio");
-		String dataFim = request.getQuery("data_fim");
-		String horaInicio = request.getQuery("hora_inicio");
-		String horaFim = request.getQuery("hora_fim");
-		return SaeApplication.getInstance().getAgendaService().pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
+	public Agenda registraAgenda(IEmsRequest request){
+		Agenda agenda = null;
+		
+		if (request.getMetodo().equals("POST")){
+			agenda = (Agenda) request.getObject(Agenda.class);
+		}else{
+			int idAgenda = request.getParamAsInt("id");
+			agenda = SaeApplication.getInstance()
+						.getAgendaService()
+						.findById(idAgenda);
+			request.mergeObjectFromPayload(agenda);
+		}
+		
+		return SaeApplication.getInstance()
+			.getAgendaService()
+			.registraAgenda(agenda);
 	}
 
+	public List<Agenda> listaAgenda(IEmsRequest request){
+		String filtro = request.getQuery("filtro");
+		String fields = request.getQuery("fields");
+		int limit_ini = request.getQueryAsInt("limit_ini");
+		int limit_fim = request.getQueryAsInt("limit_fim");
+		String sort = request.getQuery("sort");
+		return SaeApplication.getInstance()
+			.getAgendaService()
+			.find(filtro, fields, limit_ini, limit_fim, sort);
+	}
+
+	public boolean removeAgenda(IEmsRequest request){
+		final int id = request.getParamAsInt("id");
+		return SaeApplication.getInstance()
+			.getAgendaService()
+			.removeAgenda(id);
+	}
+	
+	
 }

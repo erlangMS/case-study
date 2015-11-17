@@ -24,7 +24,7 @@ public class AlunoSaeServiceFacade extends EmsServiceFacade {
 
 		// Adiciona ocorrência no aluno
 		Ocorrencia ocorrencia = (Ocorrencia) request.getObject(Ocorrencia.class);
-		aluno.adicionaOcorrencia(ocorrencia);
+		aluno.registraOcorrencia(ocorrencia);
 
 		return ocorrencia;
 	}
@@ -41,8 +41,7 @@ public class AlunoSaeServiceFacade extends EmsServiceFacade {
 		// // Merge com dados que serão atualizados
 		request.mergeObjectFromPayload(ocorrencia);
 
-		ocorrencia.validar();
-		aluno.salvar();
+		aluno.registraOcorrencia(ocorrencia);
 
 		return true;
 	}

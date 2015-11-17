@@ -151,6 +151,15 @@ public class AssinaturaTermoBa {
 			throw erro;
 		}
 	}
+	
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (getId() == ((AssinaturaTermoBa)o).getId()) return true;
+        return false;
+    }
+	
     
 }
 

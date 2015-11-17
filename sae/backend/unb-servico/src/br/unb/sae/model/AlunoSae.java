@@ -13,7 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import br.erlangms.EmsNotFoundException;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 
@@ -52,12 +51,12 @@ public class AlunoSae{
 		this.id = id;
 	}
 
-	public Boolean getBloqueado() {
-		return bloqueado;
-	}
-
 	public void setBloqueado(Boolean bloqueado) {
 		this.bloqueado = bloqueado;
+	}
+
+	public Boolean getBloqueado() {
+		return bloqueado;
 	}
 
 	public String getNome() {
@@ -84,7 +83,7 @@ public class AlunoSae{
 		this.senha = senha;
 	}
 	
-	public void adicionaOcorrencia(Ocorrencia ocorrencia){
+	public void registraOcorrencia(Ocorrencia ocorrencia){
 		EmsValidationException erro = new EmsValidationException();
 
 		ocorrencia.validar();
@@ -96,7 +95,7 @@ public class AlunoSae{
 			}
 			
 			if (assinouTermoConcessaoValeAlimentacao(ocorrencia.getSemestreAno())){
-				erro.addError("Aluno ainda não possui termo de concessão de BA assinado.");
+				erro.addError("Aluno ainda não possui termo de concessão do benefício socioeconômico assinado.");
 			}
 		}
 		
@@ -105,11 +104,16 @@ public class AlunoSae{
 		}
 		
 		ocorrencia.setAluno(this);
-		SaeInfra.getInstance().getAlunoSaeRepository().adicionaOcorrenciaAluno(ocorrencia);
+
+		SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.insertOrUpdate(ocorrencia);
 	}
 	
 	public boolean removeOcorrencia(Integer idOcorrencia){
-		return SaeInfra.getInstance().getAlunoSaeRepository().removeOcorrencia(idOcorrencia);
+		return SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.delete(Ocorrencia.class, idOcorrencia);
 	}
 	
 	public List<Ocorrencia> getListaOcorrencia() {
@@ -121,15 +125,21 @@ public class AlunoSae{
 	
 	public boolean existeOcorrenciaAberto(final String semestreAno, final Date dataInicio){
 		return SaeInfra.getInstance()
-				.getAlunoSaeRepository()
-				.existeOcorrenciaAbertoParaAluno(this, semestreAno, dataInicio);
+			.getAlunoSaeRepository()
+			.existeOcorrenciaAbertoParaAluno(this, semestreAno, dataInicio);
 	}
 	
 	public boolean assinouTermoConcessaoValeAlimentacao(final String semestreAno){
 		return SaeInfra.getInstance()
-				.getAlunoSaeRepository()
-				.assinouTermoConcessaoValeAlimentacao(this, semestreAno);
+			.getAlunoSaeRepository()
+			.assinouTermoConcessaoValeAlimentacao(this, semestreAno);
 	}
+
+	public AssinaturaTermoBa findAssinaturaTermoConcessaoValeAlimentacaoById(int idAssinatura) {
+		return (AssinaturaTermoBa) SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.findById(AssinaturaTermoBa.class, idAssinatura);
+	}	
 
 	public Ocorrencia findOcorrenciaById(Integer idOcorrencia) {
 		return (Ocorrencia) SaeInfra.getInstance()
@@ -139,28 +149,19 @@ public class AlunoSae{
 
 	public void assinaTermoConcessaoValeAlimentacao(AssinaturaTermoBa assinatura){
 		assinatura.validar();
+		if (!existeEstudoSocioeconomicoPontuadoComoParticipanteDoProgramaAssistenciaEstudantil()){
+			throw new EmsValidationException("Aluno não possui estudo socioeconômico válido pontuado como Participante dos Programas de Assistência Estudantil.");
+		}
 		assinatura.setAluno(this);
 		SaeInfra.getInstance()
 			.getAlunoSaeRepository()
 			.insertOrUpdate(assinatura);
 	}
 	
-	public AssinaturaTermoBa findAssinaturaTermoConcessaoValeAlimentacaoById(int idAssinatura) {
-		return (AssinaturaTermoBa) SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.findById(AssinaturaTermoBa.class, idAssinatura);
-	}	
-	
-	public void validar(){
-		
+	private boolean existeEstudoSocioeconomicoPontuadoComoParticipanteDoProgramaAssistenciaEstudantil() {
+		return true;
 	}
-	
-	public void salvar() {
-		validar();
-		SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.update(this);
-	}
+
 
 	public List<AssinaturaTermoBa> getListaAssinaturaTermoConcessaoValeAlimentacao() {
 		return listaAssinaturaTermoConcessaoValeAlimentacao;
@@ -172,5 +173,8 @@ public class AlunoSae{
 			.delete(AssinaturaTermoBa.class, idAssinatura);
 	}
 	
+	public void validar(){
+		
+	}
 
 }

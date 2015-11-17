@@ -15,8 +15,10 @@ import br.unb.sae.service.SaeApplication;
 public class ValorAlimentacaoServiceFacade extends EmsServiceFacade {
 	
 	public ValorAlimentacao findById(IEmsRequest request){
-		Integer id = request.getParamAsInt("id");
-		return SaeApplication.getInstance().getValorAlimentacaoService().findById(id);
+		int id = request.getParamAsInt("id");
+		return SaeApplication.getInstance()
+			.getValorAlimentacaoService()
+			.findById(id);
 	}
 	
 	public List<ValorAlimentacao> find(IEmsRequest request){
@@ -25,12 +27,16 @@ public class ValorAlimentacaoServiceFacade extends EmsServiceFacade {
 		int limit_ini = request.getQueryAsInt("limit_ini");
 		int limit_fim = request.getQueryAsInt("limit_fim");
 		String sort = request.getQuery("sort");
-		return SaeApplication.getInstance().getValorAlimentacaoService().find(filtro, fields, limit_ini, limit_fim, sort);
+		return SaeApplication.getInstance()
+			.getValorAlimentacaoService()
+			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
 	public ValorAlimentacao insert(IEmsRequest request){
 		final ValorAlimentacao valorAlimentacao = (ValorAlimentacao) request.getObject(ValorAlimentacao.class);
-		return SaeApplication.getInstance().getValorAlimentacaoService().insert(valorAlimentacao);
+		return SaeApplication.getInstance()
+			.getValorAlimentacaoService()
+			.insert(valorAlimentacao);
 	}
 	
 	public ValorAlimentacao update(IEmsRequest request){
@@ -43,7 +49,9 @@ public class ValorAlimentacaoServiceFacade extends EmsServiceFacade {
 	
 	public boolean delete(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
-		return SaeApplication.getInstance().getValorAlimentacaoService().delete(id);
+		return SaeApplication.getInstance()
+			.getValorAlimentacaoService()
+			.delete(id);
 	}
 	
 }

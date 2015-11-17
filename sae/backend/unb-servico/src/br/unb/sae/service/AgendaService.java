@@ -2,35 +2,37 @@ package br.unb.sae.service;
 
 import java.util.List;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 import br.unb.sae.model.Agenda;
 
 @Stateless
 public class AgendaService {
 
-	@EJB private SaeInfra infra;
-
-	public Agenda insert(Agenda agenda){
-		validar(agenda);
-		return (Agenda) SaeInfra.getInstance().getAgendaRepository().insert(agenda);
+	public Agenda findById(int id) {
+		return SaeInfra.getInstance()
+			.getAgendaRepository()
+			.findById(id);
 	}
 
-	public List<Agenda> pesquisar(String atendimento, String periodo, String dataInicio, String dataFim,
-			String horaInicio, String horaFim) {
-		return SaeInfra.getInstance().getAgendaRepository().pesquisar(atendimento, periodo, dataInicio, dataFim, horaInicio, horaFim);
+	public Agenda registraAgenda(Agenda agenda) {
+		agenda.validar();
+		return (Agenda) SaeInfra.getInstance()
+			.getAgendaRepository()
+			.insertOrUpdate(agenda);
 	}
-	
-	private void validar(Agenda obj) throws EmsValidationException {
-		EmsValidationException validation = new EmsValidationException();
-		if (obj.getDataInicio().after(obj.getDataFim())){
-			validation.addError("Data Fim maior que data Inicio.");
-		}
-	
+
+	public List<Agenda> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
+		return SaeInfra.getInstance()
+			.getAgendaRepository()
+			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
-	
+
+	public boolean removeAgenda(int id) {
+		return SaeInfra.getInstance()
+			.getAgendaRepository()
+			.delete(id);
+	}
 	
 }
