@@ -27,7 +27,10 @@ public class AgendamentoRepository extends EmsRepository<Agenda> {
 	
 	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
 		final String sql = "SELECT COUNT(a) FROM Agenda a WHERE a.dataHora = :pDataHora";
-		return getEntityManager().createQuery(sql).setParameter("pDataHora", dataHora).getFirstResult();
+		return getEntityManager()
+			.createQuery(sql)
+			.setParameter("pDataHora", dataHora)
+			.getFirstResult();
 	}
 
 }

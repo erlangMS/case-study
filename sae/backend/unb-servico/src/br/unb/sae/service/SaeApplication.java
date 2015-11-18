@@ -14,6 +14,7 @@ public class SaeApplication {
 	@EJB private AlunoSaeService alunoService;
 	@EJB private AgendaService agendaService;
 	@EJB private AgendamentoService agendamentoService;
+	@EJB private CampusServiceClient campusServiceClient;
 	
 	public SaeApplication(){
 		instance = this;
@@ -35,4 +36,14 @@ public class SaeApplication {
 	public AgendamentoService getAgendamentoService() {
 		return agendamentoService;
 	}
+
+	public CampusServiceClient getCampusServiceClient() {
+		return campusServiceClient;
+	}
+
+	public void setCampusServiceClient(CampusServiceClient campusServiceClient) {
+		this.campusServiceClient = campusServiceClient;
+	}
+	
+	
 }
