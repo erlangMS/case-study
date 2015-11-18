@@ -2,8 +2,11 @@ package br.unb.sae.service;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import br.erlangms.samples.service.EmsServiceClient;
 
+@Stateless
 public class CampusServiceClient extends EmsServiceClient {
 
 	public Object findById(Integer id){
