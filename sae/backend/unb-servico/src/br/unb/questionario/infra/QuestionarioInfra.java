@@ -13,6 +13,7 @@ public class QuestionarioInfra {
 	public static QuestionarioInfra getInstance(){ return instance; }
 
 	@EJB private CategoriaPerguntaRepository categoriaPerguntaRepository;
+	@EJB private PerguntaRepository perguntaRepository;
 
 	public QuestionarioInfra(){
 		instance = this;
@@ -23,6 +24,10 @@ public class QuestionarioInfra {
 
 	public CategoriaPerguntaRepository getCategoriaPerguntaRepository() {
 		return categoriaPerguntaRepository;
+	}
+	
+	public PerguntaRepository getPerguntaRepository() {
+		return perguntaRepository;
 	}
 
 	public EntityManager getSaeContext() {

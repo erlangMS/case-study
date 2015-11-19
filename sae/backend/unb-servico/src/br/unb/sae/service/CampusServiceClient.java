@@ -11,7 +11,7 @@ public class CampusServiceClient extends EmsServiceClient {
 
 	public Object findById(Integer id){
 		Object campus = getStream().from("/sitab/campus/:id")
-							.setParameter(1)
+							.setParameter(0)
 							.request()
 							.getObject();
 		return campus;

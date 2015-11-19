@@ -11,6 +11,7 @@ public class QuestionarioApplication {
 	public static QuestionarioApplication getInstance(){ return instance; }
 
 	@EJB private CategoriaPerguntaService categoriaPerguntaService;
+	@EJB private PerguntaService perguntaService;
 	
 	public QuestionarioApplication(){
 		instance = this;
@@ -18,5 +19,9 @@ public class QuestionarioApplication {
 	
 	public CategoriaPerguntaService getCategoriaPerguntaService(){
 		return categoriaPerguntaService;
+	}
+	
+	public PerguntaService getPerguntaService(){
+		return perguntaService;
 	}
 }
