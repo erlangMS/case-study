@@ -16,6 +16,12 @@ import br.erlangms.EmsValidationException;
 @Table(name="Pergunta")
 public class Pergunta {
 
+	public enum TipoResposta {
+		MultiplaEscolha, 
+		Subjetiva, 
+		EscolhaUma;
+	}
+	
 	@Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -25,7 +31,7 @@ public class Pergunta {
 	private String denominacao;
 	
 	@Column(name = "tipoResposta", nullable = false, insertable = true, updatable = true)
-	private Integer tipoResposta;
+	private TipoResposta tipoResposta;
 
     @OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="categoria_Id")
@@ -47,11 +53,11 @@ public class Pergunta {
 		this.denominacao = denominacao;
 	}
 
-	public Integer getTipoResposta() {
+	public TipoResposta getTipoResposta() {
 		return tipoResposta;
 	}
 
-	public void setTipoResposta(Integer tipoResposta) {
+	public void setTipoResposta(TipoResposta tipoResposta) {
 		this.tipoResposta = tipoResposta;
 	}
 
