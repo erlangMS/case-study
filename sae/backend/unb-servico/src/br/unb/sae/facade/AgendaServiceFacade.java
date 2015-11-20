@@ -13,7 +13,19 @@ import br.unb.sae.service.SaeApplication;
 @Singleton
 @Startup
 public class AgendaServiceFacade extends EmsServiceFacade{
-	
+
+	public List<Object> getCampus(IEmsRequest request){
+		return SaeApplication.getInstance()
+			.getCampusServiceProxy()
+			.getListaCampus();
+	}
+
+	public Object getCampusById(IEmsRequest request){
+		return SaeApplication.getInstance()
+			.getCampusServiceProxy()
+			.findById(request.getParamAsInt("id"));
+	}
+
 	public Agenda registraAgenda(IEmsRequest request){
 		Agenda agenda = null;
 		

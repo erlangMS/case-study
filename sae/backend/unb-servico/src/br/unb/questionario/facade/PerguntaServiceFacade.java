@@ -53,7 +53,14 @@ public class PerguntaServiceFacade extends EmsServiceFacade {
 		Pergunta Pergunta = QuestionarioApplication.getInstance()
 			.getPerguntaService()
 			.findById(id);
-		request.mergeObjectFromPayload(Pergunta);
+		request.mergeObjectFromPayload(Pergunta, new EmsJsonModelAdapter() {
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				return QuestionarioApplication.getInstance()
+						.getCategoriaPerguntaService()
+						.findById(id);
+			}
+		});
 		return QuestionarioApplication.getInstance()
 			.getPerguntaService()
 			.update(Pergunta);
