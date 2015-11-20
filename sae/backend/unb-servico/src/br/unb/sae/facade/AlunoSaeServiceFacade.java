@@ -18,14 +18,9 @@ import br.unb.sae.service.SaeApplication;
 public class AlunoSaeServiceFacade extends EmsServiceFacade {
 	
 	public Ocorrencia inserirOcorrenciaAluno(IEmsRequest request){
-		// Localiza o aluno 
 		Integer idAluno = request.getParamAsInt("id");
-		AlunoSae aluno = SaeApplication.getInstance().getAlunoService().findById(idAluno);
-
-		// Adiciona ocorrência no aluno
 		Ocorrencia ocorrencia = (Ocorrencia) request.getObject(Ocorrencia.class);
-		aluno.registraOcorrencia(ocorrencia);
-
+		SaeApplication.getInstance().getAlunoService().registraOcorrencia(idAluno, ocorrencia);
 		return ocorrencia;
 	}
 	
