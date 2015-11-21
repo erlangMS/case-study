@@ -19,15 +19,19 @@ public class AlunoSaeServiceFacade extends EmsServiceFacade {
 	
 	public Ocorrencia inserirOcorrenciaAluno(IEmsRequest request){
 		Integer idAluno = request.getParamAsInt("id");
-		Ocorrencia ocorrencia = (Ocorrencia) request.getObject(Ocorrencia.class);
-		SaeApplication.getInstance().getAlunoService().registraOcorrencia(idAluno, ocorrencia);
+		Ocorrencia ocorrencia = request.getObject(Ocorrencia.class);
+		SaeApplication.getInstance()
+			.getAlunoService()
+			.registraOcorrencia(idAluno, ocorrencia);
 		return ocorrencia;
 	}
 	
 	public boolean atualizaOcorrenciaAluno(IEmsRequest request){
 		// Localiza o aluno 
 		Integer idAluno = request.getParamAsInt("id");
-		AlunoSae aluno = SaeApplication.getInstance().getAlunoService().findById(idAluno);
+		AlunoSae aluno = SaeApplication.getInstance()
+				.getAlunoService()
+				.findById(idAluno);
 
 		// Localiza a ocorrencia 
 		Integer idOcorrencia = request.getParamAsInt("id_2");
@@ -43,8 +47,10 @@ public class AlunoSaeServiceFacade extends EmsServiceFacade {
 
 	public List<Ocorrencia> listaOcorrenciaAluno(IEmsRequest request){
 		Integer idAluno = request.getParamAsInt("id");
-		AlunoSae aluno = SaeApplication.getInstance().getAlunoService().findById(idAluno);
-		return aluno.getListaOcorrencia();
+		return SaeApplication.getInstance()
+				.getAlunoService()
+				.findById(idAluno)
+				.getListaOcorrencia();
 	}
 
 	public boolean excluirOcorrenciaAluno(IEmsRequest request){
@@ -64,7 +70,7 @@ public class AlunoSaeServiceFacade extends EmsServiceFacade {
 		
 		// POST == insert e PUT == update 
 		if (request.getMetodo().equals("POST")){
-			assinatura = (AssinaturaTermoBa) request.getObject(AssinaturaTermoBa.class);
+			assinatura = request.getObject(AssinaturaTermoBa.class);
 		}else{
 			// Localiza a ocorrencia 
 			int idAssinatura = request.getParamAsInt("id_2");

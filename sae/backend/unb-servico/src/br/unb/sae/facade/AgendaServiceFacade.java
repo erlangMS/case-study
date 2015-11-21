@@ -8,13 +8,20 @@ import javax.ejb.Startup;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.Agenda;
+import br.unb.sae.model.Campus;
 import br.unb.sae.service.SaeApplication;
 
 @Singleton
 @Startup
 public class AgendaServiceFacade extends EmsServiceFacade{
 
-	public List<Object> getCampus(IEmsRequest request){
+	public List<Object> listaAluno(IEmsRequest request){
+		return SaeApplication.getInstance()
+			.getCampusServiceProxy()
+			.getListaAluno();
+	}
+
+	public List<Campus> getCampus(IEmsRequest request){
 		return SaeApplication.getInstance()
 			.getCampusServiceProxy()
 			.getListaCampus();

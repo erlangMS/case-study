@@ -16,11 +16,15 @@ public class CampusServiceFacade extends EmsServiceFacade {
 
 	public Campus findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
-		return SitabApplication.getInstance().getCampusService().findById(id);
+		return SitabApplication.getInstance()
+			.getCampusService()
+			.findById(id);
 	}
 	
 	public List<Campus> all(IEmsRequest request){
-		return SitabApplication.getInstance().getCampusService().getAll();
+		return SitabApplication.getInstance()
+			.getCampusService()
+			.getAll();
 	}
 	
 }

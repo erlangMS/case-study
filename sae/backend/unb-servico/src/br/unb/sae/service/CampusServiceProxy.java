@@ -5,40 +5,23 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import br.erlangms.samples.service.EmsServiceProxy;
+import br.unb.sae.model.Campus;
 
 @Stateless
 public class CampusServiceProxy extends EmsServiceProxy {
 
-	public class Campus{
-		private Integer id;
-		private String nome;
-		public int getId() {
-			return id;
-		}
-		public void setId(int id) {
-			this.id = id;
-		}
-		public String getNome() {
-			return nome;
-		}
-		public void setNome(String nome) {
-			this.nome = nome;
-		}
-	}
-	
 	public Campus findById(Integer id){
-		return (Campus) getStream().from("/sitab/campus/:id")
-							.setParameter(id)
-							.request()
-							.getObject(Campus.class);
+		return getStream().from("/sitab/campus/:id")
+				.setParameter(id)
+				.request()
+				.getObject(Campus.class);
 	}
 
 	
-	public List<Object> getListaCampus(){
-		List<Object> lista = getStream()
-							.from("/sitab/campus")
+	public List<Campus> getListaCampus(){
+		List<Campus> lista = getStream().from("/sitab/campus")
 							.request()
-							.toList();
+							.toList(Campus.class);
 		
 		return lista;
 	}
@@ -50,6 +33,13 @@ public class CampusServiceProxy extends EmsServiceProxy {
 								.request()
 								.toList();
 		return lista;
+	}
+
+
+	public List<Object> getListaAluno() {
+		return getStream().from("/sigra/aluno")
+				.request()
+				.toList();
 	}
 	
 }
