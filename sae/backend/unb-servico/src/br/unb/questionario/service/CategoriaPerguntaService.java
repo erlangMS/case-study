@@ -24,14 +24,14 @@ public class CategoriaPerguntaService {
 
 	public CategoriaPergunta update(CategoriaPergunta categoriaPergunta){
 		categoriaPergunta.validar();
-		return (CategoriaPergunta) QuestionarioInfra.getInstance()
+		return QuestionarioInfra.getInstance()
 			.getCategoriaPerguntaRepository()
 			.update(categoriaPergunta);
 	}
 
 	public CategoriaPergunta insert(CategoriaPergunta categoriaPergunta) {
 		categoriaPergunta.validar();
-		return (CategoriaPergunta) QuestionarioInfra.getInstance()
+		return QuestionarioInfra.getInstance()
 			.getCategoriaPerguntaRepository()
 			.insert(categoriaPergunta);
 	}

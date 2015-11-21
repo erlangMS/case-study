@@ -24,14 +24,14 @@ public class PerguntaService {
 
 	public Pergunta update(Pergunta pergunta){
 		pergunta.validar();
-		return (Pergunta) QuestionarioInfra.getInstance()
+		return QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
 			.update(pergunta);
 	}
 
 	public Pergunta insert(Pergunta pergunta) {
 		pergunta.validar();
-		return (Pergunta) QuestionarioInfra.getInstance()
+		return QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
 			.insert(pergunta);
 	}

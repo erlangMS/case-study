@@ -18,7 +18,7 @@ public class AgendaService {
 
 	public Agenda registraAgenda(Agenda agenda) {
 		agenda.validar();
-		return (Agenda) SaeInfra.getInstance()
+		return SaeInfra.getInstance()
 			.getAgendaRepository()
 			.insertOrUpdate(agenda);
 	}

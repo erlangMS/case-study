@@ -24,14 +24,14 @@ public class AlunoService {
 
 	public Aluno update(Aluno aluno){
 		aluno.validar();
-		return (Aluno) SigraInfra.getInstance()
+		return SigraInfra.getInstance()
 			.getAlunoRepository()
 			.update(aluno);
 	}
 
 	public Aluno insert(Aluno aluno) {
 		aluno.validar();
-		return (Aluno) SigraInfra.getInstance()
+		return SigraInfra.getInstance()
 			.getAlunoRepository()
 			.insert(aluno);
 	}

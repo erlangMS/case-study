@@ -31,11 +31,15 @@ public class ValorAlimentacaoService {
 
 	public ValorAlimentacao insert(ValorAlimentacao valorAlimentacao) {
 		valorAlimentacao.validar();
-		return (ValorAlimentacao) SaeInfra.getInstance().getValorAlimentacaoRepository().insert(valorAlimentacao);
+		return SaeInfra.getInstance()
+			.getValorAlimentacaoRepository()
+			.insert(valorAlimentacao);
 	}
 	
 	public boolean delete(Integer id) {
-		return SaeInfra.getInstance().getValorAlimentacaoRepository().delete(id);
+		return SaeInfra.getInstance()
+			.getValorAlimentacaoRepository()
+			.delete(id);
 	}
 	
 }

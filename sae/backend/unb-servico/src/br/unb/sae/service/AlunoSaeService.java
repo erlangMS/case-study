@@ -10,7 +10,9 @@ import br.unb.sae.model.Ocorrencia;
 public class AlunoSaeService {
 
 	public AlunoSae findById(Integer id) {
-		return SaeInfra.getInstance().getAlunoSaeRepository().findById(id);
+		return SaeInfra.getInstance()
+			.getAlunoSaeRepository()
+			.findById(id);
 	}
 
 	public void registraOcorrencia(Integer idAluno, Ocorrencia ocorrencia) {
