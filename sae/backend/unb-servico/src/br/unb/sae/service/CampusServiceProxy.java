@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
-import br.erlangms.samples.service.EmsServiceProxy;
+import br.erlangms.ervice.EmsServiceProxy;
 import br.unb.sae.model.Campus;
 
 @Stateless
