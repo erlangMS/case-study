@@ -1,5 +1,7 @@
 package br.unb.questionario.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,7 +16,9 @@ import br.erlangms.EmsValidationException;
 
 @Entity
 @Table(name="Pergunta")
-public class Pergunta {
+public class Pergunta implements Serializable {
+
+	private static final long serialVersionUID = 2499910716298997993L;
 
 	public enum TipoResposta {
 		MultiplaEscolha, 

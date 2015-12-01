@@ -14,6 +14,7 @@ public class QuestionarioInfra {
 
 	@EJB private CategoriaPerguntaRepository categoriaPerguntaRepository;
 	@EJB private PerguntaRepository perguntaRepository;
+	@EJB private QuestionarioRepository questionarioRepository;
 
 	public QuestionarioInfra(){
 		instance = this;
@@ -30,8 +31,14 @@ public class QuestionarioInfra {
 		return perguntaRepository;
 	}
 
+	
+	public QuestionarioRepository getQuestionarioRepository() {
+		return questionarioRepository;
+	}
+
 	public EntityManager getSaeContext() {
 		return saeContext;
 	}
-
+	
+	
 }
