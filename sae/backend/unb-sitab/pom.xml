@@ -1,32 +1,33 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>br.unb</groupId>
-  <artifactId>unb-sitab</artifactId>
-  <version>1.0.0-RELEASE</version>
-  <packaging>war</packaging>
-  <name>unb_sitab</name>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>br.unb</groupId>
+	<artifactId>unb-sitab</artifactId>
+	<version>1.0.0-RELEASE</version>
+	<packaging>war</packaging>
+	<name>unb_sitab</name>
 
-  	<properties>
+	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.build.timestamp.format>yyyy-MM-dd-HHmm</maven.build.timestamp.format>
 		<project.buildNumber>${maven.build.timestamp}</project.buildNumber>
 		<sonar.goal.phase>install</sonar.goal.phase>
 	</properties>
-  
+
 	<dependencies>
 
 		<dependency>
-	        <groupId>br.erlangms</groupId>
-	        <artifactId>OtpErlang</artifactId>
-	        <version>1.6.0</version>
-	    </dependency>	
+			<groupId>br.erlangms</groupId>
+			<artifactId>OtpErlang</artifactId>
+			<version>1.6.0</version>
+		</dependency>
 
 		<dependency>
-	        <groupId>br.erlangms</groupId>
-	        <artifactId>ems_java</artifactId>
-	        <version>1.0.0</version>
-	    </dependency>	
+			<groupId>br.erlangms</groupId>
+			<artifactId>ems_java</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 
 		<dependency>
 			<groupId>javax</groupId>
@@ -50,8 +51,8 @@
 		</dependency>
 
 	</dependencies>
-  
-  	<build>
+
+	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -62,7 +63,15 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
-  
+
 </project>
