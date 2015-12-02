@@ -9,11 +9,12 @@ import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.questionario.model.Pergunta;
+import br.unb.questionario.model.RespostaPergunta;
 import br.unb.questionario.service.QuestionarioApplication;
  
 @Singleton
 @Startup
-public class PerguntaServiceFacade extends EmsServiceFacade {
+public class PerguntaFacade extends EmsServiceFacade {
 
 	public Pergunta findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
@@ -71,6 +72,31 @@ public class PerguntaServiceFacade extends EmsServiceFacade {
 		return QuestionarioApplication.getInstance()
 			.getPerguntaService()
 			.delete(id);
+	}
+	
+	public boolean registraRespostaParaPergunta(IEmsRequest request){
+		int pergunta = request.getParamAsInt("id");
+		RespostaPergunta resposta = request.getObject(RespostaPergunta.class);
+		QuestionarioApplication.getInstance()
+			.getPerguntaService()
+			.registraRespostaParaPergunta(pergunta, resposta);
+		return true;
+	}
+	
+	public boolean removeRespostaDaPergunta(IEmsRequest request){
+		int pergunta = request.getParamAsInt("id");
+		int resposta = request.getParamAsInt("id_2");
+		QuestionarioApplication.getInstance()
+			.getPerguntaService()
+			.removeRespostaDaPergunta(pergunta, resposta);
+		return true;
+	}
+	
+	public List<RespostaPergunta> listaRespostaDaPergunta(IEmsRequest request){
+		int pergunta = request.getParamAsInt("id");
+		return QuestionarioApplication.getInstance()
+				.getPerguntaService()
+				.listaRespostaDaPergunta(pergunta);
 	}
 	
 }

@@ -1,6 +1,7 @@
 package br.unb.questionario.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
+import br.unb.questionario.infra.QuestionarioInfra;
 import br.unb.questionario.infra.extension.ValidateFields;
 
 @Entity
@@ -95,5 +97,26 @@ public class Pergunta implements Serializable {
 	}
 
 
+	public void registraResposta(RespostaPergunta resposta){
+		resposta.setPergunta(this);
+		resposta.validar();
+		QuestionarioInfra.getInstance()
+			.getPerguntaRepository().insertOrUpdate(resposta);
+	}
+
+	public void removeResposta(int idResposta){
+		QuestionarioInfra.getInstance()
+			.getPerguntaRepository()
+			.delete(RespostaPergunta.class, idResposta);
+	}
+	
+	public List<RespostaPergunta> getRespostas(){
+		Pergunta thisPergunta = this;
+		return QuestionarioInfra.getInstance()
+					.getPerguntaRepository()
+					.getStreams(RespostaPergunta.class)
+					.where(p -> p.getPergunta().equals(thisPergunta))
+					.toList();
+	}
 	
 }
