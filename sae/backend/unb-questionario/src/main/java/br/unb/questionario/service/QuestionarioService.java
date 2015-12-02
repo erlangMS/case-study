@@ -55,5 +55,11 @@ public class QuestionarioService {
 		Questionario questionario = findById(id);
 		return questionario.getListaPerguntas();
 	}
+
+	public void desvinculaPerguntaDoQuestionario(int questionario_id, int pergunta_id) {
+		Questionario questionario = findById(questionario_id);
+		questionario.desvinculaPergunta(pergunta_id);
+	}
+
 	
 }

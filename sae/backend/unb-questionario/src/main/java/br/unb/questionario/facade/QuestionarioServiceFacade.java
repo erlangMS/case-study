@@ -67,6 +67,15 @@ public class QuestionarioServiceFacade extends EmsServiceFacade {
 		return true;
 	}
 	
+	public boolean desvinculaPerguntaDoQuestionario(IEmsRequest request){
+		int questionario_id = request.getParamAsInt("id");
+		int pergunta_id = request.getParamAsInt("id_2");
+		QuestionarioApplication.getInstance()
+			.getQuestionarioService()
+			.desvinculaPerguntaDoQuestionario(questionario_id, pergunta_id);
+		return true;
+	}
+
 	public List<Pergunta> listaPerguntasVinculadaAoQuestionario(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()

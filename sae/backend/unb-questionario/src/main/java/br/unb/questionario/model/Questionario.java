@@ -121,17 +121,16 @@ public class Questionario implements Serializable {
 	}
 
 	public List<Pergunta> getListaPerguntas(){
-		/*Questionario this_questionario = this;
-		return QuestionarioInfra.getInstance()
-					.getQuestionarioRepository()
-					.getStreams(QuestionarioPergunta.class)
-					.where(c -> c.getQuestionario().equals(this_questionario))
-					.select(p -> p.getPergunta())
-					.toList();
-		*/
 		return QuestionarioInfra.getInstance()
 				.getQuestionarioRepository()
 				.listaPerguntasVinculadaAoQuestionario(this);
+	}
+
+
+	public void desvinculaPergunta(int pergunta_id) {
+		QuestionarioInfra.getInstance()
+			.getQuestionarioRepository()
+			.desvinculaPergunta(getId(), pergunta_id);
 	}
 	
 }

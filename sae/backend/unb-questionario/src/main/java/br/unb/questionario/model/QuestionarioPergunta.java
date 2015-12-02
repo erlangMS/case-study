@@ -11,9 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="QuestionarioPergunta")
+@Table(name="QuestionarioPergunta",
+	   uniqueConstraints = {@UniqueConstraint(columnNames={"questionario_id", "questionario_id"})}
+)
 public class QuestionarioPergunta implements Serializable {
 
 	private static final long serialVersionUID = 7983077560355890060L;
