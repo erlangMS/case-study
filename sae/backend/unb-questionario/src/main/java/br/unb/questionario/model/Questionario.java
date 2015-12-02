@@ -9,9 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
@@ -40,11 +37,11 @@ public class Questionario implements Serializable {
 
 	
 	
-	@ManyToMany
-    @JoinTable(name="QuestionarioPergunta", 
-    	joinColumns={@JoinColumn(name="perguntaid")}, 
-    	inverseJoinColumns={@JoinColumn(name="questionarioid")})
-    private List<Pergunta> perguntas;
+	//@ManyToMany
+    //@JoinTable(name="QuestionarioPergunta",  
+    //	joinColumns={@JoinColumn(name="pergunta_id")}, 
+    //	inverseJoinColumns={@JoinColumn(name="questionario_id")})
+    //private List<Pergunta> perguntas;
 	
 	//@OneToMany(fetch=FetchType.LAZY, mappedBy="questionario", cascade=CascadeType.ALL)
 	//private List<QuestionarioPergunta> listaPerguntas;
@@ -92,21 +89,21 @@ public class Questionario implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 		
-		if (ValidateFields.isFieldStrValid(getDenominacao())){
+		if (!ValidateFields.isFieldStrValid(getDenominacao())){
 			erro.addError("Informe a denominação.");
 		}
 		
-		if(ValidateFields.isDateValid(getDataInicio())) {
+		if(!ValidateFields.isDateValid(getDataInicio())) {
 			erro.addError("Informe a data de início.");
 		}
 
-		if(ValidateFields.isDateValid(getDataFim())) {
+		if(!ValidateFields.isDateValid(getDataFim())) {
 			erro.addError("Informe a data fim.");
 		}
 
-		if (ValidateFields.compareDate(getDataInicio(), getDataFim())){
-					erro.addError("A data fim do questionário deve ser maior que a data de início.");
-			}
+		if (!ValidateFields.isDateFinalAfterOrEqualDateInitial(getDataInicio(), getDataFim())){
+			erro.addError("A data fim do questionário deve ser maior que a data de início.");
+		}
 		
 		if(erro.getErrors().size() > 0) {
 			throw erro;
@@ -114,34 +111,27 @@ public class Questionario implements Serializable {
 	}
 
 
-	public List<Pergunta> getPerguntas() {
-		return perguntas;
+	public void  vinculaPergunta(Pergunta pergunta){
+		QuestionarioPergunta p = new QuestionarioPergunta();
+		p.setPergunta(pergunta);
+		p.setQuestionario(this);
+		QuestionarioInfra.getInstance()
+			.getQuestionarioRepository()
+			.insert(p);
 	}
 
-
-	public void setPerguntas(List<Pergunta> perguntas) {
-		this.perguntas = perguntas;
+	public List<Pergunta> getListaPerguntas(){
+		/*Questionario this_questionario = this;
+		return QuestionarioInfra.getInstance()
+					.getQuestionarioRepository()
+					.getStreams(QuestionarioPergunta.class)
+					.where(c -> c.getQuestionario().equals(this_questionario))
+					.select(p -> p.getPergunta())
+					.toList();
+		*/
+		return QuestionarioInfra.getInstance()
+				.getQuestionarioRepository()
+				.listaPerguntasVinculadaAoQuestionario(this);
 	}
-
-	
-
-//	public void  vinculaPergunta(Pergunta pergunta){
-//		QuestionarioPergunta p = new QuestionarioPergunta();
-//		p.setPergunta(pergunta);
-//		p.setQuestionario(this);
-//		QuestionarioInfra.getInstance()
-//			.getQuestionarioRepository()
-//			.insert(p);
-//	}
-
-//	public List<Pergunta> getListaPerguntas(){
-//		Questionario this_questionario = this;
-//		return QuestionarioInfra.getInstance()
-//					.getQuestionarioRepository()
-//					.getStreams(QuestionarioPergunta.class)
-//					.where(c -> c.getQuestionario().equals(this_questionario))
-//					.select(p -> p.getPergunta())
-//					.toList();
-//	}
 	
 }

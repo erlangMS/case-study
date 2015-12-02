@@ -9,10 +9,14 @@ public class ValidateFields {
 		return (field != null ? true :  false);
 	}
 
-	public static boolean compareDate(Date field,Date field02){
-		return (field != null && field!=null && field.after(field02) ? true :  false);
+	public static boolean isDateFinalAfterOrEqualDateInitial(Date field, Date field02){
+		return (field != null && field != null && (field.equals(field02) ||field.after(field02)) ? true :  false);
 	}
 	
+	public static boolean isDateFinalAfterDateInitial(Date field, Date field02){
+		return (field != null && field != null && field.after(field02) ? true :  false);
+	}
+
 	public static boolean isFieldStrValid(String field){
 		return (field!=null && !field.isEmpty() ? true : false);
 	}

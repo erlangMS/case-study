@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.questionario.model.Pergunta;
@@ -59,20 +58,19 @@ public class QuestionarioServiceFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 
-//	public boolean vinculaPerguntaAoQuestionario(IEmsRequest request){
-//		QuestionarioApplication app = QuestionarioApplication.getInstance();
-//		int id = request.getParamAsInt("id");
-//		Questionario questionario= app.getQuestionarioService().findById(id);
-//		Integer pergunta = request.getPropertyAsInt("pergunta");
-//		app.getQuestionarioService().vinculaPerguntaAoQuestionario(questionario, pergunta);
-//		return true;
-//	}
+	public boolean vinculaPerguntaAoQuestionario(IEmsRequest request){
+		int questionario_id = request.getParamAsInt("id");
+		int pergunta_id = request.getPropertyAsInt("pergunta");
+		QuestionarioApplication.getInstance()
+			.getQuestionarioService()
+			.vinculaPerguntaAoQuestionario(questionario_id, pergunta_id);
+		return true;
+	}
 	
 	public List<Pergunta> listaPerguntasVinculadaAoQuestionario(IEmsRequest request){
 		int id = request.getParamAsInt("id");
-		Questionario questionario= QuestionarioApplication.getInstance()
-				.getQuestionarioService()
-				.findById(id);
-		return questionario.getPerguntas();
+		return QuestionarioApplication.getInstance()
+					.getQuestionarioService()
+					.listaPerguntasVinculadaAoQuestionario(id);
 	}
 }

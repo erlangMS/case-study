@@ -24,7 +24,8 @@ public class QuestionarioRepository extends EmsRepository<Questionario> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Pergunta> listaPerguntasVinculadaAoQuestionario(Questionario questionario){
-		final String sql = "select this.pergunta from QuestionarioPergunta this where ap.questionario = :pQuestionario";
+		final String sql = "select this.pergunta from QuestionarioPergunta this "+
+						   "where this.questionario = :pQuestionario";
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("pQuestionario", questionario)

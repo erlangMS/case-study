@@ -1,7 +1,6 @@
 package br.unb.questionario.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -44,9 +42,6 @@ public class Pergunta implements Serializable {
     @JoinColumn(name="categoria_Id")
     private CategoriaPergunta categoria;
 	
-    @ManyToMany(mappedBy="perguntas")
-    private List<Questionario> questionarios;
-    
 	public Integer getId() {
 		return id;
 	}
@@ -82,15 +77,15 @@ public class Pergunta implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 		
-		if (ValidateFields.isFieldObjectValid(getCategoria())){
+		if (!ValidateFields.isFieldObjectValid(getCategoria())){
 			erro.addError("Informe a categoria da pergunta.");
 		}
 
-		if (ValidateFields.isFieldStrValid(getDenominacao())){
+		if (!ValidateFields.isFieldStrValid(getDenominacao())){
 			erro.addError("Informe a denominação.");
 		}
 		
-		if(ValidateFields.isFieldObjectValid(getTipoResposta())) {
+		if(!ValidateFields.isFieldObjectValid(getTipoResposta())) {
 			erro.addError("Informe o tipo de resposta.");
 		}
 
@@ -99,13 +94,6 @@ public class Pergunta implements Serializable {
 		}
 	}
 
-	public List<Questionario> getQuestionarios() {
-		return questionarios;
-	}
-
-	public void setQuestionarios(List<Questionario> questionarios) {
-		this.questionarios = questionarios;
-	}
 
 	
 }

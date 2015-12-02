@@ -20,9 +20,9 @@ public class Aluno  implements Serializable {
 	private Integer id;
 	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
 	private Boolean bloqueado;
-	@Column(name = "nome", nullable = false, insertable = true, updatable = true)
+	@Column(name = "nome", nullable = false, insertable = true, updatable = true, unique = true)
 	private String nome;
-	@Column(name = "cpf", nullable = false, insertable = true, updatable = true)
+	@Column(name = "cpf", nullable = false, insertable = true, updatable = true, unique = true)
 	private String cpf;
 	@Column(name = "senha", nullable = false, insertable = true, updatable = true)
 	private String senha;
