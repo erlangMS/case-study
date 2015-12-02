@@ -59,20 +59,20 @@ public class QuestionarioServiceFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 
-	public boolean vinculaPerguntaAoQuestionario(IEmsRequest request){
-		QuestionarioApplication app = QuestionarioApplication.getInstance();
-		int id = request.getParamAsInt("id");
-		Questionario questionario= app.getQuestionarioService().findById(id);
-		Integer pergunta = request.getPropertyAsInt("pergunta");
-		app.getQuestionarioService().vinculaPerguntaAoQuestionario(questionario, pergunta);
-		return true;
-	}
+//	public boolean vinculaPerguntaAoQuestionario(IEmsRequest request){
+//		QuestionarioApplication app = QuestionarioApplication.getInstance();
+//		int id = request.getParamAsInt("id");
+//		Questionario questionario= app.getQuestionarioService().findById(id);
+//		Integer pergunta = request.getPropertyAsInt("pergunta");
+//		app.getQuestionarioService().vinculaPerguntaAoQuestionario(questionario, pergunta);
+//		return true;
+//	}
 	
 	public List<Pergunta> listaPerguntasVinculadaAoQuestionario(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		Questionario questionario= QuestionarioApplication.getInstance()
 				.getQuestionarioService()
 				.findById(id);
-		return questionario.getListaPerguntas();
+		return questionario.getPerguntas();
 	}
 }

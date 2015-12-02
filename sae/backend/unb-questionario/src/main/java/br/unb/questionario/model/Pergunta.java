@@ -1,6 +1,7 @@
 package br.unb.questionario.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
+import br.unb.questionario.infra.extension.ValidateFields;
 
 @Entity
 @Table(name="Pergunta")
@@ -41,6 +44,9 @@ public class Pergunta implements Serializable {
     @JoinColumn(name="categoria_Id")
     private CategoriaPergunta categoria;
 	
+    @ManyToMany(mappedBy="perguntas")
+    private List<Questionario> questionarios;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -76,21 +82,29 @@ public class Pergunta implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 		
-		if (getCategoria() == null){
+		if (ValidateFields.isFieldObjectValid(getCategoria())){
 			erro.addError("Informe a categoria da pergunta.");
 		}
 
-		if (getDenominacao() == null || getDenominacao().isEmpty()){
+		if (ValidateFields.isFieldStrValid(getDenominacao())){
 			erro.addError("Informe a denominação.");
 		}
 		
-		if(getTipoResposta() == null) {
+		if(ValidateFields.isFieldObjectValid(getTipoResposta())) {
 			erro.addError("Informe o tipo de resposta.");
 		}
 
 		if(erro.getErrors().size() > 0) {
 			throw erro;
 		}
+	}
+
+	public List<Questionario> getQuestionarios() {
+		return questionarios;
+	}
+
+	public void setQuestionarios(List<Questionario> questionarios) {
+		this.questionarios = questionarios;
 	}
 
 	

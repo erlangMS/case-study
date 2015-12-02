@@ -43,11 +43,11 @@ public class QuestionarioService {
 			.delete(id);
 	}
 
-	public void vinculaPerguntaAoQuestionario(Questionario questionario, int pergunta_id) {
-		Pergunta pergunta = QuestionarioApplication.getInstance()
-								.getPerguntaService()
-								.findById(pergunta_id);
-		questionario.vinculaPergunta(pergunta);
-	}
+//	public void vinculaPerguntaAoQuestionario(Questionario questionario, int pergunta_id) {
+//		Pergunta pergunta = QuestionarioApplication.getInstance()
+//								.getPerguntaService()
+//								.findById(pergunta_id);
+//		questionario.vinculaPergunta(pergunta);
+//	}
 	
 }
