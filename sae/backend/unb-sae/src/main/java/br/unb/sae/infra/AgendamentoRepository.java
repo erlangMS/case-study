@@ -28,7 +28,7 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 	}
 	
 	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
-		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataInicio = :pDataHora";
+		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataHora = :pDataHora";
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("pDataHora", dataHora)
@@ -56,7 +56,7 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Agendamento> pesquisarAgendamentoDoDia(Date dataDoDia){
-		final String sql = "SELECT ag FROM Agendamento ag WHERE ag.agenda.dataInicio = :dataAutal";
+		final String sql = "SELECT ag FROM Agendamento ag WHERE date(ag.agenda.dataHora) = date(:dataAutal)";
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("dataAutal", dataDoDia)

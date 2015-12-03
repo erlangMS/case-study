@@ -14,7 +14,7 @@ import br.unb.sae.model.AlunoSae;
 public class AgendamentoService {
 
 	public void agendarEntrevista(Agenda a) {
-		int quantidade = SaeInfra.getInstance().getAgendamentoRepository().getQuantidadeAgendamentosMesmoHorario(a.getDataInicio());
+		int quantidade = SaeInfra.getInstance().getAgendamentoRepository().getQuantidadeAgendamentosMesmoHorario(a.getDatahora());
 		int quantidadeAtendimentosMaximo = a.getQuantidadeAtendentes(); //hard code pra trocar pela classe do Vanderlei
 
 		if (quantidade >= quantidadeAtendimentosMaximo) {
