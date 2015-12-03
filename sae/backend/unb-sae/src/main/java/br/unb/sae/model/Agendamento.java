@@ -21,7 +21,8 @@ public class Agendamento {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "agenda_id", nullable = false, insertable = true, updatable = true)
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="agenda_id")
     private Agenda agenda;
 
     @OneToOne(fetch=FetchType.LAZY)
