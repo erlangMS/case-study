@@ -17,6 +17,7 @@ public class SaeInfra {
 	@EJB private AlunoSaeRepository alunoSaeRepository;
 	@EJB private AgendaRepository agendaRepository;
 	@EJB private AgendamentoRepository agendamentoRepository;
+	@EJB private EstudoPreliminarRepository estudoPreliminarRepository;
 
 	public SaeInfra(){
 		instance = this;
@@ -48,4 +49,11 @@ public class SaeInfra {
 	public EntityManager getSaeContext() {
 		return saeContext;
 	}
+
+	public EstudoPreliminarRepository getEstudoPreliminarRepository() {
+		return estudoPreliminarRepository;
+	}
+
+	
+	
 }
