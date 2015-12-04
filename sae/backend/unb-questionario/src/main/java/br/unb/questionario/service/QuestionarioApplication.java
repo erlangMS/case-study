@@ -13,6 +13,7 @@ public class QuestionarioApplication {
 	@EJB private CategoriaPerguntaService categoriaPerguntaService;
 	@EJB private PerguntaService perguntaService;
 	@EJB private QuestionarioService questionarioService;
+	@EJB private TipoQuestionarioService tipoQuestionarioService;
 	
 	public QuestionarioApplication(){
 		instance = this;
@@ -28,6 +29,10 @@ public class QuestionarioApplication {
 
 	public QuestionarioService getQuestionarioService() {
 		return questionarioService;
+	}
+
+	public TipoQuestionarioService getTipoQuestionarioService() {
+		return tipoQuestionarioService;
 	}
 
 	

@@ -17,11 +17,15 @@ public class SaeInfra {
 	@EJB private AlunoSaeRepository alunoSaeRepository;
 	@EJB private AgendaRepository agendaRepository;
 	@EJB private AgendamentoRepository agendamentoRepository;
+	@EJB private EstudoPreliminarRepository estudoPreliminarRepository;
+	@EJB private DocumentacaoPendenteRepository documentacaoPendenteRepository;
 
 	public SaeInfra(){
 		instance = this;
 	}
 	
+	
+
 	@PersistenceContext(unitName = "service_context")
 	public EntityManager saeContext;
 
@@ -48,4 +52,15 @@ public class SaeInfra {
 	public EntityManager getSaeContext() {
 		return saeContext;
 	}
+
+	public EstudoPreliminarRepository getEstudoPreliminarRepository() {
+		return estudoPreliminarRepository;
+	}
+	
+	public DocumentacaoPendenteRepository getDocumentacaoRepository() {
+		return documentacaoPendenteRepository;
+	}
+
+	
+	
 }

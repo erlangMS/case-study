@@ -1,6 +1,7 @@
 package br.unb.sae.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -12,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 
@@ -29,17 +31,8 @@ public class Agenda implements Serializable {
     @Column(name = "periodo", nullable = false, insertable = true, updatable = true, length = 5)
     private String semestreAno;
 
-    @Column(name = "dataInicio", nullable = false, insertable = true, updatable = true, length = 8)
-    private Date dataInicio;
-    
-    @Column(name = "dataFim", nullable = false, insertable = true, updatable = true, length = 8)
-    private Date dataFim;
-
-    @Column(name = "HoraInicio", nullable = false, insertable = true, updatable = true, length = 5)
-    private String horaInicio;
-
-    @Column(name = "HoraFim", nullable = false, insertable = true, updatable = true, length = 5)
-    private String horaFim;
+    @Column(name = "dataHora", nullable = false, insertable = true, updatable = true, length = 8)
+    private Timestamp datahora;
 
     @Column(name = "Campus", nullable = false, insertable = true, updatable = true)
     private Integer campus;
@@ -56,37 +49,7 @@ public class Agenda implements Serializable {
 	}
 
 
-	public Date getDataInicio() {
-		return dataInicio;
-	}
 
-	public void setDataInicio(Date dataInicio) {
-		this.dataInicio = dataInicio;
-	}
-
-	public Date getDataFim() {
-		return dataFim;
-	}
-
-	public void setDataFim(Date dataFim) {
-		this.dataFim = dataFim;
-	}
-
-	public String getHoraInicio() {
-		return horaInicio;
-	}
-
-	public void setHoraInicio(String horaInicio) {
-		this.horaInicio = horaInicio;
-	}
-
-	public String getHoraFim() {
-		return horaFim;
-	}
-
-	public void setHoraFim(String horaFim) {
-		this.horaFim = horaFim;
-	}
 
 	public Integer getCampus() {
 		return campus;
@@ -116,40 +79,13 @@ public class Agenda implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (getDataInicio() == null){
-			erro.addError("Informe a data de início da agenda.");
-		}
-
-		if (getDataFim() == null){
-			erro.addError("Informe a data fim da agenda.");
-		}
-
-		if (getDataInicio() != null &&
-			getDataFim() != null &&
-			getDataInicio().after(getDataFim())){
-				erro.addError("A data fim da agenda deve ser maior que a data de início.");
-		}
-
-		if (getHoraInicio() == null){
-			erro.addError("Informe a hora de início da agenda.");
+		if(EmsUtil.isFieldObjectValid(getDatahora())){
+			erro.addError("Informe a data e hora do agendamento.");
 		}
 		
-		if (getHoraFim() == null){
-			erro.addError("Informe a hora de fim da agenda.");
-		}
-
+		
 		if (getQuantidadeAtendentes() == null){
 			erro.addError("Informe a quantidade de atendentes.");
-		}
-
-		try {
-			if (getHoraInicio() != null &&
-				getHoraFim() != null &&
-				(new SimpleDateFormat("HH:mm")).parse(getHoraInicio()).after((new SimpleDateFormat("HH:mm")).parse(getHoraFim()))){
-					erro.addError("A hora fim deve ser maior que a hora de início.");
-				}
-		} catch (ParseException e) {
-			erro.addError("Informe um horário válido.");
 		}
 
 		if (getCampus() == null){
@@ -172,13 +108,21 @@ public class Agenda implements Serializable {
 
 	private boolean existeProjecaoDeAgendaParaDataInicioInformada() {
 		int idCampus = getCampus(); 
-		Date dataFim = getDataFim();
+		Timestamp dataFim = getDatahora();
 		return SaeInfra.getInstance()
 			.getAgendaRepository()
 			.getStreams()
 			.where(a -> a.getCampus() == idCampus && 
-					    (a.getDataFim().after(dataFim) || a.getDataFim().equals(dataFim)))
+					    a.getDatahora().equals(dataFim))
 			.count() > 0; 
+	}
+
+	public Timestamp getDatahora() {
+		return datahora;
+	}
+
+	public void setDatahora(Timestamp datahora) {
+		this.datahora = datahora;
 	}
 
 

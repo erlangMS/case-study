@@ -35,4 +35,15 @@ public class AgendaService {
 			.delete(id);
 	}
 	
+	
+	public List<Agenda> buscarAgendaPorPeriodo(String dataInicio, String dataFim){
+		return SaeInfra.getInstance().getAgendaRepository().pesquisarPorPeriodo(dataInicio, dataFim);
+	}
+	
+	
+	public List<Agenda> buscarAgendaPorCampusAndSemestreAno(int campus,String semestreAno){
+		return SaeInfra.getInstance().getAgendaRepository().pesquisarPorCampusAndSemestreAno(campus, semestreAno);
+	}
+	
+	
 }
