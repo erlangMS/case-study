@@ -9,10 +9,8 @@ import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
 import br.unb.sae.model.Agendamento;
-<<<<<<< HEAD
-=======
+
 import br.unb.sae.model.AlunoSae;
->>>>>>> df310791c1dbf573fd9562a711d0454fd90cd02e
 
 @Stateless
 public class AgendamentoRepository extends EmsRepository<Agendamento> {
@@ -30,13 +28,12 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 		return Agendamento.class;
 	}
 	
-<<<<<<< HEAD
-	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
-		final String sql = "SELECT COUNT(a) FROM Agendamento a WHERE a.dataHora = :pDataHora";
-=======
+//	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
+//		final String sql = "SELECT COUNT(a) FROM Agendamento a WHERE a.dataHora = :pDataHora";
+
 	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
 		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataHora = :pDataHora";
->>>>>>> df310791c1dbf573fd9562a711d0454fd90cd02e
+
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("pDataHora", dataHora)
