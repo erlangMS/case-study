@@ -23,6 +23,7 @@ public class EstudoPreliminarRepository extends EmsRepository<EstudoPreliminar> 
 		return EstudoPreliminar.class;
 	}
 
+
 	
 	
 }

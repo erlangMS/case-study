@@ -17,6 +17,7 @@ public class SaeApplication {
 	@EJB private CampusServiceProxy campusServiceProxy;
 	@EJB private EstudoPreliminarService estudoPreliminarService;
 	@EJB private DocumentacaoPendenteService documentacaoService;
+	
 
 	
 	public SaeApplication(){
