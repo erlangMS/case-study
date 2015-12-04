@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
 import br.unb.sae.model.Agendamento;
+
 import br.unb.sae.model.AlunoSae;
 
 @Stateless
@@ -27,8 +28,12 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 		return Agendamento.class;
 	}
 	
+//	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
+//		final String sql = "SELECT COUNT(a) FROM Agendamento a WHERE a.dataHora = :pDataHora";
+
 	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
 		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataHora = :pDataHora";
+
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("pDataHora", dataHora)

@@ -96,7 +96,7 @@ public class Agenda implements Serializable {
 			erro.addError("Informe o ano e semestre da agenda.");
 		}
 		
-		if (existeProjecaoDeAgendaParaDataInicioInformada()){
+		if (erro.getErrors().size() == 0 && existeProjecaoDeAgendaParaDataInicioInformada()){
 			erro.addError("Já existe projeção na agenda para a data de início.");
 		}
 		
