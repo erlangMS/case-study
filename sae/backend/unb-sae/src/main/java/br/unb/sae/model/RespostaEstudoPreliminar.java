@@ -12,7 +12,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
@@ -60,9 +59,9 @@ public class RespostaEstudoPreliminar implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!EmsUtil.isFieldObjectValid(getEstudoPreliminar())){
+		/*if (!EmsUtil.isFieldObjectValid(getEstudoPreliminar())){
 			erro.addError("Informe um Estudo preliminar.");
-		}
+		}*/
 
 		if(erro.getErrors().size() > 0) {
 			throw erro;

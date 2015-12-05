@@ -67,24 +67,13 @@ public class EstudoPreliminarFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 	
-	public RespostaEstudoPreliminar findByIdResposta(IEmsRequest request){
+	public List<RespostaEstudoPreliminar> listaRespostas(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getRespostaEstudoPreliminarService()
-			.findById(id);
+			.getEstudoPreliminarService()
+			.listaRespostas(id);
 	}
 	
-	public List<RespostaEstudoPreliminar> findResposta(IEmsRequest request){
-		String filtro = request.getQuery("filtro");
-		String fields = request.getQuery("fields");
-		int limit_ini = request.getQueryAsInt("limit_ini");
-		int limit_fim = request.getQueryAsInt("limit_fim");
-		String sort = request.getQuery("sort");
-		return SaeApplication.getInstance()
-			.getEstudoPreliminarService()
-			.findResposta(filtro, fields, limit_ini, limit_fim, sort);
-	}
-
 	public void insertResposta(IEmsRequest request){
 		int estudo = request.getParamAsInt("id");
 		RespostaEstudoPreliminar resposta = request.getObject(RespostaEstudoPreliminar.class, new EmsJsonModelAdapter() {
@@ -113,8 +102,8 @@ public class EstudoPreliminarFacade extends EmsServiceFacade {
 	public Boolean deleteResposta(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getRespostaEstudoPreliminarService()
-			.delete(id);
+			.getEstudoPreliminarService()
+			.deleteResposta(id);
 	}
 	
 }

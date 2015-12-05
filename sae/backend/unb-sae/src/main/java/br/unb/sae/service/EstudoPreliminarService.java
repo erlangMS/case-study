@@ -46,14 +46,13 @@ public class EstudoPreliminarService {
 	
 	public RespostaEstudoPreliminar findByIdResposta(Integer id) {
 		return SaeInfra.getInstance()
-			.getRespostaEstudoPreliminarRepository()
-			.findById(id);
+			.getEstudoPreliminarRepository()
+			.findById(RespostaEstudoPreliminar.class, id);
 	}
 
-	public List<RespostaEstudoPreliminar> findResposta(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
-		return SaeInfra.getInstance()
-			.getRespostaEstudoPreliminarRepository()
-			.find(filtro, fields, limit_ini, limit_fim, sort);
+	public List<RespostaEstudoPreliminar> listaRespostas(Integer estudo_id) {
+		EstudoPreliminar estudo = findById(estudo_id);
+		return estudo.getRespostas();
 	}
 
 	public void registraResposta(int estudo_id, RespostaEstudoPreliminar resposta){
@@ -63,8 +62,8 @@ public class EstudoPreliminarService {
 
 	public boolean deleteResposta(Integer id) {
 		return SaeInfra.getInstance()
-			.getRespostaEstudoPreliminarRepository()
-			.delete(id);
+			.getEstudoPreliminarRepository()
+			.delete(RespostaEstudoPreliminar.class, id);
 	}
 
 	public void registraResposta(int estudo_id, int resposta_id, RespostaEstudoPreliminar resposta_update) {
