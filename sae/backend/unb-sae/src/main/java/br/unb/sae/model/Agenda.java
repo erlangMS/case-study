@@ -46,8 +46,6 @@ public class Agenda implements Serializable {
 	}
 
 
-
-
 	public Integer getCampus() {
 		return campus;
 	}

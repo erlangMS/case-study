@@ -13,7 +13,7 @@ public class CampusService {
 	
 	public CampusService(){
 		listaCampus = new ArrayList<Campus>();
-		listaCampus.add(new Campus(1, "Brasilia"));
+		listaCampus.add(new Campus(1, "Brasília"));
 		listaCampus.add(new Campus(2, "Ceilandia"));
 		listaCampus.add(new Campus(3, "Asa Norte"));
 	}
