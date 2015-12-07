@@ -44,12 +44,6 @@ public class EstudoPreliminarService {
 			.delete(id);
 	}
 	
-	public RespostaEstudoPreliminar findByIdResposta(Integer id) {
-		return SaeInfra.getInstance()
-			.getEstudoPreliminarRepository()
-			.findById(RespostaEstudoPreliminar.class, id);
-	}
-
 	public List<RespostaEstudoPreliminar> listaRespostas(Integer estudo_id) {
 		EstudoPreliminar estudo = findById(estudo_id);
 		return estudo.getRespostas();
@@ -67,9 +61,9 @@ public class EstudoPreliminarService {
 	}
 
 	public void registraResposta(int estudo_id, int resposta_id, RespostaEstudoPreliminar resposta_update) {
-		RespostaEstudoPreliminar resposta = findByIdResposta(resposta_id);
-		EmsUtil.mergeObject(resposta, resposta_update);
 		EstudoPreliminar estudo = findById(estudo_id);
+		RespostaEstudoPreliminar resposta = estudo.findResposta(resposta_id);
+		EmsUtil.mergeObjects(resposta, resposta_update);
 		estudo.registraResposta(resposta);		
 	}
 

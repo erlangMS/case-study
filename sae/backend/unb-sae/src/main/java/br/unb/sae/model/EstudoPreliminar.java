@@ -136,5 +136,11 @@ public class EstudoPreliminar implements Serializable {
 				.toList();
 	}
 
+	public RespostaEstudoPreliminar findResposta(Integer id) {
+		return SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.findById(RespostaEstudoPreliminar.class, id);
+	}
+	
     
 }

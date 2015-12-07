@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import br.erlangms.EmsUtil;
 import br.unb.sae.infra.SaeInfra;
 import br.unb.sae.model.DocumentacaoPendente;
 
@@ -22,13 +23,6 @@ public class DocumentacaoPendenteService {
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public DocumentacaoPendente update(DocumentacaoPendente DocumentacaoPendente){
-		DocumentacaoPendente.validar();
-		return SaeInfra.getInstance()
-			.getDocumentacaoRepository()
-			.update(DocumentacaoPendente);
-	}
-
 	public DocumentacaoPendente insert(DocumentacaoPendente Documentacao) {
 		Documentacao.validar();
 		return SaeInfra.getInstance()
@@ -40,6 +34,15 @@ public class DocumentacaoPendenteService {
 		return SaeInfra.getInstance()
 			.getDocumentacaoRepository()
 			.delete(id);
+	}
+
+	public DocumentacaoPendente update(int idDocumentacao, DocumentacaoPendente documentacao_update) {
+		DocumentacaoPendente documentacao = findById(idDocumentacao);
+		EmsUtil.mergeObjects(documentacao, documentacao_update);
+		documentacao.validar();
+		return SaeInfra.getInstance()
+			.getDocumentacaoRepository()
+			.update(documentacao);
 	}
 	
 }

@@ -40,11 +40,11 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 	}
 	
 	public DocumentacaoPendente update(IEmsRequest request){
-		SaeApplication saeApplication = SaeApplication.getInstance();
-		int id = request.getParamAsInt("id");
-		DocumentacaoPendente documentacaoPendente = saeApplication.getDocumentacaoService().findById(id);
-		request.mergeObjectFromPayload(documentacaoPendente);
-		return saeApplication.getDocumentacaoService().update(documentacaoPendente);
+		int idDocumentacao = request.getParamAsInt("id");
+		DocumentacaoPendente documentacao = request.getObject(DocumentacaoPendente.class);
+		return SaeApplication.getInstance()
+				.getDocumentacaoService()
+				.update(idDocumentacao, documentacao);
 	}
 	
 	public boolean delete(IEmsRequest request){
