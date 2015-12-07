@@ -38,7 +38,7 @@ public class EstudoPreliminar implements Serializable {
     @Column(name = "quantidadeAtendente", nullable = false, insertable = true, updatable = true)
     private double pontuacaoPreliminar = 0.0;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="aluno_Id")
     private AlunoSae aluno;
     
@@ -128,11 +128,11 @@ public class EstudoPreliminar implements Serializable {
 	}
 	
 	public List<RespostaEstudoPreliminar> getRespostas(){
-		EstudoPreliminar thisEstudo = this;
+		int thisEstudo = this.getId();
 		return SaeInfra.getInstance()
 				.getEstudoPreliminarRepository()
 				.getStreams(RespostaEstudoPreliminar.class)
-				.where(c -> c.getEstudoPreliminar().equals(thisEstudo))
+				.where(c -> c.getEstudoPreliminar().getId() == thisEstudo)
 				.toList();
 	}
 
