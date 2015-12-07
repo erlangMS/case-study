@@ -76,7 +76,7 @@ public class Agenda implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if(EmsUtil.isFieldObjectValid(getDatahora())){
+		if(!EmsUtil.isFieldObjectValid(getDatahora())){
 			erro.addError("Informe a data e hora do agendamento.");
 		}
 		

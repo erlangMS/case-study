@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
+import br.unb.sae.model.Agenda;
 import br.unb.sae.model.Agendamento;
 
 import br.unb.sae.model.AlunoSae;
@@ -31,7 +32,7 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 //	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
 //		final String sql = "SELECT COUNT(a) FROM Agendamento a WHERE a.dataHora = :pDataHora";
 
-	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
+/*	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
 		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataHora = :pDataHora";
 
 		return getEntityManager()
@@ -40,6 +41,27 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 			.getFirstResult();
 	}
 	
+	*/
+	
+	public int getQuantidadeAgendamentosMesmoHorario(Agenda agenda) {
+		//TENTATIVA 02 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
+/*		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda = :pAgenda";
+
+		return getEntityManager()
+			.createQuery(sql)
+			.setParameter("pAgenda", agenda)
+			.getFirstResult();
+*/		
+		
+		//TENTATIVA 03 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
+		final String sql = "SELECT COUNT(*) FROM tb_agendamento WHERE AgoAgeCodigoAgenda = :pAgenda";
+		
+		return getEntityManager().
+				createNativeQuery(sql).
+				setParameter("pAgenda", agenda.getId()).
+				getFirstResult();
+	}
+
 	
 	@SuppressWarnings("unchecked")
 	public List<Agendamento> pesquisarAgendamentoPorAlunoCPF(AlunoSae alunoSae){

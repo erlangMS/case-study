@@ -1,5 +1,8 @@
 package br.unb.sae.model;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,10 +14,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import br.erlangms.EmsValidationException;
+import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="TB_Agendamento")
-public class Agendamento {
+public class Agendamento  implements Serializable {
+
+	private static final long serialVersionUID = 4514450478730109793L;
+
 
 	@Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -57,12 +64,51 @@ public class Agendamento {
 		EmsValidationException erro = new EmsValidationException();
 
 		
+		if (getAluno() == null){
+			erro.addError("Informe o Aluno do agendamento.");
+		}
+
+		if (getAgenda() == null){
+			erro.addError("Informe a Agenda do agendamento.");
+		}
+		
+		if (erro.getErrors().size() == 0 && quantidadeMaximaDeAgendamentosAtingida()){
+			erro.addError("Já existe projeção na agenda para a data de início.");
+		}
+		
 		if(erro.getErrors().size() > 0) {
 			throw erro;
 		}
 		
 	}
 
+	/**
+	 * Verifica se a quantidade de agendamentos ja atingiu a quantidade maxima permitida
+	 * para a Agenda escolhida
+	 * @return BOOLEAN
+	 */
+	private boolean quantidadeMaximaDeAgendamentosAtingida() {
+		
+		//TENTATIVA 01 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
+		//igual da classe Agenda.java
+		return SaeInfra.getInstance()
+			.getAgendamentoRepository()
+			.getStreams()
+			.where(a -> a.getAgenda().getId().intValue() == getAgenda().getId().intValue())
+			.count() >= getAgenda().getQuantidadeAtendentes(); 
+			
+			
+		//TENTATIVAS 02 E 03 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
+/*		int quantidadeAgendamentosMesmoHorario = SaeInfra.getInstance().
+				getAgendamentoRepository().getQuantidadeAgendamentosMesmoHorario(agenda);
+		
+		if (quantidadeAgendamentosMesmoHorario >= getAgenda().getQuantidadeAtendentes()) {
+			return true;
+		}
+		
+		return false;
+*/		
+	}
    
     
 }
