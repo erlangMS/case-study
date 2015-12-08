@@ -5,23 +5,23 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import br.erlangms.EmsServiceProxy;
-import br.unb.sae.model.Campus;
+import br.unb.sae.vo.CampusVo;
 
 @Stateless
 public class QuestinarioServiceProxy extends EmsServiceProxy {
 
-	public Campus findById(Integer id){
+	public CampusVo findById(Integer id){
 		return getStream().from("/sitab/campus/:id")
 				.setParameter(id)
 				.request()
-				.getObject(Campus.class);
+				.getObject(CampusVo.class);
 	}
 
 	
-	public List<Campus> getListaCampus(){
-		List<Campus> lista = getStream().from("/sitab/campus")
+	public List<CampusVo> getListaCampus(){
+		List<CampusVo> lista = getStream().from("/sitab/campus")
 							.request()
-							.toList(Campus.class);
+							.toList(CampusVo.class);
 		
 		return lista;
 	}

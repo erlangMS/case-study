@@ -21,6 +21,7 @@ import javax.persistence.TemporalType;
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
+import br.unb.sae.vo.QuestionarioVo;
 
 @Entity
 @Table(name = "TB_EstudoPreliminar")
@@ -49,14 +50,13 @@ public class EstudoPreliminar implements Serializable {
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
 	@JoinColumn(name = "EPrQueCodigoQuestionario")
-	private Questionario questinario;
+	private QuestionarioVo questinario;
 
 	public EstudoPreliminar() {
 		super();
 	}
 
-	public EstudoPreliminar(Integer id, String periodo, Date dataHora, double pontuacaoPreliminar, AlunoSae aluno,
-			Questionario questinario) {
+	public EstudoPreliminar(Integer id, String periodo, Date dataHora, double pontuacaoPreliminar, AlunoSae aluno, QuestionarioVo questinario) {
 		super();
 		this.id = id;
 		this.periodo = periodo;
@@ -106,11 +106,11 @@ public class EstudoPreliminar implements Serializable {
 		this.aluno = aluno;
 	}
 
-	public Questionario getQuestinario() {
+	public QuestionarioVo getQuestinario() {
 		return questinario;
 	}
 
-	public void setQuestinario(Questionario questinario) {
+	public void setQuestinario(QuestionarioVo questinario) {
 		this.questinario = questinario;
 	}
 
