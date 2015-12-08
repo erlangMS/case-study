@@ -16,9 +16,9 @@ public class SaeApplication {
 	@EJB private AgendamentoService agendamentoService;
 	@EJB private CampusServiceProxy campusServiceProxy;
 	@EJB private EstudoPreliminarService estudoPreliminarService;
-	@EJB private DocumentacaoPendenteService documentacaoService;
+	@EJB private DocumentacaoPendenteService documentacaoPendenteService;
+	@EJB private DocumentacaoService documentacaoService;
 	
-
 	
 	public SaeApplication(){
 		instance = this;
@@ -49,7 +49,11 @@ public class SaeApplication {
 		return estudoPreliminarService;
 	}
 	
-	public DocumentacaoPendenteService getDocumentacaoService() {
+	public DocumentacaoPendenteService getDocumentacaoPendenteService() {
+		return documentacaoPendenteService;
+	}
+	
+	public DocumentacaoService getDocumentacaoService() {
 		return documentacaoService;
 	}
 

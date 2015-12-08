@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
+import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.DocumentacaoPendente;
@@ -17,7 +18,7 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 	public DocumentacaoPendente findById(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getDocumentacaoService()
+			.getDocumentacaoPendenteService()
 			.findById(id);
 	}
 	
@@ -28,14 +29,22 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 		int limit_fim = request.getQueryAsInt("limit_fim");
 		String sort = request.getQuery("sort");
 		return SaeApplication.getInstance()
-			.getDocumentacaoService()
+			.getDocumentacaoPendenteService()
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
 	public DocumentacaoPendente insert(IEmsRequest request){
-		final DocumentacaoPendente documentacaoPendente = (DocumentacaoPendente) request.getObject(DocumentacaoPendente.class);
+		final DocumentacaoPendente documentacaoPendente = request.getObject(DocumentacaoPendente.class, new EmsJsonModelAdapter() {
+			
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				return SaeApplication.getInstance()
+							.getDocumentacaoService()
+							.findById(id);
+			}
+		});
 		return SaeApplication.getInstance()
-			.getDocumentacaoService()
+			.getDocumentacaoPendenteService()
 			.insert(documentacaoPendente);
 	}
 	
@@ -43,14 +52,14 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 		int idDocumentacao = request.getParamAsInt("id");
 		DocumentacaoPendente documentacao = request.getObject(DocumentacaoPendente.class);
 		return SaeApplication.getInstance()
-				.getDocumentacaoService()
+				.getDocumentacaoPendenteService()
 				.update(idDocumentacao, documentacao);
-	}
+		}
 	
 	public boolean delete(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getDocumentacaoService()
+			.getDocumentacaoPendenteService()
 			.delete(id);
 	}
 	

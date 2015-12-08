@@ -33,9 +33,9 @@ public class DocumentacaoPendente implements Serializable {
     @Column(name = "entregue", nullable = false, insertable = true, updatable = true)
     private boolean entregue = false;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="aluno_Id")
-    private AlunoSae aluno;
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="documentacao_Id")
+    private Documentacao documentacao;
 
 	public Integer getId() {
 		return id;
@@ -61,12 +61,12 @@ public class DocumentacaoPendente implements Serializable {
 		this.entregue = entregue;
 	}
 
-	public AlunoSae getAluno() {
-		return aluno;
+	public Documentacao getDocumentacao() {
+		return documentacao;
 	}
 
-	public void setAluno(AlunoSae aluno) {
-		this.aluno = aluno;
+	public void setDocumentacao(Documentacao documentacao) {
+		this.documentacao = documentacao;
 	}
 
 	public void validar() {
@@ -76,6 +76,14 @@ public class DocumentacaoPendente implements Serializable {
 			erro.addError("Informe uma data e hora.");
 		}
 		
+		if (!EmsUtil.isFieldObjectValid(getDocumentacao())){
+			erro.addError("Informe a documentação");
+		}else{
+			if (!getDocumentacao().isAtivo()) {
+				erro.addError("Informe documentação ativa");
+			}
+		}
+
 		if(erro.getErrors().size() > 0) {
 			throw erro;
 		}
