@@ -12,13 +12,20 @@ import br.unb.sae.model.Agendamento;
 import br.unb.sae.model.AlunoSae;
 import br.unb.sae.service.SaeApplication;
 
+/**
+ * Classe de fachada para Agendamento.
+ * Contem métodos para incluir um novo agendamento e pesquisar agendamentos por dados do Aluno
+ */
 @Singleton
 @Startup
 public class AgendamentoAlunoFacade extends EmsServiceFacade{
 	
 	public Agendamento agendarEntrevista (IEmsRequest request) {
+		
+		//Cria um objeto Agendamento
 		Agendamento agendamento = request.getObject(Agendamento.class, new EmsJsonModelAdapter() {
 			
+			//Cria objetos de referencia a Agenda e Aluno caso tenham sido informados os respectivos IDs
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
 				if (classOfModel == Agenda.class) {
@@ -36,10 +43,19 @@ public class AgendamentoAlunoFacade extends EmsServiceFacade{
 				}
 			}
 		});
+		
 		SaeApplication.getInstance()
 			.getAgendamentoService()
 			.agendarEntrevista(agendamento);
+		
 		return agendamento;
 	}
 	
+	public boolean removeAgendamento(IEmsRequest request){
+		final int id = request.getParamAsInt("id");
+		return SaeApplication.getInstance()
+			.getAgendamentoService()
+			.removeAgendamento(id);
+	}
+
 }

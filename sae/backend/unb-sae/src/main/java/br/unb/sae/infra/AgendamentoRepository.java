@@ -13,6 +13,10 @@ import br.unb.sae.model.Agendamento;
 
 import br.unb.sae.model.AlunoSae;
 
+/**
+ * Classe Repository para Agendamento.
+ * Contem métodos para realizar consultas referentes a agendamentos.
+ */
 @Stateless
 public class AgendamentoRepository extends EmsRepository<Agendamento> {
 	
@@ -29,37 +33,35 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 		return Agendamento.class;
 	}
 	
-//	public int getQuantidadeAgendamentosMesmoHorario (Date dataHora) {
-//		final String sql = "SELECT COUNT(a) FROM Agendamento a WHERE a.dataHora = :pDataHora";
-
-/*	public int getQuantidadeAgendamentosMesmoHorario(Date dataHora) {
-		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.dataHora = :pDataHora";
-
-		return getEntityManager()
-			.createQuery(sql)
-			.setParameter("pDataHora", dataHora)
-			.getFirstResult();
-	}
 	
-	*/
-	
+	/**
+	 * Método que consulta a quantidade de agendamentos já realizados para uma determinada agenda.
+	 */
 	public int getQuantidadeAgendamentosMesmoHorario(Agenda agenda) {
-		//TENTATIVA 02 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
-/*		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda = :pAgenda";
+		final String sql = "SELECT COUNT(ag) FROM Agendamento ag WHERE ag.agenda.id = :pAgenda";
 
-		return getEntityManager()
+		//Como a instrução COUNT retorna apenas uma linha, deve-se utilizar o .getSingleResult()
+		return ((Long)getEntityManager()
 			.createQuery(sql)
-			.setParameter("pAgenda", agenda)
-			.getFirstResult();
-*/		
+			.setParameter("pAgenda", agenda.getId())
+			.getSingleResult()).intValue();
 		
-		//TENTATIVA 03 DE CONSULTAR QUANTIDADE DE AGENDAMENTOS JA FEITOS PARA UMA AGENDA
-		final String sql = "SELECT COUNT(*) FROM tb_agendamento WHERE AgoAgeCodigoAgenda = :pAgenda";
+	}
+
+	
+	/**
+	 * Método que consulta se um aluno já está agendado para a mesma agenda.
+	 */
+	public boolean alunoJaAgendadoParaMesmaDataHora(AlunoSae aluno, Agenda agenda) { 
+		final String sql = "SELECT ag FROM Agendamento ag WHERE ag.aluno.id = :pAluno AND ag.agenda.id = :pAgenda";
+
+		//Se a lista não estiver vazia, retorna true
+		return !getEntityManager()
+			.createQuery(sql)
+			.setParameter("pAluno", aluno.getId())
+			.setParameter("pAgenda", agenda.getId())
+			.getResultList().isEmpty();
 		
-		return getEntityManager().
-				createNativeQuery(sql).
-				setParameter("pAgenda", agenda.getId()).
-				getFirstResult();
 	}
 
 	
@@ -74,7 +76,7 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 
 	@SuppressWarnings("unchecked")
 	public List<Agendamento> pesquisarAgendamentoPorAlunoPorParteNome(AlunoSae alunoSae){
-		final String sql = "SELECT ag FROM Agendamento ag WHERE ag.aluno.nome like :nomeParte";
+		final String sql = "SELECT ag FROM Agendamento ag WHERE ag.aluno.nome LIKE :nomeParte";
 		return getEntityManager()
 			.createQuery(sql)
 			.setParameter("nomeParte", alunoSae.getNome()+"%")
@@ -83,10 +85,10 @@ public class AgendamentoRepository extends EmsRepository<Agendamento> {
 	
 	@SuppressWarnings("unchecked")
 	public List<Agendamento> pesquisarAgendamentoDoDia(Date dataDoDia){
-		final String sql = "SELECT ag FROM Agendamento ag WHERE date(ag.agenda.dataHora) = date(:dataAutal)";
+		final String sql = "SELECT ag FROM Agendamento ag WHERE date(ag.agenda.datahora) = date(:data)";
 		return getEntityManager()
 			.createQuery(sql)
-			.setParameter("dataAutal", dataDoDia)
+			.setParameter("data", dataDoDia)
 			.getResultList();
 	}
 
