@@ -9,6 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.SerializedName;
+
+import br.erlangms.EmsUtil;
+import br.erlangms.EmsValidationException;
+
 @Entity
 @Table(name="Aluno")
 public class Aluno  implements Serializable {
@@ -19,11 +24,12 @@ public class Aluno  implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
-	private Boolean bloqueado;
+	private Boolean bloqueado = false;
 	@Column(name = "nome", nullable = false, insertable = true, updatable = true, unique = true)
 	private String nome;
 	@Column(name = "cpf", nullable = false, insertable = true, updatable = true, unique = true)
 	private String cpf;
+	
 	@Column(name = "senha", nullable = false, insertable = true, updatable = true)
 	private String senha;
 
@@ -65,6 +71,22 @@ public class Aluno  implements Serializable {
 	}
 	
 	public void validar(){
+		EmsValidationException erro = new EmsValidationException();
+
+		if(!EmsUtil.isFieldStrValid(getNome())){
+			erro.addError("Informe o nome do aluno.");
+		}
 		
+		if(!EmsUtil.isFieldStrValid(getCpf())){
+			erro.addError("Informe o cpf do aluno.");
+		}
+
+		if(!EmsUtil.isFieldStrValid(getSenha())){
+			erro.addError("Informe a senha do aluno.");
+		}
+		
+		if(erro.getErrors().size() > 0) {
+			throw erro;
+		}
 	}
 }

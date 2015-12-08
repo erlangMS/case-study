@@ -12,7 +12,7 @@ import br.unb.sae.service.SaeApplication;
  
 @Singleton
 @Startup
-public class ValorAlimentacaoServiceFacade extends EmsServiceFacade {
+public class ValorAlimentacaoFacade extends EmsServiceFacade {
 	
 	public ValorAlimentacao findById(IEmsRequest request){
 		int id = request.getParamAsInt("id");

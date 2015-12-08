@@ -24,5 +24,4 @@ public class EstudoPreliminarRepository extends EmsRepository<EstudoPreliminar> 
 	}
 
 	
-	
 }

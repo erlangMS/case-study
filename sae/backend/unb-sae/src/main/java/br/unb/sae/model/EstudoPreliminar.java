@@ -2,6 +2,7 @@ package br.unb.sae.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
+import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="EstudoPreliminar")
@@ -36,7 +38,7 @@ public class EstudoPreliminar implements Serializable {
     @Column(name = "quantidadeAtendente", nullable = false, insertable = true, updatable = true)
     private double pontuacaoPreliminar = 0.0;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="aluno_Id")
     private AlunoSae aluno;
     
@@ -109,5 +111,36 @@ public class EstudoPreliminar implements Serializable {
 	}
 
 
+
+	public void registraResposta(RespostaEstudoPreliminar resposta) {
+		resposta.validar();
+		resposta.setEstudoPreliminar(this);
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.insertOrUpdate(resposta);
+		
+	}
+
+	public void removeResposta(int resposta) {
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.delete(RespostaEstudoPreliminar.class, resposta);
+	}
+	
+	public List<RespostaEstudoPreliminar> getRespostas(){
+		int thisEstudo = this.getId();
+		return SaeInfra.getInstance()
+				.getEstudoPreliminarRepository()
+				.getStreams(RespostaEstudoPreliminar.class)
+				.where(c -> c.getEstudoPreliminar().getId() == thisEstudo)
+				.toList();
+	}
+
+	public RespostaEstudoPreliminar findResposta(Integer id) {
+		return SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.findById(RespostaEstudoPreliminar.class, id);
+	}
+	
     
 }

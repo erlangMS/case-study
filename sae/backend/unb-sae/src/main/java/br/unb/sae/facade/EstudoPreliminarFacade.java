@@ -9,6 +9,7 @@ import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.EstudoPreliminar;
+import br.unb.sae.model.RespostaEstudoPreliminar;
 import br.unb.sae.service.SaeApplication;
  
 @Singleton
@@ -64,6 +65,45 @@ public class EstudoPreliminarFacade extends EmsServiceFacade {
 		return SaeApplication.getInstance()
 			.getEstudoPreliminarService()
 			.delete(id);
+	}
+	
+	public List<RespostaEstudoPreliminar> listaRespostas(IEmsRequest request){
+		Integer id = request.getParamAsInt("id");
+		return SaeApplication.getInstance()
+			.getEstudoPreliminarService()
+			.listaRespostas(id);
+	}
+	
+	public void insertResposta(IEmsRequest request){
+		int estudo = request.getParamAsInt("id");
+		RespostaEstudoPreliminar resposta = request.getObject(RespostaEstudoPreliminar.class, new EmsJsonModelAdapter() {
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				return SaeApplication.getInstance()
+							.getEstudoPreliminarService()
+							.findById(id);
+			}
+		});
+
+		SaeApplication.getInstance()
+			.getEstudoPreliminarService()
+			.registraResposta(estudo, resposta);
+	}
+	
+	public void updateResposta(IEmsRequest request){
+		int estudo_id = request.getParamAsInt("id");
+		int resposta_id = request.getParamAsInt("id_2");
+		RespostaEstudoPreliminar resposta = request.getObject(RespostaEstudoPreliminar.class);
+		SaeApplication.getInstance()
+			.getEstudoPreliminarService()
+			.registraResposta(estudo_id, resposta_id, resposta);
+	}
+	
+	public Boolean deleteResposta(IEmsRequest request){
+		int id = request.getParamAsInt("id");
+		return SaeApplication.getInstance()
+			.getEstudoPreliminarService()
+			.deleteResposta(id);
 	}
 	
 }

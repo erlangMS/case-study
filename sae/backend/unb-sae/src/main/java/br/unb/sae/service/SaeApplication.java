@@ -18,8 +18,7 @@ public class SaeApplication {
 	@EJB private EstudoPreliminarService estudoPreliminarService;
 	@EJB private DocumentacaoPendenteService documentacaoPendenteService;
 	@EJB private DocumentacaoService documentacaoService;
-
-
+	
 	
 	public SaeApplication(){
 		instance = this;
