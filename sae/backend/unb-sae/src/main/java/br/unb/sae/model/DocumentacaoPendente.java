@@ -78,6 +78,10 @@ public class DocumentacaoPendente implements Serializable {
 		
 		if (!EmsUtil.isFieldObjectValid(getDocumentacao())){
 			erro.addError("Informe a documentação");
+		}else{
+			if (!getDocumentacao().isAtivo()) {
+				erro.addError("Informe documentação ativa");
+			}
 		}
 
 		if(erro.getErrors().size() > 0) {
