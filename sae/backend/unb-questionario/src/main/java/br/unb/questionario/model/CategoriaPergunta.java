@@ -10,16 +10,26 @@ import javax.persistence.Table;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="CategoriaPergunta")
+@Table(name="TB_Categoria")
 public class CategoriaPergunta {
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "CatCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "denominacao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "CatDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String denominacao;
+
+	public CategoriaPergunta() {
+		super();
+	}
+
+	public CategoriaPergunta(Integer id, String denominacao) {
+		super();
+		this.id = id;
+		this.denominacao = denominacao;
+	}
 
 	public Integer getId() {
 		return id;

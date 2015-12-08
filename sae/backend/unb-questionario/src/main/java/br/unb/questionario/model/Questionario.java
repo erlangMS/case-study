@@ -6,50 +6,58 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import br.erlangms.EmsValidationException;
 import br.unb.questionario.infra.QuestionarioInfra;
 import br.unb.questionario.infra.extension.ValidateFields;
 
 @Entity
-@Table(name="Questionario")
+@Table(name="TB_Questionario")
 public class Questionario implements Serializable {
 
 	private static final long serialVersionUID = 5515922866139266680L;
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "QueCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "denominacao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "QueDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String denominacao;
 	
-	@Column(name = "dataInicio", nullable = false, insertable = true, updatable = true)
+	@Column(name = "QueDataInicio", nullable = false, insertable = true, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataInicio;
 
-	@Column(name = "dataFim", nullable = false, insertable = true, updatable = true)
+	@Column(name = "QueDataFim", nullable = false, insertable = true, updatable = true)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFim;
 
+	@OneToOne
+	@JoinColumn(name = "QueTQuCodigoTipo")
+	private TipoQuestionario tipoQuestionario;
 	
+	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Pergunta.class, optional = false)
+	@JoinColumn(name = "QuePerCodigoPergunta")
+	private List<Pergunta> perguntas;
 	
-	//@ManyToMany
-    //@JoinTable(name="QuestionarioPergunta",  
-    //	joinColumns={@JoinColumn(name="pergunta_id")}, 
-    //	inverseJoinColumns={@JoinColumn(name="questionario_id")})
-    //private List<Pergunta> perguntas;
-	
-	//@OneToMany(fetch=FetchType.LAZY, mappedBy="questionario", cascade=CascadeType.ALL)
-	//private List<QuestionarioPergunta> listaPerguntas;
+	public Questionario() {
+		super();
+	}
 
 	public Integer getId() {
 		return id;
 	}
-
 
 	public void setId(Integer id) {
 		this.id = id;
@@ -85,6 +93,29 @@ public class Questionario implements Serializable {
 		this.dataFim = dataFim;
 	}
 
+
+	public TipoQuestionario getTipoQuestionario() {
+		return tipoQuestionario;
+	}
+
+
+	public void setTipoQuestionario(TipoQuestionario tipoQuestionario) {
+		this.tipoQuestionario = tipoQuestionario;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	public List<Pergunta> getPerguntas() {
+		return perguntas;
+	}
+
+	public void setPerguntas(List<Pergunta> perguntas) {
+		this.perguntas = perguntas;
+	}
 
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();

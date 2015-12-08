@@ -7,32 +7,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="RespostaPergunta")
+@Table(name = "TB_Resposta")
 public class RespostaPergunta {
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "ResCodigo", nullable = false, insertable = true, updatable = true)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "descricao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "ResDescricao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String descricao;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="pergunta_Id")
-    private Pergunta pergunta;
+	@ManyToOne(fetch = FetchType.EAGER, optional = false, targetEntity = Pergunta.class)
+	@JoinColumn(name = "ResPerCodigoPergunta")
+	private Pergunta pergunta;
 
-	@Column(name = "valor_resposta", nullable = false, insertable = true, updatable = true)
-	private Long valorResposta;
-    	
-	
+	@Column(name = "ResValorResposta", nullable = false, insertable = true, updatable = true)
+	private float valorResposta;
+
+	public RespostaPergunta() {
+		super();
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -57,33 +60,32 @@ public class RespostaPergunta {
 		this.pergunta = pergunta;
 	}
 
-	public Long getValorResposta() {
+	public float getValorResposta() {
 		return valorResposta;
 	}
 
-	public void setValorResposta(Long valorResposta) {
+	public void setValorResposta(float valorResposta) {
 		this.valorResposta = valorResposta;
 	}
 
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
-		
-		if (!EmsUtil.isFieldStrValid(getDescricao())){
+
+		if (!EmsUtil.isFieldStrValid(getDescricao())) {
 			erro.addError("Informe a descrição da resposta.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getValorResposta())){
+		if (!EmsUtil.isFieldObjectValid(getValorResposta())) {
 			erro.addError("Informe o valor da resposta.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getPergunta())){
+		if (!EmsUtil.isFieldObjectValid(getPergunta())) {
 			erro.addError("Informe a pergunta a qual a resposta se destina.");
 		}
 
-		if(erro.getErrors().size() > 0) {
+		if (erro.getErrors().size() > 0) {
 			throw erro;
 		}
 	}
 
-	
 }

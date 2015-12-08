@@ -10,20 +10,24 @@ import javax.persistence.Table;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="TipoQuestionario")
+@Table(name="TB_TipoQuestinario")
 public class TipoQuestionario {
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "TQuCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "denominacao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "TQuDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String denominacao;
 
-	@Column(name = "extinto", nullable = false, insertable = true, updatable = true)
+	@Column(name = "TQuExtinto", nullable = false, insertable = true, updatable = true)
 	private boolean extinto = false;
 	
+	public TipoQuestionario() {
+		super();
+	}
+
 	public Integer getId() {
 		return id;
 	}
