@@ -19,6 +19,8 @@ public class SaeInfra {
 	@EJB private AgendamentoRepository agendamentoRepository;
 	@EJB private EstudoPreliminarRepository estudoPreliminarRepository;
 	@EJB private DocumentacaoPendenteRepository documentacaoPendenteRepository;
+	@EJB private DocumentacaoRepository documentacaoRepository;
+
 
 	public SaeInfra(){
 		instance = this;
@@ -57,10 +59,13 @@ public class SaeInfra {
 		return estudoPreliminarRepository;
 	}
 	
-	public DocumentacaoPendenteRepository getDocumentacaoRepository() {
+	public DocumentacaoPendenteRepository getDocumentacaoPendenteRepository() {
 		return documentacaoPendenteRepository;
 	}
-
+	
+	public DocumentacaoRepository getDocumentacaoRepository() {
+		return documentacaoRepository;
+	}
 	
 	
 }

@@ -12,13 +12,13 @@ public class DocumentacaoPendenteService {
 
 	public DocumentacaoPendente findById(Integer id) {
 		return SaeInfra.getInstance()
-			.getDocumentacaoRepository()
+			.getDocumentacaoPendenteRepository()
 			.findById(id);
 	}
 
 	public List<DocumentacaoPendente> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
 		return SaeInfra.getInstance()
-			.getDocumentacaoRepository()
+			.getDocumentacaoPendenteRepository()
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
@@ -29,16 +29,16 @@ public class DocumentacaoPendenteService {
 			.update(DocumentacaoPendente);
 	}
 
-	public DocumentacaoPendente insert(DocumentacaoPendente Documentacao) {
-		Documentacao.validar();
+	public DocumentacaoPendente insert(DocumentacaoPendente DocumentacaoPendente) {
+		DocumentacaoPendente.validar();
 		return SaeInfra.getInstance()
 			.getDocumentacaoRepository()
-			.insert(Documentacao);
+			.insert(DocumentacaoPendente);
 	}
 	
 	public boolean delete(Integer id) {
 		return SaeInfra.getInstance()
-			.getDocumentacaoRepository()
+			.getDocumentacaoPendenteRepository()
 			.delete(id);
 	}
 	

@@ -5,61 +5,52 @@ import java.util.List;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 
-import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
-import br.unb.sae.model.DocumentacaoPendente;
+import br.unb.sae.model.Documentacao;
 import br.unb.sae.service.SaeApplication;
  
 @Singleton
 @Startup
-public class DocumentacaoPendenteFacade extends EmsServiceFacade {
+public class DocumentacaoFacade extends EmsServiceFacade {
 	
-	public DocumentacaoPendente findById(IEmsRequest request){
+	public Documentacao findById(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getDocumentacaoPendenteService()
+			.getDocumentacaoService()
 			.findById(id);
 	}
 	
-	public List<DocumentacaoPendente> find(IEmsRequest request){
+	public List<Documentacao> find(IEmsRequest request){
 		String filtro = request.getQuery("filtro");
 		String fields = request.getQuery("fields");
 		int limit_ini = request.getQueryAsInt("limit_ini");
 		int limit_fim = request.getQueryAsInt("limit_fim");
 		String sort = request.getQuery("sort");
 		return SaeApplication.getInstance()
-			.getDocumentacaoPendenteService()
+			.getDocumentacaoService()
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public DocumentacaoPendente insert(IEmsRequest request){
-		final DocumentacaoPendente documentacaoPendente = request.getObject(DocumentacaoPendente.class, new EmsJsonModelAdapter() {
-			
-			@Override
-			public Object findById(Class<?> classOfModel, Integer id) {
-				return SaeApplication.getInstance()
-							.getDocumentacaoService()
-							.findById(id);
-			}
-		});
+	public Documentacao insert(IEmsRequest request){
+		final Documentacao documentacaoPendente = (Documentacao) request.getObject(Documentacao.class);
 		return SaeApplication.getInstance()
-			.getDocumentacaoPendenteService()
+			.getDocumentacaoService()
 			.insert(documentacaoPendente);
 	}
 	
-	public DocumentacaoPendente update(IEmsRequest request){
+	public Documentacao update(IEmsRequest request){
 		SaeApplication saeApplication = SaeApplication.getInstance();
 		int id = request.getParamAsInt("id");
-		DocumentacaoPendente documentacaoPendente = saeApplication.getDocumentacaoPendenteService().findById(id);
+		Documentacao documentacaoPendente = saeApplication.getDocumentacaoService().findById(id);
 		request.mergeObjectFromPayload(documentacaoPendente);
-		return saeApplication.getDocumentacaoPendenteService().update(documentacaoPendente);
+		return saeApplication.getDocumentacaoService().update(documentacaoPendente);
 	}
 	
 	public boolean delete(IEmsRequest request){
 		final int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getDocumentacaoPendenteService()
+			.getDocumentacaoService()
 			.delete(id);
 	}
 	
