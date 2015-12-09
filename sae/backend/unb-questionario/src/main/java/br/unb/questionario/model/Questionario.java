@@ -144,5 +144,14 @@ public class Questionario implements Serializable {
 			.getQuestionarioRepository()
 			.desvinculaPergunta(getId(), pergunta_id);
 	}
+
+	public boolean temAlgumaPerguntaVinculada() {
+		int thisQuestionario = getId();
+		return QuestionarioInfra.getInstance()
+			.getQuestionarioRepository()
+			.getStreams(QuestionarioPergunta.class)
+			.anyMatch(q -> q.getQuestionario().getId() == thisQuestionario);
+			
+	}
 	
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 
+import br.erlangms.EmsValidationException;
 import br.unb.questionario.infra.QuestionarioInfra;
 import br.unb.questionario.model.Pergunta;
 import br.unb.questionario.model.Questionario;
@@ -38,6 +39,8 @@ public class QuestionarioService {
 	}
 	
 	public boolean delete(Integer id) {
+		Questionario questionario = findById(id);
+		validaExclusao(questionario);
 		return QuestionarioInfra.getInstance()
 			.getQuestionarioRepository()
 			.delete(id);
@@ -61,5 +64,10 @@ public class QuestionarioService {
 		questionario.desvinculaPergunta(pergunta_id);
 	}
 
-	
+	private void validaExclusao(Questionario questionario) {
+		// Não permite excluir se tem alguma pergunta vinculada
+		if (questionario.temAlgumaPerguntaVinculada()){
+			throw new EmsValidationException("O questionário não pode ser excluído pois existem perguntas vinculadas!"); 
+		}
+	}	
 }
