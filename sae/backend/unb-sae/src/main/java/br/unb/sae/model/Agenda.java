@@ -1,7 +1,7 @@
 package br.unb.sae.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,10 +26,10 @@ public class Agenda implements Serializable {
 	private Integer id;
 
     @Column(name = "periodo", nullable = false, insertable = true, updatable = true, length = 5)
-    private String semestreAno;
+    private String periodo;
 
     @Column(name = "dataHora", nullable = false, insertable = true, updatable = true, length = 8)
-    private Timestamp datahora;
+    private Date dataHora;
 
     @Column(name = "Campus", nullable = false, insertable = true, updatable = true)
     private Integer campus;
@@ -63,18 +63,28 @@ public class Agenda implements Serializable {
 	}
 
 	
-	public String getSemestreAno() {
-		return semestreAno;
+
+	public String getPeriodo() {
+		return periodo;
 	}
 
-	public void setSemestreAno(String semestreAno) {
-		this.semestreAno = semestreAno;
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
+	}
+
+
+	public Date getDataHora() {
+		return dataHora;
+	}
+
+	public void setDataHora(Date dataHora) {
+		this.dataHora = dataHora;
 	}
 
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if(!EmsUtil.isFieldObjectValid(getDatahora())){
+		if(!EmsUtil.isFieldObjectValid(getDataHora())){
 			erro.addError("Informe a data e hora do agendamento.");
 		}
 		
@@ -84,11 +94,11 @@ public class Agenda implements Serializable {
 		}
 
 		if (getCampus() == null){
-			erro.addError("Informe o Campus da agenda.");
+			erro.addError("Informe o campus da agenda.");
 		}
 
-		if (getSemestreAno() == null){
-			erro.addError("Informe o ano e semestre da agenda.");
+		if (getPeriodo() == null){
+			erro.addError("Informe o período da agenda.");
 		}
 		
 		if (erro.getErrors().size() == 0 && existeProjecaoDeAgendaParaDataInicioInformada()){
@@ -103,22 +113,15 @@ public class Agenda implements Serializable {
 
 	private boolean existeProjecaoDeAgendaParaDataInicioInformada() {
 		int idCampus = getCampus(); 
-		Timestamp dataFim = getDatahora();
+		Date dataFim = getDataHora();
 		return SaeInfra.getInstance()
 			.getAgendaRepository()
 			.getStreams()
 			.where(a -> a.getCampus() == idCampus && 
-					    a.getDatahora().equals(dataFim))
+					    a.getDataHora().equals(dataFim))
 			.count() > 0; 
 	}
 
-	public Timestamp getDatahora() {
-		return datahora;
-	}
-
-	public void setDatahora(Timestamp datahora) {
-		this.datahora = datahora;
-	}
 
 
     

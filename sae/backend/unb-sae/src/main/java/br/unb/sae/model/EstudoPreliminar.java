@@ -135,13 +135,14 @@ public class EstudoPreliminar implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!EmsUtil.isFieldStrValid((getPeriodo()))) {
-			erro.addError("Informe um período.");
+		if (!EmsUtil.isFieldStrValid(getPeriodo(), 5)) {
+			erro.addError("Informe um período válido.");
 		}
 
 		if (!EmsUtil.isDateValid(getDataHora())) {
 			erro.addError("Informe uma data e hora.");
 		}
+		
 
 		if (erro.getErrors().size() > 0) {
 			throw erro;

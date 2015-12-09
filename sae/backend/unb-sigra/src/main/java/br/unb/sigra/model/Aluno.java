@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.google.gson.annotations.SerializedName;
-
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
@@ -23,10 +21,13 @@ public class Aluno  implements Serializable {
     @Column(name = "codigoPessoa", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
+	
 	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
 	private Boolean bloqueado = false;
+	
 	@Column(name = "nome", nullable = false, insertable = true, updatable = true, unique = true)
 	private String nome;
+
 	@Column(name = "cpf", nullable = false, insertable = true, updatable = true, unique = true)
 	private String cpf;
 	

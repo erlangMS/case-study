@@ -51,10 +51,20 @@ public class EstudoPreliminarFacade extends EmsServiceFacade {
 	
 	public EstudoPreliminar update(IEmsRequest request){
 		int id = request.getParamAsInt("id");
+
 		EstudoPreliminar EstudoPreliminar = SaeApplication.getInstance()
 			.getEstudoPreliminarService()
 			.findById(id);
-		request.mergeObjectFromPayload(EstudoPreliminar);
+
+		request.mergeObjectFromPayload(EstudoPreliminar, new EmsJsonModelAdapter() {
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				return SaeApplication.getInstance()
+							.getAlunoService()
+							.findById(id);
+			}
+		});
+		
 		return SaeApplication.getInstance()
 			.getEstudoPreliminarService()
 			.update(EstudoPreliminar);

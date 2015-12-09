@@ -6,20 +6,18 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.questionario.infra.QuestionarioInfra;
-import br.unb.questionario.infra.extension.ValidateFields;
 
 @Entity
 @Table(name="TB_Questionario")
@@ -46,10 +44,6 @@ public class Questionario implements Serializable {
 	@OneToOne
 	@JoinColumn(name = "QueTQuCodigoTipo")
 	private TipoQuestionario tipoQuestionario;
-	
-	@ManyToOne(fetch = FetchType.EAGER, targetEntity = Pergunta.class, optional = false)
-	@JoinColumn(name = "QuePerCodigoPergunta")
-	private List<Pergunta> perguntas;
 	
 	public Questionario() {
 		super();
@@ -104,35 +98,22 @@ public class Questionario implements Serializable {
 	}
 
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public List<Pergunta> getPerguntas() {
-		return perguntas;
-	}
-
-	public void setPerguntas(List<Pergunta> perguntas) {
-		this.perguntas = perguntas;
-	}
-
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 		
-		if (!ValidateFields.isFieldStrValid(getDenominacao())){
+		if (!EmsUtil.isFieldStrValid(getDenominacao())){
 			erro.addError("Informe a denominação.");
 		}
 		
-		if(!ValidateFields.isDateValid(getDataInicio())) {
+		if(!EmsUtil.isDateValid(getDataInicio())) {
 			erro.addError("Informe a data de início.");
 		}
 
-		if(!ValidateFields.isDateValid(getDataFim())) {
+		if(!EmsUtil.isDateValid(getDataFim())) {
 			erro.addError("Informe a data fim.");
 		}
 
-		if (!ValidateFields.isDateFinalAfterOrEqualDateInitial(getDataInicio(), getDataFim())){
+		if (!EmsUtil.isDateFinalAfterOrEqualDateInitial(getDataInicio(), getDataFim())){
 			erro.addError("A data fim do questionário deve ser maior que a data de início.");
 		}
 		
@@ -153,8 +134,8 @@ public class Questionario implements Serializable {
 
 	public List<Pergunta> getListaPerguntas(){
 		return QuestionarioInfra.getInstance()
-				.getQuestionarioRepository()
-				.listaPerguntasVinculadaAoQuestionario(this);
+			.getQuestionarioRepository()
+			.listaPerguntasVinculadaAoQuestionario(this);
 	}
 
 

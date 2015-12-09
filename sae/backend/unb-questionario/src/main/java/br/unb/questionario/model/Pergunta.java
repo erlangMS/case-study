@@ -11,14 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
+import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.questionario.infra.QuestionarioInfra;
-import br.unb.questionario.infra.extension.ValidateFields;
 
 @Entity
 @Table(name = "TB_Pergunta")
@@ -44,17 +42,10 @@ public class Pergunta implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true, targetEntity = Pergunta.class)
 	@JoinColumn(name = "PerCodigoPerguntaRelacionada")
 	private Pergunta perguntaRelacionada;
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = false, mappedBy = "pergunta", targetEntity = RespostaPergunta.class)
-	private List<RespostaPergunta> respostas;
 	
 	@Column(name = "PerAtiva")
 	private boolean ativa = true;
 
-	@Transient
-	@OneToMany(mappedBy = "perguntas", orphanRemoval = true)
-	private Questionario questionario;
-	
 	public Pergunta() {
 		super();
 	}
@@ -111,30 +102,18 @@ public class Pergunta implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Questionario getQuestionario() {
-		return questionario;
-	}
-
-	public void setQuestionario(Questionario questionario) {
-		this.questionario = questionario;
-	}
-
-	public void setRespostas(List<RespostaPergunta> respostas) {
-		this.respostas = respostas;
-	}
-
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!ValidateFields.isFieldObjectValid(getCategoria())) {
+		if (!EmsUtil.isFieldObjectValid(getCategoria())) {
 			erro.addError("Informe a categoria da pergunta.");
 		}
 
-		if (!ValidateFields.isFieldStrValid(getEnunciado())) {
+		if (!EmsUtil.isFieldStrValid(getEnunciado())) {
 			erro.addError("Informe a denominação.");
 		}
 
-		if (!ValidateFields.isFieldObjectValid(getTipoResposta())) {
+		if (!EmsUtil.isFieldObjectValid(getTipoResposta())) {
 			erro.addError("Informe o tipo de resposta.");
 		}
 
@@ -146,17 +125,23 @@ public class Pergunta implements Serializable {
 	public void registraResposta(RespostaPergunta resposta) {
 		resposta.setPergunta(this);
 		resposta.validar();
-		QuestionarioInfra.getInstance().getPerguntaRepository().insertOrUpdate(resposta);
+		QuestionarioInfra.getInstance()
+			.getPerguntaRepository()
+			.insertOrUpdate(resposta);
 	}
 
 	public void removeResposta(int idResposta) {
-		QuestionarioInfra.getInstance().getPerguntaRepository().delete(RespostaPergunta.class, idResposta);
+		QuestionarioInfra.getInstance()
+			.getPerguntaRepository()
+			.delete(RespostaPergunta.class, idResposta);
 	}
 
 	public List<RespostaPergunta> getRespostas() {
 		Pergunta thisPergunta = this;
-		return QuestionarioInfra.getInstance().getPerguntaRepository().getStreams(RespostaPergunta.class)
-				.where(p -> p.getPergunta().equals(thisPergunta)).toList();
+		return QuestionarioInfra.getInstance()
+			.getPerguntaRepository()
+			.getStreams(RespostaPergunta.class)
+			.where(p -> p.getPergunta().equals(thisPergunta)).toList();
 	}
 
 }

@@ -1,25 +1,12 @@
 package br.unb.sae.vo;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
-@Entity
-@Table(name="TB_TipoQuestinario")
 public class TipoQuestionarioVo {
 
-	@Id
-    @Column(name = "TQuCodigo", nullable = false, insertable = true, updatable = true)
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "TQuDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String denominacao;
 
-	@Column(name = "TQuExtinto", nullable = false, insertable = true, updatable = true)
 	private boolean extinto = false;
 	
 	public TipoQuestionarioVo() {
