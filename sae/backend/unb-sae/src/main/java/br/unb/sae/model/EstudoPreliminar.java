@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,7 +11,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,7 +19,6 @@ import javax.persistence.TemporalType;
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
-import br.unb.sae.vo.QuestionarioVo;
 
 @Entity
 @Table(name = "TB_EstudoPreliminar")
@@ -48,22 +45,11 @@ public class EstudoPreliminar implements Serializable {
 	@JoinColumn(name = "EPrAluMatricula")
 	private AlunoSae aluno;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER, optional = false)
-	@JoinColumn(name = "EPrQueCodigoQuestionario")
-	private QuestionarioVo questinario;
+	@Column(name = "EPrQueCodigoQuestionario", nullable = false, insertable = true, updatable = true)
+	private Integer questionario;
 
 	public EstudoPreliminar() {
 		super();
-	}
-
-	public EstudoPreliminar(Integer id, String periodo, Date dataHora, double pontuacaoPreliminar, AlunoSae aluno, QuestionarioVo questinario) {
-		super();
-		this.id = id;
-		this.periodo = periodo;
-		this.dataHora = dataHora;
-		this.pontuacaoPreliminar = pontuacaoPreliminar;
-		this.aluno = aluno;
-		this.questinario = questinario;
 	}
 
 	public Integer getId() {
@@ -106,16 +92,13 @@ public class EstudoPreliminar implements Serializable {
 		this.aluno = aluno;
 	}
 
-	public QuestionarioVo getQuestinario() {
-		return questinario;
+
+	public Integer getQuestionario() {
+		return questionario;
 	}
 
-	public void setQuestinario(QuestionarioVo questinario) {
-		this.questinario = questinario;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public void setQuestionario(Integer questionario) {
+		this.questionario = questionario;
 	}
 
 	@Override
@@ -169,17 +152,22 @@ public class EstudoPreliminar implements Serializable {
 	public void registraResposta(RespostaEstudoPreliminar resposta) {
 		resposta.validar();
 		resposta.setEstudoPreliminar(this);
-		SaeInfra.getInstance().getEstudoPreliminarRepository().insertOrUpdate(resposta);
-
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.insertOrUpdate(resposta);
 	}
 
 	public void removeResposta(int resposta) {
-		SaeInfra.getInstance().getEstudoPreliminarRepository().delete(RespostaEstudoPreliminar.class, resposta);
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.delete(RespostaEstudoPreliminar.class, resposta);
 	}
 
 	public List<RespostaEstudoPreliminar> getRespostas() {
 		int thisEstudo = this.getId();
-		return SaeInfra.getInstance().getEstudoPreliminarRepository().getStreams(RespostaEstudoPreliminar.class)
+		return SaeInfra.getInstance()
+				.getEstudoPreliminarRepository()
+				.getStreams(RespostaEstudoPreliminar.class)
 				.where(c -> c.getEstudoPreliminar().getId() == thisEstudo).toList();
 	}
 

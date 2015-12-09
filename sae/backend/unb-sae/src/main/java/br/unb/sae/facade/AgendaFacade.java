@@ -13,7 +13,7 @@ import br.unb.sae.vo.CampusVo;
 
 @Singleton
 @Startup
-public class AgendaServiceFacade extends EmsServiceFacade{
+public class AgendaFacade extends EmsServiceFacade{
 
 	public List<Object> listaAluno(IEmsRequest request){
 		return SaeApplication.getInstance()

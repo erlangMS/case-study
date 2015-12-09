@@ -25,15 +25,21 @@ public class AgendamentoService {
 	}
 
 	public List<Agendamento> buscarAgendamentoPorParteNome(AlunoSae alunoSae){
-		return SaeInfra.getInstance().getAgendamentoRepository().pesquisarAgendamentoPorAlunoPorParteNome(alunoSae);
+		return SaeInfra.getInstance()
+				.getAgendamentoRepository()
+				.pesquisarAgendamentoPorAlunoPorParteNome(alunoSae);
 	}
 	
 	public List<Agendamento> pesquisarAgendamentoPorCpf(AlunoSae alunoSae){
-		return SaeInfra.getInstance().getAgendamentoRepository().pesquisarAgendamentoPorAlunoCPF(alunoSae);
+		return SaeInfra.getInstance()
+				.getAgendamentoRepository()
+				.pesquisarAgendamentoPorAlunoCPF(alunoSae);
 	}
 
 	public List<Agendamento> pesquisarAgendamentoDoDia(Date dataDoDia){
-		return SaeInfra.getInstance().getAgendamentoRepository().pesquisarAgendamentoDoDia(dataDoDia);
+		return SaeInfra.getInstance()
+				.getAgendamentoRepository()
+				.pesquisarAgendamentoDoDia(dataDoDia);
 	}
 
 	public boolean removeAgendamento(int id) {
