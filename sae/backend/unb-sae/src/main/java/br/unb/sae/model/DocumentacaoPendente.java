@@ -12,12 +12,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="DocumentacaoPendente")
+@Table(name="DocumentacaoPendente",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"documentacao_id", "estudo_id"})}
+)
 public class DocumentacaoPendente implements Serializable {
 
 	private static final long serialVersionUID = -4121261049751377228L;
@@ -34,10 +37,14 @@ public class DocumentacaoPendente implements Serializable {
     private boolean entregue = false;
 
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="documentacao_Id")
+    @JoinColumn(name="documentacao_id")
     private Documentacao documentacao;
 
-	public Integer getId() {
+    @OneToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="estudo_id")
+    private EstudosSocioEconomico estudo;
+
+    public Integer getId() {
 		return id;
 	}
 
@@ -89,7 +96,5 @@ public class DocumentacaoPendente implements Serializable {
 		}
 		
 	}
-
-
     
 }

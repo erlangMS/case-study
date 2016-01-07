@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.questionario.model.Pergunta;
@@ -13,7 +12,7 @@ import br.unb.questionario.service.QuestionarioApplication;
  
 @Singleton
 @Startup
-public class QuestionarioServiceFacade extends EmsServiceFacade {
+public class QuestionarioFacade extends EmsServiceFacade {
 
 	public Questionario findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");

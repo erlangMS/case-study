@@ -12,7 +12,7 @@ import br.unb.sigra.service.SigraApplication;
 
 @Singleton
 @Startup
-public class AlunoServiceFacade extends EmsServiceFacade{
+public class AlunoFacade extends EmsServiceFacade{
 	
 	public Aluno findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");

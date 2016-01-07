@@ -23,8 +23,8 @@ public class Documentacao implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "descricao", nullable = false, insertable = true, updatable = true, length = 100, unique = true)
-    private String descricao;
+    @Column(name = "denominacao", nullable = false, insertable = true, updatable = true, length = 100, unique = true)
+    private String denominacao;
     
     @Column(name = "ativo", nullable = false, insertable = true, updatable = true)
     private boolean ativo = true;
@@ -33,12 +33,12 @@ public class Documentacao implements Serializable {
 		return id;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getDenominacao() {
+		return denominacao;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setDenominacao(String denominacao) {
+		this.denominacao = denominacao;
 	}
 
 	public boolean isAtivo() {
@@ -56,8 +56,8 @@ public class Documentacao implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!EmsUtil.isFieldStrValid(descricao)){
-			erro.addError("Informe uma descrição.");
+		if (!EmsUtil.isFieldStrValid(denominacao)){
+			erro.addError("Informe uma denominação.");
 		}
 		
 		if(erro.getErrors().size() > 0) {

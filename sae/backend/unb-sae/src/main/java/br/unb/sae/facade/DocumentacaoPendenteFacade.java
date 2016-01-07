@@ -8,7 +8,9 @@ import javax.ejb.Startup;
 import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
+import br.unb.sae.model.Documentacao;
 import br.unb.sae.model.DocumentacaoPendente;
+import br.unb.sae.model.EstudosSocioEconomico;
 import br.unb.sae.service.SaeApplication;
  
 @Singleton
@@ -38,9 +40,16 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 			
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
-				return SaeApplication.getInstance()
+				if (classOfModel == Documentacao.class){
+					return SaeApplication.getInstance()
 							.getDocumentacaoService()
 							.findById(id);
+				}else if (classOfModel == EstudosSocioEconomico.class){
+					return SaeApplication.getInstance()
+							.getEstudoPreliminarService()
+							.findById(id);
+				}
+				return null;
 			}
 		});
 		return SaeApplication.getInstance()
