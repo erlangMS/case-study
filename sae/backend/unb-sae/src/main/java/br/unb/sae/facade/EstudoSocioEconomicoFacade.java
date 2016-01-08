@@ -9,6 +9,7 @@ import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.EstudoSocioEconomico;
+import br.unb.sae.model.RespostaEstudoSocioEconomico;
 import br.unb.sae.service.SaeApplication;
  
 @Singleton
@@ -75,7 +76,7 @@ public class EstudoSocioEconomicoFacade extends EmsServiceFacade {
 			.getEstudoSocioEconomicoService()
 			.delete(id);
 	}
-	/*
+	
 	public List<RespostaEstudoSocioEconomico> listaRespostas(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
@@ -114,5 +115,5 @@ public class EstudoSocioEconomicoFacade extends EmsServiceFacade {
 			.getEstudoSocioEconomicoService()
 			.deleteResposta(id);
 	}
-	*/
+	
 }

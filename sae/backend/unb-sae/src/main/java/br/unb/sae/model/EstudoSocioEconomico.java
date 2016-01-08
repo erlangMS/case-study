@@ -2,6 +2,7 @@ package br.unb.sae.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +18,7 @@ import javax.persistence.TemporalType;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
+import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="EstudoSocioEconomicos")
@@ -199,5 +201,32 @@ public class EstudoSocioEconomico implements Serializable {
 		}
 	}
 
+	public void registraResposta(RespostaEstudoSocioEconomico resposta) {
+		resposta.validar();
+		resposta.setEstudo(this);
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.insertOrUpdate(resposta);
+	}
+
+	public void removeResposta(int resposta) {
+		SaeInfra.getInstance()
+			.getEstudoPreliminarRepository()
+			.delete(RespostaEstudoSocioEconomico.class, resposta);
+	}
+
+	public List<RespostaEstudoSocioEconomico> getRespostas() {
+		int thisEstudo = this.getId();
+		return SaeInfra.getInstance()
+				.getEstudoPreliminarRepository()
+				.getStreams(RespostaEstudoSocioEconomico.class)
+				.where(c -> c.getEstudoSocioEconomico().getId() == thisEstudo).toList();
+	}
+
+	public RespostaEstudoSocioEconomico findResposta(Integer id) {
+		return SaeInfra.getInstance().
+				getEstudoPreliminarRepository().
+				findById(RespostaEstudoSocioEconomico.class, id);
+	}
 	
 }

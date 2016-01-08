@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import br.erlangms.EmsUtil;
 import br.unb.sae.infra.SaeInfra;
 import br.unb.sae.model.EstudoSocioEconomico;
+import br.unb.sae.model.RespostaEstudoSocioEconomico;
 
 @Stateless
 public class EstudoSocioEconomicoService {
@@ -42,7 +43,7 @@ public class EstudoSocioEconomicoService {
 			.getEstudoSocioEconomicoRepository()
 			.delete(id);
 	}
-	/*
+
 	public List<RespostaEstudoSocioEconomico> listaRespostas(Integer estudo_id) {
 		EstudoSocioEconomico estudo = findById(estudo_id);
 		return estudo.getRespostas();
@@ -65,6 +66,6 @@ public class EstudoSocioEconomicoService {
 		EmsUtil.mergeObjects(resposta, resposta_update);
 		estudo.registraResposta(resposta);		
 	}
-*/
+
 	
 }

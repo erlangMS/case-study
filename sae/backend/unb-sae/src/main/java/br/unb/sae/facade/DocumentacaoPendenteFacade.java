@@ -46,7 +46,7 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 							.findById(id);
 				}else if (classOfModel == EstudoSocioEconomico.class){
 					return SaeApplication.getInstance()
-							.getEstudoPreliminarService()
+							.getEstudoSocioEconomicoService()
 							.findById(id);
 				}
 				return null;
@@ -59,10 +59,25 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 	
 	public DocumentacaoPendente update(IEmsRequest request){
 		int idDocumentacao = request.getParamAsInt("id");
-		DocumentacaoPendente documentacao = request.getObject(DocumentacaoPendente.class);
+		final DocumentacaoPendente documentacaoPendente = request.getObject(DocumentacaoPendente.class, new EmsJsonModelAdapter() {
+			
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				if (classOfModel == Documentacao.class){
+					return SaeApplication.getInstance()
+							.getDocumentacaoService()
+							.findById(id);
+				}else if (classOfModel == EstudoSocioEconomico.class){
+					return SaeApplication.getInstance()
+							.getEstudoSocioEconomicoService()
+							.findById(id);
+				}
+				return null;
+			}
+		});
 		return SaeApplication.getInstance()
 				.getDocumentacaoPendenteService()
-				.update(idDocumentacao, documentacao);
+				.update(idDocumentacao, documentacaoPendente);
 		}
 	
 	public boolean delete(IEmsRequest request){

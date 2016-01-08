@@ -15,21 +15,21 @@ import javax.persistence.Table;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="RespostaEstudoPreliminar")
+@Table(name="TB_RespostaEstudoPreliminar")
 public class RespostaEstudoPreliminar implements Serializable {
 
 	private static final long serialVersionUID = 2375061529441558038L;
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "REPCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "pontuacaoCalculada", nullable = false, insertable = true, updatable = true)
-    private double pontuacaoCalculada;
+    @Column(name = "REPPontuacaoCalculada", nullable = false, insertable = true, updatable = true)
+    private double pontuacaoCalculada = 0.00;
 
     @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="estudo_preliminar_Id")
+    @JoinColumn(name="REPPrCodigoEstudo")
     private EstudoPreliminar estudoPreliminar;
     
 	public Integer getId() {
