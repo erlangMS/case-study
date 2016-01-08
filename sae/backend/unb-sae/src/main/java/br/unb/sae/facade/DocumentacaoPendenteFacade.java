@@ -10,7 +10,7 @@ import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.Documentacao;
 import br.unb.sae.model.DocumentacaoPendente;
-import br.unb.sae.model.EstudosSocioEconomico;
+import br.unb.sae.model.EstudoSocioEconomico;
 import br.unb.sae.service.SaeApplication;
  
 @Singleton
@@ -44,7 +44,7 @@ public class DocumentacaoPendenteFacade extends EmsServiceFacade {
 					return SaeApplication.getInstance()
 							.getDocumentacaoService()
 							.findById(id);
-				}else if (classOfModel == EstudosSocioEconomico.class){
+				}else if (classOfModel == EstudoSocioEconomico.class){
 					return SaeApplication.getInstance()
 							.getEstudoPreliminarService()
 							.findById(id);

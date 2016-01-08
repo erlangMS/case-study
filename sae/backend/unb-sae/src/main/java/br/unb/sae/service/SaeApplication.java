@@ -18,6 +18,7 @@ public class SaeApplication {
 	@EJB private EstudoPreliminarService estudoPreliminarService;
 	@EJB private DocumentacaoPendenteService documentacaoPendenteService;
 	@EJB private DocumentacaoService documentacaoService;
+	@EJB private EstudoSocioEconomicoService estudoSocioEconomicoService;
 	
 	
 	public SaeApplication(){
@@ -56,6 +57,11 @@ public class SaeApplication {
 	public DocumentacaoService getDocumentacaoService() {
 		return documentacaoService;
 	}
+
+	public EstudoSocioEconomicoService getEstudoSocioEconomicoService() {
+		return estudoSocioEconomicoService;
+	}
+
 
 	
 	

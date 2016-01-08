@@ -20,6 +20,7 @@ public class SaeInfra {
 	@EJB private EstudoPreliminarRepository estudoPreliminarRepository;
 	@EJB private DocumentacaoPendenteRepository documentacaoPendenteRepository;
 	@EJB private DocumentacaoRepository documentacaoRepository;
+	@EJB private EstudoSocioEconomicoRepository estudoSocioEconomicoRepository;
 
 
 	public SaeInfra(){
@@ -66,6 +67,11 @@ public class SaeInfra {
 	public DocumentacaoRepository getDocumentacaoRepository() {
 		return documentacaoRepository;
 	}
+
+	public EstudoSocioEconomicoRepository getEstudoSocioEconomicoRepository() {
+		return estudoSocioEconomicoRepository;
+	}
+
 	
 	
 }

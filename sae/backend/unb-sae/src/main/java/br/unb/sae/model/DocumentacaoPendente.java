@@ -42,7 +42,7 @@ public class DocumentacaoPendente implements Serializable {
 
     @OneToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="estudo_id")
-    private EstudosSocioEconomico estudo;
+    private EstudoSocioEconomico estudo;
 
     public Integer getId() {
 		return id;
