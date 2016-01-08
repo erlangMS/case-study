@@ -21,7 +21,8 @@ import br.erlangms.EmsValidationException;
 @Entity
 @Table(name="EstudoSocioEconomicos")
 public class EstudoSocioEconomico implements Serializable {
-	private static final long serialVersionUID = 5471384039041899158L;
+
+	private static final long serialVersionUID = -8745829903654540353L;
 
 	@Id
     @Column(name = "ESECodigo", nullable = false, insertable = true, updatable = true)
@@ -64,7 +65,7 @@ public class EstudoSocioEconomico implements Serializable {
 	private Integer questionario;
 
 	@Column(name = "ESESituacao", nullable = false, insertable = true, updatable = true)
-	private Integer situacao = 1;
+	private Integer situacao = 0;
 
 	public Integer getId() {
 		return id;
