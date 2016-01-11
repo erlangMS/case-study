@@ -31,10 +31,10 @@ public class RespostaEstudoSocioEconomico implements Serializable {
     private EstudoSocioEconomico estudo;
 
     @Column(name = "RESPerCodigoPergunta", nullable = false, insertable = true, updatable = true)
-    private Integer idPergunta;
+    private Integer pergunta;
     
     @Column(name = "RESResCodigoResposta", nullable = false, insertable = true, updatable = true)
-    private Integer idResposta;
+    private Integer resposta;
 
     @Column(name = "RESRespostaSubjetiva", nullable = true, insertable = true, updatable = true, length = 8000)
     private String respostaSubjetiva;
@@ -67,20 +67,25 @@ public class RespostaEstudoSocioEconomico implements Serializable {
 		this.estudo = estudo;
 	}
 
-	public Integer getIdPergunta() {
-		return idPergunta;
+
+	public Integer getPergunta() {
+		return pergunta;
 	}
 
-	public void setIdPergunta(Integer idPergunta) {
-		this.idPergunta = idPergunta;
+	public void setPergunta(Integer pergunta) {
+		this.pergunta = pergunta;
 	}
 
-	public Integer getIdResposta() {
-		return idResposta;
+	public Integer getResposta() {
+		return resposta;
 	}
 
-	public void setIdResposta(Integer idResposta) {
-		this.idResposta = idResposta;
+	public void setResposta(Integer resposta) {
+		this.resposta = resposta;
+	}
+
+	public EstudoSocioEconomico getEstudo() {
+		return estudo;
 	}
 
 	public String getRespostaSubjetiva() {
@@ -130,11 +135,11 @@ public class RespostaEstudoSocioEconomico implements Serializable {
 			erro.addError("Informe o Estudo socioeconomico.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getIdPergunta())){
+		if (!EmsUtil.isFieldObjectValid(getPergunta())){
 			erro.addError("Informe a pergunta.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getIdResposta())){
+		if (!EmsUtil.isFieldObjectValid(getResposta())){
 			erro.addError("Informe a resposta.");
 		}
 

@@ -2,9 +2,9 @@ package br.unb.questionario.model;
 
 public enum TipoResposta {
 
-	MultiplaEscola(1),
-	Subjetiva(2),
-	EscolhaUma(3);
+	MultiplaEscola(0),
+	Subjetiva(1),
+	EscolhaUma(2);
 	
 	private int codigo;
 	private String denominacao;

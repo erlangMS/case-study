@@ -8,6 +8,7 @@ import javax.ejb.Startup;
 import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
+import br.unb.questionario.model.CategoriaPergunta;
 import br.unb.questionario.model.Pergunta;
 import br.unb.questionario.model.RespostaPergunta;
 import br.unb.questionario.service.QuestionarioApplication;
@@ -35,36 +36,41 @@ public class PerguntaFacade extends EmsServiceFacade {
 	}
 
 	public Pergunta insert(IEmsRequest request){
-		Pergunta Pergunta = (Pergunta) request.getObject(Pergunta.class,
+		Pergunta pergunta = request.getObject(Pergunta.class,
 				new EmsJsonModelAdapter(){
 					@Override
 					public Object findById(Class<?> classOfModel, Integer id) {
-						return QuestionarioApplication.getInstance()
-								.getCategoriaPerguntaService()
-								.findById(id);
+						if (classOfModel == CategoriaPergunta.class){
+							return QuestionarioApplication.getInstance()
+									.getCategoriaPerguntaService()
+									.findById(id);
+						}
+						return null;
 					}
 		});
 		return QuestionarioApplication.getInstance()
 			.getPerguntaService()
-			.insert(Pergunta);
+			.insert(pergunta);
 	}
 	
 	public Pergunta update(IEmsRequest request){
-		int id = request.getParamAsInt("id");
-		Pergunta Pergunta = QuestionarioApplication.getInstance()
+		Pergunta pergunta = QuestionarioApplication.getInstance()
 			.getPerguntaService()
-			.findById(id);
-		request.mergeObjectFromPayload(Pergunta, new EmsJsonModelAdapter() {
+			.findById(request.getParamAsInt("id"));
+		request.mergeObjectFromPayload(pergunta, new EmsJsonModelAdapter() {
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
-				return QuestionarioApplication.getInstance()
-						.getCategoriaPerguntaService()
-						.findById(id);
+				if (classOfModel == CategoriaPergunta.class){
+					return QuestionarioApplication.getInstance()
+							.getCategoriaPerguntaService()
+							.findById(id);
+				}
+				return null;
 			}
 		});
 		return QuestionarioApplication.getInstance()
 			.getPerguntaService()
-			.update(Pergunta);
+			.update(pergunta);
 	}
 	
 	public Boolean delete(IEmsRequest request){
@@ -76,7 +82,17 @@ public class PerguntaFacade extends EmsServiceFacade {
 	
 	public boolean registraRespostaParaPergunta(IEmsRequest request){
 		int pergunta = request.getParamAsInt("id");
-		RespostaPergunta resposta = request.getObject(RespostaPergunta.class);
+		RespostaPergunta resposta = request.getObject(RespostaPergunta.class, new EmsJsonModelAdapter() {
+			@Override
+			public Object findById(Class<?> classOfModel, Integer id) {
+				if (classOfModel == Pergunta.class){
+					return QuestionarioApplication.getInstance()
+							.getPerguntaService()
+							.findById(id);
+				}
+				return null;
+			}
+		});
 		QuestionarioApplication.getInstance()
 			.getPerguntaService()
 			.registraRespostaParaPergunta(pergunta, resposta);
