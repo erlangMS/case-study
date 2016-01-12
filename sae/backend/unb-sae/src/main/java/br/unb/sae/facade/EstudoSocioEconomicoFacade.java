@@ -8,6 +8,7 @@ import javax.ejb.Startup;
 import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
+import br.unb.sae.model.AlunoSae;
 import br.unb.sae.model.EstudoSocioEconomico;
 import br.unb.sae.model.RespostaEstudoSocioEconomico;
 import br.unb.sae.service.SaeApplication;
@@ -51,17 +52,18 @@ public class EstudoSocioEconomicoFacade extends EmsServiceFacade {
 	
 	public EstudoSocioEconomico update(IEmsRequest request){
 		int id = request.getParamAsInt("id");
-
 		EstudoSocioEconomico estudo = SaeApplication.getInstance()
 			.getEstudoSocioEconomicoService()
 			.findById(id);
-
 		request.mergeObjectFromPayload(estudo, new EmsJsonModelAdapter() {
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
-				return SaeApplication.getInstance()
-							.getAlunoService()
-							.findById(id);
+				if (classOfModel == AlunoSae.class){
+					return SaeApplication.getInstance()
+								.getAlunoService()
+								.findById(id);
+				}
+				return null;
 			}
 		});
 		
@@ -84,36 +86,39 @@ public class EstudoSocioEconomicoFacade extends EmsServiceFacade {
 			.listaRespostas(id);
 	}
 	
-	public void insertResposta(IEmsRequest request){
+	public RespostaEstudoSocioEconomico insertResposta(IEmsRequest request){
 		int estudo = request.getParamAsInt("id");
 		RespostaEstudoSocioEconomico resposta = request.getObject(RespostaEstudoSocioEconomico.class, new EmsJsonModelAdapter() {
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
-				return SaeApplication.getInstance()
-							.getEstudoSocioEconomicoService()
-							.findById(id);
+				if (classOfModel == EstudoSocioEconomico.class){
+					return SaeApplication.getInstance()
+								.getEstudoSocioEconomicoService()
+								.findById(id);
+				}
+				return null;
 			}
 		});
-
-		SaeApplication.getInstance()
+		return SaeApplication.getInstance()
 			.getEstudoSocioEconomicoService()
 			.registraResposta(estudo, resposta);
 	}
 	
-	public void updateResposta(IEmsRequest request){
+	public RespostaEstudoSocioEconomico updateResposta(IEmsRequest request){
 		int estudo_id = request.getParamAsInt("id");
 		int resposta_id = request.getParamAsInt("id_2");
 		RespostaEstudoSocioEconomico resposta = request.getObject(RespostaEstudoSocioEconomico.class);
-		SaeApplication.getInstance()
+		return SaeApplication.getInstance()
 			.getEstudoSocioEconomicoService()
 			.registraResposta(estudo_id, resposta_id, resposta);
 	}
 	
 	public Boolean deleteResposta(IEmsRequest request){
-		int id = request.getParamAsInt("id");
+		int pergunta = request.getParamAsInt("id");
+		int resposta = request.getParamAsInt("id_2");
 		return SaeApplication.getInstance()
 			.getEstudoSocioEconomicoService()
-			.deleteResposta(id);
+			.deleteResposta(pergunta, resposta);
 	}
 	
 }

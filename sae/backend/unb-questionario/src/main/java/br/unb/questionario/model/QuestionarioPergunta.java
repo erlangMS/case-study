@@ -15,7 +15,7 @@ import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name="QuestionarioPergunta",
-	   uniqueConstraints = {@UniqueConstraint(columnNames={"questionario_id", "pergunta_id"})}
+	   uniqueConstraints = {@UniqueConstraint(columnNames={"QpCodigo", "QpPerCodigoPergunta"})}
 	
 )
 public class QuestionarioPergunta implements Serializable {
@@ -23,16 +23,16 @@ public class QuestionarioPergunta implements Serializable {
 	private static final long serialVersionUID = 7983077560355890060L;
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "QpCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="questionario_id")
+    @JoinColumn(name="QpQueCodigoQuestionario")
 	private Questionario questionario;
 	
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="pergunta_id")
+    @JoinColumn(name="QpPerCodigoPergunta")
 	private Pergunta pergunta;
 
 	public Integer getId() {

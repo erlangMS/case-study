@@ -49,22 +49,22 @@ public class EstudoSocioEconomicoService {
 		return estudo.getRespostas();
 	}
 
-	public void registraResposta(int estudo_id, RespostaEstudoSocioEconomico resposta){
+	public RespostaEstudoSocioEconomico registraResposta(int estudo_id, RespostaEstudoSocioEconomico resposta){
 		EstudoSocioEconomico estudo = findById(estudo_id);
-		estudo.registraResposta(resposta);
+		return estudo.registraResposta(resposta);
 	}
 
-	public boolean deleteResposta(Integer id) {
+	public boolean deleteResposta(Integer pergunta_id, Integer resposta_id) {
 		return SaeInfra.getInstance()
 			.getEstudoSocioEconomicoRepository()
-			.delete(RespostaEstudoSocioEconomico.class, id);
+			.delete(RespostaEstudoSocioEconomico.class, resposta_id);
 	}
 
-	public void registraResposta(int estudo_id, int resposta_id, RespostaEstudoSocioEconomico resposta_update) {
+	public RespostaEstudoSocioEconomico registraResposta(int estudo_id, int resposta_id, RespostaEstudoSocioEconomico resposta_update) {
 		EstudoSocioEconomico estudo = findById(estudo_id);
 		RespostaEstudoSocioEconomico resposta = estudo.findResposta(resposta_id);
 		EmsUtil.mergeObjects(resposta, resposta_update);
-		estudo.registraResposta(resposta);		
+		return estudo.registraResposta(resposta);		
 	}
 
 	

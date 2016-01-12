@@ -9,12 +9,15 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name = "TB_Resposta")
+@Table(name = "TB_Resposta",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"ResPerCodigoPergunta", "ResValorResposta"})}
+)
 public class RespostaPergunta {
 
 	@Id
@@ -22,7 +25,7 @@ public class RespostaPergunta {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "ResDescricao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "ResDescricao", nullable = false, insertable = true, updatable = true)
 	private String descricao;
 
 	@ManyToOne(fetch = FetchType.EAGER, optional = false, targetEntity = Pergunta.class)

@@ -13,13 +13,16 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.questionario.infra.QuestionarioInfra;
 
 @Entity
-@Table(name = "TB_Pergunta")
+@Table(name = "TB_Pergunta",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"PerCatCodigoCategoria", "PerEnunciado"})}
+)
 public class Pergunta implements Serializable {
 
 	private static final long serialVersionUID = 2499910716298997993L;
@@ -33,7 +36,7 @@ public class Pergunta implements Serializable {
 	private String enunciado;
 
 	@Column(name = "PerTipoResposta", nullable = false, insertable = true, updatable = true)
-	private TipoResposta tipoResposta;
+	private TipoResposta tipoResposta = TipoResposta.Subjetiva;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PerCatCodigoCategoria")
@@ -98,10 +101,6 @@ public class Pergunta implements Serializable {
 		this.ativa = ativa;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
@@ -122,10 +121,10 @@ public class Pergunta implements Serializable {
 		}
 	}
 
-	public void registraResposta(RespostaPergunta resposta) {
+	public RespostaPergunta registraResposta(RespostaPergunta resposta) {
 		resposta.setPergunta(this);
 		resposta.validar();
-		QuestionarioInfra.getInstance()
+		return QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
 			.insertOrUpdate(resposta);
 	}

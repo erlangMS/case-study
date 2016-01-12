@@ -43,9 +43,9 @@ public class PerguntaService {
 			.delete(id);
 	}
 
-	public void registraRespostaParaPergunta(int idPergunta, RespostaPergunta resposta) {
+	public RespostaPergunta registraRespostaParaPergunta(int idPergunta, RespostaPergunta resposta) {
 		Pergunta pergunta = findById(idPergunta);
-		pergunta.registraResposta(resposta);
+		return pergunta.registraResposta(resposta);
 	}
 
 	public void removeRespostaDaPergunta(int idPergunta, int idResposta) {

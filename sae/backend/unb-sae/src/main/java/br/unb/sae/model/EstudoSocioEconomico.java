@@ -201,10 +201,10 @@ public class EstudoSocioEconomico implements Serializable {
 		}
 	}
 
-	public void registraResposta(RespostaEstudoSocioEconomico resposta) {
+	public RespostaEstudoSocioEconomico registraResposta(RespostaEstudoSocioEconomico resposta) {
 		resposta.validar();
 		resposta.setEstudo(this);
-		SaeInfra.getInstance()
+		return SaeInfra.getInstance()
 			.getEstudoPreliminarRepository()
 			.insertOrUpdate(resposta);
 	}

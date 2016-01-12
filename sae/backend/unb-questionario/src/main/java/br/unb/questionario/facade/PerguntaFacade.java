@@ -80,7 +80,7 @@ public class PerguntaFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 	
-	public boolean registraRespostaParaPergunta(IEmsRequest request){
+	public RespostaPergunta registraRespostaParaPergunta(IEmsRequest request){
 		int pergunta = request.getParamAsInt("id");
 		RespostaPergunta resposta = request.getObject(RespostaPergunta.class, new EmsJsonModelAdapter() {
 			@Override
@@ -93,10 +93,9 @@ public class PerguntaFacade extends EmsServiceFacade {
 				return null;
 			}
 		});
-		QuestionarioApplication.getInstance()
+		return QuestionarioApplication.getInstance()
 			.getPerguntaService()
 			.registraRespostaParaPergunta(pergunta, resposta);
-		return true;
 	}
 	
 	public boolean removeRespostaDaPergunta(IEmsRequest request){

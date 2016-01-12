@@ -30,7 +30,7 @@ public class Questionario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "QueDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "QueDenominacao", nullable = false, insertable = true, updatable = true, length = 100, unique = true)
 	private String denominacao;
 	
 	@Column(name = "QueDataInicio", nullable = false, insertable = true, updatable = true)
