@@ -1,17 +1,13 @@
 package br.unb.sae.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,9 +18,7 @@ import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name = "TB_EstudoPreliminar")
-public class EstudoPreliminar implements Serializable {
-
-	private static final long serialVersionUID = -4121261049751377228L;
+public class EstudoPreliminar {
 
 	@Id
 	@Column(name = "EPrCodigo", nullable = false, insertable = true, updatable = true)
@@ -41,9 +35,8 @@ public class EstudoPreliminar implements Serializable {
 	@Column(name = "EPrPontuacaoPreliminar", nullable = false, insertable = true, updatable = true)
 	private double pontuacaoPreliminar = 0.0;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "EPrAluMatricula")
-	private AlunoSae aluno;
+	@Column(name = "EPrAluMatricula")
+	private Integer aluno;
 
 	@Column(name = "EPrQueCodigoQuestionario", nullable = false, insertable = true, updatable = true)
 	private Integer questionario;
@@ -84,14 +77,13 @@ public class EstudoPreliminar implements Serializable {
 		this.pontuacaoPreliminar = pontuacaoPreliminar;
 	}
 
-	public AlunoSae getAluno() {
+	public Integer getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(AlunoSae aluno) {
+	public void setAluno(Integer aluno) {
 		this.aluno = aluno;
 	}
-
 
 	public Integer getQuestionario() {
 		return questionario;
@@ -99,37 +91,6 @@ public class EstudoPreliminar implements Serializable {
 
 	public void setQuestionario(Integer questionario) {
 		this.questionario = questionario;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((aluno == null) ? 0 : aluno.hashCode());
-		result = prime * result + ((periodo == null) ? 0 : periodo.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		EstudoPreliminar other = (EstudoPreliminar) obj;
-		if (aluno == null) {
-			if (other.aluno != null)
-				return false;
-		} else if (!aluno.equals(other.aluno))
-			return false;
-		if (periodo == null) {
-			if (other.periodo != null)
-				return false;
-		} else if (!periodo.equals(other.periodo))
-			return false;
-		return true;
 	}
 
 	public void validar() {

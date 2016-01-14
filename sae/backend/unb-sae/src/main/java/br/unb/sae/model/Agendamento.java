@@ -10,31 +10,25 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 
-/**
- * Classe modelo para Agendamento.
- * Contem referências para um Aluno e uma Agenda com data e hora escolhida.
- */
 @Entity
 @Table(name="TB_Agendamento")
 public class Agendamento {
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "AgoCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-	// Fetch EAGER pois é necessário para realizar consultas 
-	// que dependem de atributos de uma Agenda.
     @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="agenda_id")
+    @JoinColumn(name="AgoAgeCodigoAgenda")
     private Agenda agenda;
 
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="aluno_Id")
-    private AlunoSae aluno;
+    @Column(name="AgoAluMatricula")
+    private Integer aluno;
 
 	public Integer getId() {
 		return id;
@@ -52,35 +46,24 @@ public class Agendamento {
 		this.agenda = agenda;
 	}
 
-	public AlunoSae getAluno() {
+	public Integer getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(AlunoSae aluno) {
+	public void setAluno(Integer aluno) {
 		this.aluno = aluno;
 	}
 
-	/**
-	 * Método que valida se os requisitos para incluir um Agendamento são atendidos.
-	 */
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
 		
-		if (getAluno() == null){
-			erro.addError("Informe o Aluno do agendamento.");
-		}
-
-		if (getAgenda() == null){
+		if (!EmsUtil.isFieldObjectValid(getAgenda())){
 			erro.addError("Informe a Agenda do agendamento.");
 		}
 		
 		if (erro.getErrors().size() == 0 && quantidadeMaximaDeAgendamentosAtingida()){
 			erro.addError("A quantidade de agendamentos para este mesmo dia e horário já foi atingida.");
-		}
-		
-		if (erro.getErrors().size() == 0 && alunoJaAgendadoParaMesmaDataHora()){
-			erro.addError("O aluno já marcou agendamento para esta data e hora.");
 		}
 		
 		if(erro.getErrors().size() > 0) {
@@ -118,14 +101,4 @@ public class Agendamento {
 	}
    
 	
-	/**
-	 * Verifica se a quantidade de agendamentos ja atingiu a quantidade maxima permitida
-	 * para a Agenda escolhida
-	 */
-	private boolean alunoJaAgendadoParaMesmaDataHora() {
-					
-		return SaeInfra.getInstance().
-				getAgendamentoRepository().alunoJaAgendadoParaMesmaDataHora(aluno, agenda);
-
-	}    
 }

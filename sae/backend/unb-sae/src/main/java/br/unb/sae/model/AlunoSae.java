@@ -3,45 +3,18 @@ package br.unb.sae.model;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 
-@Entity
-@Table(name="Aluno")
 public class AlunoSae{
-
-	@Id
-    @Column(name = "codigoPessoa", nullable = false, insertable = true, updatable = true)
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
-	
-	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
 	private Boolean bloqueado;
-	
-	@Column(name = "nome", nullable = false, insertable = true, updatable = true)
 	private String nome;
-
-	@Column(name = "cpf", nullable = false, insertable = true, updatable = true)
 	private String cpf;
-
-	@Column(name = "senha", nullable = false, insertable = true, updatable = true)
 	private String senha;
+	private Date dataNascimento;
+	private String sexo;
 	
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="aluno", cascade=CascadeType.ALL)  
-	private List<Ocorrencia> listaOcorrencia;
-
-	@OneToMany(fetch=FetchType.EAGER, mappedBy="aluno", cascade=CascadeType.ALL)
-	private List<AssinaturaTermoBa> listaAssinaturaTermoConcessaoValeAlimentacao;
 	
 	public Integer getId() {
 		return id;
@@ -51,12 +24,12 @@ public class AlunoSae{
 		this.id = id;
 	}
 
-	public void setBloqueado(Boolean bloqueado) {
-		this.bloqueado = bloqueado;
-	}
-
 	public Boolean getBloqueado() {
 		return bloqueado;
+	}
+
+	public void setBloqueado(Boolean bloqueado) {
+		this.bloqueado = bloqueado;
 	}
 
 	public String getNome() {
@@ -82,19 +55,35 @@ public class AlunoSae{
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public void registraOcorrencia(Ocorrencia ocorrencia){
-		EmsValidationException erro = new EmsValidationException();
 
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+	public Ocorrencia registraOcorrencia(Ocorrencia ocorrencia){
+		EmsValidationException erro = new EmsValidationException();
+		ocorrencia.setAluno(getId());
 		ocorrencia.validar();
 		
-		if (ocorrencia.getSemestreAno() != null) {
+		if (ocorrencia.getPeriodo() != null) {
 			if ((ocorrencia.getDataInicio() != null) &&
-				 existeOcorrenciaAberto(ocorrencia.getSemestreAno(), ocorrencia.getDataInicio())){
+				 existeOcorrenciaAberto(ocorrencia.getPeriodo(), ocorrencia.getDataInicio())){
 					 erro.addError("O aluno já possui uma ocorrência aberta.");
 			}
 			
-			if (assinouTermoConcessaoValeAlimentacao(ocorrencia.getSemestreAno())){
+			if (assinouTermoConcessaoValeAlimentacao(ocorrencia.getPeriodo())){
 				erro.addError("Aluno ainda não possui termo de concessão do benefício socioeconômico assinado.");
 			}
 		}
@@ -102,59 +91,65 @@ public class AlunoSae{
 		if (erro.getErrors().size() > 0){
 			throw erro;
 		}
-		
-		ocorrencia.setAluno(this);
-
-		SaeInfra.getInstance()
-			.getAlunoSaeRepository()
+		return SaeInfra.getInstance()
+			.getOcorrenciaRepository()
 			.insertOrUpdate(ocorrencia);
+	}
+	
+	private boolean assinouTermoConcessaoValeAlimentacao(String periodo) {
+		int this_aluno = getId();
+		return SaeInfra.getInstance()
+			.getAssinaturaTermoBaRepository()
+			.getStreams()
+			.anyMatch(a -> a.getAluno() == this_aluno &&
+						   a.getPeriodo().equals(periodo));
+	}
+
+	private boolean existeOcorrenciaAberto(String periodo, Date dataInicio) {
+		int this_aluno = getId();
+		return SaeInfra.getInstance()
+			.getOcorrenciaRepository()
+			.getStreams()
+			.anyMatch(a -> a.getAluno() == this_aluno &&
+						   a.getPeriodo().equals(periodo) &&
+				           a.getDataInicio().equals(dataInicio));
+	}
+
+	public List<Ocorrencia> getListaOcorrencia() {
+		int aluno_id = getId();
+		return SaeInfra.getInstance()
+				.getOcorrenciaRepository()
+				.getStreams()
+				.where(a -> a.getAluno() == aluno_id)
+				.toList();
+	}    
+	
+	public Ocorrencia findOcorrenciaById(Integer idOcorrencia) {
+		return SaeInfra.getInstance()
+			.getOcorrenciaRepository()
+			.findById(idOcorrencia);
 	}
 	
 	public boolean removeOcorrencia(Integer idOcorrencia){
 		return SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.delete(Ocorrencia.class, idOcorrencia);
+			.getOcorrenciaRepository()
+			.delete(idOcorrencia);
 	}
 	
-	public List<Ocorrencia> getListaOcorrencia() {
-		return listaOcorrencia;
-	}
-	public void setListaOcorrencia(List<Ocorrencia> listaOcorrencia) {
-		this.listaOcorrencia = listaOcorrencia;
-	}
-	
-	public boolean existeOcorrenciaAberto(final String semestreAno, final Date dataInicio){
-		return SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.existeOcorrenciaAbertoParaAluno(this, semestreAno, dataInicio);
-	}
-	
-	public boolean assinouTermoConcessaoValeAlimentacao(final String semestreAno){
-		return SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.assinouTermoConcessaoValeAlimentacao(this, semestreAno);
-	}
-
 	public AssinaturaTermoBa findAssinaturaTermoConcessaoValeAlimentacaoById(int idAssinatura) {
 		return (AssinaturaTermoBa) SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.findById(AssinaturaTermoBa.class, idAssinatura);
+			.getAssinaturaTermoBaRepository()
+			.findById(idAssinatura);
 	}	
 
-	public Ocorrencia findOcorrenciaById(Integer idOcorrencia) {
-		return (Ocorrencia) SaeInfra.getInstance()
-			.getAlunoSaeRepository()
-			.findById(Ocorrencia.class, idOcorrencia);
-	}
-
-	public void assinaTermoConcessaoValeAlimentacao(AssinaturaTermoBa assinatura){
+	public AssinaturaTermoBa assinaTermoConcessaoValeAlimentacao(AssinaturaTermoBa assinatura){
+		assinatura.setAluno(getId());
 		assinatura.validar();
 		if (!existeEstudoSocioeconomicoPontuadoComoParticipanteDoProgramaAssistenciaEstudantil()){
 			throw new EmsValidationException("Aluno não possui estudo socioeconômico válido pontuado como Participante dos Programas de Assistência Estudantil.");
 		}
-		assinatura.setAluno(this);
-		SaeInfra.getInstance()
-			.getAlunoSaeRepository()
+		return SaeInfra.getInstance()
+			.getAssinaturaTermoBaRepository()
 			.insertOrUpdate(assinatura);
 	}
 	
@@ -162,19 +157,58 @@ public class AlunoSae{
 		return true;
 	}
 
-
 	public List<AssinaturaTermoBa> getListaAssinaturaTermoConcessaoValeAlimentacao() {
-		return listaAssinaturaTermoConcessaoValeAlimentacao;
+		int this_aluno = getId();
+		return SaeInfra.getInstance()
+				.getAssinaturaTermoBaRepository()
+				.getStreams()
+				.where(a -> a.getAluno() == this_aluno)
+				.toList();
 	}
 
 	public boolean removeAssinaturaTermoConcessaoValeAlimentacao(Integer idAssinatura) {
 		return SaeInfra.getInstance()
-			.getAlunoSaeRepository()
+			.getAssinaturaTermoBaRepository()
 			.delete(AssinaturaTermoBa.class, idAssinatura);
 	}
 	
-	public void validar(){
-		
+	public Agendamento agendarEntrevista(Agendamento agendamento) {
+		agendamento.setAluno(getId());
+		agendamento.validar();
+		if (existeAlunoJaAgendadoParaMesmaDataHora(agendamento.getAgenda())){
+			throw new EmsValidationException("O aluno já marcou agendamento para esta data e hora.");
+		}
+		return SaeInfra.getInstance()
+			.getAgendamentoRepository()
+			.insertOrUpdate(agendamento);
 	}
+
+	public Agendamento findAgendamentoEntrevistaById(Integer agendamento_id) {
+		return SaeInfra.getInstance()
+			.getAgendamentoRepository()
+			.findById(Agendamento.class, agendamento_id);
+	}
+
+	public boolean removeAgendamentoEntrevista(int agendamento_id) {
+		return SaeInfra.getInstance()
+			.getAgendamentoRepository()
+			.delete(Agendamento.class, agendamento_id);
+	}
+
+	public List<Agendamento> findAgendamentoEntrevista() {
+		int aluno_id = getId();
+		return SaeInfra.getInstance()
+				.getAgendamentoRepository()
+				.getStreams()
+				.where(a -> a.getAluno() == aluno_id)
+				.toList();
+	}
+	
+	private boolean existeAlunoJaAgendadoParaMesmaDataHora(Agenda agenda) {
+		return SaeInfra.getInstance()
+				.getAgendamentoRepository()
+				.alunoJaAgendadoParaMesmaDataHora(this, agenda);
+	}
+
 
 }

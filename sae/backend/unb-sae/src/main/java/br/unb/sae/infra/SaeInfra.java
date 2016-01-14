@@ -14,7 +14,7 @@ public class SaeInfra {
  
 	@EJB private ValorAlimentacaoRepository valorAlimentacaoRepository;
 	@EJB private AssinaturaTermoBaRepository assinaturaTermoBaRepository;
-	@EJB private AlunoSaeRepository alunoSaeRepository;
+	@EJB private OcorrenciaRepository ocorrenciaRepository;
 	@EJB private AgendaRepository agendaRepository;
 	@EJB private AgendamentoRepository agendamentoRepository;
 	@EJB private EstudoPreliminarRepository estudoPreliminarRepository;
@@ -40,8 +40,12 @@ public class SaeInfra {
 		return assinaturaTermoBaRepository;
 	}
 
-	public AlunoSaeRepository getAlunoSaeRepository() {
-		return alunoSaeRepository;
+	public OcorrenciaRepository getOcorrenciaRepository() {
+		return ocorrenciaRepository;
+	}
+
+	public void setOcorrenciaRepository(OcorrenciaRepository ocorrenciaRepository) {
+		this.ocorrenciaRepository = ocorrenciaRepository;
 	}
 
 	public AgendaRepository getAgendaRepository() {
@@ -71,7 +75,6 @@ public class SaeInfra {
 	public EstudoSocioEconomicoRepository getEstudoSocioEconomicoRepository() {
 		return estudoSocioEconomicoRepository;
 	}
-
 	
 	
 }

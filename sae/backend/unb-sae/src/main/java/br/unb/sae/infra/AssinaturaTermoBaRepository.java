@@ -12,12 +12,9 @@ import br.unb.sae.model.AssinaturaTermoBa;
 @Stateless
 public class AssinaturaTermoBaRepository extends EmsRepository<AssinaturaTermoBa> {
 	
-	private final String sql_alunoAssinouTermoOcorrencia;
+	private String sql_alunoAssinouTermoOcorrencia;
 	
 	public AssinaturaTermoBaRepository(){
-		sql_alunoAssinouTermoOcorrencia = new StringBuilder("select 1 from AssinaturaTermoBa this ")
-		  										    .append("where this.aluno = :pAluno and ")
-										   		    .append("      this.semestreAno = :pSemestreAno").toString();
 	
 	}
 	
@@ -34,16 +31,22 @@ public class AssinaturaTermoBaRepository extends EmsRepository<AssinaturaTermoBa
 		return AssinaturaTermoBa.class;
 	}
 
-	public boolean alunoAssinouTermoOcorrencia(final AlunoSae aluno, final String semestreAno) {
+	public boolean alunoAssinouTermoOcorrencia(Integer aluno, final String semestreAno) {
 		try{
 			getEntityManager().createQuery(sql_alunoAssinouTermoOcorrencia)
 				.setParameter("pAluno",  aluno)
-				.setParameter("pSemestreAno", semestreAno)
+				.setParameter("pPeriodo", semestreAno)
 				.getSingleResult();
 			return true;
 		}catch (NoResultException e){
 			return false;
 		}
+	}
+
+	protected void createCacheSQL() {
+		sql_alunoAssinouTermoOcorrencia = new StringBuilder("select 1 from AssinaturaTermoBa this ")
+												    .append("where this.aluno = :pAluno and ")
+												    .append("      this.periodo = :pPeriodo").toString();
 	}
 	
 }

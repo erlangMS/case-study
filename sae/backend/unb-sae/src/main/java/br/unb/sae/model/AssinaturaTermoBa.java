@@ -4,18 +4,18 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="AssinaturaTermoBa")
+@Table(name="TB_AssinaturaTermoBa",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"ATBAluMatricula", "ATBPeriodo"})}
+)
 public class AssinaturaTermoBa {
 
 	@Id
@@ -23,29 +23,28 @@ public class AssinaturaTermoBa {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="Aluno_Id", nullable = false, insertable = true, updatable = false)
-    private AlunoSae aluno;
+	@Column(name="ATBAluMatricula", nullable = false)
+    private Integer aluno;
 
-    @Column(name = "SemestreAno", nullable = false, insertable = true, updatable = true, length = 5)
-    private String semestreAno;
+    @Column(name = "ATBPeriodo", nullable = false, insertable = true, updatable = true, length = 5)
+    private String periodo;
 
-    @Column(name = "Data", nullable = false, insertable = true, updatable = true)
+    @Column(name = "ATBDataAssinatura", nullable = false)
     private Date dataAssinatura;
 
-    @Column(name = "ValorAlimentacao", nullable = true, insertable = true, updatable = true)
+    @Column(name = "ATBValorAlimentacao", nullable = true)
     private Boolean valorAlimentacao = false;
 
-    @Column(name = "Banco", nullable = true, insertable = true, updatable = true, length = 3)
+    @Column(name = "ATBBanco", nullable = true, length = 3)
     private String banco;
 
-    @Column(name = "Agencia", nullable = true, insertable = true, updatable = true, length = 5)
+    @Column(name = "ATBAgencia", nullable = true, length = 6)
     private String agencia;
 
-    @Column(name = "Conta", nullable = true, insertable = true, updatable = true, length = 10)
+    @Column(name = "ATBConta", nullable = true, length = 10)
     private String conta;
 
-    @Column(name = "PeriodoExtra", nullable = true, insertable = true, updatable = true)
+    @Column(name = "ATBVigenciaExtra", nullable = true)
     private Date periodoExtra;
 
 	public Integer getId() {
@@ -56,20 +55,20 @@ public class AssinaturaTermoBa {
 		this.id = id;
 	}
 
-	public AlunoSae getAluno() {
+	public Integer getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(AlunoSae aluno) {
+	public void setAluno(Integer aluno) {
 		this.aluno = aluno;
 	}
 
-	public String getSemestreAno() {
-		return semestreAno;
+	public String getPeriodo() {
+		return periodo;
 	}
 
-	public void setSemestreAno(String semestreAno) {
-		this.semestreAno = semestreAno;
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
 	}
 
 	public Date getDataAssinatura() {
@@ -123,8 +122,8 @@ public class AssinaturaTermoBa {
 	public void validar(){
 		EmsValidationException erro = new EmsValidationException();
 
-		if (getSemestreAno() == null){
-			erro.addError("Informe o semestre e ano.");
+		if (getPeriodo() == null){
+			erro.addError("Informe o período.");
 		}
 		
 		if (getDataAssinatura() == null){
@@ -151,14 +150,6 @@ public class AssinaturaTermoBa {
 			throw erro;
 		}
 	}
-	
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        if (getId() == ((AssinaturaTermoBa)o).getId()) return true;
-        return false;
-    }
 	
     
 }

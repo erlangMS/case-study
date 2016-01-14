@@ -9,32 +9,35 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 import br.unb.sae.infra.SaeInfra;
 
 @Entity
-@Table(name="Agenda")
+@Table(name="TB_Agenda",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"AgePeriodo", "AgeCamCodigoCampus"})}
+)
 public class Agenda implements Serializable {
 
 	private static final long serialVersionUID = 4514450478730109792L;
 
 	@Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "AgeCodigo", nullable = false)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @Column(name = "periodo", nullable = false, insertable = true, updatable = true, length = 5)
+    @Column(name = "AgePeriodo", nullable = false, length = 5)
     private String periodo;
 
-    @Column(name = "dataHora", nullable = false, insertable = true, updatable = true, length = 8)
+    @Column(name = "AgeDataHora", nullable = false, length = 8)
     private Date dataHora;
 
-    @Column(name = "Campus", nullable = false, insertable = true, updatable = true)
+    @Column(name = "AgeCamCodigoCampus", nullable = false)
     private Integer campus;
 
-    @Column(name = "quantidadeAtendente", nullable = false, insertable = true, updatable = true)
+    @Column(name = "AgeQtdAtendente", nullable = false)
     private Integer quantidadeAtendentes = 3;
 
 	public Integer getId() {
@@ -44,7 +47,6 @@ public class Agenda implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
 
 	public Integer getCampus() {
 		return campus;
@@ -112,17 +114,27 @@ public class Agenda implements Serializable {
 	}
 
 	private boolean existeProjecaoDeAgendaParaDataInicioInformada() {
+		Integer idAgenda = getId();
 		int idCampus = getCampus(); 
 		Date dataFim = getDataHora();
-		return SaeInfra.getInstance()
-			.getAgendaRepository()
-			.getStreams()
-			.where(a -> a.getCampus() == idCampus && 
-					    a.getDataHora().equals(dataFim))
-			.count() > 0; 
+		if (idAgenda != null){ 
+			return SaeInfra.getInstance()
+				.getAgendaRepository()
+				.getStreams()
+				.where(a -> a.getCampus() == idCampus && 
+						    a.getDataHora().equals(dataFim) &&
+						    a.getId() != idAgenda
+						)
+				.count() > 0;
+		}else{
+			return SaeInfra.getInstance()
+				.getAgendaRepository()
+				.getStreams()
+				.where(a -> a.getCampus() == idCampus && 
+						    a.getDataHora().equals(dataFim)
+						)
+				.count() > 0;
+		}
 	}
-
-
-
     
 }

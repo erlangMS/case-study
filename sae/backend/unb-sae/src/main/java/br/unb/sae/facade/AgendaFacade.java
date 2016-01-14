@@ -9,28 +9,16 @@ import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.sae.model.Agenda;
 import br.unb.sae.service.SaeApplication;
-import br.unb.sae.vo.CampusVo;
 
 @Singleton
 @Startup
 public class AgendaFacade extends EmsServiceFacade{
 
-	public List<Object> listaAluno(IEmsRequest request){
+	public Agenda findById(IEmsRequest request){
+		int id = request.getParamAsInt("id");
 		return SaeApplication.getInstance()
-			.getCampusServiceProxy()
-			.getListaAluno();
-	}
-
-	public List<CampusVo> getCampus(IEmsRequest request){
-		return SaeApplication.getInstance()
-			.getCampusServiceProxy()
-			.getListaCampus();
-	}
-
-	public Object getCampusById(IEmsRequest request){
-		return SaeApplication.getInstance()
-			.getCampusServiceProxy()
-			.findById(request.getParamAsInt("id"));
+			.getAgendaService()
+			.findById(id);
 	}
 
 	public Agenda registraAgenda(IEmsRequest request){

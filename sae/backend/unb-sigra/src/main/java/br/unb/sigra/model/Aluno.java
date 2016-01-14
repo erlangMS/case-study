@@ -1,6 +1,6 @@
 package br.unb.sigra.model;
 
-import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,64 +13,103 @@ import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name="Aluno")
-public class Aluno  implements Serializable {
-	private static final long serialVersionUID = -3550966618742264684L;
+@Table(name="TB_Aluno")
+public class Aluno {
 
 	@Id
-    @Column(name = "codigoPessoa", nullable = false, insertable = true, updatable = true)
+    @Column(name = "AluMatricula", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 	
-	@Column(name = "bloqueado", nullable = false, insertable = true, updatable = true)
+	@Column(name = "AluBloqueado", nullable = false)
 	private Boolean bloqueado = false;
 	
-	@Column(name = "nome", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "AluNome", nullable = false, length = 60)
 	private String nome;
 
-	@Column(name = "cpf", nullable = false, insertable = true, updatable = true, unique = true)
+	@Column(name = "AluSexo", nullable = true)
+	private String sexo;
+
+	@Column(name = "AluCpf", nullable = false, unique = true)
 	private String cpf;
 	
-	@Column(name = "senha", nullable = false, insertable = true, updatable = true)
+	@Column(name = "AluSenha", nullable = false)
 	private String senha;
 
+	@Column(name = "AluDtNasc", nullable = true)
+	private Date dataNascimento;
+
+	
 	public Integer getId() {
 		return id;
 	}
-	public void setId(Integer codigoPessoa) {
-		this.id = codigoPessoa;
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public boolean isBloqueado() {
-		return bloqueado;
-	}
-	public void setBloqueado(boolean bloqueado) {
-		this.bloqueado = bloqueado;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+
+
 	public Boolean getBloqueado() {
 		return bloqueado;
 	}
+
+
 	public void setBloqueado(Boolean bloqueado) {
 		this.bloqueado = bloqueado;
 	}
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+	public String getSexo() {
+		return sexo;
+	}
+
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
 	public String getSenha() {
 		return senha;
 	}
+
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+
 	public void validar(){
 		EmsValidationException erro = new EmsValidationException();
 

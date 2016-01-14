@@ -1,17 +1,13 @@
 package br.unb.sae.model;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,9 +18,7 @@ import br.unb.sae.infra.SaeInfra;
 
 @Entity
 @Table(name="EstudoSocioEconomicos")
-public class EstudoSocioEconomico implements Serializable {
-
-	private static final long serialVersionUID = -8745829903654540353L;
+public class EstudoSocioEconomico {
 
 	@Id
     @Column(name = "ESECodigo", nullable = false, insertable = true, updatable = true)
@@ -47,9 +41,8 @@ public class EstudoSocioEconomico implements Serializable {
 	@Column(name = "ESEPontuacaoFinal", nullable = false, insertable = true, updatable = true)
 	private double pontuacaoFinal = 0.0;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ESEAluMatricula", nullable = false)
-	private AlunoSae aluno;
+	@Column(name = "ESEAluMatricula", nullable = false)
+	private Integer aluno;
 
 	@Column(name = "ESEClassificacaoCEU", nullable = true, insertable = true, updatable = true)
 	private Integer classificacaoCEU = 1;
@@ -117,11 +110,11 @@ public class EstudoSocioEconomico implements Serializable {
 		this.pontuacaoFinal = pontuacaoFinal;
 	}
 
-	public AlunoSae getAluno() {
+	public Integer getAluno() {
 		return aluno;
 	}
 
-	public void setAluno(AlunoSae aluno) {
+	public void setAluno(Integer aluno) {
 		this.aluno = aluno;
 	}
 
