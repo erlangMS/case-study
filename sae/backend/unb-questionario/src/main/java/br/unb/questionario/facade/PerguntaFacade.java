@@ -7,7 +7,6 @@ import javax.ejb.Startup;
 
 import br.erlangms.EmsJsonModelAdapter;
 import br.erlangms.EmsServiceFacade;
-import br.erlangms.EmsValidationException;
 import br.erlangms.IEmsRequest;
 import br.unb.questionario.model.CategoriaPergunta;
 import br.unb.questionario.model.Pergunta;

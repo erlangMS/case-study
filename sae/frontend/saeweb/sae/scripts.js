@@ -52,15 +52,26 @@ var valorAlimentacaoController = {
 	},
 	
     onchange : function(field, operacao) {
-    	// Informar valor do benefício se paga benefício está habilitado
-    	if (field.dataset.field === "pagaBeneficio"){
-    		var f_valorBeneficio = f_cadastro.querySelector('[data-field=valorBeneficio]');
-    		var b_pagaBeneficio = fpc.getValueFromRadioAsBoolean(field);
-    		f_valorBeneficio.disabled = !b_pagaBeneficio;
-    		f_valorBeneficio.value = "0.00";
+    	if (operacao != "pesquisa"){
+    		// Informar valor do benefício se paga benefício está habilitado
+	    	if (field.dataset.field === "pagaBeneficio"){
+	    		var f_valorBeneficio = f_cadastro.querySelector('[data-field=valorBeneficio]');
+	    		var b_pagaBeneficio = fpc.getValueFromRadioAsBoolean(field);
+	    		f_valorBeneficio.disabled = !b_pagaBeneficio;
+	    		f_valorBeneficio.value = "0.00";
+	    	}
     	}
+    },
+    
+	/*
+	 * Invocado antes de realizar a pesquisa do cadastro. Pode ser utilizado para modificar o filtro antes de enviar a requisição.  
+	 * 
+	 */ 
+    ongetfiltropesquisa : function(filtro_atual) {
+    	return filtro_atual;
     }
-	
+    
+    
 
 };
 
