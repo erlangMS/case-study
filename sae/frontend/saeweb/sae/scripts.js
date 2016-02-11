@@ -3,44 +3,50 @@
  * Classe controladora para o cadastro de valor alimentação
  * 
  */ 
-var valorAlimentacaoController = {
-	/*
-	 * Cache para listas de combobox. Assim não é necessário buscar todas as vezes que a tela sofre refresh 
-	 * 
-	 */ 
-	lista_campus : null,
+class ValorAlimentacaoController extends FpcCrudController {
+	 constructor() {
+		    super();
+		    this.type = 'basic';
 
+			/*
+			 * Cache para listas de combobox. Assim não é necessário buscar todas as vezes que a tela sofre refresh 
+			 * 
+			 */ 
+			this.lista_campus = null;
+
+	 }
+	 
 	
 	/*
 	 * Invocado "após" exibir o formulário. Útil para programar algo necessário após a tela já estar visível 
 	 * 
 	 */ 
-	on_open_form : function(response){
+	on_open_form(response){
 
-	},
+	}
 	
-	on_format_object : function(obj){
+	on_format_object(obj){
 		obj.pagaBeneficio = obj.pagaBeneficio ? "Sim" : "Não";  
-	},
+	}
 
 
 	/*
 	 * Invocado para renderizar as celulas da grade de dados. Útil para formatar dados  
 	 * 
 	 */ 
-	on_format_cell_datable : function(field, type, value, row, col, html_row){
+	on_format_cell_datable(field, type, value, row, col, html_row){
 		switch (field) {
 			case "pagaBeneficio":  return (value || value === "true" || value === "1") ? "Sim" : "Não";
 			default: return value;
 		}
-	},
+	}
 
 	
 	/*
 	 * Invocado para renderizar o conteúdo de campos marcado como lazy. Útil para trazer os dados sem segundo plano de combobox, grids  
 	 * 
 	 */ 
-	on_render_lazy_field : function(field){
+	on_render_lazy_field(field){
 		if (field.dataset.field === "campus"){
 			fpc.callRestIfNull(this.lista_campus, '/sitab/campus')
 				.done(function(result) {
@@ -49,9 +55,9 @@ var valorAlimentacaoController = {
 				});
 			
 		}
-	},
+	}
 	
-    onchange : function(field, operacao) {
+    onchange(field, operacao) {
     	if (operacao != "pesquisa"){
     		// Informar valor do benefício se paga benefício está habilitado
 	    	if (field.dataset.field === "pagaBeneficio"){
@@ -61,19 +67,21 @@ var valorAlimentacaoController = {
 	    		f_valorBeneficio.value = "0.00";
 	    	}
     	}
-    },
+    }
     
 	/*
 	 * Invocado antes de realizar a pesquisa do cadastro. Pode ser utilizado para modificar o filtro antes de enviar a requisição.  
 	 * 
 	 */ 
-    ongetfiltropesquisa : function(filtro_atual) {
+    ongetfiltropesquisa(filtro_atual) {
     	return filtro_atual;
     }
     
     
 
 };
+
+var valorAlimentacaoController = new ValorAlimentacaoController(); 
 
 
 var estudoSocioEconomicoForm = {
