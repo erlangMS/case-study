@@ -21,7 +21,7 @@ class SaeWebConfig(AppConfig):
     
             # Sistema SAE
             ts = Transacao()
-            ts.nome = 'mod_sae'
+            ts.nome = 'saeweb'
             ts.titulo = 'Assistência Estudantil'
             ts.tipoTransacao = 'S'
             ts.posicao = 2
@@ -41,7 +41,7 @@ class SaeWebConfig(AppConfig):
             ts.posicao = 1
             ts.formModel = 'fpc.forms.PainelForm'
             ts.image_url = 'class glyphicon glyphicon-list-alt'
-            ts.transacaoPai = Transacao.objects.get(nome='mod_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb')
             try:
                 ts.save()
             except:
@@ -64,6 +64,17 @@ class SaeWebConfig(AppConfig):
             except:
                 pass;
     
+
+            # menu Auxílio Alimentação
+            ts = Transacao()
+            ts.nome = 'cad_auxilio_alimentacao'
+            ts.titulo = 'Auxílio Alimentação'
+            ts.pageController = 'auxilio-alimentacao-controller'
+            ts.transacaoPai = Transacao.objects.get(nome='cad_sae')
+            try:
+                ts.save()
+            except:
+                pass;
     
             # menu Ocorrências
             ts = Transacao()
@@ -92,7 +103,7 @@ class SaeWebConfig(AppConfig):
             ts.posicao = 1
             ts.formModel = 'fpc.forms.PainelForm'
             ts.image_url = 'class glyphicon glyphicon-list-alt'
-            ts.transacaoPai = Transacao.objects.get(nome='mod_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb')
             try:
                 ts.save()
             except:
@@ -123,7 +134,7 @@ class SaeWebConfig(AppConfig):
             ts.posicao = 1
             ts.formModel = 'fpc.forms.PainelForm'
             ts.image_url = 'class glyphicon glyphicon-list-alt'
-            ts.transacaoPai = Transacao.objects.get(nome='mod_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb')
             try:
                 ts.save()
             except:

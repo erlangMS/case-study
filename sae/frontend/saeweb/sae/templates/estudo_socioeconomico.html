@@ -21,6 +21,19 @@
 {% block f_content_form %}
 
 	<div id="f_estudo" data-passo-atual="ler_edital">
+    <script>
+    alert("oi");
+      System.config({
+        transpiler: 'typescript', 
+        typescriptOptions: { emitDecoratorMetadata: true }, 
+        packages: {'app': {defaultExtension: 'ts'}} 
+      });
+      System.import('app/main')
+            .then(null, console.error.bind(console));
+    </script>
+
+ 		<my-app>Loading...</my-app>
+    	<my-valor>Loading...</my-valor>
 	{% include "estudo_socioeconomico/ler_edital.html" %}
 	{% include "estudo_socioeconomico/estudo_preliminar.html" %}
 	{% include "estudo_socioeconomico/dados_pessoais.html" %}
