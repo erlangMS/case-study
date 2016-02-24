@@ -35,7 +35,7 @@ class SaeWebConfig(AppConfig):
     
             # menu Cadastros
             ts = Transacao()
-            ts.nome = 'cad_sae'
+            ts.nome = 'saeweb/cadastro'
             ts.titulo = 'Cadastro'
             ts.tipoTransacao = 'F'
             ts.posicao = 1
@@ -50,7 +50,7 @@ class SaeWebConfig(AppConfig):
     
             # menu Vale Alimentação
             ts = Transacao()
-            ts.nome = 'cad_valor_alimentacao'
+            ts.nome = 'saeweb/cadastro/valor_alimentacao'
             ts.titulo = 'Valor Alimentação'
             ts.tipoTransacao = 'T'
             ts.transacao_url = '/fpc.views.fpc_exibe_pesquisa'
@@ -58,7 +58,7 @@ class SaeWebConfig(AppConfig):
             ts.formModel = 'sae.forms.ValorAlimentacaoForm'
             ts.model = 'sae.models.ValorAlimentacao'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='cad_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/cadastro')
             try:
                 ts.save()
             except:
@@ -67,10 +67,10 @@ class SaeWebConfig(AppConfig):
 
             # menu Auxílio Alimentação
             ts = Transacao()
-            ts.nome = 'cad_auxilio_alimentacao'
+            ts.nome = 'saeweb/cadastro/auxilio_alimentacao.html'
             ts.titulo = 'Auxílio Alimentação'
             ts.pageController = 'auxilio-alimentacao-controller'
-            ts.transacaoPai = Transacao.objects.get(nome='cad_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/cadastro')
             try:
                 ts.save()
             except:
@@ -78,7 +78,7 @@ class SaeWebConfig(AppConfig):
     
             # menu Ocorrências
             ts = Transacao()
-            ts.nome = 'cad_ocorrencias'
+            ts.nome = 'saeweb/cadastro/ocorrencia'
             ts.titulo = 'Ocorrências'
             ts.tipoTransacao = 'T'
             ts.transacao_url = '/fpc.views.fpc_exibe_pesquisa'
@@ -86,7 +86,7 @@ class SaeWebConfig(AppConfig):
             ts.formModel = 'sae.forms.OcorrenciasForm'
             ts.model = 'sae.models.Ocorrencias'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='cad_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/cadastro')
             try:
                 ts.save()
             except:
@@ -97,7 +97,7 @@ class SaeWebConfig(AppConfig):
     
             # menu Consultas/Relatórios
             ts = Transacao()
-            ts.nome = 'cad_consulta_sae'
+            ts.nome = 'saeweb/consultas'
             ts.titulo = 'Consultas/Relatórios'
             ts.tipoTransacao = 'F'
             ts.posicao = 1
@@ -120,7 +120,7 @@ class SaeWebConfig(AppConfig):
             ts.formModel = 'sae.forms.ImprimeAgendamentoForm'
             ts.model = 'sae.models.ImprimeAgendamento'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='cad_consulta_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/consultas')
             try:
                 ts.save()
             except:
@@ -128,7 +128,7 @@ class SaeWebConfig(AppConfig):
             
             # menu Estudo socioeconomico
             ts = Transacao()
-            ts.nome = 'estudosocioeconomico_sae'
+            ts.nome = 'saeweb/estudo_socioeconomico'
             ts.titulo = 'Estudo Socioeconômico'
             ts.tipoTransacao = 'F'
             ts.posicao = 1
@@ -142,7 +142,7 @@ class SaeWebConfig(AppConfig):
             
             # Preencher formulário do estudo socioeconômico preliminar
             ts = Transacao()
-            ts.nome = 'estudosocioeconomico_preliminar_sae'
+            ts.nome = 'saeweb/estudo_socioeconomico/preliminar'
             ts.titulo = 'Preencher Formulário'
             ts.tipoTransacao = 'T'
             ts.transacao_url = '/sae/estudosocioeconomico'
@@ -150,7 +150,7 @@ class SaeWebConfig(AppConfig):
             ts.formModel = 'sae.forms.EstudoSocioEconomicoForm'
             ts.model = 'sae.models.EstudoSocioEconomico'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='estudosocioeconomico_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/estudo_socioeconomico')
             try:
                 ts.save()
             except:
@@ -159,7 +159,7 @@ class SaeWebConfig(AppConfig):
     
             # Imprimir formulário do estudo socioeconômico
             ts = Transacao()
-            ts.nome = 'imprimir_estudosocioeconomico_sae'
+            ts.nome = 'saeweb/estudo_socioeconomico/imprimir'
             ts.titulo = 'Imprimir Formulário'
             ts.tipoTransacao = 'T'
             ts.transacao_url = '/fpc.views.fpc_exibe_pesquisa'
@@ -167,7 +167,7 @@ class SaeWebConfig(AppConfig):
             ts.formModel = 'sae.forms.ImprimirEstudoSocioEconomicoForm'
             ts.model = 'sae.models.EstudoSocioEconomico'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='estudosocioeconomico_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/estudo_socioeconomico')
             try:
                 ts.save()
             except:
@@ -176,14 +176,14 @@ class SaeWebConfig(AppConfig):
     
             # Preencher formulário do estudo socioeconômico
             ts = Transacao()
-            ts.nome = 'info_estudosocioeconomico_sae'
+            ts.nome = 'saeweb/estudo_socioeconomico/info'
             ts.titulo = 'Informações Sobre o Estudo'
             ts.tipoTransacao = 'T'
             ts.transacao_url = '/fpc.views.fpc_exibe_pesquisa'
             ts.posicao = 3
             ts.formModel = 'sae.forms.InfoEstudoSocioEconomicoForm'
             ts.image_url = 'class glyphicon glyphicon glyphicon-asterisk'
-            ts.transacaoPai = Transacao.objects.get(nome='estudosocioeconomico_sae')
+            ts.transacaoPai = Transacao.objects.get(nome='saeweb/estudo_socioeconomico')
             try:
                 ts.save()
             except:
