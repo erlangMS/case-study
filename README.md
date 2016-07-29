@@ -11,7 +11,7 @@ modernization, new systems should be integrated to the existing ones to share th
 Service Oriented Architecture (SOA) approach emerges as a way to solve this problem, providing a high-
 level abstraction between applications and the business layer. 
 
-In this context, this dissertation describes a
+In this context, this work describes a
 service-oriented approach that consists of a modernization process and a REST based software
 infrastructure for the development of services. This approach aims to integrate some of the business rules of
 the legacy systems used in the University, and to improve the maintainability of such systems through an
