@@ -49,7 +49,7 @@ public class AlunoFacade extends EmsServiceFacade{
 	}
 	
 	public Boolean delete(IEmsRequest request){
-		int id = request.getParamAsInt("id");
+		Integer id = request.getParamAsInt("id");
 		return SigraApplication.getInstance()
 			.getAlunoService()
 			.delete(id);

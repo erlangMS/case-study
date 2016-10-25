@@ -6,7 +6,6 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 
 import br.erlangms.EmsRepository;
-import br.unb.sae.model.AlunoSae;
 import br.unb.sae.model.AssinaturaTermoBa;
 
 @Stateless
