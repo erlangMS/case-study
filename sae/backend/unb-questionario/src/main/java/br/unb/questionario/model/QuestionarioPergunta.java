@@ -4,12 +4,9 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -27,13 +24,11 @@ public class QuestionarioPergunta implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;
 
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="QpQueCodigoQuestionario")
-	private Questionario questionario;
+	@Column(name = "QpQueCodigoQuestionario", nullable = true, insertable = true, updatable = true)
+	private Integer questionario;
 	
-    @OneToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="QpPerCodigoPergunta")
-	private Pergunta pergunta;
+    @Column(name = "QpPerCodigoPergunta", nullable = true, insertable = true, updatable = true)
+	private Integer pergunta;
 
 	public Integer getId() {
 		return id;
@@ -43,19 +38,19 @@ public class QuestionarioPergunta implements Serializable {
 		this.id = id;
 	}
 
-	public Questionario getQuestionario() {
+	public Integer getQuestionario() {
 		return questionario;
 	}
 
-	public void setQuestionario(Questionario questionario) {
+	public void setQuestionario(Integer questionario) {
 		this.questionario = questionario;
 	}
 
-	public Pergunta getPergunta() {
+	public Integer getPergunta() {
 		return pergunta;
 	}
 
-	public void setPergunta(Pergunta pergunta) {
+	public void setPergunta(Integer pergunta) {
 		this.pergunta = pergunta;
 	}
 

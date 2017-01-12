@@ -2,12 +2,9 @@ package br.unb.questionario.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -28,9 +25,8 @@ public class RespostaPergunta {
 	@Column(name = "ResDescricao", nullable = false, insertable = true, updatable = true)
 	private String descricao;
 
-	@ManyToOne(fetch = FetchType.EAGER, optional = false, targetEntity = Pergunta.class)
-	@JoinColumn(name = "ResPerCodigoPergunta")
-	private Pergunta pergunta;
+	@Column(name = "ResPerCodigoPergunta", nullable = false, insertable = true, updatable = true)
+	private Integer pergunta;
 
 	@Column(name = "ResValorResposta", nullable = false, insertable = true, updatable = true)
 	private float valorResposta;
@@ -55,11 +51,12 @@ public class RespostaPergunta {
 		this.descricao = descricao;
 	}
 
-	public Pergunta getPergunta() {
+	public Integer getPergunta() {
 		return pergunta;
 	}
 
-	public void setPergunta(Pergunta pergunta) {
+	public void setPergunta(Integer
+			pergunta) {
 		this.pergunta = pergunta;
 	}
 
@@ -82,7 +79,7 @@ public class RespostaPergunta {
 			erro.addError("Informe o valor da resposta.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getPergunta())) {
+		if (getPergunta() == null || (getPergunta() != null && getPergunta() == 0)) {
 			erro.addError("Informe a pergunta a qual a resposta se destina.");
 		}
 

@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -41,9 +39,8 @@ public class Questionario implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataFim;
 
-	@OneToOne
-	@JoinColumn(name = "QueTQuCodigoTipo")
-	private TipoQuestionario tipoQuestionario;
+	@Column(name = "QueTQuCodigoTipo", nullable = false, insertable = true, updatable = true)
+	private Integer tipoQuestionario;
 	
 	public Questionario() {
 		super();
@@ -88,12 +85,12 @@ public class Questionario implements Serializable {
 	}
 
 
-	public TipoQuestionario getTipoQuestionario() {
+	public Integer getTipoQuestionario() {
 		return tipoQuestionario;
 	}
 
 
-	public void setTipoQuestionario(TipoQuestionario tipoQuestionario) {
+	public void setTipoQuestionario(Integer tipoQuestionario) {
 		this.tipoQuestionario = tipoQuestionario;
 	}
 
@@ -125,8 +122,8 @@ public class Questionario implements Serializable {
 
 	public void  vinculaPergunta(Pergunta pergunta){
 		QuestionarioPergunta p = new QuestionarioPergunta();
-		p.setPergunta(pergunta);
-		p.setQuestionario(this);
+		p.setPergunta(pergunta.getId());
+		p.setQuestionario(this.getId());
 		QuestionarioInfra.getInstance()
 			.getQuestionarioRepository()
 			.insert(p);
@@ -150,7 +147,7 @@ public class Questionario implements Serializable {
 		return QuestionarioInfra.getInstance()
 			.getQuestionarioRepository()
 			.getStreams(QuestionarioPergunta.class)
-			.anyMatch(q -> q.getQuestionario().getId() == thisQuestionario);
+			.anyMatch(q -> q.getQuestionario() == thisQuestionario);
 			
 	}
 	

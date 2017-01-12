@@ -20,6 +20,9 @@ public class CategoriaPergunta {
 
 	@Column(name = "CatDenominacao", nullable = false, insertable = true, updatable = true, unique = true)
 	private String denominacao;
+	
+	@Column(name = "CatQueCodigo", nullable = false, insertable = true, updatable = true)
+	private Integer questionario;
 
 	public CategoriaPergunta() {
 		super();
@@ -57,6 +60,14 @@ public class CategoriaPergunta {
 		if(erro.getErrors().size() > 0) {
 			throw erro;
 		}
+	}
+
+	public Integer getQuestionario() {
+		return questionario;
+	}
+
+	public void setQuestionario(Integer questionario) {
+		this.questionario = questionario;
 	}
 
 	

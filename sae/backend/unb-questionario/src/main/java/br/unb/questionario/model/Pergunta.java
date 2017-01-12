@@ -3,15 +3,11 @@ package br.unb.questionario.model;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
@@ -36,15 +32,13 @@ public class Pergunta implements Serializable {
 	private String enunciado;
 
 	@Column(name = "PerTipoResposta", nullable = false, insertable = true, updatable = true)
-	private TipoResposta tipoResposta = TipoResposta.Subjetiva;
+	private Integer tipoResposta;
 
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "PerCatCodigoCategoria")
-	private CategoriaPergunta categoria;
+	@Column(name = "PerCatCodigoCategoria", nullable = false, insertable = true, updatable = true)
+	private Integer categoria;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = true, targetEntity = Pergunta.class)
-	@JoinColumn(name = "PerCodigoPerguntaRelacionada")
-	private Pergunta perguntaRelacionada;
+	@Column(name = "PerCodigoPerguntaRelacionada", nullable = true, insertable = true, updatable = true)
+	private Integer perguntaRelacionada;
 	
 	@Column(name = "PerAtiva")
 	private boolean ativa = true;
@@ -69,27 +63,27 @@ public class Pergunta implements Serializable {
 		this.enunciado = enunciado;
 	}
 
-	public TipoResposta getTipoResposta() {
+	public Integer getTipoResposta() {
 		return tipoResposta;
 	}
 
-	public void setTipoResposta(TipoResposta tipoResposta) {
+	public void setTipoResposta(Integer tipoResposta) {
 		this.tipoResposta = tipoResposta;
 	}
 
-	public CategoriaPergunta getCategoria() {
+	public Integer getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(CategoriaPergunta categoria) {
+	public void setCategoria(Integer categoria) {
 		this.categoria = categoria;
 	}
 
-	public Pergunta getPerguntaRelacionada() {
+	public Integer getPerguntaRelacionada() {
 		return perguntaRelacionada;
 	}
 
-	public void setPerguntaRelacionada(Pergunta perguntaRelacionada) {
+	public void setPerguntaRelacionada(Integer perguntaRelacionada) {
 		this.perguntaRelacionada = perguntaRelacionada;
 	}
 
@@ -104,17 +98,17 @@ public class Pergunta implements Serializable {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!EmsUtil.isFieldObjectValid(getCategoria())) {
+		/*if (!EmsUtil.isFieldObjectValid(getCategoria())) {
 			erro.addError("Informe a categoria da pergunta.");
-		}
+		}*/
 
 		if (!EmsUtil.isFieldStrValid(getEnunciado())) {
 			erro.addError("Informe a denominação.");
 		}
 
-		if (!EmsUtil.isFieldObjectValid(getTipoResposta())) {
+		/*if (!EmsUtil.isFieldObjectValid(getTipoResposta())) {
 			erro.addError("Informe o tipo de resposta.");
-		}
+		}*/
 
 		if (erro.getErrors().size() > 0) {
 			throw erro;
@@ -122,7 +116,7 @@ public class Pergunta implements Serializable {
 	}
 
 	public RespostaPergunta registraResposta(RespostaPergunta resposta) {
-		resposta.setPergunta(this);
+		resposta.setPergunta(this.id);
 		resposta.validar();
 		return QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
