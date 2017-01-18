@@ -1,0 +1,9 @@
+target/
+build/
+.svn/
+.settings/
+.project
+.classpath
+*.~
+*.tmp
+*.class

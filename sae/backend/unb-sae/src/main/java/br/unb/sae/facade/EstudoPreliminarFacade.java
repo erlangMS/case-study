@@ -24,14 +24,14 @@ public class EstudoPreliminarFacade extends EmsServiceFacade {
 	}
 	
 	public List<EstudoPreliminar> find(IEmsRequest request){
-		String filtro = request.getQuery("filtro");
+		String filter = request.getQuery("filter");
 		String fields = request.getQuery("fields");
-		int limit_ini = request.getQueryAsInt("limit_ini");
-		int limit_fim = request.getQueryAsInt("limit_fim");
+		int offset = request.getQueryAsInt("offset");
+		int limit = request.getQueryAsInt("limit");
 		String sort = request.getQuery("sort");
 		return SaeApplication.getInstance()
 			.getEstudoPreliminarService()
-			.find(filtro, fields, limit_ini, limit_fim, sort);
+			.find(filter, fields, limit, offset, sort);
 	}
 
 	public EstudoPreliminar insert(IEmsRequest request){

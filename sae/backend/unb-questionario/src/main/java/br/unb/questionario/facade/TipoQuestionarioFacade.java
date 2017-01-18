@@ -22,14 +22,14 @@ public class TipoQuestionarioFacade extends EmsServiceFacade {
 	}
 	
 	public List<TipoQuestionario> find(IEmsRequest request){
-		String filtro = request.getQuery("filtro");
+		String filter = request.getQuery("filter");
 		String fields = request.getQuery("fields");
-		int limit_ini = request.getQueryAsInt("limit_ini");
-		int limit_fim = request.getQueryAsInt("limit_fim");
+		int offset = request.getQueryAsInt("offset");
+		int limit = request.getQueryAsInt("limit");
 		String sort = request.getQuery("sort");
 		return QuestionarioApplication.getInstance()
 			.getTipoQuestionarioService()
-			.find(filtro, fields, limit_ini, limit_fim, sort);
+			.find(filter, fields, limit, offset, sort);
 	}
 
 	public TipoQuestionario insert(IEmsRequest request){
