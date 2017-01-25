@@ -14,7 +14,7 @@ public class QuestionarioApplication {
 	@EJB private PerguntaService perguntaService;
 	@EJB private QuestionarioService questionarioService;
 	@EJB private TipoQuestionarioService tipoQuestionarioService;
-	@EJB private RespostaService respostaService;
+	@EJB private OpcaoService respostaService;
 	
 	public QuestionarioApplication(){
 		instance = this;
@@ -36,11 +36,11 @@ public class QuestionarioApplication {
 		return tipoQuestionarioService;
 	}
 
-	public RespostaService getRespostaService() {
+	public OpcaoService getRespostaService() {
 		return respostaService;
 	}
 
-	public void setRespostaService(RespostaService respostaService) {
+	public void setRespostaService(OpcaoService respostaService) {
 		this.respostaService = respostaService;
 	}
 

@@ -16,7 +16,7 @@ public class QuestionarioInfra {
 	@EJB private PerguntaRepository perguntaRepository;
 	@EJB private QuestionarioRepository questionarioRepository;
 	@EJB private TipoQuestionarioRepository tipoQuestionarioRepository;
-	@EJB private RespostaRepository respostaRepository;
+	@EJB private OpcaoRepository respostaRepository;
 
 	public QuestionarioInfra(){
 		instance = this;
@@ -45,11 +45,11 @@ public class QuestionarioInfra {
 		return saeContext;
 	}
 
-	public RespostaRepository getRespostaRepository() {
+	public OpcaoRepository getRespostaRepository() {
 		return respostaRepository;
 	}
 
-	public void setRespostaRepository(RespostaRepository respostaRepository) {
+	public void setRespostaRepository(OpcaoRepository respostaRepository) {
 		this.respostaRepository = respostaRepository;
 	}
 	

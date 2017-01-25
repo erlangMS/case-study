@@ -6,7 +6,7 @@ import javax.ejb.Stateless;
 
 import br.unb.questionario.infra.QuestionarioInfra;
 import br.unb.questionario.model.Pergunta;
-import br.unb.questionario.model.RespostaPergunta;
+import br.unb.questionario.model.Opcao;
 
 @Stateless
 public class PerguntaService {
@@ -43,7 +43,7 @@ public class PerguntaService {
 			.delete(id);
 	}
 
-	public RespostaPergunta registraRespostaParaPergunta(int idPergunta, RespostaPergunta resposta) {
+	public Opcao registraRespostaParaPergunta(int idPergunta, Opcao resposta) {
 		Pergunta pergunta = findById(idPergunta);
 		return pergunta.registraResposta(resposta);
 	}
@@ -51,10 +51,10 @@ public class PerguntaService {
 	public void removeRespostaDaPergunta(int idPergunta, int idResposta) {
 		QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
-			.delete(RespostaPergunta.class, idResposta);
+			.delete(Opcao.class, idResposta);
 	}
 
-	public List<RespostaPergunta> listaRespostaDaPergunta(int idPergunta) {
+	public List<Opcao> listaRespostaDaPergunta(int idPergunta) {
 		Pergunta pergunta = findById(idPergunta);
 		return pergunta.getRespostas();
 	}

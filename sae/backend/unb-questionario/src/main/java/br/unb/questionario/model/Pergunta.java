@@ -55,7 +55,7 @@ public class Pergunta implements Serializable {
 	private Integer tamanhoMaximo;
 	
 	@Transient
-	private List<RespostaPergunta> respostas = new LinkedList<RespostaPergunta>();
+	private List<Opcao> respostas = new LinkedList<Opcao>();
 
 	public Pergunta() {
 		super();
@@ -129,7 +129,7 @@ public class Pergunta implements Serializable {
 		}
 	}
 
-	public RespostaPergunta registraResposta(RespostaPergunta resposta) {
+	public Opcao registraResposta(Opcao resposta) {
 		resposta.setPergunta(this.id);
 		resposta.validar();
 		return QuestionarioInfra.getInstance()
@@ -140,14 +140,14 @@ public class Pergunta implements Serializable {
 	public void removeResposta(int idResposta) {
 		QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
-			.delete(RespostaPergunta.class, idResposta);
+			.delete(Opcao.class, idResposta);
 	}
 
-	public List<RespostaPergunta> getRespostas() {
+	public List<Opcao> getRespostas() {
 		Pergunta thisPergunta = this;
 		return QuestionarioInfra.getInstance()
 			.getPerguntaRepository()
-			.getStreams(RespostaPergunta.class)
+			.getStreams(Opcao.class)
 			.where(p -> p.getPergunta().equals(thisPergunta)).toList();
 	}
 
@@ -159,7 +159,7 @@ public class Pergunta implements Serializable {
 		this.obrigatoria = obrigatoria;
 	}
 
-	public void setRespostas(List<RespostaPergunta> respostas) {
+	public void setRespostas(List<Opcao> respostas) {
 		this.respostas = respostas;
 	}
 

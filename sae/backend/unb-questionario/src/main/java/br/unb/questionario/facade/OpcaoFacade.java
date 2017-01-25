@@ -7,21 +7,21 @@ import javax.ejb.Startup;
 
 import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
-import br.unb.questionario.model.RespostaPergunta;
+import br.unb.questionario.model.Opcao;
 import br.unb.questionario.service.QuestionarioApplication;
  
 @Singleton
 @Startup
-public class RespostaFacade extends EmsServiceFacade {
+public class OpcaoFacade extends EmsServiceFacade {
 
-	public RespostaPergunta findById(IEmsRequest request){
+	public Opcao findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()
 			.getRespostaService()
 			.findById(id);
 	}
 	
-	public List<RespostaPergunta> find(IEmsRequest request){
+	public List<Opcao> find(IEmsRequest request){
 		String filtro = request.getQuery("filter");
 		String fields = request.getQuery("fields");
 		int offset = request.getQueryAsInt("offset");
@@ -32,16 +32,16 @@ public class RespostaFacade extends EmsServiceFacade {
 			.find(filtro, fields, limit, offset, sort);
 	}
 
-	public RespostaPergunta insert(IEmsRequest request){
-		RespostaPergunta RespostaPergunta = (RespostaPergunta) request.getObject(RespostaPergunta.class);
+	public Opcao insert(IEmsRequest request){
+		Opcao RespostaPergunta = (Opcao) request.getObject(Opcao.class);
 		return QuestionarioApplication.getInstance()
 			.getRespostaService()
 			.insert(RespostaPergunta);
 	}
 	
-	public RespostaPergunta update(IEmsRequest request){
+	public Opcao update(IEmsRequest request){
 		int id = request.getParamAsInt("id");
-		RespostaPergunta RespostaPergunta = QuestionarioApplication.getInstance()
+		Opcao RespostaPergunta = QuestionarioApplication.getInstance()
 			.getRespostaService()
 			.findById(id);
 		request.mergeObjectFromPayload(RespostaPergunta);

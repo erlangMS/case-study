@@ -182,10 +182,13 @@ public class Questionario implements Serializable {
 						erro.addError("Categoria do Questionário não posssuí perguntas ativas.");	
 					}else{
 						for(Pergunta pergunta: categoria.getPerguntas()){
-							if(pergunta.getTipoResposta() == TipoResposta.MultiplaEscolha.getCodigo() || pergunta.getTipoResposta() == TipoResposta.EscolhaUma.getCodigo() || pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo()  )
-							pergunta.setRespostas(QuestionarioInfra.getInstance().
-									getRespostaRepository().
-									listaRespostasVinculadasAPergunta(pergunta.getId()));
+							if(pergunta.getTipoResposta() == TipoResposta.MultiplaEscolha.getCodigo() 
+									|| pergunta.getTipoResposta() == TipoResposta.EscolhaUma.getCodigo() 
+									|| pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo()  ){
+								pergunta.setRespostas(QuestionarioInfra.getInstance().
+										getRespostaRepository().
+										listaOpcoesVinculadasAPergunta(pergunta.getId()));
+							}
 						}
 					}
 					

@@ -6,12 +6,12 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 
 import br.erlangms.EmsRepository;
-import br.unb.questionario.model.RespostaPergunta;
+import br.unb.questionario.model.Opcao;
 
 @Stateless
-public class RespostaRepository extends EmsRepository<RespostaPergunta> {
+public class OpcaoRepository extends EmsRepository<Opcao> {
 	
-	private static String SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA;
+	private static String SQL_LISTA_OPCOES_VINCULADAS_A_PERGUNTA;
 	
 	@Override
 	public EntityManager getEntityManager() {
@@ -19,21 +19,21 @@ public class RespostaRepository extends EmsRepository<RespostaPergunta> {
 	}
 
 	@Override
-	public Class<RespostaPergunta> getClassOfModel() {
-		return RespostaPergunta.class;
+	public Class<Opcao> getClassOfModel() {
+		return Opcao.class;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<RespostaPergunta> listaRespostasVinculadasAPergunta(Integer idPergunta) {
+	public List<Opcao> listaOpcoesVinculadasAPergunta(Integer idPergunta) {
 		return getEntityManager()
-				.createQuery(SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA)
+				.createQuery(SQL_LISTA_OPCOES_VINCULADAS_A_PERGUNTA)
 				.setParameter("idPergunta", idPergunta)
 				.getResultList();
 	}
 	
 	
 	protected void createCacheSQL(){
-		SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA = "SELECT this from RespostaPergunta this "+
+		SQL_LISTA_OPCOES_VINCULADAS_A_PERGUNTA = "SELECT this from Opcao this "+
 		    											 "WHERE this.pergunta = :idPergunta"
 		    											 + " AND this.ativa = true  ";
 	

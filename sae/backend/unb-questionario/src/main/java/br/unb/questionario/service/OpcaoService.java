@@ -5,31 +5,31 @@ import java.util.List;
 import javax.ejb.Stateless;
 
 import br.unb.questionario.infra.QuestionarioInfra;
-import br.unb.questionario.model.RespostaPergunta;
+import br.unb.questionario.model.Opcao;
 
 @Stateless
-public class RespostaService {
+public class OpcaoService {
 	
-	public RespostaPergunta findById(Integer id) {
+	public Opcao findById(Integer id) {
 		return QuestionarioInfra.getInstance()
 			.getRespostaRepository()
 			.findById(id);
 	}
 
-	public List<RespostaPergunta> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
+	public List<Opcao> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
 		return QuestionarioInfra.getInstance()
 			.getRespostaRepository()
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public RespostaPergunta update(RespostaPergunta RespostaPergunta){
+	public Opcao update(Opcao RespostaPergunta){
 		RespostaPergunta.validar();
 		return QuestionarioInfra.getInstance()
 			.getRespostaRepository()
 			.update(RespostaPergunta);
 	}
 
-	public RespostaPergunta insert(RespostaPergunta RespostaPergunta) {
+	public Opcao insert(Opcao RespostaPergunta) {
 		RespostaPergunta.validar();
 		return QuestionarioInfra.getInstance()
 			.getRespostaRepository()

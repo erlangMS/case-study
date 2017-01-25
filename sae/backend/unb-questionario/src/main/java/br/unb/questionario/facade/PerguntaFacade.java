@@ -10,7 +10,7 @@ import br.erlangms.EmsServiceFacade;
 import br.erlangms.IEmsRequest;
 import br.unb.questionario.model.CategoriaPergunta;
 import br.unb.questionario.model.Pergunta;
-import br.unb.questionario.model.RespostaPergunta;
+import br.unb.questionario.model.Opcao;
 import br.unb.questionario.service.QuestionarioApplication;
  
 @Singleton
@@ -80,9 +80,9 @@ public class PerguntaFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 	
-	public RespostaPergunta registraRespostaParaPergunta(IEmsRequest request){
+	public Opcao registraRespostaParaPergunta(IEmsRequest request){
 		int pergunta = request.getParamAsInt("id");
-		RespostaPergunta resposta = request.getObject(RespostaPergunta.class, new EmsJsonModelAdapter() {
+		Opcao resposta = request.getObject(Opcao.class, new EmsJsonModelAdapter() {
 			@Override
 			public Object findById(Class<?> classOfModel, Integer id) {
 				if (classOfModel == Pergunta.class){
@@ -107,7 +107,7 @@ public class PerguntaFacade extends EmsServiceFacade {
 		return true;
 	}
 	
-	public List<RespostaPergunta> listaRespostaDaPergunta(IEmsRequest request){
+	public List<Opcao> listaRespostaDaPergunta(IEmsRequest request){
 		int pergunta = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()
 				.getPerguntaService()

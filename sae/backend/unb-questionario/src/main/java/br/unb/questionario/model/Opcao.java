@@ -12,29 +12,29 @@ import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
 
 @Entity
-@Table(name = "TB_Resposta",
-	uniqueConstraints = {@UniqueConstraint(columnNames={"ResPerCodigoPergunta", "ResValorResposta"})}
+@Table(name = "TB_Opcao",
+	uniqueConstraints = {@UniqueConstraint(columnNames={"OpcPerCodigoPergunta", "OpcValorResposta"})}
 )
-public class RespostaPergunta {
+public class Opcao {
 
 	@Id
-	@Column(name = "ResCodigo", nullable = false, insertable = true, updatable = true)
+	@Column(name = "OpcCodigo", nullable = false, insertable = true, updatable = true)
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "ResDescricao", nullable = false, insertable = true, updatable = true)
+	@Column(name = "OpcDescricao", nullable = false, insertable = true, updatable = true)
 	private String descricao;
 
-	@Column(name = "ResPerCodigoPergunta", nullable = false, insertable = true, updatable = true)
+	@Column(name = "OpcPerCodigoPergunta", nullable = false, insertable = true, updatable = true)
 	private Integer pergunta;
 
-	@Column(name = "ResValorResposta", nullable = false, insertable = true, updatable = true)
+	@Column(name = "OpcValorResposta", nullable = false, insertable = true, updatable = true)
 	private float valorResposta;
 	
-	@Column(name = "ResAtiva", nullable = true, insertable = true, updatable = true)
+	@Column(name = "OpcAtiva", nullable = true, insertable = true, updatable = true)
 	private boolean ativa = true;
 
-	public RespostaPergunta() {
+	public Opcao() {
 		super();
 	}
 
@@ -75,15 +75,15 @@ public class RespostaPergunta {
 		EmsValidationException erro = new EmsValidationException();
 
 		if (!EmsUtil.isFieldStrValid(getDescricao())) {
-			erro.addError("Informe a descrição da resposta.");
+			erro.addError("Informe a descrição da opção.");
 		}
 
 		if (!EmsUtil.isFieldObjectValid(getValorResposta())) {
-			erro.addError("Informe o valor da resposta.");
+			erro.addError("Informe o valor da opção.");
 		}
 
 		if (getPergunta() == null || (getPergunta() != null && getPergunta() == 0)) {
-			erro.addError("Informe a pergunta a qual a resposta se destina.");
+			erro.addError("Informe a pergunta a qual a opção se destina.");
 		}
 
 		if (erro.getErrors().size() > 0) {
