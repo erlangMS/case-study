@@ -63,6 +63,11 @@ public class QuestionarioService {
 		Questionario questionario = findById(questionario_id);
 		questionario.desvinculaPergunta(pergunta_id);
 	}
+	
+	public Questionario getQuestionarioCompleto(int idQuestionario){
+		Questionario questionario = new Questionario();
+		return questionario.getQuestionarioCompleto(idQuestionario);
+	}
 
 	private void validaExclusao(Questionario questionario) {
 		// Não permite excluir se tem alguma pergunta vinculada

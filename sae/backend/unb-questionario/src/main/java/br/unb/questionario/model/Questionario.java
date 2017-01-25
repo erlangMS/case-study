@@ -2,6 +2,7 @@ package br.unb.questionario.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
@@ -41,6 +43,9 @@ public class Questionario implements Serializable {
 
 	@Column(name = "QueTQuCodigoTipo", nullable = false, insertable = true, updatable = true)
 	private Integer tipoQuestionario;
+	
+	@Transient
+	private List<CategoriaPergunta> categorias = new LinkedList<CategoriaPergunta>();
 	
 	public Questionario() {
 		super();
@@ -150,5 +155,57 @@ public class Questionario implements Serializable {
 			.anyMatch(q -> q.getQuestionario() == thisQuestionario);
 			
 	}
+
+	public Questionario getQuestionarioCompleto(Integer idQuestionario){
+		EmsValidationException erro = new EmsValidationException();
+		Questionario questionario = new Questionario();
+		questionario = QuestionarioInfra.getInstance().getQuestionarioRepository().findById(idQuestionario);
+		
+		if(questionario == null || (questionario != null && questionario.getId() == 0)){
+			erro.addError("Questionário não encontrado.");
+		}else{
+			questionario.setCategorias(QuestionarioInfra.getInstance().
+					getCategoriaPerguntaRepository().
+					listaCategoriasVinculadasAoQuestionario(questionario.getId()));
+			if(questionario.getCategorias() == null ||(questionario.getCategorias() != null && questionario.getCategorias().size()== 0)){
+				erro.addError("Questionário não posssui categoria.");	
+			}else{
+				//preencho as perguntas das categorias
+				for (CategoriaPergunta categoria: questionario.getCategorias()){
+					categoria.setPerguntas(QuestionarioInfra.getInstance().
+							getPerguntaRepository().
+							listaPerguntasVincualadasACategoria(categoria.getId())
+						);	
+			
+					//preencho as respostas das perguntas
+					if(categoria.getPerguntas() == null ||(categoria.getPerguntas()!= null && categoria.getPerguntas().size()== 0)){
+						erro.addError("Categoria do Questionário não posssuí perguntas ativas.");	
+					}else{
+						for(Pergunta pergunta: categoria.getPerguntas()){
+							if(pergunta.getTipoResposta() == TipoResposta.MultiplaEscolha.getCodigo() || pergunta.getTipoResposta() == TipoResposta.EscolhaUma.getCodigo() || pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo()  )
+							pergunta.setRespostas(QuestionarioInfra.getInstance().
+									getRespostaRepository().
+									listaRespostasVinculadasAPergunta(pergunta.getId()));
+						}
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+		return questionario;
+		
+	}
+
+	public List<CategoriaPergunta> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<CategoriaPergunta> categorias) {
+		this.categorias = categorias;
+	}
+
 	
 }

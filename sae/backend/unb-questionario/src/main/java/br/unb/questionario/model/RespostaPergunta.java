@@ -30,6 +30,9 @@ public class RespostaPergunta {
 
 	@Column(name = "ResValorResposta", nullable = false, insertable = true, updatable = true)
 	private float valorResposta;
+	
+	@Column(name = "ResAtiva", nullable = true, insertable = true, updatable = true)
+	private boolean ativa = true;
 
 	public RespostaPergunta() {
 		super();
@@ -86,6 +89,14 @@ public class RespostaPergunta {
 		if (erro.getErrors().size() > 0) {
 			throw erro;
 		}
+	}
+
+	public boolean isAtiva() {
+		return ativa;
+	}
+
+	public void setAtiva(boolean ativa) {
+		this.ativa = ativa;
 	}
 
 }

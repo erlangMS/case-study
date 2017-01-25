@@ -81,4 +81,13 @@ public class QuestionarioFacade extends EmsServiceFacade {
 					.getQuestionarioService()
 					.listaPerguntasVinculadaAoQuestionario(id);
 	}
+	
+	public Questionario recuperaQuestionarioCompleto(IEmsRequest request){
+		int id = request.getParamAsInt("id");
+		return QuestionarioApplication.getInstance()
+					.getQuestionarioService()
+					.getQuestionarioCompleto(id);
+	}
+	
+	
 }

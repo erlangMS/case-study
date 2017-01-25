@@ -1,11 +1,15 @@
 package br.unb.questionario.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.erlangms.EmsValidationException;
 
@@ -23,6 +27,9 @@ public class CategoriaPergunta {
 	
 	@Column(name = "CatQueCodigo", nullable = false, insertable = true, updatable = true)
 	private Integer questionario;
+	
+	@Transient
+	private List<Pergunta> perguntas = new LinkedList<Pergunta>();
 
 	public CategoriaPergunta() {
 		super();
@@ -68,6 +75,14 @@ public class CategoriaPergunta {
 
 	public void setQuestionario(Integer questionario) {
 		this.questionario = questionario;
+	}
+
+	public List<Pergunta> getPerguntas() {
+		return perguntas;
+	}
+
+	public void setPerguntas(List<Pergunta>perguntas) {
+		this.perguntas = perguntas;
 	}
 
 	

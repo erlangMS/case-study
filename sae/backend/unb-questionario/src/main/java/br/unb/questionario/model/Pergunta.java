@@ -1,6 +1,7 @@
 package br.unb.questionario.model;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
@@ -36,12 +38,24 @@ public class Pergunta implements Serializable {
 
 	@Column(name = "PerCatCodigoCategoria", nullable = false, insertable = true, updatable = true)
 	private Integer categoria;
+	
+	@Column(name = "PerObrigatoria", nullable = true, insertable = true, updatable = true)
+	private Boolean obrigatoria;
 
 	@Column(name = "PerCodigoPerguntaRelacionada", nullable = true, insertable = true, updatable = true)
 	private Integer perguntaRelacionada;
 	
 	@Column(name = "PerAtiva")
 	private boolean ativa = true;
+	
+	@Column(name = "PerOrdem")
+	private Integer ordem;
+	
+	@Column(name = "PerTamanhoMaximo")
+	private Integer tamanhoMaximo;
+	
+	@Transient
+	private List<RespostaPergunta> respostas = new LinkedList<RespostaPergunta>();
 
 	public Pergunta() {
 		super();
@@ -135,6 +149,34 @@ public class Pergunta implements Serializable {
 			.getPerguntaRepository()
 			.getStreams(RespostaPergunta.class)
 			.where(p -> p.getPergunta().equals(thisPergunta)).toList();
+	}
+
+	public Boolean getObrigatoria() {
+		return obrigatoria;
+	}
+
+	public void setObrigatoria(Boolean obrigatoria) {
+		this.obrigatoria = obrigatoria;
+	}
+
+	public void setRespostas(List<RespostaPergunta> respostas) {
+		this.respostas = respostas;
+	}
+
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
+
+	public Integer getTamanhoMaximo() {
+		return tamanhoMaximo;
+	}
+
+	public void setTamanhoMaximo(Integer tamanhoMaximo) {
+		this.tamanhoMaximo = tamanhoMaximo;
 	}
 
 }
