@@ -12,33 +12,33 @@ public class OpcaoService {
 	
 	public Opcao findById(Integer id) {
 		return QuestionarioInfra.getInstance()
-			.getRespostaRepository()
+			.getOpcaoRepository()
 			.findById(id);
 	}
 
 	public List<Opcao> find(String filtro, String fields, int limit_ini, int limit_fim, String sort) {
 		return QuestionarioInfra.getInstance()
-			.getRespostaRepository()
+			.getOpcaoRepository()
 			.find(filtro, fields, limit_ini, limit_fim, sort);
 	}
 
-	public Opcao update(Opcao RespostaPergunta){
-		RespostaPergunta.validar();
+	public Opcao update(Opcao opcao){
+		opcao.validar();
 		return QuestionarioInfra.getInstance()
-			.getRespostaRepository()
-			.update(RespostaPergunta);
+			.getOpcaoRepository()
+			.update(opcao);
 	}
 
-	public Opcao insert(Opcao RespostaPergunta) {
-		RespostaPergunta.validar();
+	public Opcao insert(Opcao opcao) {
+		opcao.validar();
 		return QuestionarioInfra.getInstance()
-			.getRespostaRepository()
-			.insert(RespostaPergunta);
+			.getOpcaoRepository()
+			.insert(opcao);
 	}
 	
 	public boolean delete(Integer id) {
 		return QuestionarioInfra.getInstance()
-			.getRespostaRepository()
+			.getOpcaoRepository()
 			.delete(id);
 	}
 	

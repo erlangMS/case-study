@@ -186,7 +186,7 @@ public class Questionario implements Serializable {
 									|| pergunta.getTipoResposta() == TipoResposta.EscolhaUma.getCodigo() 
 									|| pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo()  ){
 								pergunta.setRespostas(QuestionarioInfra.getInstance().
-										getRespostaRepository().
+										getOpcaoRepository().
 										listaOpcoesVinculadasAPergunta(pergunta.getId()));
 							}
 						}

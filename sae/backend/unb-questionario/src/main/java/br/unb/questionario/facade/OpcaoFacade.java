@@ -17,7 +17,7 @@ public class OpcaoFacade extends EmsServiceFacade {
 	public Opcao findById(IEmsRequest request){
 		Integer id = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.findById(id);
 	}
 	
@@ -28,32 +28,32 @@ public class OpcaoFacade extends EmsServiceFacade {
 		int limit = request.getQueryAsInt("limit");
 		String sort = request.getQuery("sort");
 		return QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.find(filtro, fields, limit, offset, sort);
 	}
 
 	public Opcao insert(IEmsRequest request){
 		Opcao RespostaPergunta = (Opcao) request.getObject(Opcao.class);
 		return QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.insert(RespostaPergunta);
 	}
 	
 	public Opcao update(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		Opcao RespostaPergunta = QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.findById(id);
 		request.mergeObjectFromPayload(RespostaPergunta);
 		return QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.update(RespostaPergunta);
 	}
 	
 	public Boolean delete(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()
-			.getRespostaService()
+			.getOpcaoService()
 			.delete(id);
 	}
 	
