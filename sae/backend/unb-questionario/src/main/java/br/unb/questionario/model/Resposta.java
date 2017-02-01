@@ -80,6 +80,14 @@ public class Resposta {
 		this.respostaItem = respostaItem;
 	}
 	
+	public List<Resposta> getRespostaPorQuestionario(Integer idQuestionario) {
+		return QuestionarioInfra.getInstance()
+				.getRespostaRepository()
+				.getStreams()
+				.where(a -> a.getQuestionario() == idQuestionario)
+				.toList();	
+	}
+	
 	public Resposta getRespostaCompleta(Integer idResposta) {
 		EmsValidationException erro = new EmsValidationException();		
 		

@@ -53,9 +53,14 @@ public class Pergunta implements Serializable {
 	
 	@Column(name = "PerTamanhoMaximo")
 	private Integer tamanhoMaximo;
-	
+
+	//Opções genericas sao opcoes que serao utilizadas na combo
 	@Transient
-	private List<Opcao> respostas = new LinkedList<Opcao>();
+	private List<OpcaoGenerica> opcoesGenericas = new LinkedList<OpcaoGenerica>();
+	
+	//Opcoes que uma Pergunta pode ter
+	@Transient
+	private List<Opcao> opcoes = new LinkedList<Opcao>();
 
 	public Pergunta() {
 		super();
@@ -108,6 +113,14 @@ public class Pergunta implements Serializable {
 	public void setAtiva(boolean ativa) {
 		this.ativa = ativa;
 	}
+	
+	public Boolean getObrigatoria() {
+		return obrigatoria;
+	}
+
+	public void setObrigatoria(Boolean obrigatoria) {
+		this.obrigatoria = obrigatoria;
+	}
 
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
@@ -151,17 +164,6 @@ public class Pergunta implements Serializable {
 			.where(p -> p.getPergunta().equals(thisPergunta)).toList();
 	}
 
-	public Boolean getObrigatoria() {
-		return obrigatoria;
-	}
-
-	public void setObrigatoria(Boolean obrigatoria) {
-		this.obrigatoria = obrigatoria;
-	}
-
-	public void setRespostas(List<Opcao> respostas) {
-		this.respostas = respostas;
-	}
 
 	public Integer getOrdem() {
 		return ordem;
@@ -177,6 +179,22 @@ public class Pergunta implements Serializable {
 
 	public void setTamanhoMaximo(Integer tamanhoMaximo) {
 		this.tamanhoMaximo = tamanhoMaximo;
+	}
+
+	public List<OpcaoGenerica> getOpcoesGenericas() {
+		return opcoesGenericas;
+	}
+
+	public void setOpcoesGenericas(List<OpcaoGenerica> opcoesGenericas) {
+		this.opcoesGenericas = opcoesGenericas;
+	}
+
+	public List<Opcao> getOpcoes() {
+		return opcoes;
+	}
+
+	public void setOpcoes(List<Opcao> opcoes) {
+		this.opcoes = opcoes;
 	}
 
 }

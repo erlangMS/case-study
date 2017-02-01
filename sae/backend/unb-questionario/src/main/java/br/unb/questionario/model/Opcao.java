@@ -1,5 +1,8 @@
 package br.unb.questionario.model;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,6 +13,7 @@ import javax.persistence.UniqueConstraint;
 
 import br.erlangms.EmsUtil;
 import br.erlangms.EmsValidationException;
+import br.unb.questionario.infra.QuestionarioInfra;
 
 @Entity
 @Table(name = "TB_Opcao",
@@ -22,10 +26,23 @@ public class Opcao {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 
-	@Column(name = "OpcDescricao", nullable = false, insertable = true, updatable = true)
+	@Column(name = "OpcDescricao", nullable = true, insertable = true, updatable = true)
 	private String descricao;
+	
+	@Column(name = "OpcTipoOpcao", nullable = true, insertable = true, updatable = true)
+	private Integer tipoOpcao;
 
-	@Column(name = "OpcPerCodigoPergunta", nullable = false, insertable = true, updatable = true)
+	// caso a opcao seja uma respota a outro questionario
+	@Column(name = "OpcIdQuestionario", nullable = true, insertable = true, updatable = true)
+	private Integer idQuestionario;
+	
+	@Column(name = "OpcIdTabelaSitab", nullable = true, insertable = true, updatable = true)
+	private Integer idTabelaSitab;
+	
+	@Column(name = "OpcServico", nullable = true, insertable = true, updatable = true)
+	private String nomeServico;
+	
+	@Column(name = "OpcPerCodigoPergunta", nullable = true, insertable = true, updatable = true)
 	private Integer pergunta;
 
 	@Column(name = "OpcValorResposta", nullable = false, insertable = true, updatable = true)
@@ -74,16 +91,34 @@ public class Opcao {
 	public void validar() {
 		EmsValidationException erro = new EmsValidationException();
 
-		if (!EmsUtil.isFieldStrValid(getDescricao())) {
-			erro.addError("Informe a descrição da opção.");
-		}
-
-		if (!EmsUtil.isFieldObjectValid(getValorResposta())) {
-			erro.addError("Informe o valor da opção.");
-		}
-
-		if (getPergunta() == null || (getPergunta() != null && getPergunta() == 0)) {
-			erro.addError("Informe a pergunta a qual a opção se destina.");
+		if(tipoOpcao == TipoOpcao.Entrada.getCodigo()){	
+			if (!EmsUtil.isFieldStrValid(getDescricao())) {
+				erro.addError("Informe a descrição da opção.");
+			}
+			if (!EmsUtil.isFieldObjectValid(getValorResposta())) {
+				erro.addError("Informe o valor da opção.");
+			}
+			if (getPergunta() == null || (getPergunta() != null && getPergunta() == 0)) {
+				erro.addError("Informe a pergunta a qual a opção se destina.");
+			}
+		}else if(tipoOpcao == TipoOpcao.RespostaQuestionario.getCodigo()) {
+			if (!EmsUtil.isFieldObjectValid(getIdQuestionario())) {
+				erro.addError("Informe o Questionário Resposta.");
+			}
+			// TODO: O questionário selecionado deve ser diferente do Questionario atual da pergunta
+			/*if(getIdQuestionario() == ){
+				
+			// TODO: O cara nao pode ter mais de uma opcao caso selecione RespostaQuestionario, Servico, Sitab	
+			}*/
+			
+		}else if(tipoOpcao == TipoOpcao.Servico.getCodigo()){
+			if (!EmsUtil.isFieldStrValid(getDescricao())) {
+				erro.addError("Informe a URL do serviço.");
+			}		
+		}else if(tipoOpcao == TipoOpcao.Sitab.getCodigo()){
+			if (!EmsUtil.isFieldStrValid(getDescricao())) {
+				erro.addError("Informe a Tabela do Sitab.");
+			}
 		}
 
 		if (erro.getErrors().size() > 0) {
@@ -99,4 +134,37 @@ public class Opcao {
 		this.ativa = ativa;
 	}
 
+	public Integer getIdQuestionario() {
+		return idQuestionario;
+	}
+
+	public void setIdResposta(Integer idQuestionario) {
+		this.idQuestionario = idQuestionario;
+	}
+
+	public Integer getIdTabelaSitab() {
+		return idTabelaSitab;
+	}
+
+	public void setIdTabelaSitab(Integer idTabelaSitab) {
+		this.idTabelaSitab = idTabelaSitab;
+	}
+
+	public String getNomeServico() {
+		return nomeServico;
+	}
+
+	public void setNomeServico(String nomeServico) {
+		this.nomeServico = nomeServico;
+	}
+
+	public Integer getTipoOpcao() {
+		return tipoOpcao;
+	}
+
+	public void setTipoOpcao(Integer tipoOpcao) {
+		this.tipoOpcao = tipoOpcao;
+	}
+
+	
 }

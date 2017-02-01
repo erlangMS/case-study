@@ -181,13 +181,24 @@ public class Questionario implements Serializable {
 					if(categoria.getPerguntas() == null ||(categoria.getPerguntas()!= null && categoria.getPerguntas().size()== 0)){
 						erro.addError("Categoria do Questionário não posssuí perguntas ativas.");	
 					}else{
+						//preencho as opcoes 
 						for(Pergunta pergunta: categoria.getPerguntas()){
 							if(pergunta.getTipoResposta() == TipoResposta.MultiplaEscolha.getCodigo() 
 									|| pergunta.getTipoResposta() == TipoResposta.EscolhaUma.getCodigo() 
-									|| pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo()  ){
-								pergunta.setRespostas(QuestionarioInfra.getInstance().
+									|| pergunta.getTipoResposta() == TipoResposta.Combo.getCodigo() ){
+								pergunta.setOpcoes(QuestionarioInfra.getInstance().
 										getOpcaoRepository().
 										listaOpcoesVinculadasAPergunta(pergunta.getId()));
+								
+							}
+							for(Opcao opcao: pergunta.getOpcoes()){
+								if(opcao.getTipoOpcao() == TipoOpcao.Entrada.getCodigo()){							
+									pergunta.setOpcoesGenericas(new OpcaoGenerica().converteEntradaEmGenerica(pergunta.getOpcoes()));
+									//Soh preciso pegar uma. Depois posso parar o loop
+									break;
+								}else if(opcao.getTipoOpcao() == TipoOpcao.RespostaQuestionario.getCodigo()){
+									pergunta.setOpcoesGenericas((new OpcaoGenerica().converteRespostaQuestionarioEmGenerica(opcao.getIdQuestionario())));								
+								}
 							}
 						}
 					}
