@@ -116,6 +116,13 @@ public class RespostaFacade extends EmsServiceFacade {
 			.delete(id);
 	}
 	
+	public List<Resposta> recuperaRespostaCompletaQuestionario(IEmsRequest request){
+		int id = request.getParamAsInt("id");
+		return QuestionarioApplication.getInstance()
+					.getRespostaService()
+					.getRespostaCompletaQuestionario(id);
+	}
+	
 	public Resposta recuperaRespostaCompleta(IEmsRequest request){
 		int id = request.getParamAsInt("id");
 		return QuestionarioApplication.getInstance()

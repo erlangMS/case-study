@@ -88,6 +88,18 @@ public class Resposta {
 				.toList();	
 	}
 	
+	public List<Resposta> getRespostaCompletaQuestionario(Integer idQuestionario) {
+		List<Resposta> respostas= QuestionarioInfra.getInstance()
+				.getRespostaRepository().listaRespostasVinculadasAoQuestionario(idQuestionario);
+		
+		respostas.forEach(res -> {
+			res.setRespostaItem(getRespostaItemLista(res.id));		
+		});
+				
+		return	respostas;
+	}
+	
+	
 	public Resposta getRespostaCompleta(Integer idResposta) {
 		EmsValidationException erro = new EmsValidationException();		
 		

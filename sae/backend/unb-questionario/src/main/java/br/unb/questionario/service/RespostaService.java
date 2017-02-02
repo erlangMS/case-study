@@ -42,9 +42,14 @@ public class RespostaService {
 			.delete(id);
 	}
 	
-	public Resposta getRespostaCompleta(Integer id){
-		Resposta resposta = new Resposta();
-		return resposta.getRespostaCompleta(id);
+	// Recupera respostas completa pelo id de um questionario
+	public List<Resposta> getRespostaCompletaQuestionario (Integer idQuestionario){
+		return new Resposta().getRespostaCompletaQuestionario(idQuestionario);
+	}
+	
+	// Recupera respostas completa pelo id de um questionario
+	public Resposta getRespostaCompleta (Integer idPergunta){
+		return new Resposta().getRespostaCompleta(idPergunta);
 	}
 	
 	

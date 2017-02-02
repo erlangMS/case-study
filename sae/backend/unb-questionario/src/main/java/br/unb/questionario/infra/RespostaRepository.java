@@ -12,7 +12,8 @@ import br.unb.questionario.model.Resposta;
 @Stateless
 public class RespostaRepository extends EmsRepository<Resposta> {
 	
-	private static String SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA;
+	private static String SQL_LISTA_RESPOSTA_VINCULADAS_A_PERGUNTA;
+	private static String SQL_LISTA_RESPOSTAS_VINCULADAS_AO_QUESTIONARIO;
 	
 	@Override
 	public EntityManager getEntityManager() {
@@ -24,18 +25,29 @@ public class RespostaRepository extends EmsRepository<Resposta> {
 		return Resposta.class;
 	}
 
-	@SuppressWarnings("unchecked")
-	public List<Opcao> listaRespostasVinculadasAPergunta(Integer idPergunta) {
-		return getEntityManager()
-				.createQuery(SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA)
+	
+	public Resposta listaRespostaVinculadasAPergunta(Integer idPergunta) {
+		return (Resposta) getEntityManager()
+				.createQuery(SQL_LISTA_RESPOSTA_VINCULADAS_A_PERGUNTA)
 				.setParameter("idPergunta", idPergunta)
+				.getSingleResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Resposta> listaRespostasVinculadasAoQuestionario(Integer idQuestionario) {
+		return getEntityManager()
+				.createQuery(SQL_LISTA_RESPOSTAS_VINCULADAS_AO_QUESTIONARIO)
+				.setParameter("idQuestionario", idQuestionario)
 				.getResultList();
 	}
 	
 	
 	protected void createCacheSQL(){
-		SQL_LISTA_RESPOSTAS_VINCULADAS_A_PERGUNTA = "SELECT this from Resposta this "+
+		SQL_LISTA_RESPOSTA_VINCULADAS_A_PERGUNTA = "SELECT this from Resposta this "+
 		    											 " WHERE this.pergunta = :idPergunta";
+		
+		SQL_LISTA_RESPOSTAS_VINCULADAS_AO_QUESTIONARIO = "SELECT this from Resposta this "+
+				 " WHERE this.questionario = :idQuestionario";
 	
 	}
 	
