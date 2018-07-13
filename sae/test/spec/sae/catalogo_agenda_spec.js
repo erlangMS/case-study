@@ -1,16 +1,18 @@
-describe("Agenda", function() {
- 
+describe("Agenda", function() {	
+
  beforeEach(function() {
 
  });
-
  
  it("Verifica se consegue obter uma lista de agenda do SAE", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/agenda",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/agenda",
 					data : {},
 					type: "GET",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -21,6 +23,19 @@ describe("Agenda", function() {
 	}
  });
 
+ it("Verifica se consegue obter saldo RU", function() {
+	var result = $.ajax({
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/administrativo/ru/pessoa/440251",
+					type: "GET",
+					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					crossDomain: true,
+					async: false
+				});
+	expect(result.status).toBe(200);
+			});
 
  
  it("Verifica se consegue incluir, modificar, pesquisar e excluir agenda no SAE", function() {
@@ -33,12 +48,14 @@ describe("Agenda", function() {
 	
 	// tenta incluir agenda		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/agenda",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/agenda",
 					data : JSON.stringify(objAgenda),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -50,7 +67,10 @@ describe("Agenda", function() {
 
 	// tenta modificar agenda
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/agenda/"+ idAgenda,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/agenda/"+ idAgenda,
 					data : JSON.stringify(objAgendaUpdate),
 					type: "PUT",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -62,7 +82,10 @@ describe("Agenda", function() {
 
 	// faz a pesquisa da agenda
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/agenda/"+ idAgenda,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/agenda/"+ idAgenda,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -73,7 +96,10 @@ describe("Agenda", function() {
 
 	// modificação feita, vamos apagar o registro do teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/agenda/"+ idAgenda,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/agenda/"+ idAgenda,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

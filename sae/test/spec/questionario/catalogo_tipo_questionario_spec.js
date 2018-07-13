@@ -7,7 +7,7 @@ describe("TipoQuestionario", function() {
  
  it("Verifica se consegue obter uma lista de tipos de questionários", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/tipo_questionario",
+					url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -32,12 +32,11 @@ describe("TipoQuestionario", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/tipo_questionario",
+					url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario",
 					data : JSON.stringify(obj),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -55,7 +54,7 @@ describe("TipoQuestionario", function() {
 
 			// tenta modificar		   
 			var result = $.ajax({
-							url:  "http://localhost:2301/questionario/tipo_questionario/"+ objUpdate.id,
+							url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario/"+ objUpdate.id,
 							data : JSON.stringify(objUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -67,7 +66,7 @@ describe("TipoQuestionario", function() {
 
 			// vamos apagar o registro do teste
 			var result = $.ajax({
-							url:  "http://localhost:2301/questionario/tipo_questionario/"+ objInserido.id,
+							url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario/"+ objInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -90,7 +89,7 @@ describe("TipoQuestionario", function() {
 	
 	// tenta incluir um tipo de questionário para pesquisa		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/tipo_questionario",
+					url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario",
 					data : JSON.stringify(obj),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -105,7 +104,7 @@ describe("TipoQuestionario", function() {
 	
 	// faz a pesquisa
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/tipo_questionario/"+ idTipo,
+					url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario/"+ idTipo,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -116,7 +115,7 @@ describe("TipoQuestionario", function() {
 	
 	// vamos apagar o registro do teste
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/tipo_questionario/"+ idTipo,
+					url:  "http://desenvservicos.unb.br/dados/questionario/tipo_questionario/"+ idTipo,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

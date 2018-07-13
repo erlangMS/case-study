@@ -7,7 +7,10 @@ describe("Questionario", function() {
  
  it("Verifica se consegue obter uma lista de questionários", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -34,12 +37,14 @@ describe("Questionario", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 
@@ -58,7 +63,10 @@ describe("Questionario", function() {
 
 			// tenta modificar
 			var result = $.ajax({
-							url:  "http://localhost:2301/questionario/questionario/"+ objUpdate.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ objUpdate.id,
 							data : JSON.stringify(objUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -70,7 +78,10 @@ describe("Questionario", function() {
 
 			// vamos apagar o registro do teste
 			var result = $.ajax({
-							url:  "http://localhost:2301/questionario/questionario/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ objInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -96,12 +107,14 @@ describe("Questionario", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 
@@ -112,7 +125,10 @@ describe("Questionario", function() {
 
 	// faz a pesquisa
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/"+ idQuestionario,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ idQuestionario,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -125,7 +141,10 @@ describe("Questionario", function() {
 
 	// vamos apagar o registro do teste
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/"+ idQuestionario,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ idQuestionario,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -148,12 +167,14 @@ describe("Questionario", function() {
 	
 	// tenta incluir o questionário		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : JSON.stringify(objQuestionario),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 
@@ -170,12 +191,14 @@ describe("Questionario", function() {
 			
 			// tenta incluir categoria da pergunta
 			result = $.ajax({
-							url:  "http://localhost:2301/questionario/categoria_pergunta",
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/questionario/categoria_pergunta",
 							data : JSON.stringify(objCategoria),
 							type: "POST",
-							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+							contentType: "application/json; charset=UTF-8",
 							dataType: "json",
-							crossDomain: true,
 							async: false
 						});
 			expect(result.status).toBe(201);
@@ -198,12 +221,14 @@ describe("Questionario", function() {
 
 				// tenta incluir pergunta 01
 				result = $.ajax({
-								url:  "http://localhost:2301/questionario/pergunta",
+								beforeSend: function(request) {
+									request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+								}, 
+								url:  "http://desenvservicos.unb.br/dados/questionario/pergunta",
 								data : JSON.stringify(objPergunta),
 								type: "POST",
-								contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+								contentType: "application/json; charset=UTF-8",
 								dataType: "json",
-								crossDomain: true,
 								async: false
 							});
 
@@ -221,12 +246,14 @@ describe("Questionario", function() {
 
 				// tenta incluir pergunta		   
 				result = $.ajax({
-								url:  "http://localhost:2301/questionario/pergunta",
+								beforeSend: function(request) {
+									request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+								}, 
+								url:  "http://desenvservicos.unb.br/dados/questionario/pergunta",
 								data : JSON.stringify(objPergunta2),
 								type: "POST",
-								contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+								contentType: "application/json; charset=UTF-8",
 								dataType: "json",
-								crossDomain: true,
 								async: false
 							});
 
@@ -240,7 +267,10 @@ describe("Questionario", function() {
 
 					// finalmente, tenta vincular a pergunta 01 ao questionário
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta",
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta",
 									data : JSON.stringify({"pergunta" : idPergunta1}),
 									type: "POST",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -254,7 +284,10 @@ describe("Questionario", function() {
 
 					// vamos vinvular a pergunta 02..
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta",
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta",
 									data : JSON.stringify({"pergunta" : idPergunta2}),
 									type: "POST",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -271,7 +304,10 @@ describe("Questionario", function() {
 
 					// desvincular a pergunta 01 do questionário
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta1,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta1,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",
@@ -283,7 +319,10 @@ describe("Questionario", function() {
 
 					// desvincular a pergunta 02 do questionário
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta2,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta2,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",
@@ -295,7 +334,10 @@ describe("Questionario", function() {
 
 					// apagar o questionário
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/questionario/"+ idQuestionario,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ idQuestionario,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",
@@ -306,7 +348,10 @@ describe("Questionario", function() {
 
 					// apagar a primeira pergunta
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",
@@ -317,7 +362,10 @@ describe("Questionario", function() {
 
 					// apagar a segunda pergunta
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta2,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta2,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",
@@ -328,7 +376,10 @@ describe("Questionario", function() {
 
 					// apagar a categoria da pergunta
 					result = $.ajax({
-									url:  "http://localhost:2301/questionario/categoria_pergunta/"+ idCategoria,
+									beforeSend: function(request) {
+										request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+									}, 
+									url:  "http://desenvservicos.unb.br/dados/questionario/categoria_pergunta/"+ idCategoria,
 									type: "DELETE",
 									contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 									dataType: "json",

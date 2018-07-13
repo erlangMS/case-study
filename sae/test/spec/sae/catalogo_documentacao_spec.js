@@ -7,7 +7,10 @@ describe("Documentacao", function() {
  
  it("Verifica se consegue obter uma lista de documentação do SAE", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -32,10 +35,13 @@ describe("Documentacao", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -53,7 +59,10 @@ describe("Documentacao", function() {
 
 			// tenta incluir		   
 			var result = $.ajax({
-							url:  "http://localhost:2301/sae/documentacao/"+ objUpdate.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/documentacao/"+ objUpdate.id,
 							data : JSON.stringify(objUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -66,7 +75,10 @@ describe("Documentacao", function() {
 
 			// modificação feita, vamos apagar o registro do teste
 			var result = $.ajax({
-							url:  "http://localhost:2301/sae/documentacao/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/documentacao/"+ objInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -89,10 +101,13 @@ describe("Documentacao", function() {
 	
 	// tenta incluir para o teste da pesquisa		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -104,7 +119,10 @@ describe("Documentacao", function() {
 
 	// faz a pesquisa
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao/"+ idDocumentacao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao/"+ idDocumentacao,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -117,7 +135,10 @@ describe("Documentacao", function() {
 
 	// vamos apagar o registro do teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao/"+ idDocumentacao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao/"+ idDocumentacao,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

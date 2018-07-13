@@ -7,7 +7,7 @@ describe("Aluno", function() {
  
  it("Verifica se consegue obter uma lista de alunos cadastrados no Sigra", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno",
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -30,7 +30,7 @@ describe("Aluno", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno",
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno",
 					data : JSON.stringify(obj),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -50,7 +50,7 @@ describe("Aluno", function() {
 
 			// tenta modificar
 			var result = $.ajax({
-							url:  "http://localhost:2301/sigra/aluno/"+ objAlunoUpdate.id,
+							url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ objAlunoUpdate.id,
 							data : JSON.stringify(objAlunoUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -63,7 +63,7 @@ describe("Aluno", function() {
 
 			// modificação feita, vamos apagar o registro do teste
 			var result = $.ajax({
-							url:  "http://localhost:2301/sigra/aluno/"+ objAlunoInserido.id,
+							url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ objAlunoInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -88,7 +88,7 @@ describe("Aluno", function() {
 	
 	// tenta incluir para pesquisar 	   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno",
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno",
 					data : JSON.stringify(obj),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -101,7 +101,7 @@ describe("Aluno", function() {
 
 	// faz a pesquisa
 	result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno/"+ idAluno,
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ idAluno,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -114,7 +114,7 @@ describe("Aluno", function() {
 	
 	// vamos apagar o registro do teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno/"+ idAluno,
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ idAluno,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

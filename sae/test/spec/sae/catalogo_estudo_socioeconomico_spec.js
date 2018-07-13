@@ -7,7 +7,10 @@ describe("EstudoSocioEconomico", function() {
  
  it("Verifica se consegue obter uma lista de estudo socioeconomico do SAE", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -38,10 +41,13 @@ describe("EstudoSocioEconomico", function() {
 	
 	// tenta incluir aluno
 	var result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno",
 					data : JSON.stringify(objAluno),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -60,10 +66,13 @@ describe("EstudoSocioEconomico", function() {
 	
 	// tenta incluir questionario		   
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : JSON.stringify(objQuestionario),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -81,12 +90,14 @@ describe("EstudoSocioEconomico", function() {
 	
 	// tenta incluir categoria da pergunta
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/categoria_pergunta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/categoria_pergunta",
 					data : JSON.stringify(objCategoria),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -105,12 +116,14 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta incluir pergunta 1
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta",
 					data : JSON.stringify(objPergunta01),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -131,12 +144,14 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta incluir resposta sim
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1 + "/resposta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1 + "/resposta",
 					data : JSON.stringify(objRespostaSim),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -144,12 +159,14 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta incluir resposta não
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1 + "/resposta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1 + "/resposta",
 					data : JSON.stringify(objRespostaNao),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -169,12 +186,14 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta incluir pergunta		   
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta",
 					data : JSON.stringify(objPergunta2),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -187,7 +206,10 @@ describe("EstudoSocioEconomico", function() {
 	
 	// vincular a pergunta 1 ao questionário
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta",
 					data : JSON.stringify({"pergunta" : idPergunta1}),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -200,7 +222,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// vincular a pergunta 2 ao questionário
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta",
 					data : JSON.stringify({"pergunta" : idPergunta2}),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -224,10 +249,13 @@ describe("EstudoSocioEconomico", function() {
 	
 	// tenta incluir estudo		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico",
 					data : JSON.stringify(objEstudo),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -244,7 +272,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta modificar		   
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo,
 					data : JSON.stringify(objEstudoUpdate),
 					type: "PUT",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -256,7 +287,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// tenta pesquisar
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo,
 					data : JSON.stringify(objEstudoUpdate),
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -279,10 +313,13 @@ describe("EstudoSocioEconomico", function() {
 							   "assistenteSocial":"Everton"}
 
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo + "/resposta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo + "/resposta",
 					data : JSON.stringify(objResposta1Estudo),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -299,10 +336,13 @@ describe("EstudoSocioEconomico", function() {
 							   "assistenteSocial":"Everton"}
 
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo + "/resposta",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo + "/resposta",
 					data : JSON.stringify(objResposta2Estudo),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -317,7 +357,10 @@ describe("EstudoSocioEconomico", function() {
 	
 	// vamos apagar a resposta 1 do estudo de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo + "/resposta/"+ idResposta1Estudo,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo + "/resposta/"+ idResposta1Estudo,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -328,7 +371,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// vamos apagar a resposta 2 do estudo de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo + "/resposta/"+ idResposta2Estudo,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo + "/resposta/"+ idResposta2Estudo,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -339,7 +385,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// vamos apagar o registro do estudo de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -355,7 +404,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// desvincular a pergunta 1 do questionário
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta1,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta1,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -366,7 +418,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// desvincular a pergunta 2 do questionário
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta2,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/" + idQuestionario +  "/pergunta/"+ idPergunta2,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -382,7 +437,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar o questionário
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/"+ idQuestionario,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ idQuestionario,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -398,7 +456,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar a resposta sim da pergunta 1
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1 + "/resposta/"+ idRespostaSim,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1 + "/resposta/"+ idRespostaSim,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -409,7 +470,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar a resposta não da pergunta 1
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1 + "/resposta/"+ idRespostaNao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1 + "/resposta/"+ idRespostaNao,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -420,7 +484,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar a primeira pergunta
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta1,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta1,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -431,7 +498,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar a segunda pergunta
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/pergunta/"+ idPergunta2,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/pergunta/"+ idPergunta2,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -448,7 +518,10 @@ describe("EstudoSocioEconomico", function() {
 
 	// apagar a categoria da pergunta
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/categoria_pergunta/"+ idCategoria,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/questionario/categoria_pergunta/"+ idCategoria,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -464,7 +537,10 @@ describe("EstudoSocioEconomico", function() {
 	
 	// vamos apagar o registro do aluno de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno/"+ idAluno,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					},
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ idAluno,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

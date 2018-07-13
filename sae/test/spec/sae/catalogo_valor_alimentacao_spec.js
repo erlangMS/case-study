@@ -7,7 +7,10 @@ describe("ValorAlimentacao", function() {
  
  it("Verifica se consegue obter uma lista de valor alimentação do SAE", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/valoralimentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -34,10 +37,13 @@ describe("ValorAlimentacao", function() {
 	
 	// tenta incluir		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/valoralimentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -56,7 +62,10 @@ describe("ValorAlimentacao", function() {
 
 			// tenta modificar
 			var result = $.ajax({
-							url:  "http://localhost:2301/sae/valoralimentacao/"+ objUpdate.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao/"+ objUpdate.id,
 							data : JSON.stringify(objUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -69,7 +78,10 @@ describe("ValorAlimentacao", function() {
 
 			// modificação feita, vamos apagar o registro do teste
 			var result = $.ajax({
-							url:  "http://localhost:2301/sae/valoralimentacao/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao/"+ objInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -94,12 +106,14 @@ describe("ValorAlimentacao", function() {
 	
 	// inclui um valor alimentacao para pesquisar
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/valoralimentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao",
 					data : JSON.stringify(obj),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
-					crossDomain: true,
 					async: false
 				});
 	expect(result.status).toBe(201);
@@ -109,7 +123,10 @@ describe("ValorAlimentacao", function() {
 
 	// faz a pesquisa
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/valoralimentacao/"+ idValorAlimentacao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao/"+ idValorAlimentacao,
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -122,7 +139,10 @@ describe("ValorAlimentacao", function() {
 	
 	// vamos apagar o registro do valor alimentacao de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/valoralimentacao/"+ idValorAlimentacao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/valoralimentacao/"+ idValorAlimentacao,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

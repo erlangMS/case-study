@@ -7,7 +7,10 @@ describe("DocumentacaoPendente", function() {
  
  it("Verifica se consegue obter uma lista de documentação pendente do SAE", function() {
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao/pendente",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao/pendente",
 					data : {},
 					type: "GET",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -34,7 +37,10 @@ describe("DocumentacaoPendente", function() {
 	
 	// tenta incluir aluno
 	var result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno",
 					data : JSON.stringify(objAluno),
 					type: "POST",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -53,10 +59,13 @@ describe("DocumentacaoPendente", function() {
 	
 	// tenta incluir questionario		   
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario",
 					data : JSON.stringify(objQuestionario),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -74,10 +83,13 @@ describe("DocumentacaoPendente", function() {
 	
 	// tenta incluir estudo		   
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/estudo/socioeconomico",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico",
 					data : JSON.stringify(objEstudo),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -92,10 +104,13 @@ describe("DocumentacaoPendente", function() {
 	
 	// tenta incluir documentacao		   
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao",
 					data : JSON.stringify(objDocumentacao),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -113,10 +128,13 @@ describe("DocumentacaoPendente", function() {
 	
 	// tenta incluir documentacao pendente		   
 	var result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao/pendente",
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao/pendente",
 					data : JSON.stringify(objDocPendente),
 					type: "POST",
-					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+					contentType: "application/json; charset=UTF-8",
 					dataType: "json",
 					crossDomain: true,
 					async: false
@@ -136,7 +154,10 @@ describe("DocumentacaoPendente", function() {
 
 			// tenta modificar		   
 			result = $.ajax({
-							url:  "http://localhost:2301/sae/documentacao/pendente/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/documentacao/pendente/"+ objInserido.id,
 							data : JSON.stringify(objUpdate),
 							type: "PUT",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
@@ -149,7 +170,10 @@ describe("DocumentacaoPendente", function() {
 
 			// faz a pesquisa
 			result = $.ajax({
-							url:  "http://localhost:2301/sae/documentacao/pendente/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/documentacao/pendente/"+ objInserido.id,
 							type: "GET",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -161,7 +185,10 @@ describe("DocumentacaoPendente", function() {
 
 			// modificação feita, vamos apagar o registro do teste
 			result = $.ajax({
-							url:  "http://localhost:2301/sae/documentacao/pendente/"+ objInserido.id,
+							beforeSend: function(request) {
+								request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+							}, 
+							url:  "http://desenvservicos.unb.br/dados/sae/documentacao/pendente/"+ objInserido.id,
 							type: "DELETE",
 							contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 							dataType: "json",
@@ -173,7 +200,10 @@ describe("DocumentacaoPendente", function() {
 	
 	// vamos apagar o registro documentacao de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sae/documentacao/"+ idDocumentacao,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sae/documentacao/"+ idDocumentacao,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -184,7 +214,10 @@ describe("DocumentacaoPendente", function() {
 	
 	// vamos apagar o registro estudo de teste
 	result = $.ajax({
-				url:  "http://localhost:2301/sae/estudo/socioeconomico/"+ idEstudo,
+				beforeSend: function(request) {
+					request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+				}, 
+				url:  "http://desenvservicos.unb.br/dados/sae/estudo/socioeconomico/"+ idEstudo,
 				type: "DELETE",
 				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 				dataType: "json",
@@ -195,7 +228,10 @@ describe("DocumentacaoPendente", function() {
 
 	// vamos apagar o registro questionário de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/questionario/questionario/"+ idQuestionario,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/questionario/questionario/"+ idQuestionario,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",
@@ -206,7 +242,10 @@ describe("DocumentacaoPendente", function() {
 
 	// vamos apagar o registro aluno de teste
 	result = $.ajax({
-					url:  "http://localhost:2301/sigra/aluno/"+ idAluno,
+					beforeSend: function(request) {
+						request.setRequestHeader("Authorization", "Bearer " + JSON.parse(localStorage.getItem( "token" ))["access_token"]);
+					}, 
+					url:  "http://desenvservicos.unb.br/dados/sigra/aluno/"+ idAluno,
 					type: "DELETE",
 					contentType: "application/x-www-form-urlencoded; charset=UTF-8",
 					dataType: "json",

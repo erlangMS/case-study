@@ -40,7 +40,22 @@
   <script src="spec/questionario/catalogo_tipo_questionario_spec.js"></script>
   <script src="spec/questionario/catalogo_pergunta_spec.js"></script>
       
-  
+  <script>
+     $.ajax({
+      url: "http://desenvservicos.unb.br/dados/authorize",
+      method: "POST",
+      cache: false,
+      data: { grant_type: "password", username: "geral", password: "123456"}
+    })
+    .done(function( data ) {
+      var token = { "access_token" : data["access_token"], "expires_in": Date.now() + ( data["expires_in"] * 1000 ) };
+      localStorage.setItem( "token", JSON.stringify( token ) );
+    })
+    .fail(function() {
+      console.log("Fail to recover token")
+    });
+
+  </script>
 </head>
 
 <body>
